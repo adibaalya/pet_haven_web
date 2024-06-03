@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #EDEBD2;
+    overflow-y: scroll;
+}
+
+.navbar {
+    height: 50px;
+    background-color: black !important;
+}
+
+.nav-item {
+    margin-right: 10px;
+}
+
+.navbar-nav .nav-link {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #EDEBD2 !important;
+}
+
+.navbar-nav .nav-link.active {
+    background-color: transparent !important;
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color:#EDEBD2 !important;
+    font-weight: 500 !important;
+}
+
+#header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('image/Happy-dog.jpg'), linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background-blend-mode: darken;
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 0;
+    object-fit: cover;
+}
+
+
+#header h2 {
+    color: white;
+    font-size: 45px;
+    font-family: 'Poppins';
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+#header h4 {
+    color: white;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 25px !important;
+}
+
+
+.odometer {
+    font-size: 5rem;
+    color: white;
+    font-family: 'Poppins';
+}
+
+.box {
+    width: 80%;
+    border: 1.5px solid #ccc;
+    padding: 20px;
+    text-align: center;
+
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filter-column {
+    flex: 30%;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-heading {
+    padding: 20px;
+}
+
+.filter-search {
+    padding: 10px;
+  }
+  
+  .filter-search input[type="search"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .filter-search i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #666;
+  }
+
+.filter-item{
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.animal-card-column {
+    flex: 70%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .filter-title {
+    width: 90%;
+    display: flex;
+    text-align: right;
+    align-items: center;
+    justify-content: right;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.filter-title i {
+    font-size: 16px;
+    color: black;
+}
+
+.filter-title .heart-button {
+    border: black;
+    top: 20px;
+    right: 25px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.filter-title .heart-button i {
+    font-size: 24px;
+    color: #989696;
+}
+
+.filter-title .heart-button.liked i {
+    color: #f00;
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding-top: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 250px;
+    height: 350px;
+    /* add this line */
+    position: relative;
+}
+
+#animals img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+}
+
+#animals h2 {
+    font-family: 'Poppins', serif;
+    margin-top: 10px;
+    margin-bottom: -3px;
+    font-size: 1.5em;
+}
+
+.shelter {
+    font-size: 0.9em;
+}
+
+.adopt-button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+}
+
+.adopt-button:hover {
+    background-color: rgb(237, 167, 178);
+    color: black;
+}
+
+
+.container .heart-button {
+    border: black;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.container .heart-button i {
+    font-size: 24px;
+    color: #989696;
+}
+
+.container .heart-button.liked i {
+    color: #f00;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    flex: 50%;
+    padding: 10px;
+}
+
+.filter-column {
+    margin: 10px;
+    padding: 20px;
+}
+
+.card-column {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 767.98px) {
+    .row {
+      flex-direction: column;
+    }
+  
+    .filter-column,
+    .animal-card-column {
+      flex: 100%;
+    }
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 1199.98px) {
+    .container {
+      justify-content: space-around;
+    }
+  }
+  
+  @media (max-width: 767.98px) {
+    .container {
+      justify-content: center;
+    }
+  }
+  
+  .modal-content {
+    border-radius: 10px; 
+}
+
+.modal-header {
+    background-color: #333;
+    border-bottom: none; 
+}
+
+.close {
+    color: #fff; 
+    opacity: 1; 
+    font-size: 1.5em; 
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.modal-title {
+    font-family: 'Playfair Display', sans-serif;
+    font-size: 20;
+    color: #fff; 
+}
+
+.modal-body p {
+    font-family: 'Poppins', sans-serif; 
+    font-size: 1.2em; 
+    font-weight: bold;
+    color: #333; 
+    line-height: 1.5; 
+}
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+}
+ td {
+    border-bottom: 0.5px solid #333;
+    padding: 8px !important;
+    text-align: center !important;
+}
+
+table img {
+    width: 100px !important; /* You can adjust this value to change the image size */
+    height: 100px !important;
+    border-radius: 100% !important;
+}
+
+table i {
+    font-size: 16px;
+    color: black;
+}
+
+.available{
+    color: green;
+}
+
+.unavailable{
+    color: #f00;
+}
+
+
+footer.bg-dark.text-white.py-4.mt-5 {
+    background-color: #000000 !important;
+    font-family: 'Poppins', sans-serif; 
+}

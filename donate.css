@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #EDEBD2;
+    overflow-y: scroll;
+}
+
+.navbar {
+    height: 50px;
+    background-color: black !important;
+}
+
+.nav-item {
+    margin-right: 10px;
+}
+
+.navbar-nav .nav-link {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #EDEBD2 !important;
+}
+
+.navbar-nav .nav-link.active {
+    background-color: transparent !important;
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color:#EDEBD2 !important;
+    font-weight: 500 !important;
+}
+
+.carousel-item {
+    position: relative;
+}
+
+.carousel-item img {
+    height: 450px;
+    width: 100%;
+    object-fit: cover; 
+    background-color: rgba(0, 0, 0,3.0);
+    opacity: 0.3;
+    
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 2; 
+    color: black; 
+    text-align: center;
+    width: 100%;
+}
+
+.carousel-caption h3 {
+    font-size: 50px; 
+}
+
+.carousel-caption h5 strong {
+    font-weight:bolder;
+}
+
+.carousel-caption p {
+    font-style: italic; 
+    font-weight:600;
+    font-size: larger;
+}
+
+.white-background {
+    background-color: white;
+    padding: 40px;
+    border-radius: 70px;
+    height: 350px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+}
+
+.why-donate {
+    text-align: center; 
+}
+
+.why-text {
+    color: red; 
+    font-weight: bold;/* Set color of "Why" to red */
+}
+
+.donate-text {
+    color: black;
+    font-weight: bold; /* Set color of "Donate?" to black */
+}
+
+.why-donate .row {
+    margin-top: 20px; /* Add margin between sections */
+}
+
+
+
+.container-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #E4D2D2;
+}
+
+.container-box img {
+    max-width: 100%; /* Ensures the image doesn't overflow the container */
+    height: auto; /* Allows the image to maintain its aspect ratio */
+    display: block; /* Ensures the image respects its container's dimensions */
+    margin: 0 auto; /* Centers the image horizontally */
+}
+
+.container-box h2 {
+    font-size: 1.5rem; 
+    margin-top: 10px;
+    text-align:center;
+}
+
+.container-box h3 {
+    font-size: 1.5rem; 
+    margin-top: 15px;
+    text-align:center;
+}
+
+.container-box p {
+    margin-top: 15px;
+    text-align:center;
+}
+
+
+.text-container {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 10px;
+}
+
+.text-container h2 {
+    font-size: 2rem; /* Adjust the font size as needed */
+    margin-bottom: 10px;
+}
+
+.text-container p {
+    font-size: 1.2rem; /* Adjust the font size as needed */
+    margin-bottom: 0;
+}
+
+.additional-info {
+    text-align: center;
+    padding: 20px;
+}
+
+.ready-to-donate {
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+.ready-to-donate h2{
+    margin-bottom: 15px; 
+    font-weight: bold;
+
+}
+.ready-to-donate p {
+    margin-bottom: 15px; 
+    font-weight: bold;
+}
+
+.ready-to-donate a.btn {
+    background-color: black;
+    color: white;
+    border: none;
+    width: 150px;
+}
+
+.ready-to-donate a.btn:hover {
+    background-color:rgb(237, 167, 178);
+    color: black;
+}
+
+.how-to-donate .white-background {
+    background-color: white; 
+}
+
+.how-text {
+    color: red; 
+    font-weight: bold;
+}
+
+.to-text {
+    color: black; 
+    font-weight: bold; 
+}
+
+.bold {
+    font-weight: bold; 
+}
+
+.container-box {
+    border-radius: 10px; 
+}
+
+.how-to-donate .container-box {
+    position: relative;
+    z-index: 2;
+}
+
+.how-to-donate .container-box::before {
+    content: attr(data-number);
+    position: absolute;
+    top: -20px;;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: #FFDE59;
+    color: #030303; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px; 
+    font-weight: bold;
+}
+
+.btn-primary {
+    border-radius: 25px; /* Adjust border radius as needed */
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color: black; /* Primary button color */
+    color: #fff; /* Text color */
+    border: none; /* Remove default button border */
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: rgb(237, 167, 178); /* Darker shade of primary color on hover */
+}
+
+footer.bg-dark.text-white.py-4.mt-5 {
+    background-color: #000000 !important;
+    font-family: 'Poppins', sans-serif;
+}
