@@ -19,14 +19,15 @@
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
+
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
             <a class="nav-link" href="index.html">HOME</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="adopt_page.html" id="adoptDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="adopt_page.html" id="adoptDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               ADOPT
             </a>
             <div class="dropdown-menu" aria-labelledby="adoptDropdown">
@@ -51,9 +52,10 @@
       </div>
     </nav>
   </section>
-  
 
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -66,7 +68,8 @@
           <form>
             <div class="form-group" novalidate>
               <label for="email">EMAIL ADDRESS</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" required>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
+                required>
               <div class="invalid-feedback">
                 Please provide your email.
               </div>
@@ -83,7 +86,8 @@
             </div>
             <div class="button-group">
               <button type="submit" class="btn btn-login">LOGIN</button>
-              <button type="button" class="btn btn-signup" data-dismiss="modal" data-toggle="modal" data-target="#signUpModal">SIGN UP</button>
+              <button type="button" class="btn btn-signup" data-dismiss="modal" data-toggle="modal"
+                data-target="#signUpModal">SIGN UP</button>
             </div>
           </form>
         </div>
@@ -95,7 +99,7 @@
         if (!signUpForm.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
-    
+
           signUpForm.querySelectorAll(':invalid').forEach((field) => {
             field.closest('.form-group').classList.add('was-validated');
           });
@@ -107,7 +111,8 @@
     </script>
   </div>
 
-  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -152,7 +157,7 @@
         if (!signUpForm.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
-    
+
           signUpForm.querySelectorAll(':invalid').forEach((field) => {
             field.closest('.form-group').classList.add('was-validated');
           });
@@ -179,7 +184,7 @@
     </div>
   </div>
 
-  <div  class="countdown-container container text-center py-5 mt-5">
+  <div class="countdown-container container text-center py-5 mt-5">
     <h2 class="mb-4">INTERNATIONAL ANIMAL DAY</h2>
     <div class="row">
       <div class="col countdown-item">
@@ -240,7 +245,7 @@
           data-target="#catTipsModal">
         <div class="modal fade" id="catTipsModal" tabindex="-1" role="dialog" aria-labelledby="catTipsModalLabel"
           aria-hidden="true">
-          <div class="modal-dialog modal-lg" role="document"> 
+          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h1 class="modal-title" id="catTipsModalLabel">How do I take care of a Cat?</h1>
@@ -248,7 +253,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body px-4"> 
+              <div class="modal-body px-4">
                 <p>
                   Basic Tips Caring for Your Cat
                 <ul>
@@ -273,14 +278,6 @@
         <img src="assets/images/rabbit.png" alt="Rabbit" class="img-fluid care-img" data-toggle="modal"
           data-target="#rabbitModal">
       </div>
-    </div>
-  </div>
-
-  <div id="help" class="feedback-container text-center mt-2">
-    <div class="feedback-section">
-      <h2 class="mb-4">Your Feedback Matters</h2>
-      <p class="mb-4">We'd love to hear from you. Please share your feedback with us.</p>
-      <button class="btn btn-dark btn-lg">Share Your Feedback</button>
     </div>
   </div>
 
@@ -355,36 +352,45 @@
             <p>Fill out the form below with your details and inquiry.
               Our friendly staff will get in touch with you shortly.</p>
             <div class="col-md-8">
-              <form class="contact-form" novalidate>
+              <form class="contact-form" action="send-email.php" method="post">
                 <div class="mb-3">
                   <label for="name" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
                   <div class="invalid-feedback">
                     Please provide your name.
                   </div>
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
+                    required>
                   <div class="invalid-feedback">
                     Please provide a valid email.
                   </div>
                 </div>
                 <div class="mb-3">
                   <label for="description" class="form-label">Description</label>
-                  <textarea class="form-control" id="description" rows="5" maxlength="500" placeholder="Enter your description" required></textarea>
+                  <textarea class="form-control" id="description" name="message" rows="5" maxlength="500"
+                    placeholder="Enter your description" required></textarea>
                   <div class="invalid-feedback">
                     Please provide a description.
                   </div>
                 </div>
                 <div class="d-flex justify-content-center">
-                  <button type="submit" class="btn btn-dark">Submit</button>
-                </div>
+                  <button type="submit" class="btn btn-primary" name="submit">Submit</button>                </div>
               </form>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div id="help" class="feedback-container text-center mt-2">
+    <div class="feedback-section">
+      <h2 class="mb-4">Your Feedback Matters</h2>
+      <p class="mb-4">We'd love to hear from you. Please share your feedback with us.</p>
+      <button class="btn btn-dark btn-lg">Share Your Feedback</button>
     </div>
   </div>
 
@@ -422,7 +428,7 @@
       </div>
     </footer>
   </section>
-  
+
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script>
@@ -432,12 +438,13 @@
           event.preventDefault();
           event.stopPropagation();
         }
-    
+
         $(this).addClass('was-validated');
       });
     });
-    </script>
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
