@@ -26,7 +26,5 @@ if (isset ($_POST['submit'])) {
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
-    
-    echo "<script>alert('Message has been sent'); document.location.href='index.html'</script>";
 }
 ?>
