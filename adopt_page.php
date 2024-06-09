@@ -1,141 +1,3 @@
-<?php
-$pets = [
-  [
-    'ID' => 'HPH-A-001',
-    'name' => 'Max',
-    'breed' => 'Golden Retriever',
-    'gender' => 'male',
-    'color' => 'golden',
-    'vaccinated' => 'yes',
-    'dewormed' => 'yes',
-    'age' => 3,
-    'type' => 'Dog',
-    'image' => 'assets/images/adopt3.jpeg'
-  ],
-  [
-    'ID' => 'HPH-A-002',
-    'name' => 'Luna',
-    'breed' => 'Siamese',
-    'gender' => 'female',
-    'color' => 'white',
-    'vaccinated' => 'yes',
-    'dewormed' => 'yes',
-    'age' => 4,
-    'type' => 'Cat',
-    'image' => 'assets/images/adopt1.jpeg'
-  ],
-  [
-    'ID' => 'HPH-A-003',
-    'name' => 'Rocky',
-    'breed' => 'Bulldog',
-    'gender' => 'male',
-    'color' => 'brindle',
-    'vaccinated' => 'no',
-    'dewormed' => 'yes',
-    'age' => 2,
-    'type' => 'Dog',
-    'image' => 'assets/images/adopt3.jpeg'
-  ],
-  [
-    'ID' => 'HPH-A-004',
-    'name' => 'Bella',
-    'breed' => 'Persian',
-    'gender' => 'female',
-    'color' => 'grey',
-    'vaccinated' => 'yes',
-    'dewormed' => 'yes',
-    'age' => 3,
-    'type' => 'Cat',
-    'image' => 'assets/images/adopt2.jpeg'
-  ],
-  [
-    'ID' => 'HPH-A-005',
-    'name' => 'Charlie',
-    'breed' => 'Beagle',
-    'gender' => 'male',
-    'color' => 'tricolor',
-    'vaccinated' => 'yes',
-    'dewormed' => 'yes',
-    'age' => 5,
-    'type' => 'Rabbit',
-    'image' => 'assets/images/adopt5.jpeg'
-  ],
-  [
-    'ID' => 'HPH-A-006',
-    'name' => 'Daisy',
-    'breed' => 'Maine Coon',
-    'gender' => 'female',
-    'color' => 'brown',
-    'vaccinated' => 'yes',
-    'dewormed' => 'yes',
-    'age' => 2,
-    'type' => 'Cat',
-    'image' => 'assets/images/adopt1.jpeg'
-  ],
-  [
-    'ID' => 'HPH-A-007',
-    'name' => 'Jack',
-    'breed' => 'Husky',
-    'gender' => 'male',
-    'color' => 'black and white',
-    'vaccinated' => 'no',
-    'dewormed' => 'yes',
-    'age' => 1,
-    'type' => 'Dog',
-    'image' => 'assets/images/adopt3.jpeg'
-  ],
-  [
-    'ID' => 'HPH-A-008',
-    'name' => 'Chloe',
-    'breed' => 'Ragdoll',
-    'gender' => 'female',
-    'color' => 'cream',
-    'vaccinated' => 'yes',
-    'dewormed' => 'yes',
-    'age' => 4,
-    'type' => 'Cat',
-    'image' => 'assets/images/adopt1.jpeg'
-  ],
-  [
-    'ID' => 'HPH-A-009',
-    'name' => 'Cooper',
-    'breed' => 'Labrador Retriever',
-    'gender' => 'male',
-    'color' => 'black',
-    'vaccinated' => 'yes',
-    'dewormed' => 'no',
-    'age' => 6,
-    'type' => 'Dog',
-    'image' => 'assets/images/adopt3.jpeg'
-  ],
-  [
-    'ID' => 'HPH-A-010',
-    'name' => 'Molly',
-    'breed' => 'Bengal',
-    'gender' => 'female',
-    'color' => 'spotted',
-    'vaccinated' => 'no',
-    'dewormed' => 'yes',
-    'age' => 3,
-    'type' => 'Cat',
-    'image' => 'assets/images/adopt1.jpeg'
-  ],
-  [
-    'ID' => 'HPH-A-119',
-    'name' => 'Molly',
-    'breed' => 'Bengal',
-    'gender' => 'female',
-    'color' => 'spotted',
-    'vaccinated' => 'no',
-    'dewormed' => 'yes',
-    'age' => 3,
-    'type' => 'Rabbit',
-    'image' => 'assets/images/adopt5.jpeg'
-  ]
-
-];
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -144,7 +6,7 @@ $pets = [
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="adopts.css" />
+  <link rel="stylesheet" href="adopt.css" />
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"></script>
@@ -155,6 +17,7 @@ $pets = [
 </head>
 
 <body>
+<?php include 'animal.php'; ?>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
@@ -186,9 +49,9 @@ $pets = [
               ADOPT
             </a>
             <div class="dropdown-menu" aria-labelledby="adoptDropdown">
-              <a class="dropdown-item" href="adopt_page.html">Dogs</a>
-              <a class="dropdown-item" href="adopt_page.html">Cats</a>
-              <a class="dropdown-item" href="adopt_page.html">Rabbit</a>
+              <a class="dropdown-item" href="adopt_page.php">Dogs</a>
+              <a class="dropdown-item" href="adopt_page.php">Cats</a>
+              <a class="dropdown-item" href="adopt_page.php">Rabbit</a>
             </div>
           </li>
           <li class="nav-item">

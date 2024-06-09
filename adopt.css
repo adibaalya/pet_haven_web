@@ -179,15 +179,14 @@ body {
 
 .container {
     display: flex;
-    justify-content: flex-start; /* Align items at the start of the flex container */
-    align-items: flex-start; /* Align items at the start of the cross axis */
+    flex-wrap: wrap;
+    justify-content: flex-start !important; /* Align items at the start of the flex container */
+    align-items: flex-start !important; /* Align items at the start of the cross axis */
     gap: 25px; /* Adjusted to start 10px below the filter title */
     padding-left: 5px;
     padding-right: 10px;
     margin-top: 20px;
 }
-
-
 
 .card {
     background-color: white;
@@ -291,11 +290,7 @@ body {
       flex: 100%;
     }
   }
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
+  
   
   @media (max-width: 1199.98px) {
     .container {
