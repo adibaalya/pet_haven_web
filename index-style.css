@@ -36,11 +36,11 @@ body {
 }
 
 .navbar-nav .nav-item.active .nav-link {
-    color:#EDEBD2 !important;
+    color: #EDEBD2 !important;
     font-weight: 500 !important;
 }
 
-.heading{
+.heading {
     margin-top: 25px;
 }
 
@@ -363,49 +363,98 @@ input::placeholder {
 }
 
 .form-control {
-    border: 1px solid #ced4da; /* Bootstrap's default border color */
+    border: 1px solid #ced4da;
+    /* Bootstrap's default border color */
     border-radius: 5px;
     padding: 10px 15px;
     font-size: 14px;
     transition: border-color 0.3s ease;
-  }
+}
 
-  .modal-header {
+.modal-header {
     display: flex;
     justify-content: center;
     position: relative;
-  }
+}
 
-  .modal-title {
+.modal-title {
     flex-grow: 1;
     text-align: center;
-  }
+}
 
-  .modal-header .close {
+.modal-header .close {
     position: absolute;
     right: 15px;
     top: 15px;
-  }
-  .forgot-password {
+}
+
+.forgot-password {
     display: block;
     margin-top: 10px;
     font-size: 14px;
     text-align: right;
-  }
+}
 
-  .forgot-password a {
+.forgot-password a {
     color: #0c0c0c;
     text-decoration: none;
-  }
+}
 
-  .forgot-password a:hover {
+.forgot-password a:hover {
     text-decoration: underline;
-  }
+}
 
-  .button-group {
+.button-group {
     text-align: center;
-  }
+}
 
-  .button-group .btn {
+.button-group .btn {
     margin: 5px;
-  }
+}
+
+.bottom-right-toast {
+    position: fixed;
+    right: 20px;
+    bottom: 0;
+    z-index: 9999;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+.bottom-right-toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.validation-icon {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 0.5em);
+    transition: all 0.3s ease;
+}
+
+.validation-icon::before {
+    font-family: "Bootstrap Icons";
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+}
+
+.form-control.is-valid,
+.form-control.is-invalid {
+    padding-right: 2.5rem;
+}
+
+.form-control.is-valid~.validation-icon::before {
+    content: '\2713';
+    color: #28a745;
+}
+
+.form-control.is-invalid~.validation-icon::before {
+    content: '\2717';
+    color: #dc3545;
+}
+
+.error-message {
+    color: red;
+}

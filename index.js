@@ -1,5 +1,78 @@
-$(document).ready(function(){
-    $('#catTipsModal').on('hidden.bs.modal', function () {
-      $(this).find('.modal-body').html('<!-- Insert your cat tips here -->');
-    });
+document.querySelector('.contact-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  $.ajax({
+    url: 'send-email.php',
+    type: 'POST',
+    data: $(this).serialize(),
+    success: function() {
+      var toast = new bootstrap.Toast(document.getElementById('successToast'));
+      toast.show();
+    },
+    error: function() {
+      var toast = new bootstrap.Toast(document.getElementById('errorToast'));
+      toast.show();
+    }
   });
+});
+
+$(document).ready(function () {
+  $('.contact-form').on('submit', function (event) {
+    if (this.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    $(this).addClass('was-validated');
+  });
+});
+
+const inputFields = document.querySelectorAll('.contact-form input, .contact-form textarea');
+
+inputFields.forEach(field => {
+  field.addEventListener('input', function (e) {
+    var value = e.target.value;
+    var isValid = true;
+    var errorMessage = '';
+
+    switch (e.target.id) {
+      case 'name':
+        if (value.trim().length < 2 || value.trim().length > 50) {
+          isValid = false;
+          errorMessage = 'Name must be between 2 and 50 characters.';
+        }
+        break;
+      case 'email':
+        var emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        if (!emailPattern.test(value)) {
+          isValid = false;
+          errorMessage = 'Please provide a valid email.';
+        }
+        break;
+      case 'description':
+        if (value.trim().length > 500 || value.trim() === '') {
+          isValid = false;
+          errorMessage = 'Description must be less than 500 characters and not empty.';
+        }
+        break;
+    }
+
+    if (isValid) {
+      e.target.classList.remove('is-invalid');
+      e.target.classList.add('is-valid');
+      e.target.nextElementSibling.textContent = '';
+    } else {
+      e.target.classList.remove('is-valid');
+      e.target.classList.add('is-invalid');
+      e.target.nextElementSibling.textContent = errorMessage;
+    }
+  });
+
+  var event = new Event('input', {
+    bubbles: true,
+    cancelable: true,
+  });
+  field.dispatchEvent(event);
+});
+
+
+
