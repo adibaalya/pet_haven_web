@@ -140,8 +140,9 @@ body {
     width: 90%;
     display: flex;
     text-align: right;
-    align-items: center;
+    align-items: start;
     justify-content: right;
+    padding-right: 40px;
     padding-top: 20px;
     padding-bottom: 10px;
 }
@@ -170,18 +171,22 @@ body {
     color: #f00;
 }
 
-
+.container-wrapper {
+    padding-top: -20px;
+    margin-left: 60px;
+    padding-left: 60px;
+}
 
 .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    padding-top: 0;
-    padding-left: 10px;
+    justify-content: flex-start; /* Align items at the start of the flex container */
+    align-items: flex-start; /* Align items at the start of the cross axis */
+    gap: 25px; /* Adjusted to start 10px below the filter title */
+    padding-left: 5px;
     padding-right: 10px;
-    padding-bottom: 10px;
+    margin-top: 20px;
 }
+
 
 
 .card {
@@ -209,7 +214,6 @@ body {
 
 .shelter {
     font-size: 0.9em;
-    margin-bottom: -140px;
 }
 
 .adopt-button {
@@ -219,12 +223,17 @@ body {
     border-radius: 10px;
     cursor: pointer;
     display: block;
+    height: 40px;
     width: 100%;
 }
 
 .adopt-button:hover {
     background-color: rgb(237, 167, 178);
     color: black;
+}
+
+.card a{
+    text-decoration: none;
 }
 
 

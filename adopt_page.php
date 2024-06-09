@@ -1,11 +1,138 @@
 <?php
 $pets = [
-  ['name' => 'Buddy', 'age' => 2, 'type' => 'Dog', 'image' => 'assets/images/adopt1.jpeg'],
-  ['name' => 'Whiskers', 'age' => 3, 'type' => 'Cat', 'image' => 'assets/images/adopt1.jpeg'],
-  ['name' => 'Goldie', 'age' => 1, 'type' => 'Fish', 'image' => 'assets/images/adopt1.jpeg'],
-  ['name' => 'Shadow', 'age' => 4, 'type' => 'Dog', 'image' => 'assets/images/adopt1.jpeg'],
-  ['name' => 'Bella', 'age' => 1, 'type' => 'Cat', 'image' => 'assets/images/adopt1.jpeg'],
-  // Add more pets as needed
+  [
+    'ID' => 'HPH-A-001',
+    'name' => 'Max',
+    'breed' => 'Golden Retriever',
+    'gender' => 'male',
+    'color' => 'golden',
+    'vaccinated' => 'yes',
+    'dewormed' => 'yes',
+    'age' => 3,
+    'type' => 'Dog',
+    'image' => 'assets/images/adopt3.jpeg'
+  ],
+  [
+    'ID' => 'HPH-A-002',
+    'name' => 'Luna',
+    'breed' => 'Siamese',
+    'gender' => 'female',
+    'color' => 'white',
+    'vaccinated' => 'yes',
+    'dewormed' => 'yes',
+    'age' => 4,
+    'type' => 'Cat',
+    'image' => 'assets/images/adopt1.jpeg'
+  ],
+  [
+    'ID' => 'HPH-A-003',
+    'name' => 'Rocky',
+    'breed' => 'Bulldog',
+    'gender' => 'male',
+    'color' => 'brindle',
+    'vaccinated' => 'no',
+    'dewormed' => 'yes',
+    'age' => 2,
+    'type' => 'Dog',
+    'image' => 'assets/images/adopt3.jpeg'
+  ],
+  [
+    'ID' => 'HPH-A-004',
+    'name' => 'Bella',
+    'breed' => 'Persian',
+    'gender' => 'female',
+    'color' => 'grey',
+    'vaccinated' => 'yes',
+    'dewormed' => 'yes',
+    'age' => 3,
+    'type' => 'Cat',
+    'image' => 'assets/images/adopt2.jpeg'
+  ],
+  [
+    'ID' => 'HPH-A-005',
+    'name' => 'Charlie',
+    'breed' => 'Beagle',
+    'gender' => 'male',
+    'color' => 'tricolor',
+    'vaccinated' => 'yes',
+    'dewormed' => 'yes',
+    'age' => 5,
+    'type' => 'Rabbit',
+    'image' => 'assets/images/adopt5.jpeg'
+  ],
+  [
+    'ID' => 'HPH-A-006',
+    'name' => 'Daisy',
+    'breed' => 'Maine Coon',
+    'gender' => 'female',
+    'color' => 'brown',
+    'vaccinated' => 'yes',
+    'dewormed' => 'yes',
+    'age' => 2,
+    'type' => 'Cat',
+    'image' => 'assets/images/adopt1.jpeg'
+  ],
+  [
+    'ID' => 'HPH-A-007',
+    'name' => 'Jack',
+    'breed' => 'Husky',
+    'gender' => 'male',
+    'color' => 'black and white',
+    'vaccinated' => 'no',
+    'dewormed' => 'yes',
+    'age' => 1,
+    'type' => 'Dog',
+    'image' => 'assets/images/adopt3.jpeg'
+  ],
+  [
+    'ID' => 'HPH-A-008',
+    'name' => 'Chloe',
+    'breed' => 'Ragdoll',
+    'gender' => 'female',
+    'color' => 'cream',
+    'vaccinated' => 'yes',
+    'dewormed' => 'yes',
+    'age' => 4,
+    'type' => 'Cat',
+    'image' => 'assets/images/adopt1.jpeg'
+  ],
+  [
+    'ID' => 'HPH-A-009',
+    'name' => 'Cooper',
+    'breed' => 'Labrador Retriever',
+    'gender' => 'male',
+    'color' => 'black',
+    'vaccinated' => 'yes',
+    'dewormed' => 'no',
+    'age' => 6,
+    'type' => 'Dog',
+    'image' => 'assets/images/adopt3.jpeg'
+  ],
+  [
+    'ID' => 'HPH-A-010',
+    'name' => 'Molly',
+    'breed' => 'Bengal',
+    'gender' => 'female',
+    'color' => 'spotted',
+    'vaccinated' => 'no',
+    'dewormed' => 'yes',
+    'age' => 3,
+    'type' => 'Cat',
+    'image' => 'assets/images/adopt1.jpeg'
+  ],
+  [
+    'ID' => 'HPH-A-119',
+    'name' => 'Molly',
+    'breed' => 'Bengal',
+    'gender' => 'female',
+    'color' => 'spotted',
+    'vaccinated' => 'no',
+    'dewormed' => 'yes',
+    'age' => 3,
+    'type' => 'Rabbit',
+    'image' => 'assets/images/adopt5.jpeg'
+  ]
+
 ];
 
 ?>
@@ -17,7 +144,7 @@ $pets = [
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="adopt.css" />
+  <link rel="stylesheet" href="adopts.css" />
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"></script>
@@ -310,19 +437,27 @@ $pets = [
             </div>
           </div>
         </div>
-        <div class="container">
-          <?php
-          foreach ($pets as $pet) {
-            echo '<div class="card">';
-            echo '<img src="' . htmlspecialchars($pet['image']) . '" alt="Image of ' . htmlspecialchars($pet['name']) . '">';
-            echo '<h2>' . htmlspecialchars($pet['name']) . '</h2>';
-            echo '<p class="shelter" >Age: ' . htmlspecialchars($pet['age']) . '</p>';
-            echo '<a href="detail_animal.html"><button class="adopt-button">ADOPT</button></a>'; // Adopt link
-            echo '<button class="heart-button" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button>'; // Heart button
-            echo '</div>';
-          }
-          ?>
+        <div class="container-wrapper">
+          <div class="container">
+            <?php
+            foreach ($pets as $pet) {
+              echo '<div class="card">';
+              echo '<img src="' . htmlspecialchars($pet['image']) . '" alt="Image of ' . htmlspecialchars($pet['name']) . '">';
+              echo '<h2>' . htmlspecialchars($pet['name']) . '</h2>';
+              echo '<p class="shelter">Age: ' . htmlspecialchars($pet['age']) . '</p>';
+              echo '<form action="detail_animal.php" method="GET">'; // Use detail_animal.php for the next page
+              foreach ($pet as $key => $value) {
+                echo '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '">';
+              }
+              echo '<button type="submit" class="adopt-button">ADOPT</button>';
+              echo '</form>';
+              echo '<button class="heart-button" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button>'; // Heart button
+              echo '</div>';
+            }
+            ?>
+          </div>
         </div>
+
   </section>
 
   <section class="footer">

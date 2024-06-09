@@ -1,3 +1,21 @@
+<?php
+if ($_GET) {
+  $id = htmlspecialchars($_GET['ID']);
+  $name = htmlspecialchars($_GET['name']);
+  $breed = htmlspecialchars($_GET['breed']);
+  $color = htmlspecialchars($_GET['color']);
+  $vaccinated = htmlspecialchars($_GET['vaccinated']);
+  $dewormed = htmlspecialchars($_GET['dewormed']);
+  $age = htmlspecialchars($_GET['age']);
+  $type = htmlspecialchars($_GET['type']);
+  $image = htmlspecialchars($_GET['image']);
+  $gender = htmlspecialchars($_GET['gender']);
+} else {
+  echo 'No pet information available.';
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +32,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Details</title>
+  <title>Details <?php echo $name; ?></title>
 </head>
 
 <body>
@@ -94,41 +112,37 @@
 
         </div>
         <div class="about-col-2">
-          <h2 class="animal-title">Simba</h2>
+          <h2 class="animal-title"><?php echo $name; ?></h2>
           <div class="table">
             <table>
               <table>
                 <tr>
                   <th>ANIMAL ID</th>
-                  <td>HPH-A-1844</td>
+                  <td><?php echo $id; ?></td>
                 </tr>
                 <tr>
                   <th>BREED</th>
-                  <td>Shepherd / Mixed Breed</td>
+                  <td><?php echo $breed; ?></td>
                 </tr>
                 <tr>
                   <th>GENDER</th>
-                  <td>Male</td>
+                  <td><?php echo $gender; ?></td>
                 </tr>
                 <tr>
                   <th>AGE</th>
-                  <td>HPH-A-1844</td>
+                  <td><?php echo $age; ?></td>
                 </tr>
                 <tr>
                   <th>COLOR</th>
-                  <td>HPH-A-1844</td>
+                  <td><?php echo $color; ?></td>
                 </tr>
                 <tr>
                   <th>VACCINATED</th>
-                  <td>HPH-A-1844</td>
+                  <td><?php echo $vaccinated; ?></td>
                 </tr>
                 <tr>
                   <th>DEWORMED</th>
-                  <td>HPH-A-1844</td>
-                </tr>
-                <tr>
-                  <th>LOCATION</th>
-                  <td>HPH-A-1844</td>
+                  <td><?php echo $dewormed; ?></td>
                 </tr>
               </table>
           </div>
@@ -141,7 +155,7 @@
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title">Adopt Simba</h1>
+                  <h1 class="modal-title">Adopt <?php echo $name; ?> </h1>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
