@@ -1,3 +1,7 @@
+document.getElementById('submitBtn').addEventListener('click', function() {
+  this.textContent = "Submitting...";
+});
+
 document.addEventListener('DOMContentLoaded', function () {
   $('.contact-form').on('submit', function (event) {
     if (this.checkValidity() === false) {
@@ -16,10 +20,12 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Response:', response);
         const toastId = response.status === 'success' ? 'successToast' : 'errorToast';
         showToast(toastId);
+        submitBtn.textContent = "Submit";
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.error('AJAX Error:', textStatus, errorThrown);
         showToast('errorToast');
+        submitBtn.textContent = "Submit";
       }
     });
 
