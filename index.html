@@ -388,11 +388,34 @@
 
   <div id="help" class="feedback-container text-center mt-2">
     <div class="feedback-section">
-      <h2 class="mb-4">Your Feedback Matters</h2>
-      <p class="mb-4">We'd love to hear from you. Please share your feedback with us.</p>
-      <button class="btn btn-dark btn-lg">Share Your Feedback</button>
+        <h2 class="mb-4">Your Feedback Matters</h2>
+        <p class="mb-4">We'd love to hear from you. Please share your feedback with us.</p>
+        <button id="feedbackButton" class="btn btn-dark btn-lg">Share Your Feedback</button>
     </div>
-  </div>
+</div>
+
+<script>
+    document.getElementById('feedbackButton').addEventListener('click', function() {
+        var contactTab = document.querySelector('a[href="#contact"]');
+        var contactPane = document.getElementById('contact');
+        
+        // Switch to the contact tab
+        contactTab.classList.add('active');
+        contactPane.classList.add('show', 'active');
+        
+        // Remove active class from other tabs and panes
+        var otherTabs = document.querySelectorAll('.nav-link:not([href="#contact"])');
+        var otherPanes = document.querySelectorAll('.tab-pane:not(#contact)');
+        
+        otherTabs.forEach(function(tab) {
+            tab.classList.remove('active');
+        });
+        
+        otherPanes.forEach(function(pane) {
+            pane.classList.remove('show', 'active');
+        });
+    });
+</script>
 
   <section class="footer">
     <footer class="bg-dark text-white py-4 mt-5">
