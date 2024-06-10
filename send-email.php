@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
         $mail->Password = 'hkxx vmtf stbl fzxe ';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
-        $mail->setFrom('shanejk13@gmail.com');
+        $mail->setFrom('shanejk13@gmail.com', $_POST['name']);
         $mail->addReplyTo($_POST['email']);
         $mail->addAddress('shanejk13@gmail.com');
         $mail->isHTMl(true);
