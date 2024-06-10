@@ -1,66 +1,87 @@
+<?php
+if ($_GET) {
+  $id = htmlspecialchars($_GET['ID']);
+  $name = htmlspecialchars($_GET['name']);
+  $breed = htmlspecialchars($_GET['breed']);
+  $color = htmlspecialchars($_GET['color']);
+  $vaccinated = htmlspecialchars($_GET['vaccinated']);
+  $dewormed = htmlspecialchars($_GET['dewormed']);
+  $age = htmlspecialchars($_GET['age']);
+  $type = htmlspecialchars($_GET['type']);
+  $image = htmlspecialchars($_GET['image']);
+  $image2 = htmlspecialchars($_GET['image2']);
+  $image3 = htmlspecialchars($_GET['image3']);
+  $gender = htmlspecialchars($_GET['gender']);
+} else {
+  echo 'No pet information available.';
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="detail_animal.css" />
-  
+  <link rel="stylesheet" href="detail_animals.css" />
+
   <script src="detail.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Details</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Details <?php echo $name; ?></title>
 </head>
 
 <body>
-  
+  <?php include 'animal.php'; ?>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <section class="nav-bar">
-      <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="#">
-          <img src="assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo" />
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item ">
-              <a class="nav-link" href="index.html">HOME</a>
-            </li>
-            <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" href="adopt_page.html" id="adoptDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ADOPT
-              </a>
-              <div class="dropdown-menu" aria-labelledby="adoptDropdown">
-                <a class="dropdown-item" href="adopt_page.html">Dogs</a>
-                <a class="dropdown-item" href="adopt_page.html">Cats</a>
-                <a class="dropdown-item" href="adopt_page.html">Rabbit</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="donate.html">DONATION</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="shelter1.html">SHELTER</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="index.html#help">HELP</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="account_page.html">ACCOUNT</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </section>
+  <section class="nav-bar">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#">
+        <img src="assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo" />
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item ">
+            <a class="nav-link" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item dropdown active">
+            <a class="nav-link dropdown-toggle" href="adopt_page.html" id="adoptDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              ADOPT
+            </a>
+            <div class="dropdown-menu" aria-labelledby="adoptDropdown">
+              <a class="dropdown-item" href="adopt_page.html">Dogs</a>
+              <a class="dropdown-item" href="adopt_page.html">Cats</a>
+              <a class="dropdown-item" href="adopt_page.html">Rabbit</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="donate.html">DONATION</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="shelter1.html">SHELTER</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#help">HELP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="account_page.html">ACCOUNT</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </section>
   <section id="detail-animal">
     <div class="container">
       <div class="row">
@@ -73,13 +94,13 @@
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block w-100" src="assets/images/adopt1.jpeg" alt="First slide">
+                <img class="d-block w-100" src="<?php echo $image; ?>" alt="First slide">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="assets/images/adopt2.jpeg" alt="Second slide">
+                <img class="d-block w-100" src="<?php echo $image2; ?>" alt="Second slide">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="assets/images/adopt3.jpeg" alt="Third slide">
+                <img class="d-block w-100" src="<?php echo $image3; ?>" alt="Third slide">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -94,41 +115,37 @@
 
         </div>
         <div class="about-col-2">
-          <h2 class="animal-title">Simba</h2>
+          <h2 class="animal-title"><?php echo $name; ?></h2>
           <div class="table">
             <table>
               <table>
                 <tr>
                   <th>ANIMAL ID</th>
-                  <td>HPH-A-1844</td>
+                  <td><?php echo $id; ?></td>
                 </tr>
                 <tr>
                   <th>BREED</th>
-                  <td>Shepherd / Mixed Breed</td>
+                  <td><?php echo $breed; ?></td>
                 </tr>
                 <tr>
                   <th>GENDER</th>
-                  <td>Male</td>
+                  <td><?php echo $gender; ?></td>
                 </tr>
                 <tr>
                   <th>AGE</th>
-                  <td>HPH-A-1844</td>
+                  <td><?php echo $age; ?></td>
                 </tr>
                 <tr>
                   <th>COLOR</th>
-                  <td>HPH-A-1844</td>
+                  <td><?php echo $color; ?></td>
                 </tr>
                 <tr>
                   <th>VACCINATED</th>
-                  <td>HPH-A-1844</td>
+                  <td><?php echo $vaccinated; ?></td>
                 </tr>
                 <tr>
                   <th>DEWORMED</th>
-                  <td>HPH-A-1844</td>
-                </tr>
-                <tr>
-                  <th>LOCATION</th>
-                  <td>HPH-A-1844</td>
+                  <td><?php echo $dewormed; ?></td>
                 </tr>
               </table>
           </div>
@@ -141,7 +158,7 @@
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h1 class="modal-title">Adopt Simba</h1>
+                  <h1 class="modal-title">Adopt <?php echo $name; ?> </h1>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -182,80 +199,30 @@
     <div class="text">
       <h3>YOU MAY ALSO LIKE</h3>
     </div>
-    <div class="container">
-      <div class="card">
-        <a href="detail_animal.html"> <img src="assets/images/adopt1.jpeg" alt="Cat" class="animals" /></a>
-        <h2>Simba</h2>
-        <div class="shelter">Foster Home</div>
-        <button class="adopt-button">ADOPT</button>
-        <button class="heart-button" onclick="toggleHeart(this)">
-          <i class="fas fa-heart"></i>
-        </button>
-      </div>
-      <div class="card">
-        <img src="assets/images/adopt2.jpeg" alt="Cat" class="animals" />
-        <h2>Simba</h2>
-        <div class="shelter">MYPETS</div>
-        <button class="adopt-button">ADOPT</button>
-        <button class="heart-button" onclick="toggleHeart(this)">
-          <i class="fas fa-heart"></i>
-        </button>
-      </div>
-      <div class="card">
-        <img src="assets/images/adopt3.jpeg" alt="Rabbit" class="animals" />
-        <h2>Alex</h2>
-        <div class="shelter">MYPETS</div>
-        <button class="adopt-button">ADOPT</button>
-        <button class="heart-button" onclick="toggleHeart(this)">
-          <i class="fas fa-heart"></i>
-        </button>
-      </div>
-      <div class="card">
-        <img src="assets/images/adopt5.jpeg" alt="Dog" class="animals" />
-        <h2>Sadie</h2>
-        <div class="shelter">Foster Home</div>
-        <button class="adopt-button">ADOPT</button>
-        <button class="heart-button" onclick="toggleHeart(this)">
-          <i class="fas fa-heart"></i>
-        </button>
-      </div>
-    </div>
-    <div class="container">
-      <div class="card">
-        <a href="detail_animal.html"> <img src="assets/images/adopt1.jpeg" alt="Cat" class="animals" /></a>
-        <h2>Simba</h2>
-        <div class="shelter">Foster Home</div>
-        <button class="adopt-button">ADOPT</button>
-        <button class="heart-button" onclick="toggleHeart(this)">
-          <i class="fas fa-heart"></i>
-        </button>
-      </div>
-      <div class="card">
-        <img src="assets/images/adopt2.jpeg" alt="Cat" class="animals" />
-        <h2>Simba</h2>
-        <div class="shelter">MYPETS</div>
-        <button class="adopt-button">ADOPT</button>
-        <button class="heart-button" onclick="toggleHeart(this)">
-          <i class="fas fa-heart"></i>
-        </button>
-      </div>
-      <div class="card">
-        <img src="assets/images/adopt3.jpeg" alt="Rabbit" class="animals" />
-        <h2>Alex</h2>
-        <div class="shelter">MYPETS</div>
-        <button class="adopt-button">ADOPT</button>
-        <button class="heart-button" onclick="toggleHeart(this)">
-          <i class="fas fa-heart"></i>
-        </button>
-      </div>
-      <div class="card">
-        <img src="assets/images/adopt5.jpeg" alt="Dog" class="animals" />
-        <h2>Sadie</h2>
-        <div class="shelter">Foster Home</div>
-        <button class="adopt-button">ADOPT</button>
-        <button class="heart-button" onclick="toggleHeart(this)">
-          <i class="fas fa-heart"></i>
-        </button>
+    <div class="container-wrapper">
+      <div class="container">
+        <?php
+        // Shuffle the pets array to randomize the order
+        shuffle($pets);
+
+        // Loop through the first six elements of the shuffled array
+        for ($i = 0; $i < min(8, count($pets)); $i++) {
+          $pet = $pets[$i];
+          echo '<div class="card">';
+          echo '<img src="' . htmlspecialchars($pet['image']) . '" alt="Image of ' . htmlspecialchars($pet['name']) . '">';
+          echo '<h2>' . htmlspecialchars($pet['name']) . '</h2>';
+          echo '<p class="shelter">Age: ' . htmlspecialchars($pet['age']) . '</p>';
+          echo '<form action="detail_animal.php" method="GET">'; // Use detail_animal.php for the next page
+          foreach ($pet as $key => $value) {
+            echo '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '">';
+          }
+          echo '<button type="submit" class="adopt-button">ADOPT</button>';
+          echo '</form>';
+          echo '<button class="heart-button" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button>'; // Heart button
+          echo '</div>';
+        }
+        ?>
+
       </div>
     </div>
   </section>
@@ -292,7 +259,7 @@
         </div>
       </div>
     </footer>
-  
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
