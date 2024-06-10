@@ -34,7 +34,7 @@ if ($_GET) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Details <?php echo $name; ?></title>
+  <title><?php echo $name; ?></title>
 </head>
 
 <body>
@@ -151,7 +151,6 @@ if ($_GET) {
           </div>
           <div class="button-container">
             <button id="open-popup" class="button" data-toggle="modal" data-target="#Adopt">ADOPT ME</button>
-            <button class="button" data-toggle="modal" data-target="#Adopt">CONTACT SHELTER</button>
           </div>
 
           <div class="modal fade" id="Adopt" tabindex="-1" role="dialog" aria-labelledby="adopt" aria-hidden="true">
@@ -206,7 +205,7 @@ if ($_GET) {
         shuffle($pets);
 
         // Loop through the first six elements of the shuffled array
-        for ($i = 0; $i < min(8, count($pets)); $i++) {
+        for ($i = 0, $displayedPets = 0; $i < count($pets) && $displayedPets < 8; $i++) {
           $pet = $pets[$i];
           echo '<div class="card">';
           echo '<img src="' . htmlspecialchars($pet['image']) . '" alt="Image of ' . htmlspecialchars($pet['name']) . '">';
