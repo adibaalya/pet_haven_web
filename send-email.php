@@ -29,8 +29,7 @@ if (isset($_POST['submit'])) {
             <p>' . $_POST['message'] . '</p>
             <br>
             <p>Best regards,</p>
-            <p>' . $_POST['name'] . '</p>
-            '; 
+            <p>' . $_POST['name'] . '</p>'; 
         if ($mail->send()) {
             echo json_encode(['status' => 'success']);
         } else {
