@@ -4,6 +4,32 @@ document.addEventListener('DOMContentLoaded', function () {
       event.preventDefault();
       event.stopPropagation();
     }
+    console.log('Form submission initiated.');
+    event.preventDefault();
+    $.ajax({
+      url: 'send-email.php',
+      type: 'POST',
+      data: $(this).serialize() + "&submit=true",
+      dataType: 'json',
+      success: function (response) {
+        console.log('AJAX request successful.');
+        console.log('Response:', response);
+        const toastId = response.status === 'success' ? 'successToast' : 'errorToast';
+        showToast(toastId);
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.error('AJAX Error:', textStatus, errorThrown);
+        showToast('errorToast');
+      }
+    });
+
+    function showToast(toastId) {
+      const toast = document.getElementById(toastId);
+      toast.classList.add('show');
+      setTimeout(function () {
+        toast.classList.remove('show');
+      }, 5000);
+    }
     $(this).addClass('was-validated');
   });
 
@@ -53,42 +79,5 @@ document.addEventListener('DOMContentLoaded', function () {
       cancelable: true,
     });
     field.dispatchEvent(event);
-  });
-});
-
-$('#contactForm').on('submit', function (event) {
-  event.preventDefault();
-  console.log('Form submission initiated.');
-
-  var submitButton = this.querySelector('button[type="submit"]');
-  var originalText = submitButton.textContent;
-
-  submitButton.textContent = 'Submitting...';
-  submitButton.disabled = true;
-
-  $.ajax({
-    url: 'send-email.php',
-    type: 'POST',
-    data: $(this).serialize() + "&submit=true",
-    dataType: 'json',
-    success: function (response) {
-      console.log('AJAX request successful.');
-      console.log('Response:', response);
-      if (response.status === 'success') {
-        var toast = new bootstrap.Toast(document.getElementById('successToast'));
-        toast.show();
-      } else {
-        console.error('Error response:', response.message);
-        var toast = new bootstrap.Toast(document.getElementById('errorToast'));
-        toast.show();
-      }
-    },
-    error: function (jqXHR, textStatus, errorThrown) {
-      console.error('AJAX Error:', textStatus, errorThrown);
-      var toast = new bootstrap.Toast(document.getElementById('errorToast'));
-      toast.show();
-      submitButton.textContent = originalText;
-      submitButton.disabled = false;
-    }
   });
 });

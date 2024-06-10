@@ -232,6 +232,21 @@ body {
     padding: 10px 20px;
 }
 
+.submit-btn {
+    background-color: black;
+    color: white; 
+    transition: background-color 0.3s ease; 
+}
+
+.submit-btn:hover {
+    color: #000000 !important;
+    background-color: pink;
+}
+
+.submit-btn:focus {
+    outline: none;
+}
+
 #description {
     height: auto;
     padding: 10px;
