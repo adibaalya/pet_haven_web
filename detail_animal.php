@@ -12,10 +12,12 @@ if ($_GET) {
   $image2 = htmlspecialchars($_GET['image2']);
   $image3 = htmlspecialchars($_GET['image3']);
   $gender = htmlspecialchars($_GET['gender']);
+  $_SESSION['viewed_pets'][] = $id;
 } else {
   echo 'No pet information available.';
   exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -201,24 +203,40 @@ if ($_GET) {
     <div class="container-wrapper">
       <div class="container">
         <?php
-        // Shuffle the pets array to randomize the order
-        shuffle($pets);
+        session_start();
 
-        // Loop through the first six elements of the shuffled array
-        for ($i = 0, $displayedPets = 0; $i < count($pets) && $displayedPets < 8; $i++) {
-          $pet = $pets[$i];
-          echo '<div class="card">';
-          echo '<img src="' . htmlspecialchars($pet['image']) . '" alt="Image of ' . htmlspecialchars($pet['name']) . '">';
-          echo '<h2>' . htmlspecialchars($pet['name']) . '</h2>';
-          echo '<p class="shelter">Age: ' . htmlspecialchars($pet['age']) . '</p>';
-          echo '<form action="detail_animal.php" method="GET">'; // Use detail_animal.php for the next page
-          foreach ($pet as $key => $value) {
-            echo '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '">';
+        // Assume $pets is an array of pet information
+        
+        // Store the IDs of viewed pets in a session
+        if (!isset($_SESSION['viewed_pets'])) {
+          $_SESSION['viewed_pets'] = array();
+        }
+
+        // Initialize a counter for the number of pets displayed
+        $pet_count = 0;
+
+        // Loop through the pets array
+        foreach ($pets as $pet) {
+          if (!in_array($pet['ID'], $_SESSION['viewed_pets'])) {
+            echo '<div class="card">';
+            echo '<img src="' . htmlspecialchars($pet['image']) . '" alt="Image of ' . htmlspecialchars($pet['name']) . '">';
+            echo '<h2>' . htmlspecialchars($pet['name']) . '</h2>';
+            echo '<p class="shelter">Age: ' . htmlspecialchars($pet['age']) . '</p>';
+            echo '<form action="detail_animal.php" method="GET">'; // Use detail_animal.php for the next page
+            foreach ($pet as $key => $value) {
+              echo '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '">';
+            }
+            echo '<button type="submit" class="adopt-button">ADOPT</button>';
+            echo '</form>';
+            echo '<button class="heart-button" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button>'; // Heart button
+            echo '</div>';
+            
+            $_SESSION['viewed_pets'][] = $pet['ID'];
+            $pet_count++;
+            if ($pet_count == 8) {
+              break;
+            }
           }
-          echo '<button type="submit" class="adopt-button">ADOPT</button>';
-          echo '</form>';
-          echo '<button class="heart-button" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button>'; // Heart button
-          echo '</div>';
         }
         ?>
 
