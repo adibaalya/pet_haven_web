@@ -375,3 +375,14 @@ footer.bg-dark.text-white.py-4.mt-5 {
     background-color: #000000 !important;
     font-family: 'Poppins', sans-serif; 
 }
+
+.carousel-inner {
+      width: 330px !important;
+      max-height: 500px; /* Set a max height for the carousel */
+    }
+
+    .carousel-inner img {
+        width: 330px !important;
+      height: 500px; /* Set the same height as the max height */
+      object-fit: cover; /* Ensure the image covers the entire area without distortion */
+    }
