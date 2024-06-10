@@ -1,28 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-  $('#contactForm').on('submit', function (event) {
-    event.preventDefault();
-
-    $.ajax({
-      url: 'send-email.php',
-      type: 'POST',
-      data: $(this).serialize(),
-      dataType: 'json',
-      success: function (response) {
-        if (response.status === 'success') {
-          var toast = new bootstrap.Toast(document.getElementById('successToast'));
-          toast.show();
-        } else {
-          var toast = new bootstrap.Toast(document.getElementById('errorToast'));
-          toast.show();
-        }
-      },
-      error: function () {
-        var toast = new bootstrap.Toast(document.getElementById('errorToast'));
-        toast.show();
-      }
-    });
-  });
-
   $('.contact-form').on('submit', function (event) {
     if (this.checkValidity() === false) {
       event.preventDefault();
@@ -80,33 +56,31 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-$(document).ready(function() {
-  $('#contactForm').on('submit', function(event) {
-      event.preventDefault();
-      console.log('Form submission initiated.');
+$('#contactForm').on('submit', function (event) {
+  event.preventDefault();
+  console.log('Form submission initiated.');
 
-      $.ajax({
-          url: 'send-email.php',
-          type: 'POST',
-          data: $(this).serialize(),
-          dataType: 'json',
-          success: function(response) {
-              console.log('AJAX request successful.');
-              console.log('Response:', response);
-              if (response.status === 'success') {
-                  var toast = new bootstrap.Toast(document.getElementById('successToast'));
-                  toast.show();
-              } else {
-                  console.error('Error response:', response.message);
-                  var toast = new bootstrap.Toast(document.getElementById('errorToast'));
-                  toast.show();
-              }
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-              console.error('AJAX Error:', textStatus, errorThrown);
-              var toast = new bootstrap.Toast(document.getElementById('errorToast'));
-              toast.show();
-          }
-      });
+  $.ajax({
+    url: 'send-email.php',
+    type: 'POST',
+    data: $(this).serialize() + "&submit=true",
+    dataType: 'json',
+    success: function (response) {
+      console.log('AJAX request successful.');
+      console.log('Response:', response);
+      if (response.status === 'success') {
+        var toast = new bootstrap.Toast(document.getElementById('successToast'));
+        toast.show();
+      } else {
+        console.error('Error response:', response.message);
+        var toast = new bootstrap.Toast(document.getElementById('errorToast'));
+        toast.show();
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      console.error('AJAX Error:', textStatus, errorThrown);
+      var toast = new bootstrap.Toast(document.getElementById('errorToast'));
+      toast.show();
+    }
   });
 });
