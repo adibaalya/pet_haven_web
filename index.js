@@ -60,6 +60,12 @@ $('#contactForm').on('submit', function (event) {
   event.preventDefault();
   console.log('Form submission initiated.');
 
+  var submitButton = this.querySelector('button[type="submit"]');
+  var originalText = submitButton.textContent;
+
+  submitButton.textContent = 'Submitting...';
+  submitButton.disabled = true;
+
   $.ajax({
     url: 'send-email.php',
     type: 'POST',
@@ -81,6 +87,8 @@ $('#contactForm').on('submit', function (event) {
       console.error('AJAX Error:', textStatus, errorThrown);
       var toast = new bootstrap.Toast(document.getElementById('errorToast'));
       toast.show();
+      submitButton.textContent = originalText;
+      submitButton.disabled = false;
     }
   });
 });
