@@ -234,7 +234,7 @@ body {
 
 }
  .modal-dialog {
-        max-width: 80%; /* Adjust this percentage as needed */
+        max-width: 80%;
     }
 .modal-content {
     width: 100%;

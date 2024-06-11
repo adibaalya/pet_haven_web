@@ -23,6 +23,7 @@
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
+          
           <li class="nav-item active">
             <a class="nav-link" href="index.html">HOME</a>
           </li>
@@ -66,18 +67,17 @@
           </button>
         </div>
         <div class="modal-body px-4">
-          <form>
+          <form action="user.php" method="get">
             <div class="form-group" novalidate>
               <label for="email">EMAIL ADDRESS</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
-                required>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
               <div class="invalid-feedback">
                 Please provide your email.
               </div>
             </div>
             <div class="form-group">
               <label for="password">PASSWORD</label>
-              <input type="password" class="form-control" id="password" placeholder="Password" required>
+              <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
               <div class="invalid-feedback">
                 Please provide your password.
               </div>
@@ -94,6 +94,23 @@
         </div>
       </div>
     </div>
+    <script>
+      
+      const loginForm = document.getElementById('loginModal').querySelector('form');
+      signUpForm.addEventListener('submit', (event) => {
+        if (!signUpForm.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+    
+          signUpForm.querySelectorAll(':invalid').forEach((field) => {
+            field.closest('.form-group').classList.add('was-validated');
+          });
+        } else {
+          // If the form is valid, submit it here.
+          signUpForm.submit();
+        }
+      });
+    </script>
   </div>
 
   <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel"
@@ -107,24 +124,24 @@
           </button>
         </div>
         <div class="modal-body">
-          <form novalidate>
+          <form  action="user.php" method="post" novalidate>
             <div class="form-group">
               <label for="sign-up-name">NAME</label>
-              <input type="text" class="form-control" id="sign-up-name" placeholder="Enter name" required>
+              <input type="text" class="form-control" id="sign-up-name" placeholder="Enter name" name="name" required>
               <div class="invalid-feedback">
                 Please provide your name.
               </div>
             </div>
             <div class="form-group">
               <label for="sign-up-email">EMAIL ADDRESS</label>
-              <input type="email" class="form-control" id="sign-up-email" placeholder="Enter email" required>
+              <input type="email" class="form-control" id="sign-up-email" placeholder="Enter email" name="email" required>
               <div class="invalid-feedback">
                 Please provide your email.
               </div>
             </div>
             <div class="form-group">
               <label for="sign-up-password">PASSWORD</label>
-              <input type="password" class="form-control" id="sign-up-password" placeholder="Password" required>
+              <input type="password" class="form-control" id="sign-up-password" placeholder="Password" name="password" required>
               <div class="invalid-feedback">
                 Please provide your password.
               </div>
