@@ -55,7 +55,7 @@ if (!isset($_SESSION['wishlist'])) {
             <a class="nav-link" href="index.html">HOME</a>
           </li>
           <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="adopt_page.html" id="adoptDropdown" role="button"
+            <a class="nav-link dropdown-toggle" href="adopt_page.php" id="adoptDropdown" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               ADOPT
             </a>
