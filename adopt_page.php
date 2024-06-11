@@ -1,4 +1,11 @@
+<?php
+session_start();
 
+if (!isset($_SESSION['wishlist'])) {
+  $_SESSION['wishlist'] = array();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +13,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="adopt.css" />
+  <link rel="stylesheet" href="adopts.css" />
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"></script>
@@ -17,7 +24,7 @@
 </head>
 
 <body>
-<?php include 'animal.php'; ?>
+  <?php include 'animal.php'; ?>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
@@ -203,7 +210,8 @@
           <h6 id="filter-text">
             Show Filters <i class="fas fa-sliders-h"></i>
           </h6>
-          <button class="heart-button" onclick="toggleHeart(this)" data-toggle="modal" data-target="#wishlist">
+          <button class="heart-button" id="heart-button" onclick="toggleHeart(this)" data-toggle="modal"
+            data-target="#wishlist">
             <i class="fas fa-heart"></i>
           </button>
           <div class="modal fade" id="wishlist" tabindex="-1" role="dialog" aria-labelledby="adopt" aria-hidden="true">
@@ -217,79 +225,8 @@
                 </div>
                 <div class="modal-body px-4">
                   <table>
-                    <tr>
-                    </tr>
-                    <tr>
-                      <td><img src="assets/images/adopt6.jpeg" alt="Circle Image" /></td>
-                      <td>
-                        <b>John Doe</b> <br />
-                        Foster Home
-                      </td>
-                      <td class="available">Available</td>
-                      <td>
-                        <button class="delete-button" data-id="1" class="button">
-                          <i class="fas fa-trash-alt"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><img src="assets/images/adopt5.jpeg" alt="Circle Image" /></td>
-                      <td>
-                        <b>Jane Doe</b> <br />
-                        Foster Home
-                      </td>
-                      <td class="unavailable">Not Available</td>
-                      <td>
-                        <button class="delete-button" data-id="2" class="button">
-                          <i class="fas fa-trash-alt"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <!-- Add more rows as needed -->
+                    <!-- Table content -->
                   </table>
-                  <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      console.log("DOM fully loaded and parsed");
-
-                      // Get all delete buttons on the page
-                      const deleteButtons =
-                        document.querySelectorAll(".delete-button");
-                      console.log(
-                        "Delete buttons found:",
-                        deleteButtons.length
-                      );
-
-                      // Add event listener to all delete buttons
-                      deleteButtons.forEach((button) => {
-                        console.log(
-                          "Adding event listener to delete button with data-id:",
-                          button.dataset.id
-                        );
-
-                        button.addEventListener("click", function () {
-                          console.log(
-                            "Delete button clicked with data-id:",
-                            button.dataset.id
-                          );
-
-                          // Display a confirmation dialog
-                          if (
-                            confirm(
-                              "Are you sure you want to delete this pet?"
-                            )
-                          ) {
-                            const row = button.closest("tr");
-                            if (row) {
-                              row.parentNode.removeChild(row);
-                              console.log("Pet deleted");
-                            } else {
-                              console.log("No row found for deletion");
-                            }
-                          }
-                        });
-                      });
-                    });
-                  </script>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -299,12 +236,26 @@
               </div>
             </div>
           </div>
+
+          <script>
+            function toggleHeart(button) {
+              button.classList.toggle('toggled');
+            }
+
+            $('#wishlist').on('hidden.bs.modal', function (e) {
+              const heartButton = document.getElementById('heart-button');
+              if (heartButton.classList.contains('toggled')) {
+                heartButton.classList.remove('toggled');
+              }
+            });
+          </script>
+
         </div>
         <div class="container-wrapper">
           <div class="container">
             <?php
             foreach ($pets as $pet) {
-              echo '<div class="card">';
+              echo '<div class="card" data-id="' . htmlspecialchars($pet['ID']) . '">';
               echo '<img src="' . htmlspecialchars($pet['image']) . '" alt="Image of ' . htmlspecialchars($pet['name']) . '">';
               echo '<h2>' . htmlspecialchars($pet['name']) . '</h2>';
               echo '<p class="shelter">Age: ' . htmlspecialchars($pet['age']) . '</p>';
@@ -312,15 +263,100 @@
               foreach ($pet as $key => $value) {
                 echo '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '">';
               }
-              echo '<button type="submit" class="adopt-button">ADOPT</button>';
+              echo '<button type="submit" class="detail-button">ADOPT</button>';
               echo '</form>';
-              echo '<button class="heart-button" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button>'; // Heart button
+              echo '<button class="heart-button" onclick="addToWishlist(' . htmlspecialchars(json_encode($pet)) . ', this)" >
+                  <i class="fas fa-heart"></i>
+                  </button>';
               echo '</div>';
             }
             ?>
+            <script>
+              // Array to store wishlist items
+              let wishlist = [];
+
+              function addToWishlist(pet, button) {
+                console.log('addToWishlist called');
+                console.log('Button:', button);
+
+                const petIndex = wishlist.findIndex(item => item.ID === pet.ID);
+                const isPetInWishlist = petIndex !== -1;
+
+                if (!isPetInWishlist) {
+                  wishlist.push(pet);
+                } else {
+                  wishlist.splice(petIndex, 1);
+                }
+
+                updateWishlistPopup();
+                // Update the heart button state immediately
+                button.classList.toggle("liked", !isPetInWishlist);
+              }
+
+              function removeFromWishlist(index) {
+                const removedPet = wishlist[index];
+                wishlist.splice(index, 1);
+                updateWishlistPopup();
+
+                // Find the heart button associated with the removed pet
+                const heartButton = document.querySelector('.card[data-id="' + removedPet.ID + '"] .heart-button');
+
+                if (heartButton) {
+                  // Remove the liked class from the heart button
+                  heartButton.classList.remove('liked');
+                }
+              }
+
+              function updateWishlistPopup() {
+                const wishlistTable = document.querySelector('#wishlist table');
+
+                // Clear existing rows
+                wishlistTable.innerHTML = '';
+
+                // Add rows for each pet in the wishlist
+                wishlist.forEach((pet, index) => {
+                  wishlistTable.innerHTML += `
+            <tr>
+                <td><img src="${pet.image}" alt="Circle Image" /></td>
+                <td>
+                    <b>${pet.name}</b> <br />
+                    Foster Home
+                </td>
+                <td class="available">Available</td>
+                <td>
+                    <button class="delete-button" data-id="${index}" class="button">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+        `;
+                });
+
+                // Update heart buttons
+                const heartButtons = document.querySelectorAll('.heart-button');
+                heartButtons.forEach(button => {
+                  const card = button.closest('.card');
+                  if (card) {
+                    const petId = card.getAttribute('data-id');
+                    const isPetInWishlist = wishlist.some(item => item.ID === petId);
+                    button.classList.toggle("liked", isPetInWishlist);
+                  }
+                });
+
+                // Add event listeners to delete buttons
+                const deleteButtons = document.querySelectorAll(".delete-button");
+                deleteButtons.forEach(button => {
+                  button.addEventListener("click", function () {
+                    const index = parseInt(button.dataset.id);
+                    removeFromWishlist(index);
+                  });
+                });
+              }
+
+            </script>
+
           </div>
         </div>
-
   </section>
 
   <section class="footer">

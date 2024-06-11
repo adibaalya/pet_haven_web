@@ -155,4 +155,5 @@ $pets = [
     'image3' => 'assets/images/rabbit3.jpeg'
   ]
 ];
+
 ?>

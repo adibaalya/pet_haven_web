@@ -226,7 +226,7 @@ if ($_GET) {
             foreach ($pet as $key => $value) {
               echo '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '">';
             }
-            echo '<button type="submit" class="adopt-button">ADOPT</button>';
+            echo '<button type="submit" class="detail-button">ADOPT</button>';
             echo '</form>';
             echo '<button class="heart-button" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button>'; // Heart button
             echo '</div>';

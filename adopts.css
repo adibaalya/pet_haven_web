@@ -215,7 +215,7 @@ body {
     font-size: 0.9em;
 }
 
-.adopt-button {
+.detail-button{
     background-color: black;
     color: white;
     border: none;
@@ -226,7 +226,7 @@ body {
     width: 100%;
 }
 
-.adopt-button:hover {
+.detail-button:hover {
     background-color: rgb(237, 167, 178);
     color: black;
 }
@@ -254,6 +254,11 @@ body {
 .container .heart-button.liked i {
     color: #f00;
 }
+
+.heart-active {
+    color: red;
+}
+
 
 .row {
     display: flex;
@@ -365,6 +370,9 @@ table i {
     color: #f00;
 }
 
+.favorited {
+    color: red;
+  }
 
 footer.bg-dark.text-white.py-4.mt-5 {
     background-color: #000000 !important;
