@@ -2,6 +2,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #EDEBD2;
+    overflow-y: scroll;
+}
+
+.navbar {
+    height: 50px;
+    background-color: black !important;
+}
+
+.nav-item {
+    margin-right: 10px;
+}
+
+.navbar-nav .nav-link {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #EDEBD2 !important;
+}
+
+.navbar-nav .nav-link.active {
+    background-color: transparent !important;
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color:#EDEBD2 !important;
+    font-weight: 500 !important;
+}
+
 .carousel-item {
     position: relative;
 }
@@ -16,7 +54,7 @@
 }
 
 .carousel-caption {
-    position: absolute;
+    position:absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -26,6 +64,7 @@
     color: black; 
     text-align: center;
     width: 100%;
+    font-size: 24px;
 }
 
 .carousel-caption h3 {
@@ -41,90 +80,155 @@
     font-weight:600;
     font-size: larger;
 }
-
-.white-background {
-    background-color: white;
-    padding: 40px;
-    border-radius: 70px;
-    height: 350px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
-}
-
 .why-donate {
-    text-align: center; 
+    text-align: center;
 }
 
-.why-text {
-    color: red; 
-    font-weight: bold;/* Set color of "Why" to red */
-}
-
-.donate-text {
-    color: black;
-    font-weight: bold; /* Set color of "Donate?" to black */
+.why-donate h2 {
+    font-size: 40px;
 }
 
 .why-donate .row {
-    margin-top: 20px; /* Add margin between sections */
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    margin-top: 20px;
+    flex-wrap: wrap; 
 }
 
+.why-column {
+    width: 100%; 
+    max-width: 80%; 
+    padding: 10px;
+    box-sizing: border-box; 
+}
 
+.why-column-container {
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 5px; 
+}
 
+.why-column h4 {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.why-column p {
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    font-style: 'poppins';
+}
+
+.funding-options h2 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.medical-box {
+    background-color: #b1d0e5; 
+}
+
+.food-box {
+    background-color: #bbe3bb; 
+}
+
+.adoption-box {
+    background-color: #e4b191; 
+}
+
+.upkeep-box {
+    background-color: #eeea94; 
+}
 .container-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #E4D2D2;
-}
-
-.container-box img {
-    max-width: 100%; /* Ensures the image doesn't overflow the container */
-    height: auto; /* Allows the image to maintain its aspect ratio */
-    display: block; /* Ensures the image respects its container's dimensions */
-    margin: 0 auto; /* Centers the image horizontally */
+    border-radius: 20px;
+    margin-top: 30px;
+    transition: transform 0.5s ease;
+    width: 100%; 
+    max-width: 300px; /* Adjusted to fit four in a row */
+    height: 300px; 
+    padding: 20px;
+    position: relative; 
 }
 
 .container-box h2 {
-    font-size: 1.5rem; 
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: bolder;
+    color: #000000;
+    margin-top: 3%;
+}
+
+.container-box img {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
     margin-top: 10px;
-    text-align:center;
 }
 
-.container-box h3 {
-    font-size: 1.5rem; 
-    margin-top: 15px;
-    text-align:center;
+.container-box:hover {
+    transform: scale(1.1); 
 }
 
-.container-box p {
-    margin-top: 15px;
-    text-align:center;
+.description-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.description {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    font-size: 20px;
+    z-index: 30; 
+    padding: 20px; 
+    width: 300px; 
+    pointer-events: none; 
+    position: absolute;
+    top: 100%; 
+    left: 50%; 
+    transform: translate(-50%, -20px);
+}
+
+.description ul {
+    list-style-type: disc; 
+    padding-left: 20px; 
+    margin: 0; 
+}
+
+.description li {
+    margin-bottom: 10px; 
+}
+
+.description-container:hover .description {
+    opacity: 1;
+    pointer-events: auto; 
+    transform: translate(-50%, 0); 
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
 }
 
 
-.text-container {
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border-radius: 10px;
-}
 
-.text-container h2 {
-    font-size: 2rem; /* Adjust the font size as needed */
-    margin-bottom: 10px;
-}
-
-.text-container p {
-    font-size: 1.2rem; /* Adjust the font size as needed */
-    margin-bottom: 0;
-}
-
-.additional-info {
-    text-align: center;
-    padding: 20px;
-}
 
 .ready-to-donate {
     color: rgb(0, 0, 0);
@@ -134,86 +238,134 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: 150px;
 }
 
 .ready-to-donate h2{
     margin-bottom: 15px; 
     font-weight: bold;
+    font-size: 40px;
+    margin-top: 10px;
 
 }
 .ready-to-donate p {
-    margin-bottom: 15px; 
+    margin-bottom: 5px; 
+    font-size: 20px;
     font-weight: bold;
 }
 
 .ready-to-donate a.btn {
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     color: white;
     border: none;
-    width: 150px;
+    width: 200px;
+    border-radius: 25px; 
+    padding: 15px 20px; 
+    transition: background-color 0.3s ease; 
+    font-weight: bold;
+    font-size: 20px;
 }
 
 .ready-to-donate a.btn:hover {
-    background-color:rgb(237, 167, 178);
-    color: black;
-}
-
-.how-to-donate .white-background {
-    background-color: white; 
-}
-
-.how-text {
-    color: red; 
-    font-weight: bold;
-}
-
-.to-text {
-    color: black; 
-    font-weight: bold; 
-}
-
-.bold {
-    font-weight: bold; 
-}
-
-.container-box {
-    border-radius: 10px; 
-}
-
-.how-to-donate .container-box {
-    position: relative;
-    z-index: 2;
-}
-
-.how-to-donate .container-box::before {
-    content: attr(data-number);
-    position: absolute;
-    top: -20px;;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    background-color: #FFDE59;
-    color: #030303; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px; 
-    font-weight: bold;
-}
-
-.btn-primary {
-    border-radius: 25px; /* Adjust border radius as needed */
-    padding: 10px 20px; /* Adjust padding as needed */
-    background-color: black; /* Primary button color */
-    color: #fff; /* Text color */
-    border: none; /* Remove default button border */
-    transition: background-color 0.3s ease; /* Smooth transition effect */
-    font-weight: bold;
+    background-color:rgb(205, 43, 43);
+    color: rgb(255, 255, 255);
+    transition: background-color 0.3s ease; 
 }
 
 .btn-primary:hover {
-    background-color: rgb(237, 167, 178); /* Darker shade of primary color on hover */
+    background-color: rgb(225, 53, 78); 
+}
+
+footer.bg-dark.text-white.py-4.mt-5 {
+    background-color: #000000 !important;
+    font-family: 'Poppins', sans-serif;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: none;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 20;
+    display: none;
+    box-sizing: border-box;
+    max-width: 90%;
+    width: 500px;
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+}
+
+.popup-content h2 {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: large;
+}
+
+.popup-content form {
+    margin-left: 10%;
+}
+
+.popup-content input[type="text"],
+.popup-content input[type="email"],
+.popup-content select,
+.popup-content input[type="file"] {
+    width: 90%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    font-weight: 400;
+}
+
+.popup-content button {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    width: 100px;
+    padding: 5px;
+    margin-left: 55%;
+    margin-bottom: 20px;
+}
+
+.popup-content button:hover {
+    background-color: rgb(52, 78, 31);
+    color: rgb(255, 255, 255);
+}
+
+.popup-content .amount-input-wrapper {
+    position: relative;
+    width: 90%;
+}
+
+.popup-content .amount-input-wrapper input {
+    padding-left: 30px; 
+}
+
+.popup-content .amount-input-wrapper::before {
+    content: 'RM';
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #000;
 }
