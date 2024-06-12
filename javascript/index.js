@@ -1,4 +1,4 @@
-document.getElementById('submitBtn').addEventListener('click', function() {
+document.getElementById('submitBtn').addEventListener('click', function () {
   this.textContent = "Submitting...";
 });
 
@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     console.log('Form submission initiated.');
     event.preventDefault();
+    
     $.ajax({
       url: '../php/send-email.php',
       type: 'POST',
@@ -20,12 +21,13 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Response:', response);
         const toastId = response.status === 'success' ? 'successToast' : 'errorToast';
         showToast(toastId);
-        submitBtn.textContent = "Submit";
+        document.getElementById('submitBtn').textContent = "Submit";
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.error('AJAX Error:', textStatus, errorThrown);
+        console.error('Server response:', jqXHR.responseText); 
         showToast('errorToast');
-        submitBtn.textContent = "Submit";
+        document.getElementById('submitBtn').textContent = "Submit";
       }
     });
 
