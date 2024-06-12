@@ -24,7 +24,7 @@ body:hover > #trailer{
 }
 
 body {
-    background-color: #EDEBD2;
+    background-color: #EDEBD2 !important;
     overflow-y: scroll;
     font-family: 'Poppins';
 }
