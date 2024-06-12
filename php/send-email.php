@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
         $mail->addReplyTo($_POST['email']);
         $mail->addAddress('shanejk13@gmail.com');
         $mail->isHTMl(true);
-        $mail->Subject = 'Pet Haven Contact Form';
+        $mail->Subject = 'Pet Haven: Contact Form';
         $mail->Body = '
             <h1>Pet Haven Contact Form</h1>
             <p>' . $_POST['message'] . '</p>
