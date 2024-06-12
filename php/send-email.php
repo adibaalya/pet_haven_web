@@ -1,11 +1,11 @@
 <?php
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/phpmailer/phpmailer/src/Exception.php';
-require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require 'vendor/phpmailer/phpmailer/src/SMTP.php';
+require '../vendor/phpmailer/phpmailer/src/Exception.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
 
 header('Content-Type: application/json');
 
@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
             <p>' . $_POST['message'] . '</p>
             <br>
             <p>Best regards,</p>
-            <p>' . $_POST['name'] . '</p>'; 
+            <p>' . $_POST['name'] . '</p>';
         if ($mail->send()) {
             echo json_encode(['status' => 'success']);
         } else {
