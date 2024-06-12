@@ -85,7 +85,7 @@ if (!isset($_SESSION['wishlist'])) {
     <h2>Find Your New Best Friends</h2>
     <div class="box">
       <div class="odometer" id="odometer">0</div>
-      <h4>Adoption</h4>
+      <h4>Adoptions</h4>
     </div>
   </section>
 
