@@ -9,12 +9,8 @@
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
   />
   <link rel="stylesheet" href="donate.css" />
-  <link rel="stylesheet" href="trailer.css">
 </head>
 <body>
-  <div id="trailer">
-  </div>
-  <script src="trailer.js"></script>
     <section class="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <a class="navbar-brand" href="#">
@@ -31,13 +27,13 @@
                 <a class="nav-link" href="index.html">HOME</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="adopt_page.php" id="adoptDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="adopt_page.html" id="adoptDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   ADOPT
                 </a>
                 <div class="dropdown-menu" aria-labelledby="adoptDropdown">
-                  <a class="dropdown-item" href="adopt_page.php">Dogs</a>
-                  <a class="dropdown-item" href="adopt_page.php">Cats</a>
-                  <a class="dropdown-item" href="adopt_page.php">Rabbit</a>
+                  <a class="dropdown-item" href="adopt_page.html">Dogs</a>
+                  <a class="dropdown-item" href="adopt_page.html">Cats</a>
+                  <a class="dropdown-item" href="adopt_page.html">Rabbit</a>
                 </div>
               </li>
               <li class="nav-item active">
@@ -77,8 +73,7 @@
             </div>
             <div class="carousel-caption">
                 <h3 style="font-weight: bold;">Your Donations Make a Difference</h3>
-                <p>You can change the lives of countless animals in need.<br>
-                    By supporting local shelters, you ensure that animals receive the care, love, and homes they deserve !</p>
+                <p>You can change the lives of countless animals in need.</p>
             </div>
 
             <a class="carousel-control-prev" href="#headerCarousel" role="button" data-slide="prev">
@@ -91,87 +86,139 @@
             </a>
         </div>
 
-        <div class="container mt-5 mb-5 why-donate">
-            <h2 class="text-center " style="padding-bottom: 3%;">
-                <span class="why-text">Why</span> <span class="donate-text">Donate?</span>
-            </h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <h4>Support Essential Care</h4>
-                    <p>Your contributions provide food, medical treatment, and a safe haven for animals.</p>
-                </div>
-                <div class="col-md-4">
-                    <h4>Aid Rescue Efforts</h4>
-                    <p>Help shelters rescue and rehabilitate abused and abandoned animals.</p>
-                </div>
-                <div class="col-md-4">
-                    <h4>Promote Adoptions</h4>
-                    <p>Assist in finding forever homes for animals, reducing stray populations.</p>
-                </div>
-            </div>
-        </div>
-        
-
-        <div class="container mb-5">
-            <div class="row">
-                <div class="col-md-3 mb-4">
-                    <div class="container-box white-background text-center">
+        <div class="container mt-5 why-donate">
+          <h2 class="text-center why-donate">
+              <span class="why-text" style="color: red; font-weight: bold;">Why</span> 
+              <span class="donate-text" style="color: black; font-weight: bold;">Donate?</span>
+          </h2>
+          <div class="row">
+              <div class="col-md-4 why-column">
+                  <div class="why-column-container">
+                      <h4>Support Essential Care</h4>
+                      <p>Your contributions provide food, medical treatment, and a safe haven for animals.</p>
+                  </div>
+              </div>
+              <div class="col-md-4 why-column">
+                  <div class="why-column-container">
+                      <h4>Aid Rescue Efforts</h4>
+                      <p>Help shelters rescue and rehabilitate abused and abandoned animals.</p>
+                  </div>
+              </div>
+              <div class="col-md-4 why-column">
+                  <div class="why-column-container">
+                      <h4>Promote Adoptions</h4>
+                      <p>Assist in finding forever homes for animals, reducing stray populations.</p>
+                  </div>
+              </div>
+          </div>
+      </div>      
+      
+      <div class="container mb-5 funding-options">
+        <h2><span style="color: red; font-weight: bold;">What</span> <span style="font-weight: bold;">will you fund for?</span></h2>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6 mb-4">
+                <div class="description-container">
+                    <div class="container-box medical-box">
                         <img src="images/41.jpg" class="rounded-circle mb-2" alt="Image 1">
                         <h2>Medical Care</h2>
                     </div>
+                    <div class="description">
+                        <ul>
+                            <li>Covers vet consultations, surgeries, and medications</li>
+                            <li>Ensures animals receive treatment for illnesses and injuries</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <div class="container-box white-background text-center">
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="description-container">
+                    <div class="container-box food-box">
                         <img src="images/42.png" class="rounded-circle mb-2" alt="Image 2">
-                        <h2>Food and <br>Supplies</h2>
+                        <h2>Food and Supplies</h2>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li>Provides nutritious food for animals</li>
+                            <li>Includes necessary supplies such as bedding and toys</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <div class="container-box white-background text-center">
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="description-container">
+                    <div class="container-box adoption-box">
                         <img src="images/43.jpg" class="rounded-circle mb-2" alt="Image 3">
-                        <h2>Adoption<br>Services</h2>
+                        <h2>Adoption Services</h2>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li>Facilitates the adoption process</li>
+                            <li>Provides support and resources for new pet owners</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <div class="container-box white-background text-center">
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="description-container">
+                    <div class="container-box upkeep-box">
                         <img src="images/44.jpg" class="rounded-circle mb-2" alt="Image 4">
-                        <h2>Shelter<br>UpKeep</h2>
+                        <h2>Shelter Upkeep</h2>
+                    </div>
+                    <div class="description">
+                        <ul>
+                            <li>Maintains clean and safe shelter facilities</li>
+                            <li>Includes repairs and renovations</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="container mb-5 how-to-donate">
-            <h2 class="text-center" style="padding-bottom: 5%;">
-                <span class="how-text">How</span> <span class="to-text">to Donate?</span>
-            </h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="container-box white-background text-center" data-number="1">
-                        <h3 class="bold">Visit Our<br>Shelters Page</h3>
-                        <p>Discover the various<br>shelters you can<br>support. Each shelter<br>has its own unique<br>mission and needs</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="container-box white-background text-center" data-number="2">
-                        <h3 class="bold">Choose a<br>Shelter</h3>
-                        <p>Select the shelter<br>that resonates with<br>you the most.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="container-box white-background text-center" data-number="3">
-                        <h3 class="bold">Make Your<br>Donation</h3>
-                        <p>Each shelter provides a<br>QR code or a direct link<br>for donations. Simply<br>scan the QR code or<br>click the link to proceed.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+    
         
         <div class="ready-to-donate d-flex flex-column justify-content-center align-items-center text-center">
             <h2>Ready to Make a <span style="color: red;">Difference</span>?</h2>
-            <p class="text-center"> Choose a Shelter and Donate</p>
-            <a href="shelter1.html" class="btn btn-primary mt-3">Click Here</a>
+            <p>Every donation helps us provide food, medical care, and a loving home. Be the hero they need today!</p>
+            <a href="#popup" class="btn btn-primary mt-3" onclick="togglePopup()">Donate Now</a>
         </div>
+
+        <div id="overlay" class="overlay"></div>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <h2>Please fill in the details below</h2>
+                <form id="donationForm">
+                    <label for="name">Name:</label><br>
+                    <input type="text" id="name" name="name" required><br><br>
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" required><br><br>
+                    <label for="donation-type">Donation Type:</label><br>
+                    <select id="donation-type" name="donation-type" required>
+                        <option value="" disabled selected>Select donation type</option>
+                        <option value="food-supplies">Food and Supplies</option>
+                        <option value="medical-care">Medical Care</option>
+                        <option value="shelter-upkeep">Shelter Upkeep</option>
+                        <option value="adoption-services">Adoption Services</option>
+                    </select><br><br>
+                    <label for="pet-shelter">Pet Shelter:</label><br>
+                    <select id="pet-shelter" name="pet-shelter" required>
+                        <option value="" disabled selected>Select pet shelter</option>
+                        <option value="shelter-1">Shelter 1</option>
+                        <option value="shelter-2">Shelter 2</option>
+                        <option value="shelter-3">Shelter 3</option>
+                        <option value="shelter-4">Shelter 4</option>
+                    </select><br><br>
+                    <label for="donation-amount">Donation Amount:</label><br>
+                    <div class="amount-input-wrapper">
+                        <input type="text" id="donation-amount" name="donation-amount" required>
+                    </div><br>
+                    <label for="proof-of-payment">Proof of Payment:</label><br>
+                    <input type="file" id="proof-of-payment" name="proof-of-payment" required><br><br>
+                    <button type="submit">Next</button>
+                </form>
+            </div>
+        </div>
+        
+      
 
         <section class="footer">
             <footer class="bg-dark text-white py-4 mt-5">
@@ -211,6 +258,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="donate.js"></script>
 
 </body>
 </html>
