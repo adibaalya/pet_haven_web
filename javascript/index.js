@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('Form submission initiated.');
     event.preventDefault();
     $.ajax({
-      url: 'send-email.php',
+      url: '../php/send-email.php',
       type: 'POST',
       data: $(this).serialize() + "&submit=true",
       dataType: 'json',

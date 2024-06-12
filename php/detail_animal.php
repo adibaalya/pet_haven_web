@@ -26,9 +26,9 @@ if ($_GET) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="detail.css" />
-  <link rel="stylesheet" href="trailer.css">
-  <script src="detail.js"></script>
+  <link rel="stylesheet" href="../css/detail.css" />
+  <link rel="stylesheet" href="../css/trailer.css">
+  <script src="../javascript/detail.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -44,7 +44,7 @@ if ($_GET) {
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <div id="trailer">
   </div>
-  <script src="trailer.js"></script>
+  <script src="../javascript/trailer.js"></script>
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="#">
@@ -58,30 +58,30 @@ if ($_GET) {
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item ">
-            <a class="nav-link" href="index.html">HOME</a>
+            <a class="nav-link" href="../html/index.html">HOME</a>
           </li>
           <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="adopt_page.php" id="adoptDropdown" role="button"
+            <a class="nav-link dropdown-toggle" href="../php/adopt_page.php" id="adoptDropdown" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               ADOPT
             </a>
             <div class="dropdown-menu" aria-labelledby="adoptDropdown">
-              <a class="dropdown-item" href="adopt_page.php">Dogs</a>
-              <a class="dropdown-item" href="adopt_page.php">Cats</a>
-              <a class="dropdown-item" href="adopt_page.php">Rabbit</a>
+              <a class="dropdown-item" href="../php/adopt_page.php">Dogs</a>
+              <a class="dropdown-item" href="../php/adopt_page.php">Cats</a>
+              <a class="dropdown-item" href="../php/adopt_page.php">Rabbit</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="donate.html">DONATION</a>
+            <a class="nav-link" href="../html/donate.html">DONATION</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="shelter1.html">SHELTER</a>
+            <a class="nav-link" href="../html/shelter1.html">SHELTER</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html#help">HELP</a>
+            <a class="nav-link" href="../html/index.html#help">HELP</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="account_page.html">ACCOUNT</a>
+            <a class="nav-link" href="../html/account_page.html">ACCOUNT</a>
           </li>
         </ul>
       </div>

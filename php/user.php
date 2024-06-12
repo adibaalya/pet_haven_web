@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         echo "<script>
             alert('Error: Email already exists.');
-            window.location.href = 'index.html';
+            window.location.href = '../html/index.html';
         </script>";
     } else {
         // Email does not exist, proceed with insert
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($conn->query($sql) === TRUE) {
             echo "<script>
                 alert('New record created successfully');
-                window.location.href = 'index.html';
+                window.location.href = '../html/index.html';
             </script>";
             exit();
         } else {
@@ -60,13 +60,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if ($result->num_rows > 0) {
         echo "<script>
             alert('User login successful');
-            window.location.href = 'account_page.html';
+            window.location.href = '../html/account_page.html';
         </script>";
         exit();
     } else {
         echo "<script>
             alert('Invalid email or password');
-            window.location.href = 'index.html';
+            window.location.href = '../html/index.html';
         </script>";
     }
 }
@@ -88,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"]=="GET"){
         else {
             echo "<script>
                 alert('Invalid email or password');
-                window.location.href = 'index.html';
+                window.location.href = '../html/index.html';
             </script>";
         }
 }

@@ -25,7 +25,7 @@ if ($conn->query($sql) === TRUE) {
     $_SESSION['email'] = $email; 
     echo "<script>
         alert('Details updated successfully');
-        window.location.href = 'account_page.html';
+        window.location.href = '../html/account_page.html';
     </script>";
 } else {
     echo "Error updating record: " . $conn->error;

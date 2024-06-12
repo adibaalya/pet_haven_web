@@ -10,9 +10,9 @@ $pets = [
     'dewormed' => 'yes',
     'age' => 3,
     'type' => 'Dog',
-    'image' => 'assets/images/adopt3.jpeg',
-    'image2' => 'assets/images/dog2.jpeg',
-    'image3' => 'assets/images/dog3.jpeg'
+    'image' => '../assets/images/adopt3.jpeg',
+    'image2' => '../assets/images/dog2.jpeg',
+    'image3' => '../assets/images/dog3.jpeg'
   ],
   [
     'ID' => 'HPH-A-002',
@@ -24,9 +24,9 @@ $pets = [
     'dewormed' => 'yes',
     'age' => 4,
     'type' => 'Cat',
-    'image' => 'assets/images/adopt2.jpeg',
-    'image2' => 'assets/images/cat2.jpeg',
-    'image3' => 'assets/images/cat3.jpeg'
+    'image' => '../assets/images/adopt2.jpeg',
+    'image2' => '../assets/images/cat2.jpeg',
+    'image3' => '../assets/images/cat3.jpeg'
   ],
   [
     'ID' => 'HPH-A-003',
@@ -38,9 +38,9 @@ $pets = [
     'dewormed' => 'yes',
     'age' => 2,
     'type' => 'Dog',
-    'image' => 'assets/images/adopt3.jpeg',
-    'image2' => 'assets/images/dog2.jpeg',
-    'image3' => 'assets/images/dog3.jpeg'
+    'image' => '../assets/images/adopt3.jpeg',
+    'image2' => '../assets/images/dog2.jpeg',
+    'image3' => '../assets/images/dog3.jpeg'
   ],
   [
     'ID' => 'HPH-A-004',
@@ -52,9 +52,9 @@ $pets = [
     'dewormed' => 'yes',
     'age' => 3,
     'type' => 'Cat',
-    'image' => 'assets/images/adopt2.jpeg',
-    'image2' => 'assets/images/cat2.jpeg',
-    'image3' => 'assets/images/cat3.jpeg'
+    'image' => '../assets/images/adopt2.jpeg',
+    'image2' => '../assets/images/cat2.jpeg',
+    'image3' => '../assets/images/cat3.jpeg'
   ],
   [
     'ID' => 'HPH-A-005',
@@ -66,9 +66,9 @@ $pets = [
     'dewormed' => 'yes',
     'age' => 5,
     'type' => 'Rabbit',
-    'image' => 'assets/images/adopt5.jpeg',
-    'image2' => 'assets/images/rabbit2.jpeg',
-    'image3' => 'assets/images/rabbit3.jpeg'
+    'image' => '../assets/images/adopt5.jpeg',
+    'image2' => '../assets/images/rabbit2.jpeg',
+    'image3' => '../assets/images/rabbit3.jpeg'
   ],
   [
     'ID' => 'HPH-A-006',
@@ -80,9 +80,9 @@ $pets = [
     'dewormed' => 'yes',
     'age' => 2,
     'type' => 'Cat',
-    'image' => 'assets/images/adopt2.jpeg',
-    'image2' => 'assets/images/cat2.jpeg',
-    'image3' => 'assets/images/cat3.jpeg'
+    'image' => '../assets/images/adopt2.jpeg',
+    'image2' => '../assets/images/cat2.jpeg',
+    'image3' => '../assets/images/cat3.jpeg'
   ],
   [
     'ID' => 'HPH-A-007',
@@ -94,9 +94,9 @@ $pets = [
     'dewormed' => 'yes',
     'age' => 1,
     'type' => 'Dog',
-    'image' => 'assets/images/adopt3.jpeg',
-    'image2' => 'assets/images/dog2.jpeg',
-    'image3' => 'assets/images/dog3.jpeg'
+    'image' => '../assets/images/adopt3.jpeg',
+    'image2' => '../assets/images/dog2.jpeg',
+    'image3' => '../assets/images/dog3.jpeg'
   ],
   [
     'ID' => 'HPH-A-008',
@@ -108,9 +108,9 @@ $pets = [
     'dewormed' => 'yes',
     'age' => 4,
     'type' => 'Cat',
-    'image' => 'assets/images/adopt2.jpeg',
-    'image2' => 'assets/images/cat2.jpeg',
-    'image3' => 'assets/images/cat3.jpeg'
+    'image' => '../assets/images/adopt2.jpeg',
+    'image2' => '../assets/images/cat2.jpeg',
+    'image3' => '../assets/images/cat3.jpeg'
   ],
   [
     'ID' => 'HPH-A-009',
@@ -122,9 +122,9 @@ $pets = [
     'dewormed' => 'no',
     'age' => 6,
     'type' => 'Dog',
-    'image' => 'assets/images/adopt3.jpeg',
-    'image2' => 'assets/images/dog2.jpeg',
-    'image3' => 'assets/images/dog3.jpeg'
+    'image' => '../assets/images/adopt3.jpeg',
+    'image2' => '../assets/images/dog2.jpeg',
+    'image3' => '../assets/images/dog3.jpeg'
   ],
   [
     'ID' => 'HPH-A-010',
@@ -136,9 +136,9 @@ $pets = [
     'dewormed' => 'yes',
     'age' => 3,
     'type' => 'Cat',
-    'image' => 'assets/images/adopt2.jpeg',
-    'image2' => 'assets/images/cat2.jpeg',
-    'image3' => 'assets/images/cat3.jpeg'
+    'image' => '../assets/images/adopt2.jpeg',
+    'image2' => '../assets/images/cat2.jpeg',
+    'image3' => '../assets/images/cat3.jpeg'
   ],
   [
     'ID' => 'HPH-A-119',
@@ -150,9 +150,9 @@ $pets = [
     'dewormed' => 'yes',
     'age' => 3,
     'type' => 'Rabbit',
-    'image' => 'assets/images/adopt5.jpeg',
-    'image2' => 'assets/images/rabbit2.jpeg',
-    'image3' => 'assets/images/rabbit3.jpeg'
+    'image' => '../assets/images/adopt5.jpeg',
+    'image2' => '../assets/images/rabbit2.jpeg',
+    'image3' => '../assets/images/rabbit3.jpeg'
   ]
 ];
 

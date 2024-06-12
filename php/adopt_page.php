@@ -13,8 +13,8 @@ if (!isset($_SESSION['wishlist'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="adopts.css" />
-  <link rel="stylesheet" href="trailer.css">
+  <link rel="stylesheet" href="../css/adopt_page.css" />
+  <link rel="stylesheet" href="../css/trailer.css">
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"></script>
@@ -25,7 +25,7 @@ if (!isset($_SESSION['wishlist'])) {
 </head>
 
 <body>
-  <?php include 'animal.php'; ?>
+  <?php include '../php/animal.php'; ?>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
@@ -35,14 +35,14 @@ if (!isset($_SESSION['wishlist'])) {
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
-  <script src="adopt.js"></script>
+  <script src="../javascript/adopt.js"></script>
   <div id="trailer">
   </div>
-  <script src="trailer.js"></script>
+  <script src="../javascript/trailer.js"></script>
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-        <img src="assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo" />
+        <img src="../assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo" />
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,30 +52,30 @@ if (!isset($_SESSION['wishlist'])) {
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">HOME</a>
+            <a class="nav-link" href="../html/index.html">HOME</a>
           </li>
           <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="adopt_page.php" id="adoptDropdown" role="button"
+            <a class="nav-link dropdown-toggle" href="../php/adopt_page.php" id="adoptDropdown" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               ADOPT
             </a>
             <div class="dropdown-menu" aria-labelledby="adoptDropdown">
-              <a class="dropdown-item" href="adopt_page.php">Dogs</a>
-              <a class="dropdown-item" href="adopt_page.php">Cats</a>
-              <a class="dropdown-item" href="adopt_page.php">Rabbit</a>
+              <a class="dropdown-item" href="../php/adopt_page.php">Dogs</a>
+              <a class="dropdown-item" href="../php/adopt_page.php">Cats</a>
+              <a class="dropdown-item" href="../php/adopt_page.php">Rabbit</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="donate.html">DONATION</a>
+            <a class="nav-link" href="../html/donate.html">DONATION</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="shelter1.html">SHELTER</a>
+            <a class="nav-link" href="../html/shelter1.html">SHELTER</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html#help">HELP</a>
+            <a class="nav-link" href="../html/index.html#help">HELP</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="account_page.html">ACCOUNT</a>
+            <a class="nav-link" href="../html/account_page.html">ACCOUNT</a>
           </li>
         </ul>
       </div>
