@@ -12,7 +12,22 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+$sql= "SELECT * from shelter";
+$result = $conn->query($sql);
+
+$shelters = [];
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $row['imageLogo'] = base64_encode($row['imageLogo']);
+        $shelters[] = $row;
+    }
+} else {
+    echo "0 results";
+}
+$conn->close()
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -157,211 +172,34 @@ if ($conn->connect_error) {
           
         </div>
         <div class="row d-flex justify-content-center">
-            <div class="col-auto">
-                <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        style="background-color: rgba(0, 0, 0, 0); border: 0ch;">
-                        <div class="card" style="border-radius: 20% 20% 10% 10%;">
-
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="../assets/images/logo2.jpeg">
-                                </div>
+            
+            <?php foreach ($shelters as $shelter): ?>
+        <div class="col-auto">
+            <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="showModal(<?= htmlspecialchars(json_encode($shelter)); ?>)" style="background-color: rgba(0, 0, 0, 0); border: 0ch;">
+                    <div class="card" style="border-radius: 20% 20% 10% 10%;">
+                        <div class="card-content">
+                            <div class="image">
+                            <img src="data:image/jpeg;base64,<?= htmlspecialchars($shelter['imageLogo']); ?>">
                             </div>
-                            <div class="container2">
-                                My Pet Haven
-                            </div>
-                            </a>
                         </div>
-                    </button>
+                        <div class="container2">
+                            <?= htmlspecialchars($shelter['name']); ?>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <?php endforeach; ?>
                 </div>
             </div>
 
-            <div class="col-auto">
-                <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        style="background-color: rgba(0, 0, 0, 0); border: 0ch;">
-                        <div class="card" style="border-radius: 20% 20% 10% 10%;">
-
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="../assets/images/logo2.jpeg">
-                                </div>
-                            </div>
-                            <div class="container2">
-                                My Pet Haven
-                            </div>
-                            </a>
-                        </div>
-                    </button>
-                </div>
-            </div>
-
-            <div class="col-auto">
-                <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        style="background-color: rgba(0, 0, 0, 0); border: 0ch;">
-                        <div class="card" style="border-radius: 20% 20% 10% 10%;">
-
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="../assets/images/logo2.jpeg">
-                                </div>
-                            </div>
-                            <div class="container2">
-                                My Pet Haven
-                            </div>
-                            </a>
-                        </div>
-                    </button>
-                </div>
-            </div>
-            <div class="col-auto">
-                <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        style="background-color: rgba(0, 0, 0, 0); border: 0ch;">
-                        <div class="card" style="border-radius: 20% 20% 10% 10%;">
-
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="../assets/images/logo2.jpeg">
-                                </div>
-                            </div>
-                            <div class="container2">
-                                My Pet Haven
-                            </div>
-                            </a>
-                        </div>
-                    </button>
-                </div>
-            </div>
-            <div class="col-auto">
-                <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        style="background-color: rgba(0, 0, 0, 0); border: 0ch;">
-                        <div class="card" style="border-radius: 20% 20% 10% 10%;">
-
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="../assets/images/logo2.jpeg">
-                                </div>
-                            </div>
-                            <div class="container2">
-                                My Pet Haven
-                            </div>
-                            </a>
-                        </div>
-                    </button>
-                </div>
-            </div>
-
-            <div class="col-auto">
-                <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        style="background-color: rgba(0, 0, 0, 0); border: 0ch;">
-                        <div class="card" style="border-radius: 20% 20% 10% 10%;">
-
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="../assets/images/logo2.jpeg">
-                                </div>
-                            </div>
-                            <div class="container2">
-                                My Pet Haven
-                            </div>
-                            </a>
-                        </div>
-                    </button>
-                </div>
-            </div>
-
-            <div class="col-auto">
-                <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        style="background-color: rgba(0, 0, 0, 0); border: 0ch;">
-                        <div class="card" style="border-radius: 20% 20% 10% 10%;">
-
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="../assets/images/logo2.jpeg">
-                                </div>
-                            </div>
-                            <div class="container2">
-                                My Pet Haven
-                            </div>
-                            </a>
-                        </div>
-                    </button>
-                </div>
-            </div>
-
-            <div class="col-auto">
-                <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        style="background-color: rgba(0, 0, 0, 0); border: 0ch;">
-                        <div class="card" style="border-radius: 20% 20% 10% 10%;">
-
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="../assets/images/logo2.jpeg">
-                                </div>
-                            </div>
-                            <div class="container2">
-                                My Pet Haven
-                            </div>
-                            </a>
-                        </div>
-                    </button>
-                </div>
-            </div>
-            <div class="col-auto">
-                <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        style="background-color: rgba(0, 0, 0, 0); border: 0ch;">
-                        <div class="card" style="border-radius: 20% 20% 10% 10%;">
-
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="../assets/images/logo2.jpeg">
-                                </div>
-                            </div>
-                            <div class="container2">
-                                My Pet Haven
-                            </div>
-                            </a>
-                        </div>
-                    </button>
-                </div>
-            </div>
-            <div class="col-auto">
-                <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                        style="background-color: rgba(0, 0, 0, 0); border: 0ch;">
-                        <div class="card" style="border-radius: 20% 20% 10% 10%;">
-
-                            <div class="card-content">
-                                <div class="image">
-                                    <img src="../assets/images/logo2.jpeg">
-                                </div>
-                            </div>
-                            <div class="container2">
-                                My Pet Haven
-                            </div>
-                            </a>
-                        </div>
-                    </button>
-                </div>
-            </div>
             
 
 
         </div>
 
-    </div>
-
-
-    </div>
-
+  
 
 
     </div>
