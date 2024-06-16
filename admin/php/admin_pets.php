@@ -11,9 +11,11 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM/zG7K6fX8j1ChBQaLRY/N5S4lq1O0z0S8G2ng" crossorigin="anonymous"></script>
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM/zG7K6fX8j1ChBQaLRY/N5S4lq1O0z0S8G2ng"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -26,11 +28,12 @@
                 <div class="sidebar-logo">
                     <a href="#">PET HAVEN</a>
                 </div>
+
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                    <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-user"></i>
                         <span>Profile</span>
                     </a>
                 </li>
@@ -52,17 +55,17 @@
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                    <i class="fa-solid fa-house"></i>
+                        <i class="fa-solid fa-house"></i>
                         <span>Shelter</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
-                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
                         <span>Donate</span>
                     </a>
                 </li>
-                
+
             </ul>
             <div class="sidebar-footer">
                 <a href="#" class="sidebar-link">
