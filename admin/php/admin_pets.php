@@ -46,7 +46,7 @@
     border-left: 3px solid #3b7ddd;" href="#" class="active sidebar-link">List Pets</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Adoption</a>
+                            <a href="#" class="sidebar-link">Adoption Request</a>
                         </li>
                     </ul>
                 </li>
