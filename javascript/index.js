@@ -89,3 +89,22 @@ document.addEventListener('DOMContentLoaded', function () {
     field.dispatchEvent(event);
   });
 });
+
+document.getElementById('contactButton').addEventListener('click', function () {
+  var contactTab = document.querySelector('a[href="#contact"]');
+  var contactPane = document.getElementById('contact');
+  
+  contactTab.classList.add('active');
+  contactPane.classList.add('show', 'active');
+
+  var otherTabs = document.querySelectorAll('.nav-link:not([href="#contact"])');
+  var otherPanes = document.querySelectorAll('.tab-pane:not(#contact)');
+
+  otherTabs.forEach(function (tab) {
+    tab.classList.remove('active');
+  });
+
+  otherPanes.forEach(function (pane) {
+    pane.classList.remove('show', 'active');
+  });
+});
