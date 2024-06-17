@@ -95,7 +95,7 @@ $conn->close()
                         <a class="nav-link" href="../html/donate.html">DONATION</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="../html/shelter1.html">SHELTER</a>
+                        <a class="nav-link" href="../php/shelter.php">SHELTER</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../html/index.html#help">HELP</a>
@@ -173,43 +173,27 @@ $conn->close()
         </div>
         <div class="row d-flex justify-content-center">
             
-            <?php foreach ($shelters as $shelter): ?>
-        <div class="col-auto">
-            <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" onclick="showModal(<?= htmlspecialchars(json_encode($shelter)); ?>)" style="background-color: rgba(0, 0, 0, 0); border: 0ch;">
-                    <div class="card" style="border-radius: 20% 20% 10% 10%;">
-                        <div class="card-content">
-                            <div class="image">
-                            <img src="data:image/jpeg;base64,<?= htmlspecialchars($shelter['imageLogo']); ?>">
-                            </div>
-                        </div>
-                        <div class="container2">
-                            <?= htmlspecialchars($shelter['name']); ?>
+           <?php foreach ($shelters as $shelter): ?>
+    <div class="col-auto">
+        <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter<?= htmlspecialchars($shelter['id']); ?>" style="background-color: rgba(0, 0, 0, 0); border: 0;">
+                <div class="card" style="border-radius: 20% 20% 10% 10%;">
+                    <div class="card-content">
+                        <div class="image">
+                            <img src="data:image/jpeg;base64,<?= htmlspecialchars($shelter['imageLogo']); ?>" alt="<?= htmlspecialchars($shelter['name']); ?>">
                         </div>
                     </div>
-                </button>
-            </div>
-        </div>
-        <?php endforeach; ?>
+                    <div class="container2">
+                        <?= htmlspecialchars($shelter['name']); ?>
+                    </div>
                 </div>
-            </div>
-
-            
-
-
+            </button>
         </div>
-
-  
-
-
     </div>
-    <br>
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 
+    <div class="modal fade" id="exampleModalCenter<?= htmlspecialchars($shelter['id']); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content"
-                style="background-color: #EDEBD2; border: 1px solid black ; border-radius: 5%; ;">
+            <div class="modal-content" style="background-color: #EDEBD2; border: 1px solid black; border-radius: 5%;">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -217,49 +201,37 @@ $conn->close()
                     <div class="container p-2" style="border-radius: 4%;">
                         <div class="row">
                             <div class="col-4 left-panel" style="background-color: white;">
-                                <img src="../assets/images/logo1.png" style="width: 70%;">
-                                <h4>Allergic Rescuer</h4>
-                                <div class="col-auto " >
-                                    <p><strong>Contact:</strong> 019-6632828</p>
-                                    <p><strong>Location:</strong> A-2-G, Galleri, Jalan Klang Sentral 15/KU5, Klang
-                                        Sentral, 41050 Klang, Selangor</p>
-                                    <p><strong>Working Day:</strong> Monday - Sunday</p>
-                                    <p><strong>Working Hours:</strong> 10:00 - 20:00</p>
+                                <img src="data:image/jpeg;base64,<?= htmlspecialchars($shelter['imageLogo']); ?>" style="width: 70%;">
+                                <h4><?= htmlspecialchars($shelter['name']); ?></h4>
+                                <div class="col-auto">
+                                    <p><strong>Contact:</strong> <?= htmlspecialchars($shelter['contact']); ?></p>
+                                    <p><strong>Location:</strong> <?= htmlspecialchars($shelter['location']); ?></p>
+                                    <p><strong>Working Day:</strong> <?= htmlspecialchars($shelter['workingDay']); ?></p>
+                                    <p><strong>Working Hours:</strong> <?= htmlspecialchars($shelter['workingHours']); ?></p>
                                 </div>
                             </div>
-                            <div class="col-7 right-panel" style="margin-left: 10px; height:fit-content;">
-                               
+                            <div class="col-7 right-panel" style="margin-left: 10px; height: fit-content;">
                                 <div class="tab-content">
                                     <div class="tab-pane fade show active" id="description">
-
-                                        <img src="../assets/images/cat.jpeg" style="width: 100%">
-                                        <p>
-                                          
-
-                                            Adopting from us means you are entitled to behavioral consults for you and
-                                            your cat(s) and also we guarantee complete transparency on any health
-                                            issues, including FIV/FeLV status.
-
-                                            
-                                        </p>
+                                        <img src="data:image/jpeg;base64,<?= htmlspecialchars($shelter['imageDesc']); ?>" >
+                                        <p><?= htmlspecialchars($shelter['description']); ?></p>
                                     </div>
-                                   
                                 </div>
                             </div>
                         </div>
                         <div class="footer-buttons text-center">
-                            <a href="https://www.facebook.com/allergicrescuerskl/"><button
-                                    class="btn btn-custom">Facebook</button></a>
-                            <a href="https://www.instagram.com/allergicrescuerskl/?hl=en">
-                                <button class="btn btn-custom">Instagram</button></a>
-                            <a href="https://www.petfinder.my/members/allergicrescuerskl/"></a>
-                            <button class="btn btn-custom">Website</button>
+                            <a href="<?= htmlspecialchars($shelter['link']); ?>"><button class="btn btn-custom">Facebook</button></a>
+                           
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+    </div>
+<?php endforeach; ?>
+
 
     <section class="footer">
         <footer class="bg-dark text-white py-4 mt-5">

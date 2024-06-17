@@ -69,7 +69,7 @@ if (!isset($_SESSION['wishlist'])) {
             <a class="nav-link" href="../html/donate.html">DONATION</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/shelter1.html">SHELTER</a>
+            <a class="nav-link" href="../php/shelter.php">SHELTER</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../html/index.html#help">HELP</a>
