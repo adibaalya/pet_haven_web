@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if ($email === 'admin1@admin.com.my' and $password== 'kerjakumpulan4') {
         echo "<script>
             alert('Admin login successful');
-            window.location.href = 'account_page2.html';
+            window.location.href = '../html/account_page2.html';
         </script>";
         exit();
     }
@@ -81,7 +81,7 @@ if($_SERVER["REQUEST_METHOD"]=="GET"){
     if ($result->num_rows > 0) {
         echo "<script>
             alert('Login successful');
-            window.location.href = 'account_page.php';
+            window.location.href = '..php/account_page.php';
         </script>";
         exit();
     }
