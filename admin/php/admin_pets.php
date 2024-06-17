@@ -141,36 +141,41 @@
                                 </div>
                             </div>
                         </div>
-                        <h3 class="fw-bold fs-4 my-3">Avg. Agent Earnings
+                        <h3 class="fw-bold fs-4 my-3">Admin Members
                         </h3>
                         <div class="row">
                             <div class="col-12">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr class="highlight">
-                                            <th scope="col">#</th>
-                                            <th scope="col">First</th>
-                                            <th scope="col">Last</th>
-                                            <th scope="col">Handle</th>
+                                            <th scope="col">No.</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">in Charge of</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
+                                            <td>Nurul Saidahtul Fatiha Shaharudin </td>
+                                            <td>approving the adoption request</td>
                                         </tr>
                                         <tr>
                                             <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
+                                            <td>Nur Adiba Alya Shamsul Kamalrujan</td>
+                                          
+                                            <td>Updating the list of pets</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">3</th>
-                                            <td colspan="2">Larry the Bird</td>
-                                            <td>@twitter</td>
+                                        <th scope="row">3</th>
+                                            <td>Nur Aisyah Abdullah</td>
+                                            
+                                            <td>Donation</td>
+                                        </tr>
+                                        <tr>
+                                        <th scope="row">4</th>
+                                            <td>Shane John Kennedy</td>
+                                           
+                                            <td>contact form</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -182,12 +187,12 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row text-body-secondary">
-                        <div class="col-6 text-start ">
+                        <div class="col-6 text-start " style="position: fixed;" >
                             <a class="text-body-secondary" href=" #">
                                 <strong>PET HAVEN</strong>
                             </a>
                         </div>
-                        <div class="col-6 text-end text-body-secondary d-none d-md-block">
+                        <div class="col-6 text-end text-body-secondary d-none d-md-block"  >
                             <ul class="list-inline mb-0">
                                 <li class="list-inline-item">
                                     <a class="text-body-secondary" href="#">Contact</a>

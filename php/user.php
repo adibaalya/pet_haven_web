@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if ($result->num_rows > 0) {
             echo "<script>
                 alert('Admin login successful');
-                window.location.href = '../html/account_page2.html';
+                window.location.href = '../admin/php/admin_pets.php';
             </script>";
             exit();
         } else {
