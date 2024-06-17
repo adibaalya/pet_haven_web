@@ -116,39 +116,22 @@ $conn->close()
             <p>anytime anywhere</p>
         </div>
         <div class="filterContainer">
-            <h5>Choose your Shelter</h5>
+            <h5 style="padding:10px"> Choose your Shelter</h5>
             <div class="row " style="text-align: center; padding-bottom: 10px;padding-left: 60px;">
-                <div class="col-3" style="left: 10px;">
+                <div class="col-4" style="left: 10px;">
                     <select id="Location" name="location" class="form-select" style="border: 2px solid black;">
                         <option value="Select Location">Select Location</option>
                         <option value="Johor">Johor</option>
                         <option value="Kedah">Kedah</option>
-                        <option value="Kelantan">Kelantan</option>
-                        <option value="Melaka">Melaka</option>
                         <option value="Negeri Sembilan">Negeri Sembilan</option>
-                        <option value="Pahang">Pahang</option>
-                        <option value="Perak">Perak</option>
                         <option value="Perlis">Perlis</option>
-                        <option value="Pulau Pinang">Pulau Pinang</option>
-                        <option value="Sabah">Sabah</option>
-                        <option value="Sarawak">Sarawak</option>
                         <option value="Selangor">Selangor</option>
-                        <option value="Terengganu">Terengganu</option>
                         <option value="Kuala Lumpur">Kuala Lumpur</option>
-                        <option value="Labuan">Labuan</option>
-                        <option value="Putrajaya">Putrajaya</option>
-                    </select>
+                          </select>
 
                 </div>
-                <div class="col-3">
-                    <select id="states2" name="states" class="form-select" style="border: 2px solid black;">
-                        <option value="Select Location">Select Area</option>
-                        <option value="west">West Malaysia</option>
-                        <option value="east">East Malaysia</option>
-                     
-                    </select>
-                </div>
-                <div class="col-4">
+              
+                <div class="col-5" style="margin-left: 10px;">
                     <input type="text" class="form-control" placeholder="Shelter Name" style="border: 2px solid black;">
                 </div>
             </div>
@@ -278,51 +261,7 @@ $conn->close()
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        var swiper = new Swiper(".mySwiper", {
-
-            loop: true,
-            breakpoints: {
-
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                },
-                450: {
-                    slidesPerView: 1,
-                    spaceBetween: 30
-                },
-                530: {
-                    slidesPerView: 2,
-                    spaceBetween: 30
-                },
-
-                768: {
-                    slidesPerView: 3,
-                    spaceBetween: 30
-                },
-                1024: {
-                    slidesPerView: 4,
-                    spaceBetween: 50
-                },
-                1380: {
-                    slidesPerView: 6,
-                    spaceBetween: 60
-                },
-                1800: {
-                    slidesPerView: 8,
-                    spaceBetween: 60
-                }
-            },
-
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            scrollbar: {
-                el: ".swiper-scrollbar",
-                hide: false,
-            },
-        });
+       
     </script>
 </body>
 
