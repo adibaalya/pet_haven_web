@@ -228,9 +228,10 @@ $conn->close()
             </div>
         </div>
     </div>
+    <?php endforeach; ?>
     </div>
     </div>
-<?php endforeach; ?>
+
 
 
     <section class="footer">
