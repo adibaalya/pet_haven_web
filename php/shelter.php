@@ -145,7 +145,7 @@ $conn->close()
                         <option value="Select Location">Select Area</option>
                         <option value="west">West Malaysia</option>
                         <option value="east">East Malaysia</option>
-                        <option value="sabah and sarawak">Sabah Sarawak</option>
+                     
                     </select>
                 </div>
                 <div class="col-4">
@@ -174,22 +174,26 @@ $conn->close()
         <div class="row d-flex justify-content-center">
             
            <?php foreach ($shelters as $shelter): ?>
-    <div class="col-auto">
-        <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter<?= htmlspecialchars($shelter['id']); ?>" style="background-color: rgba(0, 0, 0, 0); border: 0;">
-                <div class="card" style="border-radius: 20% 20% 10% 10%;">
-                    <div class="card-content">
-                        <div class="image">
-                            <img src="data:image/jpeg;base64,<?= htmlspecialchars($shelter['imageLogo']); ?>" alt="<?= htmlspecialchars($shelter['name']); ?>">
-                        </div>
-                    </div>
-                    <div class="container2">
-                        <?= htmlspecialchars($shelter['name']); ?>
+            <div class="col-auto">
+    <div class="container1" style="padding-left: 10px; padding-bottom: 20px;">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter<?= htmlspecialchars($shelter['id']); ?>" style="background-color: rgba(0, 0, 0, 0); border: 0;">
+            <div class="card" style="border-radius: 20% 20% 10% 10%; text-align: center; width: 200px;">
+
+                <div class="card-content d-flex justify-content-center align-items-center">
+                    <div class="image">
+                        <img src="data:image/jpeg;base64,<?= htmlspecialchars($shelter['imageLogo']); ?>" alt="<?= htmlspecialchars($shelter['name']); ?>" style="max-width: 100%; max-height: 100%; object-fit: contain;">
                     </div>
                 </div>
-            </button>
-        </div>
+
+                <div class="container2" style="height: 70px;">
+                    <?= htmlspecialchars($shelter['name']); ?>
+                </div>
+            </div>
+        </button>
     </div>
+</div>
+
+
 
     <div class="modal fade" id="exampleModalCenter<?= htmlspecialchars($shelter['id']); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -200,8 +204,8 @@ $conn->close()
                 <div class="modal-body">
                     <div class="container p-2" style="border-radius: 4%;">
                         <div class="row">
-                            <div class="col-4 left-panel" style="background-color: white;">
-                                <img src="data:image/jpeg;base64,<?= htmlspecialchars($shelter['imageLogo']); ?>" style="width: 70%;">
+                            <div class="col-4 left-panel" style="background-color: white; height:fit-content">
+                                <img src="data:image/jpeg;base64,<?= htmlspecialchars($shelter['imageLogo']); ?>" style="width: 70%; ">
                                 <h4><?= htmlspecialchars($shelter['name']); ?></h4>
                                 <div class="col-auto">
                                     <p><strong>Contact:</strong> <?= htmlspecialchars($shelter['contact']); ?></p>
