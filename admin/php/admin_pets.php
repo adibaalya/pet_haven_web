@@ -162,19 +162,19 @@
                                         <tr>
                                             <th scope="row">2</th>
                                             <td>Nur Adiba Alya Shamsul Kamalrujan</td>
-                                          
+
                                             <td>Updating the list of pets</td>
                                         </tr>
                                         <tr>
-                                        <th scope="row">3</th>
+                                            <th scope="row">3</th>
                                             <td>Nur Aisyah Abdullah</td>
-                                            
+
                                             <td>Donation</td>
                                         </tr>
                                         <tr>
-                                        <th scope="row">4</th>
+                                            <th scope="row">4</th>
                                             <td>Shane John Kennedy</td>
-                                           
+
                                             <td>contact form</td>
                                         </tr>
                                     </tbody>
@@ -187,12 +187,12 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row text-body-secondary">
-                        <div class="col-6 text-start " style="position: fixed;" >
+                        <div class="col-6 text-start " style="position: fixed;">
                             <a class="text-body-secondary" href=" #">
                                 <strong>PET HAVEN</strong>
                             </a>
                         </div>
-                        <div class="col-6 text-end text-body-secondary d-none d-md-block"  >
+                        <div class="col-6 text-end text-body-secondary d-none d-md-block">
                             <ul class="list-inline mb-0">
                                 <li class="list-inline-item">
                                     <a class="text-body-secondary" href="#">Contact</a>
