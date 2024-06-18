@@ -2,9 +2,9 @@
 // Handle form submission and store data in the database
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $servername = "localhost";
-    $username = "root"; // default username for phpMyAdmin
-    $password = ""; // default password for phpMyAdmin
-    $dbname = "animal_shelter";
+    $username = "root";
+    $password = "";
+    $dbname = "pethavenuser";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     move_uploaded_file($_FILES["image2"]["tmp_name"], $image2);
     move_uploaded_file($_FILES["image3"]["tmp_name"], $image3);
 
-    $sql = "INSERT INTO animals (name, color, type, breed, shelter, vaccinated, dewormed, age, image1, image2, image3, gender,status)
+    $sql = "INSERT INTO pet (name, color, type, breed, shelter, vaccinated, dewormed, age, image1, image2, image3, gender,status)
             VALUES ('$name', '$color', '$type', '$breed', '$shelter', '$vaccinated', '$dewormed', '$age', '$image1', '$image2', '$image3', '$gender','$status')";
 
     if ($conn->query($sql) === TRUE) {
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <span>Profile</span>
                     </a>
                 </li>
-                <li  class="sidebar-item">
+                <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                         data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
                         <i class="fas fa-paw"></i>
@@ -171,11 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <label for="shelter">Shelter:</label>
                                             <select id="shelter" name="shelter" required>
                                                 <option value="">Select a Shelter</option>
-                                                <?php foreach ($shelters as $shelter): ?>
-                                                    <option value="<?php echo $shelter['shelter_id']; ?>">
-                                                        <?php echo $shelter['shelter_name']; ?>
-                                                    </option>
-                                                <?php endforeach; ?>
+                                                
                                             </select>
                                         </div>
                                         <div class="col-md-6">
