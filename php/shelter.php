@@ -85,28 +85,34 @@
             <p>anytime anywhere</p>
         </div>
         <div class="filterContainer">
-            <h5 style="padding:10px"> Choose your Shelter</h5>
-            <div class="row " style="text-align: center; padding-bottom: 10px;padding-left: 60px;">
-                <div class="col-4" style="left: 10px;">
-                    <select id="Location" name="location" class="form-select" style="border: 2px solid black;">
-                        <option value="Select Location">Select Location</option>
-                        <option value="Johor">Johor</option>
-                        <option value="Kedah">Kedah</option>
-                        <option value="Negeri Sembilan">Negeri Sembilan</option>
-                        <option value="Perlis">Perlis</option>
-                        <option value="Selangor">Selangor</option>
-                        <option value="Kuala Lumpur">Kuala Lumpur</option>
-                    </select>
-
-                </div>
-
-                <div class="col-5" style="margin-left: 10px;">
-                    <input type="text" class="form-control" placeholder="Shelter Name" style="border: 2px solid black;">
-                </div>
+    <form action="shelter.php" method="GET">
+        <h5 style="padding: 15px;">Choose your Shelter</h5>
+        <div class="row align-items-center">
+            <div class="col-sm-4">
+                <select id="Location" name="location" class="form-select" style="border: 2px solid black;">
+                    <option value="Select Location">Select Location</option>
+                    <option value="Johor">Johor</option>
+                    <option value="Kedah">Kedah</option>
+                    <option value="Negeri Sembilan">Negeri Sembilan</option>
+                    <option value="Perlis">Perlis</option>
+                    <option value="Selangor">Selangor</option>
+                    <option value="Kuala Lumpur">Kuala Lumpur</option>
+                </select>
             </div>
-            <div class="circleContainer ">
-                <i class="bi bi-search"></i>
+            <div class="col-sm-5">
+                <input type="text" name="keyword" class="form-control" placeholder="Shelter Name"
+                    style="border: 2px solid black;">
             </div>
+            <div class="col-sm-3">
+                <button type="submit" class="btn btn-primary w-100" >Search</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</div>
+
 
         </div>
     </div>
@@ -133,12 +139,32 @@
             // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Check connection
+           
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $sql = "SELECT * from shelter";
+           
+            $sql = "SELECT * FROM shelter";
+            $whereClause = [];
+
+            
+            if (isset($_GET['location']) && $_GET['location'] != 'Select Location') {
+                $location = $conn->real_escape_string($_GET['location']);
+                $whereClause[] = "location = '$location'";
+            }
+
+            
+            if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
+                $keyword = $conn->real_escape_string($_GET['keyword']);
+                $whereClause[] = "(name LIKE '%$keyword%' OR description LIKE '%$keyword%')";
+            }
+
+            
+            if (!empty($whereClause)) {
+                $sql .= " WHERE " . implode(" AND ", $whereClause);
+            }
+
             $result = $conn->query($sql);
 
             $shelters = [];
@@ -151,8 +177,8 @@
             } else {
                 echo "0 results";
             }
-            $conn->close()
-                ?>
+            $conn->close();
+            ?>
 
             <?php foreach ($shelters as $shelter): ?>
                 <div class="col-auto">
