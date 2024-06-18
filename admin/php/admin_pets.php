@@ -54,7 +54,7 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="../php/shelterList.php" class="sidebar-link">
                         <i class="fa-solid fa-house"></i>
                         <span>Shelter</span>
                     </a>
