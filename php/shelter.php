@@ -145,6 +145,7 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $row['imageLogo'] = base64_encode($row['imageLogo']);
+                    $row['imageDesc'] = base64_encode($row['imageDesc']);
                     $shelters[] = $row;
                 }
             } else {
@@ -205,11 +206,11 @@
                                                     <?= htmlspecialchars($shelter['workingHours']); ?></p>
                                             </div>
                                         </div>
-                                        <div class="col-7 right-panel" style="margin-left: 10px; height: fit-content;">
+                                        <div class="col-7 right-panel" style="margin-left: 10px; ">
                                             <div class="tab-content">
                                                 <div class="tab-pane fade show active" id="description">
                                                     <img
-                                                        src="data:image/jpeg;base64,<?= htmlspecialchars($shelter['imageDesc']); ?>">
+                                                        src="data:image/jpeg;base64,<?= htmlspecialchars($shelter['imageDesc']); ?>"  style="width: 100%;">
                                                     <p><?= htmlspecialchars($shelter['description']); ?></p>
                                                 </div>
                                             </div>
