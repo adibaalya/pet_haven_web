@@ -46,7 +46,10 @@
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
                             <a style=" background-color: rgba(255, 255, 255, .075);
-    border-left: 3px solid #3b7ddd;" href="#" class="active sidebar-link">List Pets</a>
+    border-left: 3px solid #3b7ddd;" href="../php/admin_pets.php" class="active sidebar-link">List Pets</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="../php/add_pet.php" class="sidebar-link">Add Pets</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Adoption Request</a>
