@@ -7,7 +7,7 @@
     padding: 0;
 
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: poppins;
 }
 @media print {
  .table, .table__body {
@@ -35,7 +35,6 @@ main.table {
     backdrop-filter: blur(7px);
     box-shadow: 0 .4rem .8rem #0005;
     border-radius: .8rem;
-   
     overflow: hidden;
 }
 
@@ -169,29 +168,6 @@ tbody tr.hide td img {
     transition: .2s ease-in-out .5s;
 }
 
-.status {
-    padding: .4rem 0;
-    border-radius: 2rem;
-    text-align: center;
-}
-
-.status.delivered {
-    background-color: #86e49d;
-    color: #006b21;
-}
-
-.status.cancelled {
-    background-color: #d893a3;
-    color: #b30021;
-}
-
-.status.pending {
-    background-color: #ebc474;
-}
-
-.status.shipped {
-    background-color: #6fcaea;
-}
 
 
 @media (max-width: 1000px) {

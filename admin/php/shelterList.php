@@ -18,7 +18,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body style="background-color:cornsilk">
+<body style="background-color:cornsilk;">
     <div class="wrapper">
         <aside id="sidebar">
             <div class="d-flex">
@@ -45,8 +45,7 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a style=" background-color: rgba(255, 255, 255, .075);
-    border-left: 3px solid #3b7ddd;" href="" class="active sidebar-link">List Pets</a>
+                            <a style=" background-color: rgba(255, 255, 255, .075); border-left: 3px solid #3b7ddd;" href="" class="active sidebar-link">List Pets</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="../php/adoptionRequest.php" class="sidebar-link">Adoption Request</a>
@@ -93,12 +92,43 @@
                         <th> Location <span class="icon-arrow">&UpArrow;</span></th>
                         <th> Contact <span class="icon-arrow">&UpArrow;</span></th>
                         <th> WorkingDay <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> WorkingHours<span class="icon-arrow">&UpArrow;</span>
-                       
+                        <th> WorkingHours<span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>
                 <tbody>
-                   
+                    <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "pethavenuser";
+
+                    // Create connection
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                    // Check connection
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    $sql = "SELECT * FROM shelter";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['location']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['contact']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['workingDay']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['workingHours']) . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='6'>0 results</td></tr>";
+                    }
+                    $conn->close();
+                    ?>
                 </tbody>
             </table>
         </section>
