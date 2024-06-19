@@ -30,41 +30,23 @@
 .filterContainer {
     position: absolute;
     top: 90%;
-    left: 25%;
-    padding-left: 30px;
-    padding-right: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-left: 20px;
+    padding-right: 20px;
     border: 2px solid black;
     background-color: white;
     border-radius: 50px;
-    width: 50%;
+    width: 80%;
+    max-width: 800px;
 }
 
 .row {
-    padding-left: 30px;
+    padding: 10px 0;
 }
 
-.columnFilter {
-    margin-right: 10px;
-}
 
-.circleContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: rgb(237, 167, 178);
-    border: 2px solid black;
-    color: black;
-    font-size: 30px;
-    cursor: pointer;
-    position: absolute;
-    margin-left: 10px;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-}
+
 
 .container {
     position: relative;
@@ -88,9 +70,9 @@
 }
 
 .seeBtn:hover {
-    /* change the background color to a darker shade of black */
+   
     background-color: rgb(237, 167, 178);
-    /* change the text color to a brighter shade of white */
+    
     color: black;
   }
 
@@ -252,24 +234,15 @@
     background-color: rgb(237, 167, 178);
     color: black;
   }
+
+  
   @media (max-width: 768px) {
     .shelterText h1 {
         font-size: 2rem;
     }
-
-    .filterContainer {
-        width: 50%;
-        padding: 10px;
-    }
-
-    .circleContainer {
-        width: 40px;
-        height: 40px;
-    }
-
-    .circleContainer i {
-        font-size: 18px;
-    }
+    
+    
+    
 }
 
 @media (max-width: 620px) {
@@ -285,12 +258,5 @@
         padding: 5px;
     }
 
-    .circleContainer {
-        width: 30px;
-        height: 30px;
-    }
-
-    .circleContainer i {
-        font-size: 14px;
-    }
+   
 }
