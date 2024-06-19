@@ -163,9 +163,9 @@ a.sidebar-link:hover {
 }
 
 .footer {
-    position: absolute;
+    position: fixed; 
     bottom: 0;
-    width: 95%;
+    width: 100%;
   }
 
 
