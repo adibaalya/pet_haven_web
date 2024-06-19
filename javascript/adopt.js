@@ -1,13 +1,13 @@
 let value = 1250;
 setInterval(() => {
   document.getElementById("odometer").textContent = value.toString();
-}, 1000); // update every 1 second
+}, 1000);
 
 function toggleHeart(button) {
   button.classList.toggle("liked");
 }
 
-// Example filtering logic (replace with your actual data)
+
 const petCards = document.querySelectorAll(".card");
 
 const typeFilter = document.getElementById("Breed");
@@ -57,11 +57,10 @@ filterSearch.addEventListener("input", (e) => {
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded and parsed");
 
-  // Get all delete buttons on the page
+ 
   const deleteButtons = document.querySelectorAll(".delete-button");
   console.log("Delete buttons found:", deleteButtons.length);
 
-  // Add event listener to all delete buttons
   deleteButtons.forEach((button) => {
     console.log(
       "Adding event listener to delete button with data-id:",
@@ -71,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", function () {
       console.log("Delete button clicked with data-id:", button.dataset.id);
 
-      // Display a confirmation dialog
+      
       if (confirm("Are you sure you want to delete this pet?")) {
         const row = button.closest("tr");
         if (row) {

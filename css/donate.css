@@ -362,7 +362,7 @@ footer.bg-dark.text-white.py-4.mt-5 {
 }
 
 .popup-content .amount-input-wrapper::before {
-    content: 'RM';
+    content: 'RM ';
     position: absolute;
     left: 10px;
     top: 50%;

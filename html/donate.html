@@ -186,7 +186,7 @@
         <div id="popup" class="popup">
             <div class="popup-content">
                 <h2>Please fill in the details below</h2>
-                <form id="donationForm">
+                <form id="donationForm" method="POST" action="donate.php" enctype="multipart/form-data">
                     <label for="name">Name:</label><br>
                     <input type="text" id="name" name="name" required><br><br>
                     <label for="email">Email:</label><br>
@@ -202,10 +202,10 @@
                     <label for="pet-shelter">Pet Shelter:</label><br>
                     <select id="pet-shelter" name="pet-shelter" required>
                         <option value="" disabled selected>Select pet shelter</option>
-                        <option value="shelter-1">Shelter 1</option>
-                        <option value="shelter-2">Shelter 2</option>
-                        <option value="shelter-3">Shelter 3</option>
-                        <option value="shelter-4">Shelter 4</option>
+                        <option value="1">Allergic Rescuers</option>
+                        <option value="2">Galeri Animal Malaysia</option>
+                        <option value="3">PAWS: Paws Animal Welfare Society</option>
+                        <option value="4">Second Chance Animal Society</option>
                     </select><br><br>
                     <label for="donation-amount">Donation Amount:</label><br>
                     <div class="amount-input-wrapper">
@@ -213,7 +213,7 @@
                     </div><br>
                     <label for="proof-of-payment">Proof of Payment:</label><br>
                     <input type="file" id="proof-of-payment" name="proof-of-payment" required><br><br>
-                    <button type="submit">Next</button>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         </div>

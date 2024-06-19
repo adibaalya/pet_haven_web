@@ -20,18 +20,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add event listener to close the popup when clicking outside
     overlay.addEventListener('click', closePopup);
-});
 
-document.getElementById('donationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    // Gather form data
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const donationType = document.getElementById('donation-type').value;
-    const petShelter = document.getElementById('pet-shelter').value;
-    const donationAmount = document.getElementById('donation-amount').value;
+    // Add event listener to the form submission
+    document.getElementById('donationForm').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    // Redirect to payment gateway
-    const paymentGatewayUrl = `https://www.cimbclicks.com.my/?amount=${donationAmount}&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&donationType=${encodeURIComponent(donationType)}&petShelter=${encodeURIComponent(petShelter)}`;
-    window.location.href = paymentGatewayUrl;
+        // Gather form data
+// Assuming you have a form element with id="donationForm" in your HTML
+const form = document.getElementById('donationForm');
+const formData = new FormData(form);
+
+        // Send the data to the server using fetch
+        fetch('donate.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // Handle success or error based on 'data' received
+            if (data.status === 'success') {
+                alert('Donation submitted successfully!');
+                // Optionally, redirect or perform other actions on success
+            } else {
+                alert('Error: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error submitting donation. Please try again later.');
+        });
+        
+    });
+
 });
