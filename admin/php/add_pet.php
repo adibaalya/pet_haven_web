@@ -172,6 +172,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <select id="shelter" name="shelter" required>
                                                 <option value="">Select a Shelter</option>
                                                 
+                                                <?php
+                                                /*
+                                                // Handle form submission and store data in the database
+                                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                                    //...
+                                                }
+
+                                                // Create connection
+                                                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                                // Check connection
+                                                if ($conn->connect_error) {
+                                                    die("Connection failed: " . $conn->connect_error);
+                                                }
+
+                                                // Fetch shelter list
+                                                $sql = "SELECT shelter_id, shelter_name FROM shelter";
+                                                $result = $conn->query($sql);
+
+                                                //...
+                                                
+                                                // Close connection
+                                                $conn->close();
+                                                */
+                                                ?> 
                                             </select>
                                         </div>
                                         <div class="col-md-6">

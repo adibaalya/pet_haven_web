@@ -206,7 +206,7 @@ if ($_GET) {
     <div class="container-wrapper">
       <div class="container">
         <?php
-        session_start();
+       
 
         // Assume $pets is an array of pet information
         
