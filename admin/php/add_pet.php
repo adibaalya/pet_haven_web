@@ -33,7 +33,7 @@
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="../php/admin_pets.php" class="sidebar-link">
                         <i class="fa-solid fa-user"></i>
                         <span>Profile</span>
                     </a>
@@ -46,7 +46,7 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="../php/admin_pets.php" class="active sidebar-link">List Pets</a>
+                            <a href="" class="active sidebar-link">List Pets</a>
                         </li>
                         <li class="sidebar-item">
                             <a style=" background-color: rgba(255, 255, 255, .075);
