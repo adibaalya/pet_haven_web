@@ -81,6 +81,20 @@
                 <input type="search" placeholder="Search Here ">
                 
             </div>
+            <div class="export__file">
+            <label for="export-file" class="export__file-btn" title="Export File">
+                <i class="fas fa-download"></i>
+            </label>
+            <input type="checkbox" id="export-file" style="display:none;">
+
+                <div class="export__file-options">
+                    <label>Export As &nbsp; &#10140;</label>
+                    <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>
+                    <label for="export-file" id="toJSON">JSON <img src="images/json.png" alt=""></label>
+                    <label for="export-file" id="toCSV">CSV <img src="images/csv.png" alt=""></label>
+                    <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
+                </div>
+            </div>
            
         </section>
         <section class="table__body">

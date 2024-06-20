@@ -18,7 +18,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body style="background-color:cornsilk">
+<body style="background-color:cornsilk;">
     <div class="wrapper">
         <aside id="sidebar">
             <div class="d-flex">
@@ -45,11 +45,10 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a style=" background-color: rgba(255, 255, 255, .075);
-    border-left: 3px solid #3b7ddd;" href="#" class="active sidebar-link">List Pets</a>
+                            <a style=" background-color: rgba(255, 255, 255, .075); border-left: 3px solid #3b7ddd;" href="" class="active sidebar-link">List Pets</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Adoption Request</a>
+                            <a href="../php/adoptionRequest.php" class="sidebar-link">Adoption Request</a>
                         </li>
                     </ul>
                 </li>
@@ -77,14 +76,17 @@
         <div class="main">
         <main class="table" id="customers_table">
         <section class="table__header">
-            <h1>Customer's Orders</h1>
+            <h1>Adoption Request</h1>
             <div class="input-group">
-                <input type="search" placeholder="Search Data...">
+                <input type="search" placeholder="Search Here ">
                 
             </div>
             <div class="export__file">
-                <label for="export-file" class="export__file-btn" title="Export File"></label>
-                <input type="checkbox" id="export-file">
+            <label for="export-file" class="export__file-btn" title="Export File">
+                <i class="fas fa-download"></i>
+            </label>
+            <input type="checkbox" id="export-file" style="display:none;">
+
                 <div class="export__file-options">
                     <label>Export As &nbsp; &#10140;</label>
                     <label for="export-file" id="toPDF">PDF <img src="images/pdf.png" alt=""></label>
@@ -93,150 +95,65 @@
                     <label for="export-file" id="toEXCEL">EXCEL <img src="images/excel.png" alt=""></label>
                 </div>
             </div>
+           
         </section>
         <section class="table__body">
             <table>
                 <thead>
                     <tr>
-                        <th> Id <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Customer <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Location <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Order Date <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Status <span class="icon-arrow">&UpArrow;</span></th>
-                        <th> Amount <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> Email <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> petId <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> shelterId <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> status <span class="icon-arrow">&UpArrow;</span></th>
+                        <th> date <span class="icon-arrow">&UpArrow;</span></th>
+                        
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                <tr>
+                        <td> try@email.com </td>
+                        <td> 1245</td>
                         <td> 1 </td>
-                        <td> Zinzu Chan Lee</td>
-                        <td> Seoul </td>
-                        <td> 17 Dec, 2022 </td>
+                        
                         <td>
-                            <p class="status delivered">Delivered</p>
+                            <p class="status approved">Approved</p>
                         </td>
-                        <td> <strong> $128.90 </strong></td>
+                        <td> <strong> 12/02/2003 </strong></td>
                     </tr>
-                    <tr>
-                        <td> 2 </td>
-                        <td> Jeet Saru </td>
-                        <td> Kathmandu </td>
-                        <td> 27 Aug, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$5350.50</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 3</td>
-                        <td> Sonal Gharti </td>
-                        <td> Tokyo </td>
-                        <td> 14 Mar, 2023 </td>
-                        <td>
-                            <p class="status shipped">Shipped</p>
-                        </td>
-                        <td> <strong>$210.40</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 4</td>
-                        <td> Alson GC </td>
-                        <td> New Delhi </td>
-                        <td> 25 May, 2023 </td>
-                        <td>
-                            <p class="status delivered">Delivered</p>
-                        </td>
-                        <td> <strong>$149.70</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 5</td>
-                        <td> Sarita Limbu </td>
-                        <td> Paris </td>
-                        <td> 23 Apr, 2023 </td>
-                        <td>
-                            <p class="status pending">Pending</p>
-                        </td>
-                        <td> <strong>$399.99</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 6</td>
-                        <td> Alex Gonley </td>
-                        <td> London </td>
-                        <td> 23 Apr, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$399.99</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 7</td>
-                        <td> Jeet Saru </td>
-                        <td> New York </td>
-                        <td> 20 May, 2023 </td>
-                        <td>
-                            <p class="status delivered">Delivered</p>
-                        </td>
-                        <td> <strong>$399.99</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 8</td>
-                        <td> Aayat Ali Khan </td>
-                        <td> Islamabad </td>
-                        <td> 30 Feb, 2023 </td>
-                        <td>
-                            <p class="status pending">Pending</p>
-                        </td>
-                        <td> <strong>$149.70</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 9</td>
-                        <td> Alson GC </td>
-                        <td> Dhaka </td>
-                        <td> 22 Dec, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$249.99</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 9</td>
-                        <td> Alson GC </td>
-                        <td> Dhaka </td>
-                        <td> 22 Dec, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$249.99</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 9</td>
-                        <td> Alson GC </td>
-                        <td> Dhaka </td>
-                        <td> 22 Dec, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$249.99</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 9</td>
-                        <td> Alson GC </td>
-                        <td> Dhaka </td>
-                        <td> 22 Dec, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$249.99</strong> </td>
-                    </tr>
-                    <tr>
-                        <td> 9</td>
-                        <td> Alson GC </td>
-                        <td> Dhaka </td>
-                        <td> 22 Dec, 2023 </td>
-                        <td>
-                            <p class="status cancelled">Cancelled</p>
-                        </td>
-                        <td> <strong>$249.99</strong> </td>
-                    </tr>
+
+                    <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "pethavenuser";
+
+                    // Create connection
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                    // Check connection
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    $sql = "SELECT * FROM adoption";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['petId']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['shelterId']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['status']) . "</td>";
+                            echo "<td>" . htmlspecialchars($row['date']) . "</td>";
+                           
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='5'>0 results</td></tr>";
+                    }
+                    $conn->close();
+                    ?>
                 </tbody>
             </table>
         </section>

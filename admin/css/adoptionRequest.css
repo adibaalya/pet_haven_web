@@ -27,8 +27,8 @@ body {
 }
 
 main.table {
-    width: 82vw;
-    height: 90vh;
+    width: 100%;
+    height: 90%;
     background-color: rgba(255, 255, 255, 0.938);
 
     backdrop-filter: blur(7px);
@@ -50,7 +50,7 @@ main.table {
 }
 
 .table__header .input-group {
-    width: 35%;
+    width: 30%;
     height: 100%;
     background-color: rgba(245, 179, 109, 0.601);
     padding: 0 .8rem;
@@ -64,7 +64,7 @@ main.table {
 }
 
 .table__header .input-group:hover {
-    width: 45%;
+    width: 40%;
     background-color: rgba(243, 213, 147, 0.907);
     box-shadow: 0 .1rem .4rem rgba(0, 0, 0, 0.556);
 }
@@ -173,29 +173,7 @@ tbody tr.hide td img {
     transition: .2s ease-in-out .5s;
 }
 
-.status {
-    padding: .4rem 0;
-    border-radius: 2rem;
-    text-align: center;
-}
 
-.status.delivered {
-    background-color: #86e49d;
-    color: #006b21;
-}
-
-.status.cancelled {
-    background-color: #d893a3;
-    color: #b30021;
-}
-
-.status.pending {
-    background-color: #ebc474;
-}
-
-.status.shipped {
-    background-color: #6fcaea;
-}
 
 
 @media (max-width: 1000px) {
@@ -245,15 +223,20 @@ thead th.active,tbody td.active {
 
 .export__file .export__file-btn {
     display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    background: #fff6 url(images/export.png) center / 80% no-repeat;
+    width: 3rem;
+    height: 3rem;
+    background: rgba(201, 93, 93, 0.937) url(images/export.png) center / 80% no-repeat;
     border-radius: 50%;
     transition: .2s ease-in-out;
 }
+.export__file-btn i {
+    font-size: 1.6rem;
+    color: #ffffff; 
+    margin:15%
+}
 
 .export__file .export__file-btn:hover { 
-    background-color: #fff;
+    background-color: #dd6f3c;
     transform: scale(1.15);
     cursor: pointer;
 }
@@ -483,6 +466,27 @@ a.sidebar-link:hover {
     bottom: 0;
     width: 95%;
   }
+
+  .status {
+    padding: .4rem 0;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.status.approved {
+    background-color: #86e49d;
+    color: #006b21;
+}
+
+.status.cancelled {
+    background-color: #d893a3;
+    color: #b30021;
+}
+
+.status.pending {
+    background-color: #ebc474;
+}
+
 
 
 
