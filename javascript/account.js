@@ -1,5 +1,5 @@
 
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded and parsed");
 
   const buttons = document.querySelectorAll("button");
@@ -11,10 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", function () {
       console.log("Button clicked with id:", button.id);
 
-    
+
       switch (button.id) {
         case "cancel":
-         
+
           if (confirm("Are you sure you want to cancel this pet?")) {
             const row = button.closest("tr");
             if (row) {
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
           break;
         case "delete":
-         
+
           if (confirm("Are you sure you want to delete this pet?")) {
             const row = button.closest("tr");
             if (row) {
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           }
           break;
-        
+
         default:
           console.log("Unknown button id:", button.id);
       }
@@ -52,13 +52,33 @@ const calendarInput = document.getElementById("calendar");
 const confirmBtn = document.getElementById("confirm");
 
 approveBtn.addEventListener("click", function () {
-dropdownContent.classList.toggle("show");
+  dropdownContent.classList.toggle("show");
 });
 
 calendarInput.addEventListener("change", function () {
-if (calendarInput.value) {
-  confirmBtn.addEventListener("click", function () {
-    alert("Date confirmed: " + calendarInput.value);
+  if (calendarInput.value) {
+    confirmBtn.addEventListener("click", function () {
+      alert("Date confirmed: " + calendarInput.value);
+    });
+  }
+});*/
+
+$(document).ready(function() {
+  $.ajax({
+      url: '../php/get_account_details.php',
+      type: 'GET',
+      dataType: 'json',
+      success: function(response) {
+          if (response && response.email) {
+              $('#fullnameDisplay').text(response.name);
+              $('#name').val(response.name);
+              $('#email').val(response.email);
+          } else {
+              console.error('Failed to fetch account details:', response.error);
+          }
+      },
+      error: function(xhr, status, error) {
+          console.error('Failed to fetch account details:', error);
+      }
   });
-}
 });

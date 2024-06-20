@@ -1,12 +1,12 @@
 <?php
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "pethavenuser";
 
-
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -17,7 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    
     $sql = "SELECT * FROM userinfo WHERE email='$email'";
     $result = $conn->query($sql);
 
@@ -27,13 +26,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             window.location.href = '../html/index.html';
         </script>";
     } else {
-        
         $sql = "INSERT INTO userinfo (name, email, password) VALUES ('$name', '$email', '$password')";
 
         if ($conn->query($sql) === TRUE) {
+            $_SESSION['email'] = $email; 
             echo "<script>
                 alert('New record created successfully');
-                window.location.href = '../html/index.html';
+                window.location.href = '../html/account_page.html';
             </script>";
             exit();
         } else {
@@ -46,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $email = $_GET["email"];
     $password = $_GET["password"];
 
-   
     if (strpos($email, '@admin.com.my') !== false) {
         $sql = "SELECT * FROM userinfo WHERE email='$email' AND password='$password'";
         $result = $conn->query($sql);
@@ -66,11 +64,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
     }
 
-   
     $sql = "SELECT * FROM userinfo WHERE email='$email' AND password='$password'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
+        $_SESSION['email'] = $email; 
         echo "<script>
             alert('User login successful');
             window.location.href = '../html/account_page.html';
