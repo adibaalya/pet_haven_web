@@ -136,9 +136,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="row">
                             <div class="col-12">
                                 <form action="add_animal.php" method="post" enctype="multipart/form-data">
-                                    <div class="form-group">
-                                        <label for="name">Name:</label>
-                                        <input type="text" id="name" name="name" required>
+                                    <?php include 'fetch_shelters.php'; ?>
+                                    <div class="form-group row">
+                                        <div class="col-md-6">
+                                            <label for="name">Name:</label>
+                                            <input type="text" id="name" name="name" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Id">ID:</label>
+                                            <input type="text" id="breed" name="Id" required>
+                                        </div>
                                     </div>
 
                                     <div class="form-group row">
@@ -171,7 +178,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <label for="shelter">Shelter:</label>
                                             <select id="shelter" name="shelter" required>
                                                 <option value="">Select a Shelter</option>
-                                                
+                                                <?php
+                                                $servername = "localhost";
+                                                $username = "root";
+                                                $password = "";
+                                                $dbname = "pethavenuser";
+
+                                                // Create connection
+                                                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                                // Check connection
+                                                if ($conn->connect_error) {
+                                                    die("Connection failed: " . $conn->connect_error);
+                                                }
+
+                                                $sql = "SELECT * FROM shelter";
+                                                $result = $conn->query($sql);
+
+                                                if ($result->num_rows > 0) {
+                                                    // Output data of each row
+                                                    while ($row = $result->fetch_assoc()) {
+                                                        echo "<option value='". $row["id"]. "' style='font-family: Arial; color: #333;'>". $row["name"]. "</option>";
+                                                    }
+                                                } else {
+                                                    echo "<option value=''>No shelters found</option>";
+                                                }
+
+                                                $conn->close();
+                                                ?>
                                             </select>
                                         </div>
                                         <div class="col-md-6">
