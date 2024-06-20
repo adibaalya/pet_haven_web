@@ -20,7 +20,7 @@
 
 <body style="background-color:cornsilk;">
     <div class="wrapper">
-        <aside id="sidebar">
+    <aside id="sidebar">
             <div class="d-flex">
                 <button class="toggle-btn" type="button">
                     <i class="lni lni-grid-alt"></i>
@@ -45,7 +45,10 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a style=" background-color: rgba(255, 255, 255, .075); border-left: 3px solid #3b7ddd;" href="" class="active sidebar-link">List Pets</a>
+                            <a href="" class="active sidebar-link">List Pets</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a  href="../php/add_pet.php" class="active sidebar-link">Add Pet</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="../php/adoptionRequest.php" class="sidebar-link">Adoption Request</a>
@@ -53,10 +56,21 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="../php/shelterList.php" class="sidebar-link">
+                <a href="../php/shelterList.php" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
                         <i class="fa-solid fa-house"></i>
                         <span>Shelter</span>
                     </a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a style=" background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #3b7ddd;" href="../php/shelterList.php" class="active sidebar-link">List Shelter</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="../php/add_shelter.php" class="sidebar-link">Add Shelter</a>
+                        </li>
+                        
+                    </ul>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link">
