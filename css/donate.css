@@ -154,7 +154,7 @@ body {
     margin-top: 30px;
     transition: transform 0.5s ease;
     width: 100%; 
-    max-width: 300px; /* Adjusted to fit four in a row */
+    max-width: 300px; 
     height: 300px; 
     padding: 20px;
     position: relative; 
@@ -358,7 +358,7 @@ footer.bg-dark.text-white.py-4.mt-5 {
 }
 
 .popup-content .amount-input-wrapper input {
-    padding-left: 30px; 
+    padding-left: 40px; 
 }
 
 .popup-content .amount-input-wrapper::before {
