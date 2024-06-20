@@ -28,18 +28,7 @@ input[type="checkbox"] {
     margin-right: 10px;
 }
 
-.radio-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-.radio-group input[type="radio"] {
-    margin-right: 5px;
-}
-.radio-group label {
-    margin-right: 20px;
-    margin-bottom: 0;
-}
+
 .submit {
     width: 100%;
     padding: 10px;

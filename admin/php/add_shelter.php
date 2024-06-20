@@ -1,6 +1,57 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "pethavenuser";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Collect form data
+    $name = $_POST['name'];
+    $location = $_POST['location'];
+    $contact = $_POST['contact'];
+    $workingHours = $_POST['workingHours'];
+    $workingDay = $_POST['workingDay'];
+    $description = $_POST['description'];
+    $facebookLink = $_POST['facebookLink'];
+    $area = $_POST['area'];
+
+    // Handle image upload
+    $logo = $_FILES['image1']['tmp_name'];
+    $shelterImage = $_FILES['image2']['tmp_name'];
+
+    // Read the file content into variables
+    $logoContent = file_get_contents($logo);
+    $shelterImageContent = file_get_contents($shelterImage);
+
+    // Prepare and bind
+    $stmt = $conn->prepare("INSERT INTO shelter (name, location, contact, workingHours, workingDay, description, imageLogo, imageDesc, link, area) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssssssss", $name, $location, $contact, $workingHours, $workingDay, $description, $logoContent, $shelterImageContent, $facebookLink, $area);
+
+    // Execute the query
+    if ($stmt->execute()) {
+        echo "New shelter added successfully";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+}
+
+// Fetch shelter data
+$sql = "SELECT * FROM shelter";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +70,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body style="background-color:cornsilk;">
     <div class="wrapper">
         <aside id="sidebar">
             <div class="d-flex">
@@ -29,7 +80,6 @@
                 <div class="sidebar-logo">
                     <a href="#">PET HAVEN</a>
                 </div>
-
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
@@ -49,8 +99,7 @@
                             <a href="" class="active sidebar-link">List Pets</a>
                         </li>
                         <li class="sidebar-item">
-                            <a style=" background-color: rgba(255, 255, 255, .075);
-    border-left: 3px solid #3b7ddd;" href="../php/add_pet.php" class="active sidebar-link">Add Pet</a>
+                            <a href="../php/add_pet.php" class="active sidebar-link">Add Pet</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="../php/adoptionRequest.php" class="sidebar-link">Adoption Request</a>
@@ -58,20 +107,19 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                <a href="../php/shelterList.php" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                    <a href="../php/shelterList.php" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
                         <i class="fa-solid fa-house"></i>
                         <span>Shelter</span>
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
                             <a style=" background-color: rgba(255, 255, 255, .075);
-    border-left: 3px solid #3b7ddd;" href="../php/shelterList.php" class="active sidebar-link">List Shelter</a>
+                                border-left: 3px solid #3b7ddd;" href="../php/shelterList.php" class="active sidebar-link">List Shelter</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="../php/add_shelter.php" class="sidebar-link">Add Shelter</a>
                         </li>
-                        
                     </ul>
                 </li>
                 <li class="sidebar-item">
@@ -80,7 +128,6 @@
                         <span>Donate</span>
                     </a>
                 </li>
-
             </ul>
             <div class="sidebar-footer">
                 <a href="#" class="sidebar-link">
@@ -93,184 +140,79 @@
             <main class="content px-3 py-4">
                 <div class="container-fluid">
                     <div class="mb-3">
-                        <h3 class="fw-bold fs-4 mb-3">Add Pets</h3>
-                        </h3>
+                        <h3 class="fw-bold fs-4 mb-3">Add Shelter</h3>
                         <div class="row">
                             <div class="col-12">
-                                <form id="addPetForm" method="post" enctype="multipart/form-data">
+                                <form id="addShelterForm" method="post" enctype="multipart/form-data">
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label for="name">Name:</label>
                                             <input type="text" id="name" name="name" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="id">ID:</label>
-                                            <input type="text" id="id" name="id" required>
+                                            <label for="location">Location:</label>
+                                            <input type="text" id="location" name="location" required>
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <label for="age">Age:</label>
-                                            <input type="number" id="age" name="age" required>
+                                            <label for="contact">Contact:</label>
+                                            <input type="text" id="contact" name="contact" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="gender">Gender:</label>
-                                            <select id="gender" name="gender" required>
-                                                <option value="Male">Male</option>
-                                                <option value="Female">Female</option>
-                                            </select>
+                                            <label for="workingHours">Working Hours:</label>
+                                            <input type="text" id="workingHours" name="workingHours" required>
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <label for="type">Type:</label>
-                                            <select id="type" name="type" required>
-                                                <option value="">Select a Type</option>
-                                                <option value="Cat">Cat</option>
-                                                <option value="Dog">Dog</option>
-                                                <option value="Rabbit">Rabbit</option>
-                                            </select>
+                                            <label for="workingDay">Working Day:</label>
+                                            <input type="text" id="workingDay" name="workingDay" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="breed">Breed:</label>
-                                            <input type="text" id="breed" name="breed" required>
+                                            <label for="description">Description:</label>
+                                            <input type="text" id="description" name="description" required>
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <div class="col-md-6">
-                                            <label for="shelter">Shelter:</label>
-                                            <select id="shelter" name="shelter" required>
-                                                <option value="">Select a Shelter</option>
-                                                <?php
-                                                $servername = "localhost";
-                                                $username = "root";
-                                                $password = "";
-                                                $dbname = "pethavenuser";
-
-                                                // Create connection
-                                                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                                                // Check connection
-                                                if ($conn->connect_error) {
-                                                    die("Connection failed: " . $conn->connect_error);
-                                                }
-
-                                                $sql = "SELECT * FROM shelter";
-                                                $result = $conn->query($sql);
-
-                                                if ($result->num_rows > 0) {
-                                                    // Output data of each row
-                                                    while ($row = $result->fetch_assoc()) {
-                                                        echo "<option value='" . $row["id"] . "'>" . $row["name"] . "</option>";
-                                                    }
-                                                } else {
-                                                    echo "<option value=''>No shelters found</option>";
-                                                }
-
-                                                $conn->close();
-                                                ?>
-                                            </select>
+                                            <label for="facebookLink">Facebook Link:</label>
+                                            <input type="text" id="facebookLink" name="facebookLink" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="color">Color:</label>
-                                            <input type="text" id="color" name="color" required>
+                                            <label for="area">Area:</label>
+                                            <input type="text" id="area" name="area" required>
                                         </div>
                                     </div>
-
-                                    <div class="form-group row">
-                                        <div class="col-md-6">
-                                            <label>Vaccinated:</label>
-                                            <div class="radio-group">
-                                                <label class="radio-inline">
-                                                    <input type="radio" id="vaccinated_yes" name="vaccinated" value="1"
-                                                        required>
-                                                    Yes
-                                                </label>
-                                                <label class="radio-inline">
-                                                    <input type="radio" id="vaccinated_no" name="vaccinated" value="0"
-                                                        required>
-                                                    No
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Dewormed:</label>
-                                            <div class="radio-group">
-                                                <label class="radio-inline">
-                                                    <input type="radio" id="dewormed_yes" name="dewormed" value="1"
-                                                        required>
-                                                    Yes
-                                                </label>
-                                                <label class="radio-inline">
-                                                    <input type="radio" id="dewormed_no" name="dewormed" value="0"
-                                                        required>
-                                                    No
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <div class="form-group">
-                                        <label for="image1">Image 1:</label>
+                                        <label for="image1">Logo:</label>
                                         <input type="file" id="image1" name="image1" accept="image/*" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="image2">Image 2:</label>
+                                        <label for="image2">Shelter Image:</label>
                                         <input type="file" id="image2" name="image2" accept="image/*" required>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="image3">Image 3:</label>
-                                        <input type="file" id="image3" name="image3" accept="image/*" required>
-                                    </div>
-                                    <div id="message"></div>
                                     <button class="submit" type="submit">Submit</button>
                                 </form>
-                                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                                <script>
-                                    $(document).ready(function () {
-                                        $('#addPetForm').on('submit', function (e) {
-                                            e.preventDefault(); // Prevent the default form submission
-
-                                            // Create a FormData object to hold the form data
-                                            var formData = new FormData(this);
-
-                                            $.ajax({
-                                                type: 'POST',
-                                                url: 'insert_pet.php', // Your PHP script to handle the form submission
-                                                data: formData,
-                                                processData: false, // Prevent jQuery from automatically processing the data
-                                                contentType: false, // Prevent jQuery from setting contentType
-                                                success: function (response) {
-                                                    // Display a success message
-                                                    $('#message').html('<div class="alert alert-success">The pet has been created successfully.</div>');
-
-                                                    // Optionally, reset the form
-                                                    $('#addPetForm')[0].reset();
-                                                },
-                                                error: function (xhr, status, error) {
-                                                    // Display an error message
-                                                    $('#message').html('<div class="alert alert-danger">There was an error creating the pet: ' + error + '</div>');
-                                                }
-                                            });
-                                        });
-                                    });
-                                </script>
-
                             </div>
                         </div>
                     </div>
+                   
+                   
                 </div>
             </main>
-           
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gybBogGz8z1HcHpXqb1V/6p9sub8I0Pf6hU+cKz6GK4h2vI2VH"
         crossorigin="anonymous"></script>
-    <script src="../javascript/sidebar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-pM3E6yfO9i8pAPM2Yo+5Ln0Md0Os2mA/+HzRbH2PvxdxE4u2N2GFnvynP0PRYRhp"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
+
+<?php
+$conn->close();
+?>
