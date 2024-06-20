@@ -70,9 +70,9 @@ $result = $conn->query($sql);
         crossorigin="anonymous"></script>
 </head>
 
-<body style="background-color:cornsilk;">
+<body >
     <div class="wrapper">
-        <aside id="sidebar">
+    <aside id="sidebar">
             <div class="d-flex">
                 <button class="toggle-btn" type="button">
                     <i class="lni lni-grid-alt"></i>
@@ -96,10 +96,11 @@ $result = $conn->query($sql);
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="" class="active sidebar-link">List Pets</a>
+                            <a style=" background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #3b7ddd;" href="../php/admin_pets.php" class="active sidebar-link">List Pets</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="../php/add_pet.php" class="active sidebar-link">Add Pet</a>
+                            <a href="../php/add_pet.php" class="sidebar-link">Add Pets</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="../php/adoptionRequest.php" class="sidebar-link">Adoption Request</a>
@@ -107,19 +108,20 @@ $result = $conn->query($sql);
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="../php/shelterList.php" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                <a href="../php/shelterList.php" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
                         <i class="fa-solid fa-house"></i>
                         <span>Shelter</span>
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
                             <a style=" background-color: rgba(255, 255, 255, .075);
-                                border-left: 3px solid #3b7ddd;" href="../php/shelterList.php" class="active sidebar-link">List Shelter</a>
+    border-left: 3px solid #3b7ddd;" href="../php/shelterList.php" class="active sidebar-link">List Shelter</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="../php/add_shelter.php" class="sidebar-link">Add Shelter</a>
                         </li>
+                        
                     </ul>
                 </li>
                 <li class="sidebar-item">
@@ -128,9 +130,10 @@ $result = $conn->query($sql);
                         <span>Donate</span>
                     </a>
                 </li>
+
             </ul>
             <div class="sidebar-footer">
-                <a href="#" class="sidebar-link">
+                <a href="../../html/index.html" class="sidebar-link">
                     <i class="lni lni-exit"></i>
                     <span>Logout</span>
                 </a>
@@ -209,10 +212,9 @@ $result = $conn->query($sql);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-pM3E6yfO9i8pAPM2Yo+5Ln0Md0Os2mA/+HzRbH2PvxdxE4u2N2GFnvynP0PRYRhp"
         crossorigin="anonymous"></script>
+        <script src="../javascript/sidebar.js"></script>
 </body>
 
 </html>
 
-<?php
-$conn->close();
-?>
+
