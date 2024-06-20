@@ -1,52 +1,3 @@
-<?php
-// Handle form submission and store data in the database
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "pethavenuser";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $name = $_POST['name'];
-    $color = $_POST['color'];
-    $type = $_POST['type'];
-    $breed = $_POST['breed'];
-    $shelter = $_POST['shelter'];
-    $vaccinated = isset($_POST['vaccinated']) ? 1 : 0;
-    $dewormed = isset($_POST['dewormed']) ? 1 : 0;
-    $age = $_POST['age'];
-    $gender = $_POST['gender'];
-    $status = "available";
-
-    $target_dir = "uploads/";
-    $image1 = $target_dir . basename($_FILES["image1"]["name"]);
-    $image2 = $target_dir . basename($_FILES["image2"]["name"]);
-    $image3 = $target_dir . basename($_FILES["image3"]["name"]);
-
-    move_uploaded_file($_FILES["image1"]["tmp_name"], $image1);
-    move_uploaded_file($_FILES["image2"]["tmp_name"], $image2);
-    move_uploaded_file($_FILES["image3"]["tmp_name"], $image3);
-
-    $sql = "INSERT INTO pet (name, color, type, breed, shelter, vaccinated, dewormed, age, image1, image2, image3, gender,status)
-            VALUES ('$name', '$color', '$type', '$breed', '$shelter', '$vaccinated', '$dewormed', '$age', '$image1', '$image2', '$image3', '$gender','$status')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-
-    $conn->close();
-}
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -102,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     border-left: 3px solid #3b7ddd;" href="../php/add_pet.php" class="active sidebar-link">Add Pet</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Adoption Request</a>
+                            <a href="../php/adoptionRequest.php" class="sidebar-link">Adoption Request</a>
                         </li>
                     </ul>
                 </li>
@@ -135,16 +86,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </h3>
                         <div class="row">
                             <div class="col-12">
-                                <form action="add_animal.php" method="post" enctype="multipart/form-data">
-                                    <?php include 'fetch_shelters.php'; ?>
+                                <form id="addPetForm" method="post" enctype="multipart/form-data">
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label for="name">Name:</label>
                                             <input type="text" id="name" name="name" required>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="Id">ID:</label>
-                                            <input type="text" id="breed" name="Id" required>
+                                            <label for="id">ID:</label>
+                                            <input type="text" id="id" name="id" required>
                                         </div>
                                     </div>
 
@@ -165,7 +115,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <div class="form-group row">
                                         <div class="col-md-6">
                                             <label for="type">Type:</label>
-                                            <input type="text" id="type" name="type" required>
+                                            <select id="type" name="type" required>
+                                                <option value="">Select a Type</option>
+                                                <option value="Cat">Cat</option>
+                                                <option value="Dog">Dog</option>
+                                                <option value="Rabbit">Rabbit</option>
+                                            </select>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="breed">Breed:</label>
@@ -198,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 if ($result->num_rows > 0) {
                                                     // Output data of each row
                                                     while ($row = $result->fetch_assoc()) {
-                                                        echo "<option value='". $row["id"]. "' style='font-family: Arial; color: #333;'>". $row["name"]. "</option>";
+                                                        echo "<option value='" . $row["id"] . "'>" . $row["name"] . "</option>";
                                                     }
                                                 } else {
                                                     echo "<option value=''>No shelters found</option>";
@@ -247,7 +202,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         </div>
                                     </div>
 
-                                    <!-- Image fields -->
                                     <div class="form-group">
                                         <label for="image1">Image 1:</label>
                                         <input type="file" id="image1" name="image1" accept="image/*" required>
@@ -260,9 +214,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <label for="image3">Image 3:</label>
                                         <input type="file" id="image3" name="image3" accept="image/*" required>
                                     </div>
-
+                                    <div id="message"></div>
                                     <button class="submit" type="submit">Submit</button>
                                 </form>
+                                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                                <script>
+                                    $(document).ready(function () {
+                                        $('#addPetForm').on('submit', function (e) {
+                                            e.preventDefault(); // Prevent the default form submission
+
+                                            // Create a FormData object to hold the form data
+                                            var formData = new FormData(this);
+
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: 'insert_pet.php', // Your PHP script to handle the form submission
+                                                data: formData,
+                                                processData: false, // Prevent jQuery from automatically processing the data
+                                                contentType: false, // Prevent jQuery from setting contentType
+                                                success: function (response) {
+                                                    // Display a success message
+                                                    $('#message').html('<div class="alert alert-success">The pet has been created successfully.</div>');
+
+                                                    // Optionally, reset the form
+                                                    $('#addPetForm')[0].reset();
+                                                },
+                                                error: function (xhr, status, error) {
+                                                    // Display an error message
+                                                    $('#message').html('<div class="alert alert-danger">There was an error creating the pet: ' + error + '</div>');
+                                                }
+                                            });
+                                        });
+                                    });
+                                </script>
+
                             </div>
                         </div>
                     </div>
