@@ -157,7 +157,7 @@
             
             if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
                 $keyword = $conn->real_escape_string($_GET['keyword']);
-                $whereClause[] = "(name LIKE '%$keyword%' OR description LIKE '%$keyword%')";
+                $whereClause[] = "(name LIKE '%$keyword%' )";
             }
 
             
