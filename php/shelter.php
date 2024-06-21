@@ -88,7 +88,7 @@
     <form action="shelter.php" method="GET">
         <h5 style="padding: 15px;">Choose your Shelter</h5>
         <div class="row align-items-center">
-            <div class="col-sm-4">
+            <div class="col-sm-4"  >
                 <select id="Location" name="location" class="form-select" style="border: 2px solid black;">
                     <option value="Select Location">Select Location</option>
                     <option value="Johor">Johor</option>
@@ -99,7 +99,7 @@
                     <option value="Kuala Lumpur">Kuala Lumpur</option>
                 </select>
             </div>
-            <div class="col-sm-5">
+            <div class="col-sm-4">
                 <input type="text" name="keyword" class="form-control" placeholder="Shelter Name"
                     style="border: 2px solid black;">
             </div>
@@ -157,7 +157,7 @@
             
             if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
                 $keyword = $conn->real_escape_string($_GET['keyword']);
-                $whereClause[] = "(name LIKE '%$keyword%' OR description LIKE '%$keyword%')";
+                $whereClause[] = "(name LIKE '%$keyword%' )";
             }
 
             
