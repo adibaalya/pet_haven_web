@@ -75,7 +75,7 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="../php/donationList.php" class="sidebar-link">
                         <i class="fa-solid fa-hand-holding-dollar"></i>
                         <span>Donate</span>
                     </a>
