@@ -1,25 +1,3 @@
-<?php
-if ($_GET) {
-  $id = htmlspecialchars($_GET['ID']);
-  $name = htmlspecialchars($_GET['name']);
-  $breed = htmlspecialchars($_GET['breed']);
-  $color = htmlspecialchars($_GET['color']);
-  $vaccinated = htmlspecialchars($_GET['vaccinated']);
-  $dewormed = htmlspecialchars($_GET['dewormed']);
-  $age = htmlspecialchars($_GET['age']);
-  $type = htmlspecialchars($_GET['type']);
-  $image = htmlspecialchars($_GET['image']);
-  $image2 = htmlspecialchars($_GET['image2']);
-  $image3 = htmlspecialchars($_GET['image3']);
-  $gender = htmlspecialchars($_GET['gender']);
-  $_SESSION['viewed_pets'][] = $id;
-} else {
-  echo 'No pet information available.';
-  exit;
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +18,6 @@ if ($_GET) {
 </head>
 
 <body>
-  <?php include 'animal.php'; ?>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <div id="trailer">
   </div>
@@ -48,7 +25,7 @@ if ($_GET) {
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="#">
-        <img src="assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo" />
+        <img src="../assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo" />
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,6 +65,76 @@ if ($_GET) {
     </nav>
   </section>
   <section id="detail-animal">
+    <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "pethavenuser";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Fetch pet details based on ID from $_POST
+    if (isset($_POST['ID'])) {
+      $id = htmlspecialchars($_POST['ID']);  // Fetch ID from POST data
+    
+      // Prepare SQL query (assuming 'pet' is your table name)
+      $sql = "SELECT p.*, s.name as shelter FROM pet p LEFT JOIN shelter s ON p.shelterId = s.id WHERE p.id = ?";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("i", $id);
+
+      // Execute SQL query
+      $stmt->execute();
+
+      // Check for errors
+      if ($stmt->error) {
+        echo "SQL Error: " . $stmt->error;
+      }
+
+      // Get result set
+      $result = $stmt->get_result();
+
+      // Check if there are results
+      if ($result->num_rows > 0) {
+        // Fetch pet data
+        $row = $result->fetch_assoc();
+        $name = htmlspecialchars($row['name']);
+        $breed = htmlspecialchars($row['breed']);
+        $color = htmlspecialchars($row['color']);
+        $vaccinated = ($row['vaccinated'] == 1 ? 'Yes' : 'No');
+        $deworm = htmlspecialchars($row['deworm'] == 1 ? 'Yes' : 'No');
+        $age = htmlspecialchars($row['age']);
+        $gender = htmlspecialchars($row['gender']);
+        $shelter = htmlspecialchars($row['shelter']);
+
+        // Fetch and encode images as base64
+        $image1 = base64_encode($row['image1']);
+        $image2 = base64_encode($row['image2']);
+        $image3 = base64_encode($row['image3']);
+
+        // Store viewed pets in session
+        session_start();  // Start session if not already started
+        $_SESSION['viewed_pets'][] = $id;
+      } else {
+        echo 'No pet found with ID ' . $id;
+        exit;
+      }
+
+      $stmt->close();
+    } else {
+      echo 'No pet ID provided.';
+      exit;
+    }
+
+    $conn->close();
+    ?>
+
+
     <div class="container">
       <div class="row">
         <div class="about-col-1">
@@ -99,13 +146,13 @@ if ($_GET) {
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img class="d-block w-100" src="<?php echo $image; ?>" alt="First slide">
+                <img class="d-block w-100" src="data:image/jpeg;base64,<?php echo $image1; ?>" alt="First slide">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="<?php echo $image2; ?>" alt="Second slide">
+                <img class="d-block w-100" src="data:image/jpeg;base64,<?php echo $image2; ?>" alt="First slide">
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="<?php echo $image3; ?>" alt="Third slide">
+                <img class="d-block w-100" src="data:image/jpeg;base64,<?php echo $image3; ?>" alt="First slide">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -150,7 +197,11 @@ if ($_GET) {
                 </tr>
                 <tr>
                   <th>DEWORMED</th>
-                  <td><?php echo $dewormed; ?></td>
+                  <td><?php echo $deworm; ?></td>
+                </tr>
+                <tr>
+                  <th>SHELTER</th>
+                  <td><?php echo $shelter; ?></td>
                 </tr>
               </table>
           </div>
@@ -206,42 +257,59 @@ if ($_GET) {
     <div class="container-wrapper">
       <div class="container">
         <?php
-       
-
-        // Assume $pets is an array of pet information
+        session_start();
+        include 'db_connect.php'; // Make sure db_connect.php includes your database connection logic
         
-        // Store the IDs of viewed pets in a session
-        if (!isset($_SESSION['viewed_pets'])) {
-          $_SESSION['viewed_pets'] = array();
+        // Database configuration (move this to db_connect.php if not already there)
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "pethavenuser";
+
+        // Establish database connection (use try-catch block for error handling)
+        try {
+          $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+          $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+          die("Error: Could not connect to the database. " . $e->getMessage());
         }
 
-        // Initialize a counter for the number of pets displayed
-        $pet_count = 0;
+        // Fetch all pets from the database
+        $stmt = $pdo->query("SELECT p.id, p.name, p.age, p.breed, p.gender, p.color, p.vaccinated, p.status, p.deworm, p.type, p.image1 as image, s.name as shelter FROM pet p LEFT JOIN shelter s ON p.shelterId = s.id");
+        $all_pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        // Loop through the pets array
-        foreach ($pets as $pet) {
-          if (!in_array($pet['ID'], $_SESSION['viewed_pets'])) {
-            echo '<div class="card">';
-            echo '<img src="' . htmlspecialchars($pet['image']) . '" alt="Image of ' . htmlspecialchars($pet['name']) . '">';
-            echo '<h2>' . htmlspecialchars($pet['name']) . '</h2>';
-            echo '<p class="shelter">Age: ' . htmlspecialchars($pet['age']) . '</p>';
-            echo '<form action="detail_animal.php" method="GET">'; // Use detail_animal.php for the next page
-            foreach ($pet as $key => $value) {
-              echo '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '">';
-            }
-            echo '<button type="submit" class="detail-button">ADOPT</button>';
-            echo '</form>';
-            echo '<button class="heart-button" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button>'; // Heart button
-            echo '</div>';
-            
-            $_SESSION['viewed_pets'][] = $pet['ID'];
-            $pet_count++;
-            if ($pet_count == 8) {
-              break;
+        // Store the ID of the current pet being viewed or adopted
+        if (isset($_POST['adopt_pet_id'])) {
+          $_SESSION['current_pet_id'] = $_POST['adopt_pet_id'];
+        }
+
+        // Shuffle the pets array (if needed)
+        shuffle($all_pets);
+
+        // Display the pets
+        $pet_count = 0;
+        foreach ($all_pets as $pet) {
+          if ($pet['id'] != $_SESSION['viewed_pets'][] = $id) {
+            if ($pet_count < 8) {
+              echo '<div class="card">';
+              echo '<img src="data:image/jpeg;base64,' . htmlspecialchars(base64_encode($pet['image'])) . '" alt="Image of ' . htmlspecialchars($pet['name']) . '">';
+              echo '<h2>' . htmlspecialchars($pet['name']) . '</h2>';
+              echo '<p class="shelter">Age: ' . htmlspecialchars($pet['age']) . '</p>';
+              echo '<form action="detail_animal.php" method="POST">';
+              echo '<input type="hidden" name="adopt_pet_id" value="' . htmlspecialchars($pet['id']) . '">';
+              echo '<button type="submit" class="detail-button">ADOPT</button>';
+              echo '</form>';
+              echo '<button class="heart-button" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button>'; // Heart button
+              echo '</div>';
             }
           }
         }
+
+        // Close the database connection
+        $pdo = null;
         ?>
+
+
 
       </div>
     </div>

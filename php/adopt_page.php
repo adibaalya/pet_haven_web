@@ -1,11 +1,3 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['wishlist'])) {
-  $_SESSION['wishlist'] = array();
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,10 +14,57 @@ if (!isset($_SESSION['wishlist'])) {
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Adopt</title>
+  <style>
+    /* CSS */
+    .filter-column {
+      background-color: #f7f7f7;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-item {
+      margin-bottom: 20px;
+    }
+
+    .filter-item h6 {
+      margin-top: 0;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .form-select {
+      width: 100%;
+      height: 40px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-select:focus {
+      border-color: #aaa;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+      background-color: black;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background-color: #23527c;
+    }
+  </style>
 </head>
 
 <body>
-  <?php include '../php/animal.php'; ?>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>
@@ -93,121 +132,160 @@ if (!isset($_SESSION['wishlist'])) {
     <div class="main">
       <div class="row">
         <div class="column filter-column">
-          <div class="filter-search">
-            <input type="search" id="filter-search" placeholder="Search..." />
-          </div>
-          <div class="filter-heading">
-            <h2>Filters</h2>
-          </div>
-          <div class="filter-item">
-            <h6>Type</h6>
-            <label for="type-dog" class="filter-label">
-              <input type="checkbox" id="type-dog" value="dog" />
-              Dog
-            </label>
-            <br />
-            <label for="type-cat" class="filter-label">
-              <input type="checkbox" id="type-cat" value="cat" />
-              Cat
-            </label>
-            <br />
-            <label for="type-rabbit" class="filter-label">
-              <input type="checkbox" id="type-rabbit" value="rabbit" />
-              Rabbit
-            </label>
-          </div>
-          <div class="filter-item">
-            <h6>Age</h6>
-            <label for="type-puppy" class="filter-label">
-              <input type="checkbox" id="type-dog" value="puppy" />
-              Puppy
-            </label>
-            <br />
-            <label for="type-kitten" class="filter-label">
-              <input type="checkbox" id="type-cat" value="kitten" />
-              Kitten
-            </label>
-            <br />
-            <label for="type-adult" class="filter-label">
-              <input type="checkbox" id="type-rabbit" value="adult" />
-              Adult
-            </label>
-          </div>
-          <div class="filter-item">
-            <h6>Gender</h6>
-            <label for="type-male" class="filter-label">
-              <input type="checkbox" id="type-dog" value="male" />
-              Male
-            </label>
-            <br />
-            <label for="type-female" class="filter-label">
-              <input type="checkbox" id="type-cat" value="female" />
-              Female
-            </label>
-          </div>
-          <div class="filter-item">
-            <h6>Colour</h6>
-            <label for="type-black" class="filter-label">
-              <input type="checkbox" id="type-dog" value="black" />
-              Black
-            </label>
-            <br />
-            <label for="type-brown" class="filter-label">
-              <input type="checkbox" id="type-cat" value="brown" />
-              Brown
-            </label>
-            <br />
-            <label for="type-grey" class="filter-label">
-              <input type="checkbox" id="type-rabbit" value="grey" />
-              Grey
-            </label>
-          </div>
-          <div class="filter-item">
-            <h6>Breed</h6>
-            <select id="Breed" name="breed" class="form-select" style="border: 1px solid black; border-radius: 5px;">
-              <option value="Select Breed">Select Breed</option>
-              <option value="Johor">Johor</option>
-              <option value="Kedah">Kedah</option>
-              <option value="Kelantan">Kelantan</option>
-              <option value="Melaka">Melaka</option>
-              <option value="Negeri Sembilan">Negeri Sembilan</option>
-              <option value="Pahang">Pahang</option>
-              <option value="Perak">Perak</option>
-              <option value="Perlis">Perlis</option>
-              <option value="Pulau Pinang">Pulau Pinang</option>
-              <option value="Sabah">Sabah</option>
-              <option value="Sarawak">Sarawak</option>
-              <option value="Selangor">Selangor</option>
-              <option value="Terengganu">Terengganu</option>
-              <option value="Kuala Lumpur">Kuala Lumpur</option>
-              <option value="Labuan">Labuan</option>
-              <option value="Putrajaya">Putrajaya</option>
-            </select>
-          </div>
-          <div class="filter-item">
-            <h6>Location</h6>
-            <select id="Location" name="location" class="form-select"
-              style="border: 1px solid black; border-radius: 5px;">
-              <option value="Select Location">Select Location</option>
-              <option value="Johor">Johor</option>
-              <option value="Kedah">Kedah</option>
-              <option value="Kelantan">Kelantan</option>
-              <option value="Melaka">Melaka</option>
-              <option value="Negeri Sembilan">Negeri Sembilan</option>
-              <option value="Pahang">Pahang</option>
-              <option value="Perak">Perak</option>
-              <option value="Perlis">Perlis</option>
-              <option value="Pulau Pinang">Pulau Pinang</option>
-              <option value="Sabah">Sabah</option>
-              <option value="Sarawak">Sarawak</option>
-              <option value="Selangor">Selangor</option>
-              <option value="Terengganu">Terengganu</option>
-              <option value="Kuala Lumpur">Kuala Lumpur</option>
-              <option value="Labuan">Labuan</option>
-              <option value="Putrajaya">Putrajaya</option>
-            </select>
-          </div>
+          <form action="adopt_page.php" method="GET">
+            <div class="filter-search">
+              <input type="search" name="keyword" id="filter-search" placeholder="Search..." />
+            </div>
+            <div class="filter-heading">
+              <h2>Filters</h2>
+            </div>
+            <div class="filter-item">
+              <h6>Type</h6>
+              <select id="Type" name="type" class="form-select" style="border: 1px solid black; border-radius: 5px;">
+                <option value="Select Type" <?php if (!isset($_GET['type']) || $_GET['type'] == 'Select Type')
+                  echo 'selected'; ?>>Select Type</option>
+                <option value="Cat" <?php if (isset($_GET['type']) && $_GET['type'] == 'Cat')
+                  echo 'selected'; ?>>Cat
+                </option>
+                <option value="Dog" <?php if (isset($_GET['type']) && $_GET['type'] == 'Dog')
+                  echo 'selected'; ?>>Dog
+                </option>
+                <option value="Rabbit" <?php if (isset($_GET['type']) && $_GET['type'] == 'Rabbit')
+                  echo 'selected'; ?>>
+                  Rabbit</option>
+              </select>
+            </div>
+
+            <div class="filter-item">
+              <h6>Gender</h6>
+              <select id="Gender" name="gender" class="form-select"
+                style="border: 1px solid black; border-radius: 5px;">
+                <option value="Select Gender" <?php if (!isset($_GET['gender']) || $_GET['gender'] == 'Select Gender')
+                  echo 'selected'; ?>>Select Gender</option>
+                <option value="Male" <?php if (isset($_GET['gender']) && $_GET['gender'] == 'Male')
+                  echo 'selected'; ?>>
+                  Male</option>
+                <option value="Female" <?php if (isset($_GET['gender']) && $_GET['gender'] == 'Female')
+                  echo 'selected'; ?>>Female</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <h6>Breed</h6>
+              <select id="Breed" name="breed" class="form-select" style="border: 1px solid black; border-radius: 5px;">
+                <option value="Select Breed">Select Breed</option>
+                <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "pethavenuser";
+
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                // Check connection
+                if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+                }
+
+                $sql = "SELECT * FROM pet";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                  // Output data of each row
+                  while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row["id"] . "'>" . $row["breed"] . "</option>";
+                  }
+                } else {
+                  echo "<option value=''>No breed</option>";
+                }
+
+                $conn->close();
+                ?>
+              </select>
+            </div>
+            <div class="filter-item">
+              <h6>Location</h6>
+              <select id="Location" name="location" class="form-select"
+                style="border: 1px solid black; border-radius: 5px;">
+                <option value="Select Location" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Select Location')
+                  echo 'selected'; ?>>Select Location</option>
+                <option value="Johor" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Johor')
+                  echo 'selected'; ?>>Johor</option>
+                <option value="Kedah" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Kedah')
+                  echo 'selected'; ?>>Kedah</option>
+                <option value="Kelantan" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Kelantan')
+                  echo 'selected'; ?>>Kelantan</option>
+                <option value="Melaka" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Melaka')
+                  echo 'selected'; ?>>Melaka</option>
+                <option value="Negeri Sembilan" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Negeri Sembilan')
+                  echo 'selected'; ?>>Negeri Sembilan</option>
+                <option value="Pahang" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Pahang')
+                  echo 'selected'; ?>>Pahang</option>
+                <option value="Perak" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Perak')
+                  echo 'selected'; ?>>Perak</option>
+                <option value="Perlis" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Perlis')
+                  echo 'selected'; ?>>Perlis</option>
+                <option value="Pulau Pinang" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Pulau Pinang')
+                  echo 'selected'; ?>>Pulau Pinang</option>
+                <option value="Sabah" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Sabah')
+                  echo 'selected'; ?>>Sabah</option>
+                <option value="Sarawak" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Sarawak')
+                  echo 'selected'; ?>>Sarawak</option>
+                <option value="Selangor" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Selangor')
+                  echo 'selected'; ?>>Selangor</option>
+                <option value="Terengganu" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Terengganu')
+                  echo 'selected'; ?>>Terengganu</option>
+                <option value="Kuala Lumpur" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Kuala Lumpur')
+                  echo 'selected'; ?>>Kuala Lumpur</option>
+                <option value="Labuan" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Labuan')
+                  echo 'selected'; ?>>Labuan</option>
+                <option value="Putrajaya" <?php if (!isset($_GET['location']) || $_GET['location'] == 'Putrajaya')
+                  echo 'selected'; ?>>Putrajaya</option>
+              </select>
+            </div>
+            <div class="filter_item">
+              <h6>Shelter</h6>
+              <select id="shelter" name="shelter" class="form-select"
+                style="border: 1px solid black; border-radius: 5px;">
+                <option value="" <?php if (!isset($_GET['shelter']) || $_GET['shelter'] == '')
+                  echo 'selected'; ?>>Select
+                  a Shelter</option>
+                <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "pethavenuser";
+
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                // Check connection
+                if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+                }
+
+                $sql = "SELECT * FROM shelter";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                  // Output data of each row
+                  while ($row = $result->fetch_assoc()) {
+                    echo "<option value='" . $row["id"] . "'" . (isset($_GET['shelter']) && $_GET['shelter'] == $row["id"] ? ' selected' : '') . ">" . $row["name"] . "</option>";
+                  }
+                } else {
+                  echo "<option value=''>No shelters found</option>";
+                }
+
+                $conn->close();
+                ?>
+              </select>
+            </div>
+            <div class="filter-item">
+              <button type="submit" class="btn btn-primary w-100">Search</button>
+            </div>
+          </form>
         </div>
+
       </div>
       <div class="column card-column">
         <div class="filter-title">
@@ -258,105 +336,153 @@ if (!isset($_SESSION['wishlist'])) {
         <div class="container-wrapper">
           <div class="container">
             <?php
+            session_start();
+            include 'db_connect.php';
+
+            // Database configuration
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "pethavenuser";
+
+            // Establish database connection
+            try {
+              $pdo = new PDO("mysql:host=$servername;port=3306;dbname=$dbname", $username, $password);
+              $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set error mode to exceptions
+            } catch (PDOException $e) {
+              die("Error: Could not connect to the database. " . $e->getMessage());
+            }
+
+            // Query to fetch pets data including BLOBs
+            $sql = "SELECT p.id, p.name, p.age, p.breed, p.gender, p.color, p.vaccinated, p.status, p.deworm, p.type, p.image1 as image, s.name as shelter 
+        FROM pet p 
+        LEFT JOIN shelter s ON p.shelterId = s.id";
+
+            $whereClause = [];
+
+            if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
+              $keyword = $_GET['keyword'];
+              $whereClause[] = "(p.name LIKE '%$keyword%' OR p.type LIKE '%$keyword%' OR p.breed LIKE '%$keyword%')";
+            }
+            if (isset($_GET['type']) && $_GET['type'] != 'Select Type') {
+              $type = $_GET['type'];
+              $whereClause[] = "p.type = '$type'";
+            }
+            if (isset($_GET['gender']) && $_GET['gender'] != 'Select Gender') {
+              $gender = $_GET['gender'];
+              $whereClause[] = "p.gender = '$gender'";
+            }
+            if (isset($_GET['location']) && $_GET['location'] != 'Select Location') {
+              $location = $_GET['location'];
+              $whereClause[] = "location = '$location'";
+            }
+            if (isset($_GET['shelter']) && $_GET['shelter'] != '') {
+              $shelter = $_GET['shelter'];
+              $whereClause[] = "p.shelterId = '$shelter'";
+            }
+
+            if (!empty($whereClause)) {
+              $sql .= " WHERE " . implode(" AND ", $whereClause);
+            }
+
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+            $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
             foreach ($pets as $pet) {
-              echo '<div class="card" data-id="' . htmlspecialchars($pet['ID']) . '">';
-              echo '<img src="' . htmlspecialchars($pet['image']) . '" alt="Image of ' . htmlspecialchars($pet['name']) . '">';
+              echo '<div class="card" data-id="' . htmlspecialchars($pet['id']) . '">';
+              echo '<img src="data:image/jpeg;base64,' . htmlspecialchars(base64_encode($pet['image'])) . '" alt="Image of ' . htmlspecialchars($pet['name']) . '">';
               echo '<h2>' . htmlspecialchars($pet['name']) . '</h2>';
-              echo '<p class="shelter">Age: ' . htmlspecialchars($pet['age']) . '</p>';
-              echo '<form action="detail_animal.php" method="GET">'; // Use detail_animal.php for the next page
-              foreach ($pet as $key => $value) {
-                echo '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '">';
-              }
+              echo '<p class="shelter"> ' . htmlspecialchars($pet['shelter']) . '</p>';
+              echo '<form action="detail_animal.php" method="POST">';
+              echo '<input type="hidden" name="ID" value="' . htmlspecialchars($pet['id']) . '">';
+              // Add more hidden fields if necessary
               echo '<button type="submit" class="detail-button">ADOPT</button>';
               echo '</form>';
-              echo '<button class="heart-button" onclick="addToWishlist(' . htmlspecialchars(json_encode($pet)) . ', this)" >
-                  <i class="fas fa-heart"></i>
-                  </button>';
+
+              echo '<button class="heart-button" onclick="addToWishlist(' . htmlspecialchars(json_encode($pet['id'])) . ', this)" >
+        <i class="fas fa-heart"></i>
+        </button>';
               echo '</div>';
             }
             ?>
             <script>
-              // Array to store wishlist items
               let wishlist = [];
 
-              function addToWishlist(pet, button) {
+              function addToWishlist(petId, button) {
                 console.log('addToWishlist called');
                 console.log('Button:', button);
-
-                const petIndex = wishlist.findIndex(item => item.ID === pet.ID);
+                const petIndex = wishlist.findIndex(item => item === petId);
                 const isPetInWishlist = petIndex !== -1;
-
                 if (!isPetInWishlist) {
-                  wishlist.push(pet);
+                  wishlist.push(petId);
                 } else {
                   wishlist.splice(petIndex, 1);
                 }
-
                 updateWishlistPopup();
-                // Update the heart button state immediately
                 button.classList.toggle("liked", !isPetInWishlist);
-              }
-
-              function removeFromWishlist(index) {
-                const removedPet = wishlist[index];
-                wishlist.splice(index, 1);
-                updateWishlistPopup();
-
-                // Find the heart button associated with the removed pet
-                const heartButton = document.querySelector('.card[data-id="' + removedPet.ID + '"] .heart-button');
-
-                if (heartButton) {
-                  // Remove the liked class from the heart button
-                  heartButton.classList.remove('liked');
-                }
               }
 
               function updateWishlistPopup() {
                 const wishlistTable = document.querySelector('#wishlist table');
-
-                // Clear existing rows
                 wishlistTable.innerHTML = '';
 
-                // Add rows for each pet in the wishlist
-                wishlist.forEach((pet, index) => {
-                  wishlistTable.innerHTML += `
-            <tr>
-                <td><img src="${pet.image}" alt="Circle Image" /></td>
-                <td>
-                    <b>${pet.name}</b> <br />
-                    Foster Home
-                </td>
-                <td class="available">Available</td>
-                <td>
-                    <button class="delete-button" data-id="${index}" class="button">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </td>
-            </tr>
+                // Fetch pet details from database using IDs
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'fetch_pet_details.php?id=' + wishlist.join(','), true);
+                xhr.onload = function () {
+                  if (xhr.status === 200) {
+                    const petDetails = JSON.parse(xhr.responseText);
+                    petDetails.forEach((pet, index) => {
+                      wishlistTable.innerHTML += `
+          <tr>
+            <td><img src="${pet.image}" alt="Circle Image" /></td>
+            <td> <b>${pet.name}</b> <br /> Foster Home </td>
+            <td class="available">Available</td>
+            <td>
+              <button class="delete-button" data-id="${index}" class="button">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
         `;
-                });
+                    });
 
-                // Update heart buttons
-                const heartButtons = document.querySelectorAll('.heart-button');
-                heartButtons.forEach(button => {
-                  const card = button.closest('.card');
-                  if (card) {
-                    const petId = card.getAttribute('data-id');
-                    const isPetInWishlist = wishlist.some(item => item.ID === petId);
-                    button.classList.toggle("liked", isPetInWishlist);
+                    // Update heart buttons
+                    const heartButtons = document.querySelectorAll('.heart-button');
+                    heartButtons.forEach(button => {
+                      const card = button.closest('.card');
+                      if (card) {
+                        const petId = card.getAttribute('data-id');
+                        const isPetInWishlist = wishlist.includes(parseInt(petId));
+                        button.classList.toggle("liked", isPetInWishlist);
+                      }
+                    });
+
+                    // Add event listeners to delete buttons
+                    const deleteButtons = document.querySelectorAll(".delete-button");
+                    deleteButtons.forEach(button => {
+                      button.addEventListener("click", function () {
+                        const index = parseInt(button.dataset.id);
+                        removeFromWishlist(index);
+                      });
+                    });
                   }
-                });
-
-                // Add event listeners to delete buttons
-                const deleteButtons = document.querySelectorAll(".delete-button");
-                deleteButtons.forEach(button => {
-                  button.addEventListener("click", function () {
-                    const index = parseInt(button.dataset.id);
-                    removeFromWishlist(index);
-                  });
-                });
+                };
+                xhr.send();
               }
 
+              function removeFromWishlist(index) {
+                const removedPetId = wishlist[index];
+                wishlist.splice(index, 1);
+                updateWishlistPopup();
+
+                // Find the heart button associated with the removed pet
+                const heartButton = document.querySelector('.card[data-id="' + removedPetId + '"] .heart-button');
+                if (heartButton) {
+                  heartButton.classList.remove('liked');
+                }
+              }
             </script>
 
           </div>
