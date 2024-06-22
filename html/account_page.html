@@ -49,8 +49,15 @@
           <li class="nav-item">
             <a class="nav-link" href="../html/index.html#help">HELP</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="account_page.html">ACCOUNT</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="display: block;">
+              ACCOUNT
+            </a>
+            <div class="dropdown-menu" aria-labelledby="accountDropdown">
+              <a class="dropdown-item" href="account_page.html">PROFILE</a>
+              <a class="dropdown-item" href="#" id="logoutButton">LOGOUT</a>
+            </div>
           </li>
         </ul>
       </div>
@@ -79,7 +86,7 @@
           <h6>Pet Haven Member</h6>
           <div class="container-1">
             <h4>Update Account Details</h4>
-            <form id="account-form" action="../php/get_account_details.php" method="POST">
+            <form id="account-form" method="POST">
               <label for="fullname">Full Name</label>
               <input type="text" id="name" name="fullname" placeholder="Name">
 

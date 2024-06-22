@@ -158,23 +158,3 @@ document.addEventListener('DOMContentLoaded', function() {
     window.location.href = '../html/index.html';
   });
 });
-
-$(document).ready(function() {
-  $.ajax({
-    url: '../php/user.php', 
-    type: 'POST',
-    data: formData,
-    dataType: 'json',
-    success: function (response) {
-      if (response.status === 'success') {
-        showToast('loginSuccessToast');
-      } else {
-        showToast('errorToast'); 
-      }
-    },
-    error: function (jqXHR, textStatus, errorThrown) {
-      console.error('AJAX Error:', textStatus, errorThrown);
-      showToast('errorToast');
-    }
-  });
-});
