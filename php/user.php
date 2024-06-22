@@ -70,13 +70,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if ($result->num_rows > 0) {
         $_SESSION['email'] = $email; 
         echo "<script>
-            alert('User login successful');
-            window.location.href = '../html/account_page.html';
+            localStorage.setItem('isLoggedIn', 'true');
+            window.location.href = '../html/index.html';
         </script>";
         exit();
     } else {
         echo "<script>
-            alert('Invalid email or password');
             window.location.href = '../html/index.html';
         </script>";
     }
