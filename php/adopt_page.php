@@ -339,9 +339,15 @@
             session_start();
             include 'db_connect.php';
 
+            // Database configuration
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "pethavenuser";
+
             // Establish database connection
             try {
-              $pdo = new PDO("mysql:host=localhost;port=3306;dbname=$dbname", $username, $password);
+              $pdo = new PDO("mysql:host=$servername;port=3306;dbname=$dbname", $username, $password);
               $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set error mode to exceptions
             } catch (PDOException $e) {
               die("Error: Could not connect to the database. " . $e->getMessage());
@@ -400,7 +406,6 @@
               echo '</div>';
             }
             ?>
-           
             <script>
               let wishlist = [];
 
