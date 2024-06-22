@@ -177,6 +177,7 @@
             crossorigin="anonymous"></script>
         <!-- Custom JavaScript for sidebar -->
         <script src="../javascript/sidebar.js"></script>
+        <script src="../javascript/shelter.js"></script>
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script>
