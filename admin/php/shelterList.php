@@ -73,11 +73,12 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="fa-solid fa-hand-holding-dollar"></i>
-                        <span>Donate</span>
-                    </a>
-                </li>
+    <a href="../php/donationList.php" class="sidebar-link">
+        <i class="fa-solid fa-hand-holding-dollar"></i>
+        <span>Donate</span>
+    </a>
+</li>
+
 
             </ul>
             <div class="sidebar-footer">
