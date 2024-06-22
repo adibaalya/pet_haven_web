@@ -1,3 +1,11 @@
+<?php
+// Check if user is logged in
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+  $isLoggedIn = true;
+} else {
+  $isLoggedIn = false;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -206,9 +214,10 @@
               </table>
           </div>
           <div class="button-container">
-            <button id="open-popup" class="button" data-toggle="modal" data-target="#Adopt">ADOPT ME</button>
+          <button id="open-popup" class="button" data-toggle="modal" data-target="<?php echo ($isLoggedIn) ? '#Adopt' : '#Login'; ?>">ADOPT ME</button>
           </div>
 
+          
           <div class="modal fade" id="Adopt" tabindex="-1" role="dialog" aria-labelledby="adopt" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
