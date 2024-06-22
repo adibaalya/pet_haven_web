@@ -291,15 +291,19 @@
         foreach ($all_pets as $pet) {
           if ($pet['id'] != $_SESSION['viewed_pets'][] = $id) {
             if ($pet_count < 8) {
-              echo '<div class="card">';
+              echo '<div class="card" data-id="' . htmlspecialchars($pet['id']) . '">';
               echo '<img src="data:image/jpeg;base64,' . htmlspecialchars(base64_encode($pet['image'])) . '" alt="Image of ' . htmlspecialchars($pet['name']) . '">';
               echo '<h2>' . htmlspecialchars($pet['name']) . '</h2>';
-              echo '<p class="shelter">Age: ' . htmlspecialchars($pet['age']) . '</p>';
+              echo '<p class="shelter"> ' . htmlspecialchars($pet['shelter']) . '</p>';
               echo '<form action="detail_animal.php" method="POST">';
-              echo '<input type="hidden" name="adopt_pet_id" value="' . htmlspecialchars($pet['id']) . '">';
+              echo '<input type="hidden" name="ID" value="' . htmlspecialchars($pet['id']) . '">';
+              // Add more hidden fields if necessary
               echo '<button type="submit" class="detail-button">ADOPT</button>';
               echo '</form>';
-              echo '<button class="heart-button" onclick="toggleHeart(this)"><i class="fas fa-heart"></i></button>'; // Heart button
+
+              echo '<button class="heart-button" onclick="addToWishlist(' . htmlspecialchars(json_encode($pet['id'])) . ', this)" >
+        <i class="fas fa-heart"></i>
+        </button>';
               echo '</div>';
             }
           }
