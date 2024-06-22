@@ -1,5 +1,5 @@
 <?php
-session_start(); // Ensure session is started
+session_start();
 
 $servername = "localhost";
 $username = "root";
@@ -12,19 +12,17 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sessionEmail = $_SESSION['email']; // Use a different variable for session email
+$sessionEmail = $_SESSION['email']; 
 $name = $_POST['fullname'];
-$postEmail = $_POST['email']; // Use a different variable for posted email
-$hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash password
+$postEmail = $_POST['email']; 
+$hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT); 
 
-// Use prepared statement to prevent SQL injection
 $stmt = $conn->prepare("UPDATE userinfo SET name=?, email=?, password=? WHERE email=?");
 $stmt->bind_param("ssss", $name, $postEmail, $hashedPassword, $sessionEmail);
 
 if ($stmt->execute()) {
-    $_SESSION['email'] = $postEmail; // Update session email if email was changed
+    $_SESSION['email'] = $postEmail; 
     
-    // Instead of using a script for redirection, send a JSON response
     header('Content-Type: application/json');
     echo json_encode([
         'success' => true,
@@ -33,7 +31,6 @@ if ($stmt->execute()) {
         'email' => $postEmail
     ]);
 } else {
-    // Send a JSON response on failure
     header('Content-Type: application/json');
     echo json_encode([
         'success' => false,

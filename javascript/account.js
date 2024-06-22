@@ -97,3 +97,27 @@ $(document).ready(function () {
   });
 });
 
+$(document).ready(function() {
+  $('#account-form').on('submit', function(e) {
+      e.preventDefault(); // Prevent default form submission
+      var formData = $(this).serialize(); // Serialize form data
+
+      $.ajax({
+          type: "POST",
+          url: "../php/update_account.php", 
+          data: formData,
+          dataType: "json",
+          success: function(response) {
+              if(response.success) {
+                  $('#fullnameDisplay').text(response.name); 
+                  alert(response.message); 
+              } else {
+                  alert(response.message); 
+              }
+          },
+          error: function() {
+              alert("An error occurred. Please try again.");
+          }
+      });
+  });
+});
