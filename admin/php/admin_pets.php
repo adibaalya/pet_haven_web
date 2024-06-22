@@ -32,7 +32,7 @@
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="../php/admin_pets.php" class="sidebar-link">
+                    <a href="#" class="sidebar-link">
                         <i class="fa-solid fa-user"></i>
                         <span>Profile</span>
                     </a>
@@ -52,7 +52,7 @@
                             <a href="../php/add_pet.php" class="sidebar-link">Add Pets</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="../php/adoptionRequest.php" class="sidebar-link">Adoption Request</a>
+                            <a href="#" class="sidebar-link">Adoption Request</a>
                         </li>
                     </ul>
                 </li>
