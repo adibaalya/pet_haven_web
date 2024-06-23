@@ -109,3 +109,36 @@ document.getElementById('contactButton').addEventListener('click', function () {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  const images = [
+    "../assets/images/pets-banner.jpg",
+    "../assets/images/pets-banner-2.jpg", 
+    "../assets/images/pets-banner-3.jpg"
+  ];
+  let currentIndex = 0;
+
+  function cycleImages() {
+    currentIndex = (currentIndex + 1) % images.length; // Cycle through the array
+    document.getElementById('bannerImg').src = images[currentIndex]; // Update the image src
+    updateActiveDot();
+  }
+
+  setInterval(cycleImages, 3000); // Change image every 3000 milliseconds (3 seconds)
+
+  document.querySelectorAll('#bannerControls .dot').forEach(dot => {
+    dot.addEventListener('click', function() {
+      currentIndex = parseInt(this.getAttribute('data-index')); // Update currentIndex based on dot
+      document.getElementById('bannerImg').src = images[currentIndex]; // Immediately update the image src
+      updateActiveDot();
+    });
+  });
+
+  function updateActiveDot() {
+    document.querySelectorAll('#bannerControls .dot').forEach(dot => {
+      dot.classList.remove('active');
+    });
+    document.querySelector(`#bannerControls .dot[data-index="${currentIndex}"]`).classList.add('active');
+  }
+
+  updateActiveDot(); // Initialize the active dot on page load
+});
