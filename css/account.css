@@ -44,7 +44,65 @@
     font-weight: 400;
 }
 
+table {
+    padding-top: 40px;
+    width: 60%;
+    border-collapse: collapse;
+    border-top: 1px solid #ccc;
 
+}
+
+tr {
+    border-bottom: 1px solid #ccc;
+}
+
+td {
+    padding: 10px;
+
+}
+
+td:last-child {
+    text-align: right;
+}
+
+.pet-image {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    text-align: right;
+}
+
+.pet-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 100%;
+    /* Add this line to make the image rounded */
+}
+
+.pet-detail {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.status {
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.pending {
+    color: rgba(0, 0, 1, 0.663);
+}
+
+.approve {
+    color: green;
+}
+
+.reject {
+    color: red;
+}
 
 
 .actions {
@@ -285,33 +343,4 @@ input[type="submit"]:hover {
 
 .show {
     display: block;
-}
-.table-container {
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgb(9, 9, 9);
-    background-color: #ffffff;
-}
-.table thead th {
-    background-color: #f8f9fa;
-    font-weight: bold;
-}
-.table tbody tr {
-    transition: background-color 0.3s;
-}
-.table tbody tr:hover {
-    background-color: #f1f1f1;
-}
-.status.approve {
-    color: green;
-}
-.status.pending {
-    color: orange;
-}
-.status.rejected {
-    color: red;
-}
-.pick-date-btn {
-    margin-left: 10px;
 }

@@ -1,49 +1,51 @@
 <?php
-// Example fetch_pet_detail.php script
+session_start();
 
-// Assuming you have a database connection established
-// Replace with your actual database connection code
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "your_database";
+// Include database connection file
+require_once 'db_connect.php';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Check if pet IDs are provided
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    http_response_code(400);
+    echo json_encode(['error' => 'No pet IDs provided']);
+    exit;
 }
 
-// Fetch pet details based on IDs from GET parameter
-$petIds = $_GET['id']; // Ensure to validate and sanitize input
-$petIdsArray = explode(',', $petIds); // Split comma-separated IDs into an array
+// Get pet IDs from URL parameter
+$petIds = explode(',', $_GET['id']);
 
-// Prepare SQL statement (example query, adjust based on your database schema)
-$sql = "SELECT id, name, image, shelter FROM pets WHERE id IN (" . implode(',', $petIdsArray) . ")";
+// Create an array to store the pet details
+$petDetails = [];
 
-$result = $conn->query($sql);
+// Loop through each pet ID
+foreach ($petIds as $petId) {
+    // Prepare the SQL query
+    $sql = "SELECT p.id, p.name, p.image1 as image FROM pet p WHERE p.id = :petId";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':petId', $petId, PDO::PARAM_INT);
 
-if ($result) {
-    $petDetails = array();
-    while ($row = $result->fetch_assoc()) {
-        // Build array of pet details
-        $petDetails[] = array(
-            'id' => $row['id'],
-            'name' => $row['name'],
-            'image' => $row['image'],
-            'shelter' => $row['shelter']
-        );
+    try {
+        $stmt->execute();
+    } catch (PDOException $e) {
+        http_response_code(500);
+        echo json_encode(['error' => 'Database error: ' . $e->getMessage()]);
+        exit;
     }
-    // Return JSON-encoded array of pet details
-    echo json_encode($petDetails);
-} else {
-    // Handle database query error
-    http_response_code(500); // Internal Server Error
-    echo json_encode(array('error' => 'Database query error: ' . $conn->error));
+
+    // Fetch the pet details
+    $pet = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Add the pet details to the array
+    if ($pet) {
+        $petDetails[] = $pet;
+    } else {
+        http_response_code(404);
+        echo json_encode(['error' => 'Pet not found']);
+        exit;
+    }
 }
 
-// Close database connection
-$conn->close();
+// Output the pet details in JSON format
+header('Content-Type: application/json');
+echo json_encode($petDetails);
 ?>

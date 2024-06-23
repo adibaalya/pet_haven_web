@@ -11,13 +11,13 @@
 </head>
 
 <body>
-<div id="trailer">
-  </div>
+  <div id="trailer"></div>
   <script src="../javascript/trailer.js"></script>
+
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-        <img src="../assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo" />
+        <img src="../assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,12 +26,19 @@
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="../html/index.html">HOME</a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="../php/adopt_page.php">ADOPT</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="../php/adopt_page.php" id="adoptDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              ADOPT
+            </a>
+            <div class="dropdown-menu" aria-labelledby="adoptDropdown">
+              <a class="dropdown-item" href="../php/adopt_page.php">Dogs</a>
+              <a class="dropdown-item" href="../php/adopt_page.php">Cats</a>
+              <a class="dropdown-item" href="../php/adopt_page.php">Rabbit</a>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../html/donate.html">DONATION</a>
@@ -42,18 +49,8 @@
           <li class="nav-item">
             <a class="nav-link" href="../html/index.html#help">HELP</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false" style="display: none;">
-              ACCOUNT
-            </a>
-            <div class="dropdown-menu" aria-labelledby="accountDropdown">
-              <a class="dropdown-item" href="../php/account_page.php">PROFILE</a>
-              <a class="dropdown-item" href="#" id="logoutButton">LOGOUT</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="loginButton" href="login_page.html" style="display: none;">LOGIN</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="account_page.html">ACCOUNT</a>
           </li>
         </ul>
       </div>
@@ -102,55 +99,55 @@
       <div class="tab-pane fade" id="adoptions">
         <div class="detail-container">
           <h2 class="title">Adoption</h2>
-          <div class="container table-container">
-    <table id="adoptionTable" class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>Pet ID</th>
-                <th>Shelter ID</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            // Establish database connection
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "pethavenuser";
+          <table id="adoptionTable" class="table">
+                <thead>
+                    <tr>
+                    <th>Pet ID</th>
+                    <th>Shelter ID</th>
+                    <th></th>
+                  
+                    </tr>
+                </thead>
+                <tbody>
+              <?php
+              // Establish database connection
+              $servername = "localhost";
+              $username = "root";
+              $password = "";
+              $dbname = "pethavenuser";
 
-            $conn = new mysqli($servername, $username, $password, $dbname);
+              $conn = new mysqli($servername, $username, $password, $dbname);
 
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+              if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+              }
 
-            // Fetch adoption data from database
-            $sql = "SELECT petId, shelterId, status, email FROM adoption";
-            $result = $conn->query($sql);
+              // Fetch adoption data from database
+              $sql = "SELECT petId, shelterId, status FROM adoption";
+              $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
+              if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . $row['petId'] . "</td>";
                     echo "<td>" . $row['shelterId'] . "</td>";
-                    echo "<td class='status " . strtolower($row['status']) . "'>" . ucfirst($row['status']);
+                    echo "<td class='status " . strtolower($row['status']) . "'>" . $row['status'];
                     if ($row['status'] == 'approve') {
                         // Display date picker button if status is 'approve'
                         echo "<button class='btn btn-sm btn-outline-primary pick-date-btn' data-email='" . $row['email'] . "' data-petid='" . $row['petId'] . "' data-shelterid='" . $row['shelterId'] . "'>Pick Date</button>";
                     }
                     echo "</td>";
                     echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='3'>No adoption records found</td></tr>";
-            }
+                    
+                  }
+              } else {
+                  echo "<tr><td colspan='3'>No adoption records found</td></tr>";
+              }
 
-            $conn->close();
-            ?>
-        </tbody>
-    </table>
-</div>
+              $conn->close();
+              ?>
+            </tbody>
+          </table>
         </div>
       </div>
       <div class="tab-pane fade" id="donations">
@@ -233,6 +230,5 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="../javascript/account.js"></script>
   <script src="../javascript/adopt_js.js"></script>
-  <script src="../javascript/nav-bar-account.js"></script>
 </body>
 </html>

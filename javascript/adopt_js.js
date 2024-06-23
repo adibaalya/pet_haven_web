@@ -28,6 +28,7 @@ $(document).ready(function() {
                             <td class="actions">${actions}</td>
                         </tr>
                     `;
+                    console.log('Appending row:', rowHtml); // Log row HTML for debugging
                     tableBody.append(rowHtml);
                 });
             },
@@ -48,9 +49,12 @@ $(document).ready(function() {
             var petId = row.data('pet-id');
             var shelterId = row.data('shelter-id');
 
-            updateAdoptionStatus(email, petId, shelterId, 'cancel', null, function(success) {
+            // Call the updateAdoptionStatus function with action 'cancel'
+            updateAdoptionStatus(email, petId, shelterId, 'cancel', function(success) {
                 if (success) {
-                    fetchAdoptions(); // Refresh the table after updating the status
+                    // Update the status column and replace Cancel button with Delete button
+                    row.find('.status').text('cancel').removeClass('pending approve rejected').addClass('cancel');
+                    row.find('.actions').html('<button class="button delete" style="width: fit-content">Delete</button>');
                 }
             });
         }
@@ -64,9 +68,11 @@ $(document).ready(function() {
             var petId = row.data('pet-id');
             var shelterId = row.data('shelter-id');
 
-            updateAdoptionStatus(email, petId, shelterId, 'delete', null, function(success) {
+            // Call the updateAdoptionStatus function with action 'delete'
+            updateAdoptionStatus(email, petId, shelterId, 'delete', function(success) {
                 if (success) {
-                    fetchAdoptions(); // Refresh the table after deleting the record
+                    // If successful, remove the row from the table
+                    row.remove();
                 }
             });
         }
@@ -79,11 +85,15 @@ $(document).ready(function() {
         var petId = row.data('pet-id');
         var shelterId = row.data('shelter-id');
 
+        // Prompt the user to set a date
         var adoptionDate = prompt('Please enter the adoption date (YYYY-MM-DD):');
         if (adoptionDate) {
+            // Call the updateAdoptionStatus function with action 'approve' and adoptionDate
             updateAdoptionStatus(email, petId, shelterId, 'approve', adoptionDate, function(success) {
                 if (success) {
-                    fetchAdoptions(); // Refresh the table after updating the adoption date
+                    // Update the status column with 'approve' and display adoptionDate
+                    row.find('.status').html(`approve<br><span class="adoption-date">Adoption Date: ${adoptionDate}</span>`)
+                        .removeClass('pending cancel rejected').addClass('approve');
                 }
             });
         }
