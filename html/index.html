@@ -102,7 +102,8 @@
     </div>
   </div>
 
-  <div class="toast position-fixed bottom-right-toast" id="loginSuccessToast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+  <div class="toast position-fixed bottom-right-toast" id="loginSuccessToast" role="alert" aria-live="assertive"
+    aria-atomic="true" data-delay="5000">
     <div class="toast-header">
       <i class="fas fa-check-circle text-success mr-2"></i>
       <strong class="mr-auto text-success">Login Success</strong>
@@ -165,12 +166,18 @@
   </div>
 
   <div style="margin-top: 40px;" class="banner position-relative d-flex align-items-center justify-content-center">
-    <img src="../assets/images/pets-banner.png" alt="Banner" class="img-fluid" />
+    <img id="bannerImg" src="../assets/images/pets-banner.png" alt="Banner" class="img-fluid" />
     <div class="position-absolute text-center">
       <a href="../php/adopt_page.php">
         <button class="btn btn-dark btn-lg me-2">ADOPT NOW</button>
       </a>
     </div>
+    <div id="bannerControls" class="position-relative mt-1">
+      <span data-index="0" class="dot"></span>
+      <span data-index="1" class="dot"></span>
+      <span data-index="2" class="dot"></span>
+    </div>
+    
   </div>
 
   <div class="countdown-container container text-center py-5 mt-5">
@@ -226,7 +233,36 @@
     <div class="row no-gutters">
       <div class="image-container col-md-4 col-sm-12">
         <img src="../assets/images/dog.png" alt="Dog" class="img-fluid care-img" data-toggle="modal"
-          data-target="#dogModal">
+          data-target="#dogTipsModal">
+          <div class="modal fade" id="dogTipsModal" tabindex="-1" role="dialog" aria-labelledby="dogTipsModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title" id="catTipsModalLabel">How do I take care of a Dog?</h1>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body px-4">
+                <p>
+                  Basic Tips Caring for Your Dog
+                <ul>
+                  <li>Provide a balanced diet with high-quality dog food.</li>
+                  <li>Ensure access to fresh water at all times.</li>
+                  <li>Schedule regular vet check-ups and vaccinations.</li>
+                  <li>Take your dog out on walk daily, for bonding time.</li>
+                  <li>Give attention to ensure your dog does not feel lonely.</li>
+                </ul>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <a href="adopt_page.php"><button type="button" class="btn btn-dark">Adopt Now</button></a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="image-container col-md-4 col-sm-12">
         <img src="../assets/images/cat.png" alt="Cat" class="img-fluid care-img" data-toggle="modal"
@@ -264,7 +300,37 @@
       </div>
       <div class="image-container col-md-4 col-sm-12">
         <img src="../assets/images/rabbit.png" alt="Rabbit" class="img-fluid care-img" data-toggle="modal"
-          data-target="#rabbitModal">
+          data-target="#rabbitTipsModal">
+          <div class="modal fade" id="rabbitTipsModal" tabindex="-1" role="dialog" aria-labelledby="rabbitTipsModallLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title" id="catTipsModalLabel">How do I take care of a Rabbit?</h1>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body px-4">
+                <p>
+                  Basic Tips Caring for Your Rabbit
+                <ul>
+                  <li>Provide a balanced diet with treats</li>
+                  <li>Ensure access to fresh water at all times.</li>
+                  <li>Schedule regular vet check-ups and vaccinations.</li>
+                  <li>Create a stimulating environment with toys.</li>
+                  <li>Speak softly and avoid sudden movements to minimize stress.</li>
+                  <li>Only carry for short durations to avoid overheating.</li>
+                </ul>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <a href="adopt_page.php"><button type="button" class="btn btn-dark">Adopt Now</button></a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
