@@ -6,6 +6,7 @@ $(document).ready(function() {
             method: 'GET',
             dataType: 'json',
             success: function(data) {
+                console.log('Fetched adoptions:', data); // Log fetched data for debugging
                 var tableBody = $('#adoptionTable tbody');
                 tableBody.empty();
                 data.forEach(function(row) {
@@ -27,6 +28,7 @@ $(document).ready(function() {
                             <td class="actions">${actions}</td>
                         </tr>
                     `;
+                    console.log('Appending row:', rowHtml); // Log row HTML for debugging
                     tableBody.append(rowHtml);
                 });
             },
@@ -51,7 +53,7 @@ $(document).ready(function() {
             updateAdoptionStatus(email, petId, shelterId, 'cancel', function(success) {
                 if (success) {
                     // Update the status column and replace Cancel button with Delete button
-                    row.find('.status').text('cancel').removeClass('pending').addClass('cancel');
+                    row.find('.status').text('cancel').removeClass('pending approve rejected').addClass('cancel');
                     row.find('.actions').html('<button class="button delete" style="width: fit-content">Delete</button>');
                 }
             });
@@ -90,7 +92,8 @@ $(document).ready(function() {
             updateAdoptionStatus(email, petId, shelterId, 'approve', adoptionDate, function(success) {
                 if (success) {
                     // Update the status column with 'approve' and display adoptionDate
-                    row.find('.status').html(`approve<br><span class="adoption-date">Adoption Date: ${adoptionDate}</span>`);
+                    row.find('.status').html(`approve<br><span class="adoption-date">Adoption Date: ${adoptionDate}</span>`)
+                        .removeClass('pending cancel rejected').addClass('approve');
                 }
             });
         }
@@ -110,6 +113,7 @@ $(document).ready(function() {
             },
             dataType: 'json',
             success: function(response) {
+                console.log('Update status response:', response); // Log response for debugging
                 if (response.success) {
                     callback(true); // Notify success
                 } else {
