@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/account.css">
   <link rel="stylesheet" href="../css/trailer.css">
+  <link rel="stylesheet" href="../css/Badge.css">
   <title>Account</title>
 </head>
 
@@ -152,36 +153,27 @@
       </div>
       <div class="tab-pane fade" id="donations">
         <div class="detail-container">
+          
           <div class="container mt-5 mb-5 donation">
-            <p class="text-center">
-              Thank you for your incredible support! As a token of our gratitude we are delighted to present you with
-              a donor badge that honors your significant contributions.
+            <h2 class="text-center mb-4">Thank You for Your Support!</h2>
+            <p class="text-center mb-4">
+              We appreciate your incredible generosity. As a token of our gratitude, here are your donor badges:
             </p>
+
+            <!-- Display collected points -->
+            <div class="container mb-4 points-container">
+    <p class="text-center points-label">Points Collected: <span id="points">Loading...</span></p>
+</div>
+
+
+            <!-- Badge container -->
+            <div class="badge-container">
+              <!-- Badges will be dynamically loaded here -->
+            </div>
           </div>
-          
-          <!-- Display collected points -->
-          <div class="container">
-            <p>Points: <?php echo $points; ?></p>
-          </div>
-          
-          <!-- Badge container -->
-          <div class="badge-container" id="badgeContainer">
-            <div class="badge">
-                <img src="../assets/images/badge2.png" alt="Badge Icon 1">
-                <div class="badge-name">#BadgeName</div>
-            </div>
-            <div class="badge">
-                <img src="../assets/images/badge2.png" alt="Badge Icon 2">
-                <div class="badge-name">#BadgeName</div>
-            </div>
-            <div class="badge">
-                <img src="../assets/images/badge2.png" alt="Badge Icon 3">
-                <div class="badge-name">#BadgeName</div>
-            </div>
-        </div>
         </div>
       </div>
-      
+    </div>
   </section>
 
   <section class="footer">
@@ -225,5 +217,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="../javascript/account.js"></script>
   <script src="../javascript/adopt_js.js"></script>
+  <script src="../javascript/Badge.js"></script>
 </body>
 </html>

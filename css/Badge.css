@@ -1,0 +1,135 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#body {
+    flex: 1 0 auto;
+}
+
+.points-container {
+    padding: 15px;
+    text-align: center;
+    background-color: #000000c9;
+    border-radius: 15px;
+}
+
+.points-label {
+    font-size: 20px;
+    color: #ffffff;
+    margin: 0;
+}
+
+#points {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff1e1e;
+}
+
+.badge-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    justify-items: center;
+    margin: 50px 0;
+}
+
+@media (max-width: 768px) {
+    .badge-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .badge-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.badge {
+    width: 250px;
+    height: 250px;
+    perspective: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    opacity: 0.3; /* Set default opacity */
+    transition: opacity 0.6s ease; /* Smooth transition for opacity */
+}
+
+.badge-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.badge:hover .badge-inner {
+    transform: rotateY(180deg);
+}
+
+.badge-front, .badge-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ddd;
+}
+
+.badge-front {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.badge-back {
+    z-index: 2;
+    transform: rotateY(180deg);
+}
+
+.badge img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.badge-name {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+    text-align: center; /* Center the text below the badge */
+}
+
+.badge-description {
+    padding: 20px;
+    font-size: 14px;
+    color: #333;
+    text-align: center; /* Center text horizontally */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    height: 100%; /* Ensure it takes the full height of the badge-back */
+    box-sizing: border-box; /* Include padding in the element's total height and width */
+}
+
+.footer {
+    clear: both;
+    padding: 20px 0;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    margin-top: 40px;
+    flex-shrink: 0;
+}
