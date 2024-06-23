@@ -69,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     if ($result->num_rows > 0) {
         $_SESSION['email'] = $email; 
+        $redirect_url = $_SERVER['HTTP_REFERER'];
         echo "<script>
             localStorage.setItem('isLoggedIn', 'true');
             window.location.href = '../html/index.html';

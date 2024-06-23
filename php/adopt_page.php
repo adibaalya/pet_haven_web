@@ -499,7 +499,7 @@ $_SESSION['user_id']
 
                 // Fetch pet details from database using IDs
                 const xhr = new XMLHttpRequest();
-                xhr.open('GET', 'fetch_pet_detail.php?id=' + wishlist.join(','), true);
+                xhr.open('GET', 'adoption/fetch_pet_detail.php?id=' + wishlist.join(','), true);
                 xhr.onload = function () {
                   if (xhr.status === 200) {
                     const petDetails = JSON.parse(xhr.responseText);

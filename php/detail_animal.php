@@ -65,7 +65,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               ACCOUNT
             </a>
             <div class="dropdown-menu" aria-labelledby="accountDropdown">
-              <a class="dropdown-item" href="account_page.html">PROFILE</a>
+              <a class="dropdown-item" href="../html/account_page.html">PROFILE</a>
               <a class="dropdown-item" href="#" id="logoutButton">LOGOUT</a>
             </div>
           </li>
@@ -77,46 +77,45 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     </nav>
   </section>
 
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
-    aria-hidden="true">
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">LOGIN</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">LOGIN</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body px-4">
+                <form id="loginForm" action="../php/user.php" method="post">
+                    <div class="form-group" novalidate>
+                        <label for="email">EMAIL ADDRESS</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
+                        <div class="invalid-feedback">
+                            Please provide your email.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">PASSWORD</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+                        <div class="invalid-feedback">
+                            Please provide your password.
+                        </div>
+                    </div>
+                    <input type="hidden" name="pet_id" id="pet_id" value="<?php echo isset($_GET['ID']) ? htmlspecialchars($_GET['ID']) : ''; ?>">
+                    <div class="forgot-password">
+                        <a href="#">Forgot your password?</a>
+                    </div>
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-login">LOGIN</button>
+                        <button type="button" class="btn btn-signup" data-dismiss="modal" data-toggle="modal" data-target="#signUpModal">SIGN UP</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="modal-body px-4">
-          <form action="../php/user.php" method="get">
-            <div class="form-group" novalidate>
-              <label for="email">EMAIL ADDRESS</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
-                name="email" required>
-              <div class="invalid-feedback">
-                Please provide your email.
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="password">PASSWORD</label>
-              <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
-              <div class="invalid-feedback">
-                Please provide your password.
-              </div>
-            </div>
-            <div class="forgot-password">
-              <a href="#">Forgot your password?</a>
-            </div>
-            <div class="button-group">
-              <button type="submit" class="btn btn-login">LOGIN</button>
-              <button type="button" class="btn btn-signup" data-dismiss="modal" data-toggle="modal"
-                data-target="#signUpModal">SIGN UP</button>
-            </div>
-          </form>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
+
 
   <div class="toast position-fixed bottom-right-toast" id="loginSuccessToast" role="alert" aria-live="assertive"
     aria-atomic="true" data-delay="5000">
@@ -177,6 +176,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   </div>
   <section id="detail-animal">
     <?php
+    session_start(); // Start session at the beginning
+    
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -189,10 +190,11 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
     }
-
+    
     // Fetch pet details based on ID from $_POST
     if (isset($_POST['ID'])) {
       $id = htmlspecialchars($_POST['ID']);  // Fetch ID from POST data
+      $_SESSION['pet_id'] = $id;
     
       // Prepare SQL query (assuming 'pet' is your table name)
       $sql = "SELECT p.*, s.name as shelter FROM pet p LEFT JOIN shelter s ON p.shelterId = s.id WHERE p.id = ?";
@@ -318,7 +320,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               </table>
           </div>
           <div class="button-container">
-            <button id="open-popup" class="button" data-toggle="modal" data-target="#Adopt">ADOPT ME</button>
+            <button id="open-popup" class="button">ADOPT ME</button>
           </div>
 
           <div class="modal fade" id="Adopt" tabindex="-1" role="dialog" aria-labelledby="adopt" aria-hidden="true">
@@ -332,8 +334,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                 </div>
                 <div class="modal-body px-4">
                   <form id="adoption-form" method="post" enctype="multipart/form-data">
-                    <label for="email">Email:</label><br>
-                    <input type="text" id="email" name="email"><br>
+                    <label for="email_adopt">Email:</label><br>
+                    <input type="text" id="email_adopt" name="email"><br>
                     <input type="checkbox" id="agree" name="agree">
                     <label for="agree">I agree to the terms and conditions:</label><br>
 
@@ -348,6 +350,22 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
           </div>
 
           <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              var isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+              var openPopupButton = document.getElementById("open-popup");
+
+              openPopupButton.addEventListener("click", function (event) {
+                event.preventDefault(); // prevent the default button behavior
+                if (!isLoggedIn) {
+                  // User is not logged in, open login modal
+                  $('#loginModal').modal('show');
+                } else {
+                  // User is logged in, open adopt modal
+                  $('#Adopt').modal('show');
+                }
+              });
+            });
+
             document.getElementById("adopt-now").addEventListener("click", function () {
               console.log("Adopt Now button clicked!");
               if (document.getElementById("agree").checked) {
