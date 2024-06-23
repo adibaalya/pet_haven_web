@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -382,7 +386,7 @@
         <div class="container-wrapper">
           <div class="container">
             <?php
-            include 'db_connect.php';
+           
 
             // Database configuration
             $servername = "localhost";
