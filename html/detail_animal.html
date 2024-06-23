@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/detail.css" />
+  <link rel="stylesheet" href="../css/trailer.css">
+  <link rel="stylesheet" href="../css/nav-bar.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+  <title><?php echo $name; ?></title>
+</head>
+
+<body>
+  <section class="nav-bar">
+    <!-- Navigation Bar -->
+    <?php include 'navbar.php'; ?>
+  </section>
+
+  <section id="detail-animal">
+    <!-- Animal Details Section -->
+    <?php include 'detail_animal.php'; ?>
+  </section>
+
+  <section id="suggestion">
+    <!-- Suggested Pets Section -->
+    <?php include 'suggested_pets.php'; ?>
+  </section>
+
+  <section class="footer">
+    <!-- Footer Section -->
+    <?php include 'footer.php'; ?>
+  </section>
+
+  <!-- JavaScript includes -->
+  <?php include 'scripts.php'; ?>
+</body>
+
+</html>

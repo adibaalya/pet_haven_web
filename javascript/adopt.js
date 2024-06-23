@@ -7,6 +7,16 @@ function toggleHeart(button) {
   button.classList.toggle("liked");
 }
 
+function toggleHeart(button) {
+  button.classList.toggle("toggled");
+}
+
+$("#wishlist").on("hidden.bs.modal", function (e) {
+  const heartButton = document.getElementById("heart-button");
+  if (heartButton.classList.contains("toggled")) {
+    heartButton.classList.remove("toggled");
+  }
+});
 
 const petCards = document.querySelectorAll(".card");
 
@@ -57,7 +67,6 @@ filterSearch.addEventListener("input", (e) => {
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM fully loaded and parsed");
 
- 
   const deleteButtons = document.querySelectorAll(".delete-button");
   console.log("Delete buttons found:", deleteButtons.length);
 
@@ -70,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", function () {
       console.log("Delete button clicked with data-id:", button.dataset.id);
 
-      
       if (confirm("Are you sure you want to delete this pet?")) {
         const row = button.closest("tr");
         if (row) {
@@ -84,35 +92,39 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  var loginButton = document.getElementById('loginButton');
-  var accountButton = document.getElementById('accountButton');
-  var isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+document.addEventListener("DOMContentLoaded", function () {
+  var loginButton = document.getElementById("loginButton");
+  var accountButton = document.getElementById("accountButton");
+  var isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   if (isLoggedIn) {
-      loginButton.style.display = 'none';
-      accountButton.style.display = 'block';
+    loginButton.style.display = "none";
+    accountButton.style.display = "block";
   } else {
-      loginButton.style.display = 'block';
-      accountButton.style.display = 'none';
+    loginButton.style.display = "block";
+    accountButton.style.display = "none";
   }
 });
 
-document.getElementById('logoutButton').addEventListener('click', function() {
-  localStorage.removeItem('isLoggedIn');
-  window.location.href = '../html/index.html';
+document.getElementById("logoutButton").addEventListener("click", function () {
+  localStorage.removeItem("isLoggedIn");
+  window.location.href = "../html/index.html";
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  var loginButton = document.getElementById('loginButton');
-  var accountDropdown = document.getElementById('accountDropdown'); 
-  var isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+document.addEventListener("DOMContentLoaded", function () {
+  var loginButton = document.getElementById("loginButton");
+  var accountDropdown = document.getElementById("accountDropdown");
+  var isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   if (isLoggedIn) {
-    loginButton.style.display = 'none';
-    accountDropdown.style.display = 'block';
+    loginButton.style.display = "none";
+    accountDropdown.style.display = "block";
   } else {
-    loginButton.style.display = 'block';
-    accountDropdown.style.display = 'none'; 
+    loginButton.style.display = "block";
+    accountDropdown.style.display = "none";
   }
 });
+
+//...
+
+//...
