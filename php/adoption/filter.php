@@ -1,67 +1,55 @@
 <?php
-// filter.php - This file handles the form submission and database querying
+session_start();
+include 'db_connect.php';
 
-// Validate and sanitize inputs (handle XSS and SQL injection)
-function sanitize($input) {
-    return htmlspecialchars(strip_tags($input));
-}
-
-// Database connection details
+// Database configuration
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "pethavenuser";
-// Establish database connection using PDO
+
+// Establish database connection
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $pdo = new PDO("mysql:host=$servername;port=3306;dbname=$dbname", $username, $password);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set error mode to exceptions
 } catch (PDOException $e) {
-    die("Error: Could not connect. " . $e->getMessage());
+  die("Error: Could not connect to the database. " . $e->getMessage());
 }
 
-// Prepare SQL statement
-$sql = "SELECT * FROM pet WHERE 1";
+// Query to fetch pets data including BLOBs
+$sql = "SELECT p.id, p.name, p.age, p.breed, p.gender, p.color, p.vaccinated, p.status, p.deworm, p.type, p.image1 as image, s.name as shelter 
+FROM pet p 
+LEFT JOIN shelter s ON p.shelterId = s.id";
 
-// Handle filter conditions
-if (!empty($_POST['type'])) {
-    $types = array_map('sanitize', $_POST['type']);
-    $sql .= " AND type IN ('" . implode("','", $types) . "')";
+$whereClause = [];
+
+if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
+  $keyword = $_GET['keyword'];
+  $whereClause[] = "(p.name LIKE '%$keyword%' OR p.type LIKE '%$keyword%' OR p.breed LIKE '%$keyword%')";
+}
+if (isset($_GET['type']) && $_GET['type'] != 'Select Type') {
+  $type = $_GET['type'];
+  $whereClause[] = "p.type = '$type'";
+}
+if (isset($_GET['gender']) && $_GET['gender'] != 'Select Gender') {
+  $gender = $_GET['gender'];
+  $whereClause[] = "p.gender = '$gender'";
+}
+if (isset($_GET['location']) && $_GET['location'] != 'Select Location') {
+  $location = $_GET['location'];
+  $whereClause[] = "location = '$location'";
+}
+if (isset($_GET['shelter']) && $_GET['shelter'] != '') {
+  $shelter = $_GET['shelter'];
+  $whereClause[] = "p.shelterId = '$shelter'";
 }
 
-if (!empty($_POST['color'])) {
-    $colors = array_map('sanitize', $_POST['color']);
-    $sql .= " AND color IN ('" . implode("','", $colors) . "')";
+if (!empty($whereClause)) {
+  $sql .= " WHERE " . implode(" AND ", $whereClause);
 }
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if (!empty($_POST['breed']) && $_POST['breed'] !== 'Select Breed') {
-    $breed = sanitize($_POST['breed']);
-    $sql .= " AND breed = '$breed'";
-}
-
-if (!empty($_POST['location']) && $_POST['location'] !== 'Select Location') {
-    $location = sanitize($_POST['location']);
-    $sql .= " AND location = '$location'";
-}
-
-// Execute SQL query
-try {
-    $stmt = $pdo->query($sql);
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("Error: " . $e->getMessage());
-}
-
-// Display results
-if ($results && count($results) > 0) {
-    foreach ($results as $row) {
-        echo "<p>Name: " . htmlspecialchars($row['name']) . "</p>";
-        echo "<p>Color: " . htmlspecialchars($row['color']) . "</p>";
-        // Display other pet information as needed
-    }
-} else {
-    echo "No pets found matching the selected criteria.";
-}
-
-// Close database connection
-$pdo = null;
+return $pets; 
 ?>

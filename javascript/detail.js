@@ -10,3 +10,4 @@ document.getElementById("adopt-now").addEventListener("click", function() {
       alert("Please indicate that you agree to the terms and conditions.");
   }
 });
+

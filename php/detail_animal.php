@@ -16,13 +16,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   <link rel="stylesheet" href="../css/trailer.css">
   <link rel="stylesheet" href="../css/nav-bar.css">
   <script src="../javascript/detail.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <title><?php echo $name; ?></title>
 </head>
 
@@ -77,44 +73,48 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     </nav>
   </section>
 
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="loginModalLabel">LOGIN</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body px-4">
-                <form id="loginForm" action="../php/user.php" method="post">
-                    <div class="form-group" novalidate>
-                        <label for="email">EMAIL ADDRESS</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" required>
-                        <div class="invalid-feedback">
-                            Please provide your email.
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">PASSWORD</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
-                        <div class="invalid-feedback">
-                            Please provide your password.
-                        </div>
-                    </div>
-                    <input type="hidden" name="pet_id" id="pet_id" value="<?php echo isset($_GET['ID']) ? htmlspecialchars($_GET['ID']) : ''; ?>">
-                    <div class="forgot-password">
-                        <a href="#">Forgot your password?</a>
-                    </div>
-                    <div class="button-group">
-                        <button type="submit" class="btn btn-login">LOGIN</button>
-                        <button type="button" class="btn btn-signup" data-dismiss="modal" data-toggle="modal" data-target="#signUpModal">SIGN UP</button>
-                    </div>
-                </form>
-            </div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">LOGIN</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body px-4">
+          <form id="loginForm" action="../php/user.php" method="post">
+            <div class="form-group" novalidate>
+              <label for="email">EMAIL ADDRESS</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
+                name="email" required>
+              <div class="invalid-feedback">
+                Please provide your email.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">PASSWORD</label>
+              <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+              <div class="invalid-feedback">
+                Please provide your password.
+              </div>
+            </div>
+            <input type="hidden" name="pet_id" id="pet_id"
+              value="<?php echo isset($_GET['ID']) ? htmlspecialchars($_GET['ID']) : ''; ?>">
+            <div class="forgot-password">
+              <a href="#">Forgot your password?</a>
+            </div>
+            <div class="button-group">
+              <button type="submit" class="btn btn-login">LOGIN</button>
+              <button type="button" class="btn btn-signup" data-dismiss="modal" data-toggle="modal"
+                data-target="#signUpModal">SIGN UP</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
 
   <div class="toast position-fixed bottom-right-toast" id="loginSuccessToast" role="alert" aria-live="assertive"
@@ -175,80 +175,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     </div>
   </div>
   <section id="detail-animal">
-    <?php
-    session_start(); // Start session at the beginning
-    
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "pethavenuser";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
-    
-    // Fetch pet details based on ID from $_POST
-    if (isset($_POST['ID'])) {
-      $id = htmlspecialchars($_POST['ID']);  // Fetch ID from POST data
-      $_SESSION['pet_id'] = $id;
-    
-      // Prepare SQL query (assuming 'pet' is your table name)
-      $sql = "SELECT p.*, s.name as shelter FROM pet p LEFT JOIN shelter s ON p.shelterId = s.id WHERE p.id = ?";
-      $stmt = $conn->prepare($sql);
-      $stmt->bind_param("i", $id);
-
-      // Execute SQL query
-      $stmt->execute();
-
-      // Check for errors
-      if ($stmt->error) {
-        echo "SQL Error: " . $stmt->error;
-      }
-
-      // Get result set
-      $result = $stmt->get_result();
-
-      // Check if there are results
-      if ($result->num_rows > 0) {
-        // Fetch pet data
-        $row = $result->fetch_assoc();
-        $name = htmlspecialchars($row['name']);
-        $breed = htmlspecialchars($row['breed']);
-        $color = htmlspecialchars($row['color']);
-        $vaccinated = ($row['vaccinated'] == 1 ? 'Yes' : 'No');
-        $deworm = htmlspecialchars($row['deworm'] == 1 ? 'Yes' : 'No');
-        $age = htmlspecialchars($row['age']);
-        $gender = htmlspecialchars($row['gender']);
-        $shelterId = htmlspecialchars($row['shelterId']);
-        $shelter = htmlspecialchars($row['shelter']);
-
-        // Fetch and encode images as base64
-        $image1 = base64_encode($row['image1']);
-        $image2 = base64_encode($row['image2']);
-        $image3 = base64_encode($row['image3']);
-
-        // Store viewed pets in session
-        session_start();  // Start session if not already started
-        $_SESSION['viewed_pets'][] = $id;
-      } else {
-        echo 'No pet found with ID ' . $id;
-        exit;
-      }
-
-      $stmt->close();
-    } else {
-      echo 'No pet ID provided.';
-      exit;
-    }
-
-    $conn->close();
-    ?>
-
-
+    <?php include 'fetch_pet.php'; ?>
     <div class="container">
       <div class="row">
         <div class="about-col-1">
@@ -333,22 +260,19 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                   </button>
                 </div>
                 <div class="modal-body px-4">
-                  <form id="adoption-form" method="post" enctype="multipart/form-data">
+                  <form id="adoptionForm" method="POST" enctype="multipart/form-data">
                     <label for="email_adopt">Email:</label><br>
-                    <input type="text" id="email_adopt" name="email"><br>
+                    <input type="text" id="email_adopt" name="email" required><br>
                     <input type="checkbox" id="agree" name="agree">
                     <label for="agree">I agree to the terms and conditions:</label><br>
-
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-dark" id="adopt-now">Adopt Now</button>
+                    </div>
                   </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-dark" id="adopt-now">Adopt Now</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
           </div>
-
           <script>
             document.addEventListener('DOMContentLoaded', function () {
               var isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
@@ -366,44 +290,53 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               });
             });
 
-            document.getElementById("adopt-now").addEventListener("click", function () {
-              console.log("Adopt Now button clicked!");
-              if (document.getElementById("agree").checked) {
-                var petId = <?php echo isset($id) ? $id : 'null'; ?>;
-                var shelterId = <?php echo isset($shelterId) ? $shelterId : 'null'; ?>;
-                var name = document.getElementById("email").value;
+            document.getElementById("adopt-now").addEventListener("click", function (event) {
+              event.preventDefault(); // prevent the default button behavior
 
-                console.log("petId:", petId);
-                console.log("shelterId:", shelterId);
-                console.log("email:", email);
-
-                if (petId === null || shelterId === null) {
-                  console.error("PHP variables not set!");
-                  return;
-                }
-
-                // Send AJAX request to PHP script
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'insert_adopt_pet.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.onload = function () {
-                  if (xhr.status === 200) {
-                    alert("Thank you for your interest in adopting Simba, " + name + "!");
-                    // Make sure jQuery is loaded before using it
-                    if (typeof jQuery !== 'undefined') {
-                      $('#Adopt').modal('hide');
-                    } else {
-                      console.error("jQuery not loaded!");
-                    }
-                  } else {
-                    alert("Error adopting pet: " + xhr.statusText);
-                  }
-                };
-                xhr.send('petId=' + petId + '&shelterId=' + shelterId + '&name=' + name);
-              } else {
+              if (!document.getElementById("agree").checked) {
                 alert("Please indicate that you agree to the terms and conditions.");
+                return;
               }
+
+              var petId = <?php echo isset($id) ? $id : 'null'; ?>;
+              var shelterId = <?php echo isset($shelterId) ? $shelterId : 'null'; ?>;
+              var email = document.getElementById("email_adopt").value;
+
+              console.log("petId:", petId);
+              console.log("shelterId:", shelterId);
+              console.log("email:", email);
+
+              if (petId === null || shelterId === null) {
+                console.error("PHP variables not set!");
+                return;
+              }
+
+              var xhr = new XMLHttpRequest();
+              xhr.open('POST', 'insert_adopt_pet.php', true);
+              xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+              xhr.onload = function () {
+                if (xhr.status === 200) {
+                  console.log(xhr.responseText);
+                  var response = JSON.parse(xhr.responseText);
+                  if (response.status === 'success') {
+                    alert("Thank you for your interest in adopting!");
+                    window.location.href = 'adopt_page.php'; // Redirect upon successful adoption
+                  } else {
+                    alert("Error: " + response.message);
+                  }
+                } else {
+                  alert("Error: Failed to send request to server.");
+                }
+              };
+
+              xhr.onerror = function () {
+                alert("Error: Failed to send request to server.");
+              };
+
+              xhr.send('email=' + encodeURIComponent(email) + '&petId=' + encodeURIComponent(petId) + '&shelterId=' + encodeURIComponent(shelterId));
             });
+
           </script>
         </div>
       </div>

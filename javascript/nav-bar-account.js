@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+
 document.getElementById('logoutButton').addEventListener('click', function () {
     localStorage.removeItem('isLoggedIn');
     window.location.href = '../html/index.html';
