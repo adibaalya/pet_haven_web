@@ -12,14 +12,22 @@ $(document).ready(function() {
                 data.forEach(function(row) {
                     var statusClass = row.status.toLowerCase();
                     var actions = '';
+
+                    // Determine actions based on status
                     if (row.status === 'pending') {
                         actions = '<button class="button cancel" style="width: fit-content">Cancel</button>';
                     } else if (row.status === 'approve') {
                         actions = '<button class="button date-picker" style="width: fit-content">Set Date</button>';
-                    } else if (row.status === 'cancel' || row.status === 'rejected') {
+                    } else if (row.status === 'rejected') {
+                        actions = '<button class="button delete" style="width: fit-content">Delete</button>';
+                    } else { // default for 'cancel' status
                         actions = '<button class="button delete" style="width: fit-content">Delete</button>';
                     }
+
+                    // Prepare adoption date HTML if available
                     var adoptionDate = row.date ? `<br><span class="adoption-date">Adoption Date: ${row.date}</span>` : '';
+
+                    // Construct the row HTML
                     var rowHtml = `
                         <tr data-email="${row.email}" data-pet-id="${row.petId}" data-shelter-id="${row.shelterId}">
                             <td>${row.petId}</td>
@@ -28,7 +36,6 @@ $(document).ready(function() {
                             <td class="actions">${actions}</td>
                         </tr>
                     `;
-                    console.log('Appending row:', rowHtml); // Log row HTML for debugging
                     tableBody.append(rowHtml);
                 });
             },
@@ -40,6 +47,19 @@ $(document).ready(function() {
 
     // Initial fetch of adoptions when the document is ready
     fetchAdoptions();
+
+    // Polling interval in milliseconds (e.g., poll every 5 seconds)
+    var pollInterval = 5000; // 5 seconds
+
+    // Function to poll for adoption updates
+    function pollAdoptions() {
+        setInterval(function() {
+            fetchAdoptions(); // Fetch adoptions periodically
+        }, pollInterval);
+    }
+
+    // Start polling
+    pollAdoptions();
 
     // Event handler for the Cancel button
     $('#adoptionTable').on('click', '.cancel', function() {

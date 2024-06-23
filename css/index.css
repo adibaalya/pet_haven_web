@@ -18,11 +18,20 @@
     margin-bottom: 20px;
 }
 
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center-align children horizontally */
+    justify-content: center;
+    /* Center-align children vertically */
+}
+
 .banner img {
     width: 1920px;
-    height: 450px;
+    height: 70vh;
     object-fit: cover;
-    object-position: center bottom;
+    object-position: center;
 }
 
 .banner .btn {
@@ -48,6 +57,30 @@
 .banner .position-absolute .btn:hover {
     background-color: rgb(237, 167, 178);
     color: black;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dots-container {
+    display: flex;
+    justify-content: center;
+    /* Center-align dots horizontally */
+    gap: 5px;
+    /* Adjust gap between dots */
+    margin-top: 20px;
+    /* Space between the button and dots */
+}
+
+.dot.active {
+    background-color: #717171;
+    /* Active dot color */
 }
 
 .modal-content {
@@ -227,6 +260,10 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     overflow: auto;
+}
+
+#care-section {
+    height: 100vh;
 }
 
 .care-title {
