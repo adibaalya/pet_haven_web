@@ -63,22 +63,61 @@ calendarInput.addEventListener("change", function () {
   }
 });*/
 
-$(document).ready(function() {
+$(document).ready(function () {
+
+  if (!localStorage.getItem('isLoggedIn')) {
+    window.location.href = 'index.html';
+    return; 
+  }
+
   $.ajax({
-      url: '../php/get_account_details.php',
-      type: 'GET',
-      dataType: 'json',
-      success: function(response) {
-          if (response && response.email) {
-              $('#fullnameDisplay').text(response.name);
-              $('#name').val(response.name);
-              $('#email').val(response.email);
-          } else {
-              console.error('Failed to fetch account details:', response.error);
-          }
-      },
-      error: function(xhr, status, error) {
-          console.error('Failed to fetch account details:', error);
+    url: '../php/get_account_details.php',
+    type: 'GET',
+    dataType: 'json',
+    success: function (response) {
+      if (response && response.email) {
+        $('#fullnameDisplay').text(response.name);
+        $('#name').val(response.name);
+        $('#email').val(response.email);
+      } else {
+        console.error('Failed to fetch account details:', response.error);
       }
+    },
+    error: function (xhr, status, error) {
+      console.error('Failed to fetch account details:', error);
+    }
+  });
+
+  $('#logoutButton').click(function () {
+    // Perform logout operations here
+    // Example: Clear user session data
+    localStorage.clear(); // or specific keys with localStorage.removeItem('keyName');
+    // Redirect to index.html
+    window.location.href = 'index.html';
+  });
+});
+
+$(document).ready(function() {
+  $('#account-form').on('submit', function(e) {
+      e.preventDefault(); // Prevent default form submission
+      var formData = $(this).serialize(); // Serialize form data
+
+      $.ajax({
+          type: "POST",
+          url: "../php/update_account.php", 
+          data: formData,
+          dataType: "json",
+          success: function(response) {
+              if(response.success) {
+                  $('#fullnameDisplay').text(response.name); 
+                  alert(response.message); 
+              } else {
+                  alert(response.message); 
+              }
+          },
+          error: function() {
+              alert("An error occurred. Please try again.");
+          }
+      });
   });
 });

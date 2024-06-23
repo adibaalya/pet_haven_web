@@ -72,15 +72,15 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        $_SESSION['email'] = $email; // Set session variable after successful login
+        $_SESSION['email'] = $email; 
+        $redirect_url = $_SERVER['HTTP_REFERER'];
         echo "<script>
-            alert('User login successful');
-            window.location.href = '../html/account_page.html';
+            localStorage.setItem('isLoggedIn', 'true');
+            window.location.href = '../html/index.html';
         </script>";
         exit();
     } else {
         echo "<script>
-            alert('Invalid email or password');
             window.location.href = '../html/index.html';
         </script>";
     }

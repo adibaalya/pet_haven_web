@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="../css/account.css">
   <link rel="stylesheet" href="../css/trailer.css">
   <title>Account</title>
@@ -30,8 +29,16 @@
           <li class="nav-item">
             <a class="nav-link" href="../html/index.html">HOME</a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="../php/adopt_page.php">ADOPT</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="../php/adopt_page.php" id="adoptDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              ADOPT
+            </a>
+            <div class="dropdown-menu" aria-labelledby="adoptDropdown">
+              <a class="dropdown-item" href="../php/adopt_page.php">Dogs</a>
+              <a class="dropdown-item" href="../php/adopt_page.php">Cats</a>
+              <a class="dropdown-item" href="../php/adopt_page.php">Rabbit</a>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../html/donate.html">DONATION</a>
@@ -42,15 +49,8 @@
           <li class="nav-item">
             <a class="nav-link" href="../html/index.html#help">HELP</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false" style="display: block;">
-              ACCOUNT
-            </a>
-            <div class="dropdown-menu" aria-labelledby="accountDropdown">
-              <a class="dropdown-item" href="../php/account_page.php">PROFILE</a>
-              <a class="dropdown-item" href="#" id="logoutButton">LOGOUT</a>
-            </div>
+          <li class="nav-item active">
+            <a class="nav-link" href="account_page.html">ACCOUNT</a>
           </li>
         </ul>
       </div>
@@ -79,12 +79,12 @@
           <h6>Pet Haven Member</h6>
           <div class="container-1">
             <h4>Update Account Details</h4>
-            <form id="account-form" method="POST">
+            <form id="account-form" action="../php/get_account_details.php" method="POST">
               <label for="fullname">Full Name</label>
               <input type="text" id="name" name="fullname" placeholder="Name">
 
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" placeholder="Email address" readonly>
+              <input type="email" id="email" name="email" placeholder="Email address">
 
               <label for="password">Password</label>
               <input type="password" id="password" name="password" placeholder="******">
@@ -95,60 +95,61 @@
         </div>
       </div>
 
+
       <div class="tab-pane fade" id="adoptions">
         <div class="detail-container">
           <h2 class="title">Adoption</h2>
-          <table>
-            <tr>
-              <td class="pet-image">
-                <img src="../assets/images/adopt1.jpeg" alt="Pet" style="height: fit-content">
-              </td>
-              <td class="pet-detail">
-                <h3>Pet Name</h3>
-                <p>Foster Home, Kuala Lumpur</p>
-              </td>
-              <td class="status pending">Pending</td>
-              <td class="actions">
-                <button id="cancel" class="button" style="width: fit-content">Cancel</button>
-              </td>
-            </tr>
-            <tr>
-              <td class="pet-image">
-                <img src="../assets/images/adopt2.jpeg" style="height: fit-content" alt="Pet">
-              </td>
-              <td class="pet-detail">
-                <h3>Pet Name</h3>
-                <p>Foster Home, Kuala Lumpur</p>
-              </td>
-              <td class="status approve">Approve</td>
-              <td class="actions">
-                <button id="approve" class="button dropdown-btn" style="width: fit-content">Approve</button>
-                <div class="dropdown-content">
-                  <input type="date" id="calendar">
-                  <button id="confirm">Confirm</button>
-                </div>
-              </td>
-              <td>
-                <button onclick="window.print()"><i class="fa-solid fa-print"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <td class="pet-image">
-                <img src="../assets/images/adopt3.jpeg" style="height: fit-content" alt="Pet">
-              </td>
-              <td class="pet-detail">
-                <h3>Pet Name</h3>
-                <p>Foster Home, Kuala Lumpur</p>
-              </td>
-              <td class="status reject">Rejected</td>
-              <td class="actions">
-                <button id="delete" class="button" style="width: fit-content">Delete</button>
-              </td>
-            </tr>
+          <table id="adoptionTable" class="table">
+                <thead>
+                    <tr>
+                    <th>Pet ID</th>
+                    <th>Shelter ID</th>
+                    <th></th>
+                  
+                    </tr>
+                </thead>
+                <tbody>
+              <?php
+              // Establish database connection
+              $servername = "localhost";
+              $username = "root";
+              $password = "";
+              $dbname = "pethavenuser";
+
+              $conn = new mysqli($servername, $username, $password, $dbname);
+
+              if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+              }
+
+              // Fetch adoption data from database
+              $sql = "SELECT petId, shelterId, status FROM adoption";
+              $result = $conn->query($sql);
+
+              if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row['petId'] . "</td>";
+                    echo "<td>" . $row['shelterId'] . "</td>";
+                    echo "<td class='status " . strtolower($row['status']) . "'>" . $row['status'];
+                    if ($row['status'] == 'approve') {
+                        // Display date picker button if status is 'approve'
+                        echo "<button class='btn btn-sm btn-outline-primary pick-date-btn' data-email='" . $row['email'] . "' data-petid='" . $row['petId'] . "' data-shelterid='" . $row['shelterId'] . "'>Pick Date</button>";
+                    }
+                    echo "</td>";
+                    echo "</tr>";
+                    
+                  }
+              } else {
+                  echo "<tr><td colspan='3'>No adoption records found</td></tr>";
+              }
+
+              $conn->close();
+              ?>
+            </tbody>
           </table>
         </div>
       </div>
-
       <div class="tab-pane fade" id="donations">
         <div class="detail-container">
           <div class="container mt-5 mb-5 donation">
@@ -157,30 +158,35 @@
               a donor badge that honors your significant contributions.
             </p>
           </div>
-          
-          <!-- Display collected points -->
-          <div class="container">
-            <p>Points: <?php echo $points; ?></p>
+          <div class="badge-container">
+            <div class="badge">
+              <img src="../assets/images/badge1.png" alt="Badge Icon 1">
+              <div class="badge-name">#BadgeName</div>
+            </div>
+            <div class="badge">
+              <img src="../assets/images/badge1.png" alt="Badge Icon 2">
+              <div class="badge-name">#BadgeName</div>
+            </div>
+            <div class="badge">
+              <img src="../assets/images/badge2.png" alt="Badge Icon 2">
+              <div class="badge-name">#BadgeName</div>
+            </div>
+            <div class="badge">
+              <img src="../assets/images/badge1.png" alt="Badge Icon 2">
+              <div class="badge-name">#BadgeName</div>
+            </div>
+            <div class="badge">
+              <img src="../assets/images/badge1.png" alt="Badge Icon 2">
+              <div class="badge-name">#BadgeName</div>
+            </div>
+            <div class="badge">
+              <img src="../assets/images/badge1.png" alt="Badge Icon 2">
+              <div class="badge-name">#BadgeName</div>
+            </div>
           </div>
-          
-          <!-- Badge container -->
-          <div class="badge-container" id="badgeContainer">
-            <div class="badge">
-                <img src="../assets/images/badge2.png" alt="Badge Icon 1">
-                <div class="badge-name">#BadgeName</div>
-            </div>
-            <div class="badge">
-                <img src="../assets/images/badge2.png" alt="Badge Icon 2">
-                <div class="badge-name">#BadgeName</div>
-            </div>
-            <div class="badge">
-                <img src="../assets/images/badge2.png" alt="Badge Icon 3">
-                <div class="badge-name">#BadgeName</div>
-            </div>
-        </div>
         </div>
       </div>
-      
+    </div>
   </section>
 
   <section class="footer">
@@ -218,12 +224,11 @@
     </footer>
   </section>
 
+  <!-- Include necessary JavaScript libraries -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="../javascript/account.js"></script>
-  <script src="../javascript/Badge.js"></script>
-  <script src="jquery.min.js"></script>
+  <script src="../javascript/adopt_js.js"></script>
 </body>
-
 </html>

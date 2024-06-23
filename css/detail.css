@@ -2,12 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-body {
-    background-color: #EDEBD2 !important;
-    overflow-y: scroll;
-    font-family: 'Poppins';
-}
-
 .row {
     display: flex;
     justify-content: space-between;
@@ -41,12 +35,15 @@ body {
     position: relative;
     color: #12263a;
 }
+
 table {
-    border-radius: 10px; /* Rounds the table corners */
+    border-radius: 10px;
+    /* Rounds the table corners */
     border-collapse: separate;
     border-spacing: 0;
     width: 150%;
-    overflow: hidden; /* Ensures content doesn't overflow the rounded corners */
+    overflow: hidden;
+    /* Ensures content doesn't overflow the rounded corners */
 }
 
 th,
@@ -122,9 +119,12 @@ table tr:last-child td:last-child {
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start !important; /* Align items at the start of the flex container */
-    align-items: flex-start !important; /* Align items at the start of the cross axis */
-    gap: 25px; /* Adjusted to start 10px below the filter title */
+    justify-content: flex-start !important;
+    /* Align items at the start of the flex container */
+    align-items: flex-start !important;
+    /* Align items at the start of the cross axis */
+    gap: 25px;
+    /* Adjusted to start 10px below the filter title */
     padding-left: 5px;
     padding-right: 10px;
 }
@@ -138,6 +138,7 @@ table tr:last-child td:last-child {
     height: 350px;
     position: relative;
 }
+
 /*hello*/
 #suggestion img {
     width: 100%;
@@ -251,59 +252,64 @@ table tr:last-child td:last-child {
 }
 
 .carousel-inner {
-    height: 400px; /* Adjust this height as needed */
+    height: 400px;
+    /* Adjust this height as needed */
 }
 
 .carousel-inner img {
-    height: 100%; /* Makes the image take up the full height of the container */
-    width: 100%; /* Ensures the image covers the width */
-    object-fit: cover; /* Ensures the image covers the container without stretching */
-    border-radius: 10px; /* Optional: rounds the corners of the images */
+    height: 100%;
+    /* Makes the image take up the full height of the container */
+    width: 100%;
+    /* Ensures the image covers the width */
+    object-fit: cover;
+    /* Ensures the image covers the container without stretching */
+    border-radius: 10px;
+    /* Optional: rounds the corners of the images */
     border: 0.5px solid;
 }
 
 @media (max-width: 767.98px) {
     .row {
-      flex-direction: column;
+        flex-direction: column;
     }
-  
+
     .about-col-1,
     .about-col-2 {
-      width: 100%;
+        width: 100%;
     }
-  }
+}
 
-  .container {
+.container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
-  
-  @media (max-width: 1199.98px) {
+}
+
+@media (max-width: 1199.98px) {
     .container {
-      justify-content: space-around;
+        justify-content: space-around;
     }
-  }
-  
-  @media (max-width: 767.98px) {
+}
+
+@media (max-width: 767.98px) {
     .container {
-      justify-content: center;
+        justify-content: center;
     }
-  }
-  
-  .modal-content {
-    border-radius: 10px; 
+}
+
+.modal-content {
+    border-radius: 10px;
 }
 
 .modal-header {
     background-color: #333;
-    border-bottom: none; 
+    border-bottom: none;
 }
 
 .close {
-    color: #fff; 
-    opacity: 1; 
-    font-size: 1.5em; 
+    color: #fff;
+    opacity: 1;
+    font-size: 1.5em;
 }
 
 .modal-footer {
@@ -313,24 +319,27 @@ table tr:last-child td:last-child {
 .modal-title {
     font-family: 'Playfair Display', sans-serif;
     font-size: 20;
-    color: #fff; 
+    color: #fff;
 }
 
 .modal-body p {
-    font-family: 'Poppins', sans-serif; 
-    font-size: 1.2em; 
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
     font-weight: bold;
-    color: #333; 
-    line-height: 1.5; 
+    color: #333;
+    line-height: 1.5;
 }
 
 .carousel-inner {
-      width: 320px !important;
-      max-height: 500px; /* Set a max height for the carousel */
-    }
+    width: 320px !important;
+    max-height: 500px;
+    /* Set a max height for the carousel */
+}
 
-    .carousel-inner img {
-        width: 320px !important;
-      height: 500px; /* Set the same height as the max height */
-      object-fit: cover; /* Ensure the image covers the entire area without distortion */
-    }
+.carousel-inner img {
+    width: 320px !important;
+    height: 500px;
+    /* Set the same height as the max height */
+    object-fit: cover;
+    /* Ensure the image covers the entire area without distortion */
+}

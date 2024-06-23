@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -14,23 +12,31 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$email = $_SESSION['email'];
+$sessionEmail = $_SESSION['email']; 
 $name = $_POST['fullname'];
-$email = $_POST['email'];
-$password = ($_POST['password']);
+$postEmail = $_POST['email']; 
+$hashedPassword = password_hash($_POST['password'], PASSWORD_DEFAULT); 
 
-$sql = "UPDATE userinfo SET name='$name', email='$email', password='$password' WHERE email='$email'";
+$stmt = $conn->prepare("UPDATE userinfo SET name=?, email=?, password=? WHERE email=?");
+$stmt->bind_param("ssss", $name, $postEmail, $hashedPassword, $sessionEmail);
 
-if ($conn->query($sql) === TRUE) {
-    $_SESSION['email'] = $email; 
-    echo "<script>
-        alert('Details updated successfully');
-        window.location.href = '../html/account_page.html';
-    </script>";
+if ($stmt->execute()) {
+    $_SESSION['email'] = $postEmail; 
+    
+    header('Content-Type: application/json');
+    echo json_encode([
+        'success' => true,
+        'message' => 'Details updated successfully',
+        'name' => $name,
+        'email' => $postEmail
+    ]);
 } else {
-    echo "Error updating record: " . $conn->error;
+    header('Content-Type: application/json');
+    echo json_encode([
+        'success' => false,
+        'message' => 'Error updating record: ' . $conn->error
+    ]);
 }
 
+$stmt->close();
 $conn->close();
-?>
-
