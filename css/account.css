@@ -313,6 +313,15 @@ input[type="submit"]:hover {
     color: #333;
 }
 
+.badge-container .badge {
+    opacity: 0.5; /* Default opacity for inactive badges */
+  }
+  
+  .badge-container .badge-given {
+    opacity: 1; /* Full opacity for earned badges */
+  }
+  
+
 .submitbtn:hover{
     background-color:rgb(237, 167, 178);
     color: #000000;
