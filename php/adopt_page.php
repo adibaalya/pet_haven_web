@@ -259,31 +259,31 @@
                   echo 'selected'; ?>>Johor</option>
                 <option value="Kedah" <?php if (isset($_GET['location']) && $_GET['location'] == 'Kedah')
                   echo 'selected'; ?>>Kedah</option>
-                  <option value="Kelantan" <?php if (isset($_GET['location']) && $_GET['location'] == 'Kelantan')
+                <option value="Kelantan" <?php if (isset($_GET['location']) && $_GET['location'] == 'Kelantan')
                   echo 'selected'; ?>>Kelantan</option>
                 <option value="Melaka" <?php if (isset($_GET['location']) && $_GET['location'] == 'Melaka')
                   echo 'selected'; ?>>Melaka</option>
-                  <option value="Negeri Sembilan" <?php if (isset($_GET['location']) && $_GET['location'] == 'Negeri Sembilan')
+                <option value="Negeri Sembilan" <?php if (isset($_GET['location']) && $_GET['location'] == 'Negeri Sembilan')
                   echo 'selected'; ?>>Negeri Sembilan</option>
                 <option value="Pahang" <?php if (isset($_GET['location']) && $_GET['location'] == 'Pahang')
                   echo 'selected'; ?>>Pahang</option>
-                  <option value="Perak" <?php if (isset($_GET['location']) && $_GET['location'] == 'Perak')
+                <option value="Perak" <?php if (isset($_GET['location']) && $_GET['location'] == 'Perak')
                   echo 'selected'; ?>>Perak</option>
                 <option value="Perlis" <?php if (isset($_GET['location']) && $_GET['location'] == 'Perlis')
                   echo 'selected'; ?>>Perlis</option>
-                  <option value="Pulau Pinang" <?php if (isset($_GET['location']) && $_GET['location'] == 'Pulau Pinang')
+                <option value="Pulau Pinang" <?php if (isset($_GET['location']) && $_GET['location'] == 'Pulau Pinang')
                   echo 'selected'; ?>>Pulau Pinang</option>
                 <option value="Sabah" <?php if (isset($_GET['location']) && $_GET['location'] == 'Sabah')
                   echo 'selected'; ?>>Sabah</option>
-                  <option value="Sarawak" <?php if (isset($_GET['location']) && $_GET['location'] == 'Sarawak')
+                <option value="Sarawak" <?php if (isset($_GET['location']) && $_GET['location'] == 'Sarawak')
                   echo 'selected'; ?>>Sarawak</option>
                 <option value="Selangor" <?php if (isset($_GET['location']) && $_GET['location'] == 'Selangor')
                   echo 'selected'; ?>>Selangor</option>
-                  <option value="Terengganu" <?php if (isset($_GET['location']) && $_GET['location'] == 'Terengganu')
+                <option value="Terengganu" <?php if (isset($_GET['location']) && $_GET['location'] == 'Terengganu')
                   echo 'selected'; ?>>Terengganu</option>
                 <option value="Kuala Lumpur" <?php if (isset($_GET['location']) && $_GET['location'] == 'Kuala Lumpur')
                   echo 'selected'; ?>>Kuala Lumpur</option>
-                   <option value="Labuan" <?php if (isset($_GET['location']) && $_GET['location'] == 'Labuan')
+                <option value="Labuan" <?php if (isset($_GET['location']) && $_GET['location'] == 'Labuan')
                   echo 'selected'; ?>>Labuan</option>
                 <option value="Putrajaya" <?php if (isset($_GET['location']) && $_GET['location'] == 'Putrajaya')
                   echo 'selected'; ?>>Putrajaya</option>
@@ -382,7 +382,6 @@
         <div class="container-wrapper">
           <div class="container">
             <?php
-            session_start();
             include 'db_connect.php';
 
             // Database configuration
@@ -445,103 +444,104 @@
               // Add more hidden fields if necessary
               echo '<button type="submit" class="detail-button">ADOPT</button>';
               echo '</form>';
-          
-              echo '<button type="submit" class="heart-button" onclick="addToWishlist(' . htmlspecialchars(json_encode($pet['id'])) . ', this)" >';
+
+              echo '<button type="submit" class="heart-button" onclick="addToWishlist(' . htmlspecialchars(json_encode($pet['id'])) . ', ' . htmlspecialchars(json_encode($pet['shelter_id'])) . ', ' . htmlspecialchars(json_encode($userEmail)) . ', this)" >';
               echo '<i class="fas fa-heart"></i>';
               echo '</button>';
               echo '</div>';
-          }
+            }
             ?>
-           <script>
-    let wishlist = [];
+            <script>
+              let wishlist = [];
 
-    function addToWishlist(petId, button) {
-        console.log('addToWishlist called');
-        console.log('Button:', button);
-        const petIndex = wishlist.findIndex(item => item === petId);
-        const isPetInWishlist = petIndex !== -1;
-        if (!isPetInWishlist) {
-            wishlist.push(petId);
-            // Send AJAX request to save to wishlist table
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'adoption_page/insert_wishlist.php', true); // Corrected the URL
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    console.log('Pet added to wishlist successfully!');
+              function addToWishlist(petId, shelterId, userEmail, button) {
+                console.log('addToWishlist called');
+                console.log('Button:', button);
+                const petIndex = wishlist.findIndex(item => item === petId);
+                const isPetInWishlist = petIndex !== -1;
+                if (!isPetInWishlist) {
+                  wishlist.push(petId);
+                  // Send AJAX request to save to wishlist table
+                  const xhr = new XMLHttpRequest();
+                  xhr.open('POST', 'adoption_page/insert_wishlist.php', true);
+                  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                  xhr.onload = function () {
+                    if (xhr.status === 200) {
+                      console.log('Pet added to wishlist successfully!');
+                    } else {
+                      console.error('Error adding pet to wishlist:', xhr.statusText);
+                    }
+                  };
+                  xhr.send('petId=' + petId + '&shelterId=' + shelterId + '&userEmail=' + userEmail);
                 } else {
-                    console.error('Error adding pet to wishlist:', xhr.statusText);
+                  wishlist.splice(petIndex, 1);
                 }
-            };
-            xhr.send('petId=' + petId);
-        } else {
-            wishlist.splice(petIndex, 1);
-        }
-        updateWishlistPopup();
-        button.classList.toggle("liked", !isPetInWishlist);
-    }
+                updateWishlistPopup();
+                button.classList.toggle("liked", !isPetInWishlist);
+              }
 
-    function updateWishlistPopup() {
-        const wishlistTable = document.querySelector('#wishlist table');
-        wishlistTable.innerHTML = '';
+              function updateWishlistPopup() {
+                const wishlistTable = document.querySelector('#wishlist table');
+                wishlistTable.innerHTML = '';
 
-        // Fetch pet details from database using IDs
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'adoption_page/fetch_pet_detail.php?id=' + wishlist.join(','), true); // Corrected the URL
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                const petDetails = JSON.parse(xhr.responseText);
-                petDetails.forEach((pet, index) => {
-                    wishlistTable.innerHTML += `
-          <tr>
-            <td><img src="${pet.image}" alt="Circle Image" /></td>
-            <td> <b>${pet.name}</b> <br /> Foster Home </td>
-            <td class="available">Available</td>
-            <td>
-              <button class="delete-button" data-id="${index}" class="button">
-                <i class="fas fa-trash-alt"></i>
-              </button>
-            </td>
-          </tr>
-        `;
-                });
+                // Fetch pet details from database using IDs
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'adoption_page/fetch_pet_detail.php?id=' + wishlist.join(','), true);
+                xhr.onload = function () {
+                  if (xhr.status === 200) {
+                    const petDetails = JSON.parse(xhr.responseText);
+                    petDetails.forEach((pet, index) => {
+                      wishlistTable.innerHTML += `
+                  <tr>
+                    <td><img src="${pet.image}" alt="Circle Image" /></td>
+                    <td> <b>${pet.name}</b> <br /> Foster Home </td>
+                    <td class="available">Available</td>
+                    <td>
+                      <button class="delete-button" data-id="${index}" class="button">
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                    </td>
+                  </tr>
+                `;
+                    });
 
-                // Update heart buttons
-                const heartButtons = document.querySelectorAll('.heart-button');
-                heartButtons.forEach(button => {
-                    const card = button.closest('.card');
-                    if (card) {
+                    // Update heart buttons
+                    const heartButtons = document.querySelectorAll('.heart-button');
+                    heartButtons.forEach(button => {
+                      const card = button.closest('.card');
+                      if (card) {
                         const petId = card.getAttribute('data-id');
                         const isPetInWishlist = wishlist.includes(parseInt(petId));
                         button.classList.toggle("liked", isPetInWishlist);
-                    }
-                });
+                      }
+                    });
 
-                // Add event listeners to delete buttons
-                const deleteButtons = document.querySelectorAll(".delete-button");
-                deleteButtons.forEach(button => {
-                    button.addEventListener("click", function () {
+                    // Add event listeners to delete buttons
+                    const deleteButtons = document.querySelectorAll(".delete-button");
+                    deleteButtons.forEach(button => {
+                      button.addEventListener("click", function () {
                         const index = parseInt(button.dataset.id);
                         removeFromWishlist(index);
+                      });
                     });
-                });
-            }
-        };
-        xhr.send();
-    }
+                  }
+                };
+                xhr.send();
+              }
 
-    function removeFromWishlist(index) {
-        const removedPetId = wishlist[index];
-        wishlist.splice(index, 1);
-        updateWishlistPopup();
+              function removeFromWishlist(index) {
+                const removedPetId = wishlist[index];
+                wishlist.splice(index, 1);
+                updateWishlistPopup();
 
-        // Find the heart button associated with the removed pet
-        const heartButton = document.querySelector('.card[data-id="' + removedPetId + '"] .heart-button');
-        if (heartButton) {
-            heartButton.classList.remove('liked');
-        }
-    }
-</script>
+                // Find the heart button associated with the removed pet
+                const heartButton = document.querySelector('.card[data-id="' + removedPetId + '"] .heart-button');
+                if (heartButton) {
+                  heartButton.classList.remove('liked');
+                }
+              }
+            </script>
+
 
           </div>
         </div>
