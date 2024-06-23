@@ -31,7 +31,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   </div>
   <script src="../javascript/trailer.js"></script>
   <section class="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
         <img src="../assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo" />
       </a>
@@ -42,6 +42,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
+
           <li class="nav-item ">
             <a class="nav-link" href="../html/index.html">HOME</a>
           </li>
@@ -63,15 +64,124 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
             <a class="nav-link" href="../php/shelter.php">SHELTER</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/index.html#help">HELP</a>
+            <a class="nav-link" href="#help">HELP</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="display: none;">
+              ACCOUNT
+            </a>
+            <div class="dropdown-menu" aria-labelledby="accountDropdown">
+              <a class="dropdown-item" href="account_page.html">PROFILE</a>
+              <a class="dropdown-item" href="#" id="logoutButton">LOGOUT</a>
+            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/account_page.html">ACCOUNT</a>
+            <a class="nav-link" id="loginButton" href="login_page.html" style="display: none;">LOGIN</a>
           </li>
         </ul>
       </div>
     </nav>
   </section>
+
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">LOGIN</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body px-4">
+          <form action="../php/user.php" method="get">
+            <div class="form-group" novalidate>
+              <label for="email">EMAIL ADDRESS</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
+                name="email" required>
+              <div class="invalid-feedback">
+                Please provide your email.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">PASSWORD</label>
+              <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+              <div class="invalid-feedback">
+                Please provide your password.
+              </div>
+            </div>
+            <div class="forgot-password">
+              <a href="#">Forgot your password?</a>
+            </div>
+            <div class="button-group">
+              <button type="submit" class="btn btn-login">LOGIN</button>
+              <button type="button" class="btn btn-signup" data-dismiss="modal" data-toggle="modal"
+                data-target="#signUpModal">SIGN UP</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast position-fixed bottom-right-toast" id="loginSuccessToast" role="alert" aria-live="assertive"
+    aria-atomic="true" data-delay="5000">
+    <div class="toast-header">
+      <i class="fas fa-check-circle text-success mr-2"></i>
+      <strong class="mr-auto text-success">Login Success</strong>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      You have logged in successfully.
+    </div>
+  </div>
+
+  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signUpModalLabel">SIGN UP</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="../php/user.php" method="post" novalidate>
+            <div class="form-group">
+              <label for="sign-up-name">NAME</label>
+              <input type="text" class="form-control" id="sign-up-name" placeholder="Enter name" name="name" required>
+              <div class="invalid-feedback">
+                Please provide your name.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="sign-up-email">EMAIL ADDRESS</label>
+              <input type="email" class="form-control" id="sign-up-email" placeholder="Enter email" name="email"
+                required>
+              <div class="invalid-feedback">
+                Please provide your email.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="sign-up-password">PASSWORD</label>
+              <input type="password" class="form-control" id="sign-up-password" placeholder="Password" name="password"
+                required>
+              <div class="invalid-feedback">
+                Please provide your password.
+              </div>
+            </div>
+            <div class="button-group">
+              <button type="submit" class="btn btn-login">SIGN UP</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
   <section id="detail-animal">
     <?php
     $servername = "localhost";
@@ -243,7 +353,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               </div>
             </div>
           </div>
-          
+
           <script>
             document.getElementById("adopt-now").addEventListener("click", function () {
               console.log("Adopt Now button clicked!");
@@ -392,6 +502,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       </div>
     </footer>
 
+    <script src="../javascript/nav-bar-account.js"></script>
+    <script src="../javascript/authentication.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

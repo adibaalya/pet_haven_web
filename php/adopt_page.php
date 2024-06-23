@@ -1,6 +1,6 @@
-<?php 
+<?php
 $_SESSION['user_id']
-?>
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +8,7 @@ $_SESSION['user_id']
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="../css/adopt_page.css" />
+  <link rel="stylesheet" href="../css/adopt.css" />
   <link rel="stylesheet" href="../css/trailer.css">
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css" />
@@ -17,54 +17,6 @@ $_SESSION['user_id']
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Adopt</title>
-  <style>
-    /* CSS */
-    .filter-column {
-      background-color: #f7f7f7;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .filter-item {
-      margin-bottom: 20px;
-    }
-
-    .filter-item h6 {
-      margin-top: 0;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .form-select {
-      width: 100%;
-      height: 40px;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .form-select:focus {
-      border-color: #aaa;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-primary {
-      background-color: black;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .btn-primary:hover {
-      background-color: #23527c;
-    }
-  </style>
 </head>
 
 <body>
@@ -93,7 +45,8 @@ $_SESSION['user_id']
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
+
+          <li class="nav-item ">
             <a class="nav-link" href="../html/index.html">HOME</a>
           </li>
           <li class="nav-item dropdown active">
@@ -114,15 +67,125 @@ $_SESSION['user_id']
             <a class="nav-link" href="../php/shelter.php">SHELTER</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/index.html#help">HELP</a>
+            <a class="nav-link" href="#help">HELP</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="display: none;">
+              ACCOUNT
+            </a>
+            <div class="dropdown-menu" aria-labelledby="accountDropdown">
+              <a class="dropdown-item" href="account_page.html">PROFILE</a>
+              <a class="dropdown-item" href="#" id="logoutButton">LOGOUT</a>
+            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/account_page.html">ACCOUNT</a>
+            <a class="nav-link" id="loginButton" href="login_page.html" style="display: none;">LOGIN</a>
           </li>
         </ul>
       </div>
     </nav>
   </section>
+
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">LOGIN</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body px-4">
+          <form action="../php/user.php" method="get">
+            <div class="form-group" novalidate>
+              <label for="email">EMAIL ADDRESS</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
+                name="email" required>
+              <div class="invalid-feedback">
+                Please provide your email.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password">PASSWORD</label>
+              <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+              <div class="invalid-feedback">
+                Please provide your password.
+              </div>
+            </div>
+            <div class="forgot-password">
+              <a href="#">Forgot your password?</a>
+            </div>
+            <div class="button-group">
+              <button type="submit" class="btn btn-login">LOGIN</button>
+              <button type="button" class="btn btn-signup" data-dismiss="modal" data-toggle="modal"
+                data-target="#signUpModal">SIGN UP</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast position-fixed bottom-right-toast" id="loginSuccessToast" role="alert" aria-live="assertive"
+    aria-atomic="true" data-delay="5000">
+    <div class="toast-header">
+      <i class="fas fa-check-circle text-success mr-2"></i>
+      <strong class="mr-auto text-success">Login Success</strong>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      You have logged in successfully.
+    </div>
+  </div>
+
+  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signUpModalLabel">SIGN UP</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="../php/user.php" method="post" novalidate>
+            <div class="form-group">
+              <label for="sign-up-name">NAME</label>
+              <input type="text" class="form-control" id="sign-up-name" placeholder="Enter name" name="name" required>
+              <div class="invalid-feedback">
+                Please provide your name.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="sign-up-email">EMAIL ADDRESS</label>
+              <input type="email" class="form-control" id="sign-up-email" placeholder="Enter email" name="email"
+                required>
+              <div class="invalid-feedback">
+                Please provide your email.
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="sign-up-password">PASSWORD</label>
+              <input type="password" class="form-control" id="sign-up-password" placeholder="Password" name="password"
+                required>
+              <div class="invalid-feedback">
+                Please provide your password.
+              </div>
+            </div>
+            <div class="button-group">
+              <button type="submit" class="btn btn-login">SIGN UP</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <section id="header">
     <h2>Find Your New Best Friends</h2>
     <div class="box">
@@ -538,6 +601,9 @@ $_SESSION['user_id']
       </div>
     </footer>
 
+
+    <script src="../javascript/nav-bar-account.js"></script>
+    <script src="../javascript/authentication.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
