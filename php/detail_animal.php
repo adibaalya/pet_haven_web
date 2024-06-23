@@ -118,6 +118,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         $deworm = htmlspecialchars($row['deworm'] == 1 ? 'Yes' : 'No');
         $age = htmlspecialchars($row['age']);
         $gender = htmlspecialchars($row['gender']);
+        $shelterId = htmlspecialchars($row['shelterId']);
         $shelter = htmlspecialchars($row['shelter']);
 
         // Fetch and encode images as base64
@@ -214,10 +215,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               </table>
           </div>
           <div class="button-container">
-          <button id="open-popup" class="button" data-toggle="modal" data-target="<?php echo ($isLoggedIn) ? '#Adopt' : '#Login'; ?>">ADOPT ME</button>
+            <button id="open-popup" class="button" data-toggle="modal" data-target="#Adopt">ADOPT ME</button>
           </div>
 
-          
           <div class="modal fade" id="Adopt" tabindex="-1" role="dialog" aria-labelledby="adopt" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
@@ -228,9 +228,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                   </button>
                 </div>
                 <div class="modal-body px-4">
-                  <form id="adoption-form">
-                    <label for="name">Name:</label><br>
-                    <input type="text" id="name" name="name"><br>
+                  <form id="adoption-form" method="post" enctype="multipart/form-data">
+                    <label for="email">Email:</label><br>
+                    <input type="text" id="email" name="email"><br>
                     <input type="checkbox" id="agree" name="agree">
                     <label for="agree">I agree to the terms and conditions:</label><br>
 
@@ -243,11 +243,42 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               </div>
             </div>
           </div>
+          
           <script>
             document.getElementById("adopt-now").addEventListener("click", function () {
+              console.log("Adopt Now button clicked!");
               if (document.getElementById("agree").checked) {
-                alert("Thank you for your interest in adopting Simba, " + document.getElementById("name").value + "!");
-                $('#Adopt').modal('hide');
+                var petId = <?php echo isset($id) ? $id : 'null'; ?>;
+                var shelterId = <?php echo isset($shelterId) ? $shelterId : 'null'; ?>;
+                var name = document.getElementById("email").value;
+
+                console.log("petId:", petId);
+                console.log("shelterId:", shelterId);
+                console.log("email:", email);
+
+                if (petId === null || shelterId === null) {
+                  console.error("PHP variables not set!");
+                  return;
+                }
+
+                // Send AJAX request to PHP script
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'insert_adopt_pet.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function () {
+                  if (xhr.status === 200) {
+                    alert("Thank you for your interest in adopting Simba, " + name + "!");
+                    // Make sure jQuery is loaded before using it
+                    if (typeof jQuery !== 'undefined') {
+                      $('#Adopt').modal('hide');
+                    } else {
+                      console.error("jQuery not loaded!");
+                    }
+                  } else {
+                    alert("Error adopting pet: " + xhr.statusText);
+                  }
+                };
+                xhr.send('petId=' + petId + '&shelterId=' + shelterId + '&name=' + name);
               } else {
                 alert("Please indicate that you agree to the terms and conditions.");
               }

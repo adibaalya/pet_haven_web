@@ -1,3 +1,6 @@
+<?php 
+$_SESSION['user_id']
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -416,6 +419,18 @@
                 const isPetInWishlist = petIndex !== -1;
                 if (!isPetInWishlist) {
                   wishlist.push(petId);
+                  // Send AJAX request to save to wishlist table
+                  const xhr = new XMLHttpRequest();
+                  xhr.open('POST', 'save_to_wishlist.php', true);
+                  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                  xhr.onload = function () {
+                    if (xhr.status === 200) {
+                      console.log('Pet added to wishlist successfully!');
+                    } else {
+                      console.error('Error adding pet to wishlist:', xhr.statusText);
+                    }
+                  };
+                  xhr.send('petId=' + petId);
                 } else {
                   wishlist.splice(petIndex, 1);
                 }
@@ -429,7 +444,7 @@
 
                 // Fetch pet details from database using IDs
                 const xhr = new XMLHttpRequest();
-                xhr.open('GET', 'fetch_pet_details.php?id=' + wishlist.join(','), true);
+                xhr.open('GET', 'fetch_pet_detail.php?id=' + wishlist.join(','), true);
                 xhr.onload = function () {
                   if (xhr.status === 200) {
                     const petDetails = JSON.parse(xhr.responseText);
