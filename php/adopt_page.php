@@ -49,16 +49,8 @@ $_SESSION['user_id']
           <li class="nav-item ">
             <a class="nav-link" href="../html/index.html">HOME</a>
           </li>
-          <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="../php/adopt_page.php" id="adoptDropdown" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              ADOPT
-            </a>
-            <div class="dropdown-menu" aria-labelledby="adoptDropdown">
-              <a class="dropdown-item" href="../php/adopt_page.php">Dogs</a>
-              <a class="dropdown-item" href="../php/adopt_page.php">Cats</a>
-              <a class="dropdown-item" href="../php/adopt_page.php">Rabbit</a>
-            </div>
+          <li class="nav-item active">
+            <a class="nav-link" href="../php/adopt_page.php">ADOPT</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../html/donate.html">DONATION</a>

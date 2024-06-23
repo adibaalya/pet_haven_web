@@ -83,7 +83,7 @@ $result = $conn->query($sql);
             </div>
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="../php/admin_pets.php" class="sidebar-link">
+                    <a href="../php/profile_admin.php" class="sidebar-link">
                         <i class="fa-solid fa-user"></i>
                         <span>Profile</span>
                     </a>

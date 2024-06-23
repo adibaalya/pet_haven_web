@@ -1,0 +1,139 @@
+
+.btn-login {
+    color: black !important;
+    background-color: white !important;
+    border: 2px solid black !important;
+    padding: 10px 20px !important;
+    font-size: 16px !important;
+    border-radius: 5px !important;
+    transition: background-color 0.3s ease, color 0.3s ease !important;
+
+}
+
+.btn-login:hover {
+    background-color: black !important;
+    color: white !important;
+}
+
+.btn-signup {
+    color: white !important;
+    background-color: #000000 !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    font-size: 16px !important;
+    border-radius: 5px !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.btn-signup:hover {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+input::placeholder {
+    font-size: 14px !important;
+    color: #6c757d !important;
+    opacity: 1 !important;
+}
+
+.form-control {
+    border: 1px solid #ced4da !important;
+    /* Bootstrap's default border color */
+    border-radius: 5px !important;
+    padding: 10px 15px !important;
+    font-size: 14px !important;
+    transition: border-color 0.3s ease !important;
+}
+
+.modal-header {
+    display: flex !important;
+    justify-content: center !important;
+    position: relative !important;
+}
+
+.modal-title {
+    flex-grow: 1 !important;
+    text-align: center !important;
+}
+
+.modal-header .close {
+    position: absolute !important;
+    right: 15px !important;
+    top: 15px !important;
+}
+
+.forgot-password {
+    display: block !important;
+    margin-top: 10px !important;
+    font-size: 14px !important;
+    text-align: right !important;
+}
+
+.forgot-password a {
+    color: #0c0c0c !important;
+    text-decoration: none !important;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline !important;
+}
+
+.button-group {
+    text-align: center !important;
+}
+
+.button-group .btn {
+    margin: 5px !important;
+}
+
+.bottom-right-toast {
+    position: fixed !important; 
+    right: 20px !important;
+    bottom: 0 !important;
+    z-index: 9999 !important;
+    transition: opacity 0.3s ease, transform 0.3s ease !important;
+    opacity: 0 !important;
+    transform: translateX(100%) !important;
+}
+
+.bottom-right-toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.validation-icon {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 0.5em);
+    transition: all 0.3s ease;
+}
+
+.validation-icon::before {
+    font-family: "Bootstrap Icons";
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+}
+
+.form-control.is-valid,
+.form-control.is-invalid {
+    padding-right: 2.5rem !important;
+}
+
+.form-control.is-valid~.validation-icon::before {
+    content: '\2713' !important;
+    color: #28a745 !important;
+}
+
+.form-control.is-invalid~.validation-icon::before {
+    content: '\2717' !important;
+    color: #dc3545 !important;
+}
+
+.error-message {
+    color: red !important;
+}
+
+button:disabled {
+    background-color: #ccc !important;
+    cursor: not-allowed;
+}

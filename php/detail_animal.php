@@ -14,6 +14,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/detail.css" />
   <link rel="stylesheet" href="../css/trailer.css">
+  <link rel="stylesheet" href="../css/nav-bar.css">
   <script src="../javascript/detail.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
@@ -31,7 +32,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   </div>
   <script src="../javascript/trailer.js"></script>
   <section class="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <a class="navbar-brand" href="#">
         <img src="../assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo" />
       </a>
@@ -46,16 +47,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
           <li class="nav-item ">
             <a class="nav-link" href="../html/index.html">HOME</a>
           </li>
-          <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="../php/adopt_page.php" id="adoptDropdown" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              ADOPT
-            </a>
-            <div class="dropdown-menu" aria-labelledby="adoptDropdown">
-              <a class="dropdown-item" href="../php/adopt_page.php">Dogs</a>
-              <a class="dropdown-item" href="../php/adopt_page.php">Cats</a>
-              <a class="dropdown-item" href="../php/adopt_page.php">Rabbit</a>
-            </div>
+          <li class="nav-item active">
+            <a class="nav-link" href="../php/adopt_page.php">ADOPT</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../html/donate.html">DONATION</a>
