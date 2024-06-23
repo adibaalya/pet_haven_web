@@ -175,7 +175,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     </div>
   </div>
   <section id="detail-animal">
-    <?php include 'fetch_pet.php'; ?>
+    <?php include 'adoption_page/fetch_pet.php'; ?>
     <div class="container">
       <div class="row">
         <div class="about-col-1">
@@ -312,7 +312,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               }
 
               var xhr = new XMLHttpRequest();
-              xhr.open('POST', 'insert_adopt_pet.php', true);
+              xhr.open('POST', 'adoption_page/insert_adopt_pet.php', true);
               xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
               xhr.onload = function () {

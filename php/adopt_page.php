@@ -1,6 +1,3 @@
-<?php
-$_SESSION['user_id']
-  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -467,7 +464,7 @@ $_SESSION['user_id']
             wishlist.push(petId);
             // Send AJAX request to save to wishlist table
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'insert_wishlist.php', true); // Corrected the URL
+            xhr.open('POST', 'adoption_page/insert_wishlist.php', true); // Corrected the URL
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function () {
                 if (xhr.status === 200) {
@@ -490,7 +487,7 @@ $_SESSION['user_id']
 
         // Fetch pet details from database using IDs
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'fetch_pet_detail.php?id=' + wishlist.join(','), true); // Corrected the URL
+        xhr.open('GET', 'adoption_page/fetch_pet_detail.php?id=' + wishlist.join(','), true); // Corrected the URL
         xhr.onload = function () {
             if (xhr.status === 200) {
                 const petDetails = JSON.parse(xhr.responseText);
