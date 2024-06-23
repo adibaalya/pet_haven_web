@@ -158,35 +158,30 @@
               a donor badge that honors your significant contributions.
             </p>
           </div>
-          <div class="badge-container">
-            <div class="badge">
-              <img src="../assets/images/badge1.png" alt="Badge Icon 1">
-              <div class="badge-name">#BadgeName</div>
-            </div>
-            <div class="badge">
-              <img src="../assets/images/badge1.png" alt="Badge Icon 2">
-              <div class="badge-name">#BadgeName</div>
-            </div>
-            <div class="badge">
-              <img src="../assets/images/badge2.png" alt="Badge Icon 2">
-              <div class="badge-name">#BadgeName</div>
-            </div>
-            <div class="badge">
-              <img src="../assets/images/badge1.png" alt="Badge Icon 2">
-              <div class="badge-name">#BadgeName</div>
-            </div>
-            <div class="badge">
-              <img src="../assets/images/badge1.png" alt="Badge Icon 2">
-              <div class="badge-name">#BadgeName</div>
-            </div>
-            <div class="badge">
-              <img src="../assets/images/badge1.png" alt="Badge Icon 2">
-              <div class="badge-name">#BadgeName</div>
-            </div>
+          
+          <!-- Display collected points -->
+          <div class="container">
+            <p>Points: <?php echo $points; ?></p>
           </div>
+          
+          <!-- Badge container -->
+          <div class="badge-container" id="badgeContainer">
+            <div class="badge">
+                <img src="../assets/images/badge2.png" alt="Badge Icon 1">
+                <div class="badge-name">#BadgeName</div>
+            </div>
+            <div class="badge">
+                <img src="../assets/images/badge2.png" alt="Badge Icon 2">
+                <div class="badge-name">#BadgeName</div>
+            </div>
+            <div class="badge">
+                <img src="../assets/images/badge2.png" alt="Badge Icon 3">
+                <div class="badge-name">#BadgeName</div>
+            </div>
+        </div>
         </div>
       </div>
-    </div>
+      
   </section>
 
   <section class="footer">
