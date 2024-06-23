@@ -386,7 +386,7 @@ session_start();
         <div class="container-wrapper">
           <div class="container">
             <?php
-           
+
 
             // Database configuration
             $servername = "localhost";
@@ -459,63 +459,69 @@ session_start();
               let wishlist = [];
 
               function addToWishlist(petId, shelterId, userEmail, button) {
-                console.log('addToWishlist called');
-                console.log('Button:', button);
                 const petIndex = wishlist.findIndex(item => item === petId);
                 const isPetInWishlist = petIndex !== -1;
+
                 if (!isPetInWishlist) {
                   wishlist.push(petId);
-                  // Send AJAX request to save to wishlist table
-                  const xhr = new XMLHttpRequest();
-                  xhr.open('POST', 'adoption_page/insert_wishlist.php', true);
-                  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                  xhr.onload = function () {
-                    if (xhr.status === 200) {
-                      console.log('Pet added to wishlist successfully!');
-                    } else {
-                      console.error('Error adding pet to wishlist:', xhr.statusText);
-                    }
-                  };
-                  xhr.send('petId=' + petId + '&shelterId=' + shelterId + '&userEmail=' + userEmail);
                 } else {
                   wishlist.splice(petIndex, 1);
                 }
-                updateWishlistPopup();
+
+                // Update the UI: toggle liked class
                 button.classList.toggle("liked", !isPetInWishlist);
+
+                // Update the wishlist popup
+                updateWishlistPopup();
               }
 
+              // Function to update the wishlist popup
               function updateWishlistPopup() {
                 const wishlistTable = document.querySelector('#wishlist table');
-                wishlistTable.innerHTML = '';
+                wishlistTable.innerHTML = ''; // Clear existing content
 
-                // Fetch pet details from database using IDs
+                // Check if there are pets in the wishlist
+                if (wishlist.length === 0) {
+                  wishlistTable.innerHTML = '<tr><td colspan="4">Wishlist is empty</td></tr>';
+                  return; // Exit function if wishlist is empty
+                }
+
+                // Prepare URL to fetch pet details from database
+                const petIds = wishlist.join(',');
+                const url = 'adoption_page/fetch_pet_detail.php?id=' + petIds;
+
+                // Create AJAX request
                 const xhr = new XMLHttpRequest();
-                xhr.open('GET', 'adoption_page/fetch_pet_detail.php?id=' + wishlist.join(','), true);
+                xhr.open('GET', url, true);
+
+                // Define what to do on response
                 xhr.onload = function () {
                   if (xhr.status === 200) {
                     const petDetails = JSON.parse(xhr.responseText);
-                    petDetails.forEach((pet, index) => {
+
+                    // Iterate through fetched pet details
+                    petDetails.forEach(pet => {
                       wishlistTable.innerHTML += `
-                  <tr>
-                    <td><img src="${pet.image}" alt="Circle Image" /></td>
-                    <td> <b>${pet.name}</b> <br /> Foster Home </td>
-                    <td class="available">Available</td>
-                    <td>
-                      <button class="delete-button" data-id="${index}" class="button">
-                        <i class="fas fa-trash-alt"></i>
-                      </button>
-                    </td>
-                  </tr>
-                `;
+            <tr>
+              <td><img src="${pet.image}" alt="Pet Image" /></td>
+              <td><b>${pet.name}</b><br />${pet.shelter}</td>
+              <td class="available">Available</td>
+              <td>
+                <button class="delete-button" data-id="${pet.id}" class="button">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </td>
+            </tr>
+          `;
                     });
 
-                    // Update heart buttons
+                    // Update heart buttons on main page
                     const heartButtons = document.querySelectorAll('.heart-button');
                     heartButtons.forEach(button => {
                       const card = button.closest('.card');
                       if (card) {
                         const petId = card.getAttribute('data-id');
-                        const isPetInWishlist = wishlist.includes(parseInt(petId));
+                        const isPetInWishlist = wishlist.includes(petId);
                         button.classList.toggle("liked", isPetInWishlist);
                       }
                     });
@@ -524,27 +530,32 @@ session_start();
                     const deleteButtons = document.querySelectorAll(".delete-button");
                     deleteButtons.forEach(button => {
                       button.addEventListener("click", function () {
-                        const index = parseInt(button.dataset.id);
-                        removeFromWishlist(index);
+                        const petId = button.dataset.id;
+                        const index = wishlist.findIndex(item => item === petId);
+                        if (index !== -1) {
+                          wishlist.splice(index, 1);
+                          updateWishlistPopup();
+
+                          // Update heart button on main page
+                          const heartButton = document.querySelector('.card[data-id="' + petId + '"] .heart-button');
+                          if (heartButton) {
+                            heartButton.classList.remove('liked');
+                          }
+                        }
                       });
                     });
+
+                  } else {
+                    // Handle error if AJAX request fails
+                    console.error('Failed to fetch pet details:', xhr.statusText);
                   }
                 };
+
+                // Send AJAX request
                 xhr.send();
               }
-
-              function removeFromWishlist(index) {
-                const removedPetId = wishlist[index];
-                wishlist.splice(index, 1);
-                updateWishlistPopup();
-
-                // Find the heart button associated with the removed pet
-                const heartButton = document.querySelector('.card[data-id="' + removedPetId + '"] .heart-button');
-                if (heartButton) {
-                  heartButton.classList.remove('liked');
-                }
-              }
             </script>
+
 
 
           </div>
