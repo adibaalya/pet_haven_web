@@ -36,7 +36,6 @@ $(document).ready(function() {
                             <td class="actions">${actions}</td>
                         </tr>
                     `;
-                    console.log('Appending row:', rowHtml); // Log row HTML for debugging
                     tableBody.append(rowHtml);
                 });
             },
@@ -48,6 +47,19 @@ $(document).ready(function() {
 
     // Initial fetch of adoptions when the document is ready
     fetchAdoptions();
+
+    // Polling interval in milliseconds (e.g., poll every 5 seconds)
+    var pollInterval = 5000; // 5 seconds
+
+    // Function to poll for adoption updates
+    function pollAdoptions() {
+        setInterval(function() {
+            fetchAdoptions(); // Fetch adoptions periodically
+        }, pollInterval);
+    }
+
+    // Start polling
+    pollAdoptions();
 
     // Event handler for the Cancel button
     $('#adoptionTable').on('click', '.cancel', function() {
