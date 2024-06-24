@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="../css/adopt.css" />
   <link rel="stylesheet" href="../css/trailers.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
 
   <title>Adopt</title>
   <style>
@@ -21,7 +21,7 @@
   <div id="trailer">
   </div>
   <section class="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <a class="navbar-brand" href="#">
         <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
       </a>
@@ -584,7 +584,6 @@
     <script src="../javascript/trailer.js"></script>
     <script src="../javascript/nav-bar-account.js"></script>
     <script src="../javascript/authentication.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
