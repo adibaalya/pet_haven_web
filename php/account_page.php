@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../css/account.css">
   <link rel="stylesheet" href="../css/trailers.css">
   <link rel="stylesheet" href="../css/nav-bar.css" />
+  <link rel="stylesheet" href="../css/Badge.css" />
   <title>Account</title>
 </head>
 
@@ -91,7 +92,7 @@
               <input type="email" id="email" name="email" placeholder="Email address">
 
               <label for="password">Password</label>
-              <input type="password" id="password" name="password" placeholder="******">
+              <input type="password" id="password" name="password" placeholder="">
 
               <input class="submitbtn" id="submit" type="submit" value="Update Details">
             </form>
@@ -110,6 +111,7 @@
                 <th>Pet ID</th>
                 <th>Shelter ID</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -156,36 +158,24 @@
       </div>
       <div class="tab-pane fade" id="donations">
         <div class="detail-container">
+          
           <div class="container mt-5 mb-5 donation">
-            <p class="text-center">
-              Thank you for your incredible support! As a token of our gratitude we are delighted to present you with
-              a donor badge that honors your significant contributions.
+            <h2 class="text-center mb-4">Thank You for Your Support!</h2>
+            <p class="text-center mb-4">
+              We appreciate your incredible generosity. As a token of our gratitude, here are your donor badges:
             </p>
-          </div>
-          <div class="badge-container">
-            <div class="badge">
-              <img src="../assets/images/badge1.png" alt="Badge Icon 1">
-              <div class="badge-name">#BadgeName</div>
+
+            <!-- Display collected points -->
+            <div class="container mb-4 points-container">
+    <p class="text-center points-label">Points Collected: <span id="points">Loading...</span></p>
+</div>
+
+
+            <!-- Badge container -->
+          <div class="container mb-4">
+            <div class="badge-container">
+              <!-- Badges will be dynamically loaded here -->
             </div>
-            <div class="badge">
-              <img src="../assets/images/badge1.png" alt="Badge Icon 2">
-              <div class="badge-name">#BadgeName</div>
-            </div>
-            <div class="badge">
-              <img src="../assets/images/badge2.png" alt="Badge Icon 2">
-              <div class="badge-name">#BadgeName</div>
-            </div>
-            <div class="badge">
-              <img src="../assets/images/badge1.png" alt="Badge Icon 2">
-              <div class="badge-name">#BadgeName</div>
-            </div>
-            <div class="badge">
-              <img src="../assets/images/badge1.png" alt="Badge Icon 2">
-              <div class="badge-name">#BadgeName</div>
-            </div>
-            <div class="badge">
-              <img src="../assets/images/badge1.png" alt="Badge Icon 2">
-              <div class="badge-name">#BadgeName</div>
             </div>
           </div>
         </div>
@@ -235,5 +225,6 @@
   <script src="../javascript/account.js"></script>
   <script src="../javascript/adopt_js.js"></script>
   <script src="../javascript/nav-bar-account.js"></script>
+  <script src="../javascript/Badge.js"></script>
 </body>
 </html>
