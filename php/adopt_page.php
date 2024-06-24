@@ -393,12 +393,7 @@
             $dbname = "pethavenuser";
 
             // Establish database connection
-            try {
-              $pdo = new PDO("mysql:host=$servername;port=3306;dbname=$dbname", $username, $password);
-              $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // Set error mode to exceptions
-            } catch (PDOException $e) {
-              die("Error: Could not connect to the database. " . $e->getMessage());
-            }
+            
 
             // Query to fetch pets data including BLOBs
             $sql = "SELECT p.id, p.name, p.age, p.breed, p.gender, p.color, p.vaccinated, p.status, p.deworm, p.type, p.image1 as image, s.name as shelter 
