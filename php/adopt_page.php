@@ -383,7 +383,6 @@
         <div class="container-wrapper">
           <div class="container">
             <?php
-            session_start();
             include 'db_connect.php';
 
             // Database configuration

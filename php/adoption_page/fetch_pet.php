@@ -1,5 +1,4 @@
-<?php
-    session_start(); // Start session at the beginning
+<?php // Start session at the beginning
     
     $servername = "localhost";
     $username = "root";
@@ -53,9 +52,7 @@
         $image1 = base64_encode($row['image1']);
         $image2 = base64_encode($row['image2']);
         $image3 = base64_encode($row['image3']);
-
-        // Store viewed pets in session
-        session_start();  // Start session if not already started
+ // Start session if not already started
         $_SESSION['viewed_pets'][] = $id;
       } else {
         echo 'No pet found with ID ' . $id;

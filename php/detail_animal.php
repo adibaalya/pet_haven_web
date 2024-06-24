@@ -351,7 +351,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <div class="container-wrapper">
       <div class="container">
         <?php
-        session_start();
         include 'db_connect.php'; // Make sure db_connect.php includes your database connection logic
         
         // Database configuration (move this to db_connect.php if not already there)
