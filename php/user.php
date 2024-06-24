@@ -13,6 +13,7 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Registration form handling
     $name = $_POST["name"];
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -29,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO userinfo (name, email, password) VALUES ('$name', '$email', '$password')";
 
         if ($conn->query($sql) === TRUE) {
-            $_SESSION['email'] = $email; 
+            $_SESSION['email'] = $email; // Set session variable after successful registration
             echo "<script>
                 alert('New record created successfully');
                 window.location.href = '../html/account_page.html';
@@ -42,10 +43,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    // Login form handling
     $email = $_GET["email"];
     $password = $_GET["password"];
 
     if (strpos($email, '@admin.com.my') !== false) {
+        // Admin login
         $sql = "SELECT * FROM userinfo WHERE email='$email' AND password='$password'";
         $result = $conn->query($sql);
 
@@ -64,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
     }
 
+    // Regular user login
     $sql = "SELECT * FROM userinfo WHERE email='$email' AND password='$password'";
     $result = $conn->query($sql);
 

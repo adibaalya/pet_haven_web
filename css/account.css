@@ -270,49 +270,6 @@ input[type="submit"]:hover {
 }
 
 
-.badge-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 60px;
-    padding: 20px;
-    max-width: 1000px;
-    align-items: center;
-    margin: 0 auto;
-
-  }
-  
-  .badge {
-    width: 250px; 
-    height: 250px; 
-    border-radius: 50%;
-    background-color: #fff; 
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    border: 2px solid #ddd;
-  }
-  
-  .badge img {
-    width: 110%;
-    height: 110%;
-    border-radius: 50%;
-  }
-
-  .donation p{
-    font-size: 18px; 
-    line-height: 1.6; 
-    color: #333; 
-    margin-bottom: 20px; 
-  }
-
-  .badge-name {
-    font-size: 18px; 
-    color: #333;
-}
-
 .submitbtn:hover{
     background-color:rgb(237, 167, 178);
     color: #000000;
@@ -344,3 +301,4 @@ input[type="submit"]:hover {
 .show {
     display: block;
 }
+  

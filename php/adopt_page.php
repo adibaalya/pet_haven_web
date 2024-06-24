@@ -4,27 +4,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../css/adopt.css" />
-  <link rel="stylesheet" href="../css/trailer.css">
+  <link rel="stylesheet" href="../css/trailers.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+
   <title>Adopt</title>
+  <style>
+
+  </style>
 </head>
 
 <body>
-  <script src="../javascript/adopt.js"></script>
   <div id="trailer">
   </div>
-  <script src="../javascript/trailer.js"></script>
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-        <img src="../assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo" />
+        <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,7 +54,7 @@
               ACCOUNT
             </a>
             <div class="dropdown-menu" aria-labelledby="accountDropdown">
-              <a class="dropdown-item" href="../html/account_page.html">PROFILE</a>
+              <a class="dropdown-item" href="../php/account_page.php">PROFILE</a>
               <a class="dropdown-item" href="#" id="logoutButton">LOGOUT</a>
             </div>
           </li>
@@ -259,31 +258,31 @@
                   echo 'selected'; ?>>Johor</option>
                 <option value="Kedah" <?php if (isset($_GET['location']) && $_GET['location'] == 'Kedah')
                   echo 'selected'; ?>>Kedah</option>
-                  <option value="Kelantan" <?php if (isset($_GET['location']) && $_GET['location'] == 'Kelantan')
+                <option value="Kelantan" <?php if (isset($_GET['location']) && $_GET['location'] == 'Kelantan')
                   echo 'selected'; ?>>Kelantan</option>
                 <option value="Melaka" <?php if (isset($_GET['location']) && $_GET['location'] == 'Melaka')
                   echo 'selected'; ?>>Melaka</option>
-                  <option value="Negeri Sembilan" <?php if (isset($_GET['location']) && $_GET['location'] == 'Negeri Sembilan')
+                <option value="Negeri Sembilan" <?php if (isset($_GET['location']) && $_GET['location'] == 'Negeri Sembilan')
                   echo 'selected'; ?>>Negeri Sembilan</option>
                 <option value="Pahang" <?php if (isset($_GET['location']) && $_GET['location'] == 'Pahang')
                   echo 'selected'; ?>>Pahang</option>
-                  <option value="Perak" <?php if (isset($_GET['location']) && $_GET['location'] == 'Perak')
+                <option value="Perak" <?php if (isset($_GET['location']) && $_GET['location'] == 'Perak')
                   echo 'selected'; ?>>Perak</option>
                 <option value="Perlis" <?php if (isset($_GET['location']) && $_GET['location'] == 'Perlis')
                   echo 'selected'; ?>>Perlis</option>
-                  <option value="Pulau Pinang" <?php if (isset($_GET['location']) && $_GET['location'] == 'Pulau Pinang')
+                <option value="Pulau Pinang" <?php if (isset($_GET['location']) && $_GET['location'] == 'Pulau Pinang')
                   echo 'selected'; ?>>Pulau Pinang</option>
                 <option value="Sabah" <?php if (isset($_GET['location']) && $_GET['location'] == 'Sabah')
                   echo 'selected'; ?>>Sabah</option>
-                  <option value="Sarawak" <?php if (isset($_GET['location']) && $_GET['location'] == 'Sarawak')
+                <option value="Sarawak" <?php if (isset($_GET['location']) && $_GET['location'] == 'Sarawak')
                   echo 'selected'; ?>>Sarawak</option>
                 <option value="Selangor" <?php if (isset($_GET['location']) && $_GET['location'] == 'Selangor')
                   echo 'selected'; ?>>Selangor</option>
-                  <option value="Terengganu" <?php if (isset($_GET['location']) && $_GET['location'] == 'Terengganu')
+                <option value="Terengganu" <?php if (isset($_GET['location']) && $_GET['location'] == 'Terengganu')
                   echo 'selected'; ?>>Terengganu</option>
                 <option value="Kuala Lumpur" <?php if (isset($_GET['location']) && $_GET['location'] == 'Kuala Lumpur')
                   echo 'selected'; ?>>Kuala Lumpur</option>
-                   <option value="Labuan" <?php if (isset($_GET['location']) && $_GET['location'] == 'Labuan')
+                <option value="Labuan" <?php if (isset($_GET['location']) && $_GET['location'] == 'Labuan')
                   echo 'selected'; ?>>Labuan</option>
                 <option value="Putrajaya" <?php if (isset($_GET['location']) && $_GET['location'] == 'Putrajaya')
                   echo 'selected'; ?>>Putrajaya</option>
@@ -331,7 +330,6 @@
             </div>
           </form>
         </div>
-
       </div>
       <div class="column card-column">
         <div class="filter-title">
@@ -382,9 +380,6 @@
         <div class="container-wrapper">
           <div class="container">
             <?php
-            session_start();
-            include 'db_connect.php';
-
             // Database configuration
             $servername = "localhost";
             $username = "root";
@@ -445,54 +440,54 @@
               // Add more hidden fields if necessary
               echo '<button type="submit" class="detail-button">ADOPT</button>';
               echo '</form>';
-          
+
               echo '<button type="submit" class="heart-button" onclick="addToWishlist(' . htmlspecialchars(json_encode($pet['id'])) . ', this)" >';
               echo '<i class="fas fa-heart"></i>';
               echo '</button>';
               echo '</div>';
-          }
+            }
             ?>
-           <script>
-    let wishlist = [];
+            <script>
+              let wishlist = [];
 
-    function addToWishlist(petId, button) {
-        console.log('addToWishlist called');
-        console.log('Button:', button);
-        const petIndex = wishlist.findIndex(item => item === petId);
-        const isPetInWishlist = petIndex !== -1;
-        if (!isPetInWishlist) {
-            wishlist.push(petId);
-            // Send AJAX request to save to wishlist table
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'adoption_page/insert_wishlist.php', true); // Corrected the URL
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    console.log('Pet added to wishlist successfully!');
+              function addToWishlist(petId, button) {
+                console.log('addToWishlist called');
+                console.log('Button:', button);
+                const petIndex = wishlist.findIndex(item => item === petId);
+                const isPetInWishlist = petIndex !== -1;
+                if (!isPetInWishlist) {
+                  wishlist.push(petId);
+                  // Send AJAX request to save to wishlist table
+                  const xhr = new XMLHttpRequest();
+                  xhr.open('POST', 'adoption_page/insert_wishlist.php', true); // Corrected the URL
+                  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                  xhr.onload = function () {
+                    if (xhr.status === 200) {
+                      console.log('Pet added to wishlist successfully!');
+                    } else {
+                      console.error('Error adding pet to wishlist:', xhr.statusText);
+                    }
+                  };
+                  xhr.send('petId=' + petId);
                 } else {
-                    console.error('Error adding pet to wishlist:', xhr.statusText);
+                  wishlist.splice(petIndex, 1);
                 }
-            };
-            xhr.send('petId=' + petId);
-        } else {
-            wishlist.splice(petIndex, 1);
-        }
-        updateWishlistPopup();
-        button.classList.toggle("liked", !isPetInWishlist);
-    }
+                updateWishlistPopup();
+                button.classList.toggle("liked", !isPetInWishlist);
+              }
 
-    function updateWishlistPopup() {
-        const wishlistTable = document.querySelector('#wishlist table');
-        wishlistTable.innerHTML = '';
+              function updateWishlistPopup() {
+                const wishlistTable = document.querySelector('#wishlist table');
+                wishlistTable.innerHTML = '';
 
-        // Fetch pet details from database using IDs
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', 'adoption_page/fetch_pet_detail.php?id=' + wishlist.join(','), true); // Corrected the URL
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                const petDetails = JSON.parse(xhr.responseText);
-                petDetails.forEach((pet, index) => {
-                    wishlistTable.innerHTML += `
+                // Fetch pet details from database using IDs
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'adoption_page/fetch_pet_detail.php?id=' + wishlist.join(','), true); // Corrected the URL
+                xhr.onload = function () {
+                  if (xhr.status === 200) {
+                    const petDetails = JSON.parse(xhr.responseText);
+                    petDetails.forEach((pet, index) => {
+                      wishlistTable.innerHTML += `
           <tr>
             <td><img src="${pet.image}" alt="Circle Image" /></td>
             <td> <b>${pet.name}</b> <br /> Foster Home </td>
@@ -504,47 +499,49 @@
             </td>
           </tr>
         `;
-                });
+                    });
 
-                // Update heart buttons
-                const heartButtons = document.querySelectorAll('.heart-button');
-                heartButtons.forEach(button => {
-                    const card = button.closest('.card');
-                    if (card) {
+                    // Update heart buttons
+                    const heartButtons = document.querySelectorAll('.heart-button');
+                    heartButtons.forEach(button => {
+                      const card = button.closest('.card');
+                      if (card) {
                         const petId = card.getAttribute('data-id');
                         const isPetInWishlist = wishlist.includes(parseInt(petId));
                         button.classList.toggle("liked", isPetInWishlist);
-                    }
-                });
+                      }
+                    });
 
-                // Add event listeners to delete buttons
-                const deleteButtons = document.querySelectorAll(".delete-button");
-                deleteButtons.forEach(button => {
-                    button.addEventListener("click", function () {
+                    // Add event listeners to delete buttons
+                    const deleteButtons = document.querySelectorAll(".delete-button");
+                    deleteButtons.forEach(button => {
+                      button.addEventListener("click", function () {
                         const index = parseInt(button.dataset.id);
                         removeFromWishlist(index);
+                      });
                     });
-                });
-            }
-        };
-        xhr.send();
-    }
+                  }
+                };
+                xhr.send();
+              }
 
-    function removeFromWishlist(index) {
-        const removedPetId = wishlist[index];
-        wishlist.splice(index, 1);
-        updateWishlistPopup();
+              function removeFromWishlist(index) {
+                const removedPetId = wishlist[index];
+                wishlist.splice(index, 1);
+                updateWishlistPopup();
 
-        // Find the heart button associated with the removed pet
-        const heartButton = document.querySelector('.card[data-id="' + removedPetId + '"] .heart-button');
-        if (heartButton) {
-            heartButton.classList.remove('liked');
-        }
-    }
-</script>
+                // Find the heart button associated with the removed pet
+                const heartButton = document.querySelector('.card[data-id="' + removedPetId + '"] .heart-button');
+                if (heartButton) {
+                  heartButton.classList.remove('liked');
+                }
+              }
+            </script>
 
           </div>
         </div>
+      </div>
+    </div>
   </section>
 
   <section class="footer">
@@ -579,11 +576,15 @@
           </div>
         </div>
       </div>
+      </div>
     </footer>
 
 
+    <script src="../javascript/adopt.js"></script>
+    <script src="../javascript/trailer.js"></script>
     <script src="../javascript/nav-bar-account.js"></script>
     <script src="../javascript/authentication.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

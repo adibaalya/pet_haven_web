@@ -13,9 +13,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/detail.css" />
-  <link rel="stylesheet" href="../css/trailer.css">
+  <link rel="stylesheet" href="../css/trailers.css">
   <link rel="stylesheet" href="../css/nav-bar.css">
-  <script src="../javascript/detail.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
@@ -23,14 +22,12 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
 </head>
 
 <body>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <div id="trailer">
   </div>
-  <script src="../javascript/trailer.js"></script>
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <a class="navbar-brand" href="#">
-        <img src="../assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo" />
+        <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -174,6 +171,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
       </div>
     </div>
   </div>
+
   <section id="detail-animal">
     <?php include 'adoption_page/fetch_pet.php'; ?>
     <div class="container">
@@ -341,7 +339,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         </div>
       </div>
     </div>
-    </div>
   </section>
 
   <section id="suggestion">
@@ -351,7 +348,6 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
     <div class="container-wrapper">
       <div class="container">
         <?php
-        session_start();
         include 'db_connect.php'; // Make sure db_connect.php includes your database connection logic
         
         // Database configuration (move this to db_connect.php if not already there)
@@ -444,15 +440,16 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
           </div>
         </div>
       </div>
+      </div>
     </footer>
 
+    <script src="../javascript/detail.js"></script>
+    <script src="../javascript/trailer.js"></script>
     <script src="../javascript/nav-bar-account.js"></script>
     <script src="../javascript/authentication.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  </section>
 </body>
 
 </html>
