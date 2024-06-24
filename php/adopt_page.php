@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../css/adopt.css" />
   <link rel="stylesheet" href="../css/trailers.css">
-  <link rel="stylesheet" href="../css/Badge.css">
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"></script>
@@ -17,19 +16,17 @@
 
   <title>Adopt</title>
   <style>
-  
-</style>
+
+  </style>
 </head>
 
 <body>
-  <script src="../javascript/adopt.js"></script>
   <div id="trailer">
   </div>
-  <script src="../javascript/trailer.js"></script>
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-      <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
+        <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -336,7 +333,6 @@
             </div>
           </form>
         </div>
-
       </div>
       <div class="column card-column">
         <div class="filter-title">
@@ -547,6 +543,8 @@
 
           </div>
         </div>
+      </div>
+    </div>
   </section>
 
   <section class="footer">
@@ -585,6 +583,8 @@
     </footer>
 
 
+    <script src="../javascript/adopt.js"></script>
+    <script src="../javascript/trailer.js"></script>
     <script src="../javascript/nav-bar-account.js"></script>
     <script src="../javascript/authentication.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
