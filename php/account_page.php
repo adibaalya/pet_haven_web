@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/account.css">
-  <link rel="stylesheet" href="../css/trailers.css">
+  <link rel="stylesheet" href="../css/trailer.css">
+  <link rel="stylesheet" href="../css/nav-bar.css" />
   <title>Account</title>
 </head>
 
@@ -17,7 +18,7 @@
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-        <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo">
+        <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,23 +27,34 @@
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
+
+          <li class="nav-item ">
             <a class="nav-link" href="../html/index.html">HOME</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item ">
             <a class="nav-link" href="../php/adopt_page.php">ADOPT</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="../html/donate.html">DONATION</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../php/shelter.php">SHELTER</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../html/index.html#help">HELP</a>
+            <a class="nav-link" href="#help">HELP</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="account_page.html">ACCOUNT</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false" style="display: none;">
+              ACCOUNT
+            </a>
+            <div class="dropdown-menu" aria-labelledby="accountDropdown">
+              <a class="dropdown-item" href="../php/account_page.php">PROFILE</a>
+              <a class="dropdown-item" href="#" id="logoutButton">LOGOUT</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="loginButton" href="login_page.html" style="display: none;">LOGIN</a>
           </li>
         </ul>
       </div>
@@ -222,5 +234,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="../javascript/account.js"></script>
   <script src="../javascript/adopt_js.js"></script>
+  <script src="../javascript/nav-bar-account.js"></script>
 </body>
 </html>
