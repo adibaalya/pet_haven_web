@@ -70,7 +70,7 @@
                         <a class="nav-link" href="../html/index.html#help">HELP</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../html/account_page.html">ACCOUNT</a>
+                        <a class="nav-link" href="../php/account_page.php">ACCOUNT</a>
                     </li>
                 </ul>
             </div>
