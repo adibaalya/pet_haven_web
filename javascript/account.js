@@ -93,7 +93,7 @@ $(document).ready(function () {
     // Example: Clear user session data
     localStorage.clear(); // or specific keys with localStorage.removeItem('keyName');
     // Redirect to index.html
-    window.location.href = 'index.html';
+    window.location.href = '../html/index.html';
   });
 });
 
