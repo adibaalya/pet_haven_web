@@ -34,16 +34,16 @@
           <li class="nav-item ">
             <a class="nav-link" href="../php/adopt_page.php">ADOPT</a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link" href="../html/donate.html">DONATION</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item ">
             <a class="nav-link" href="../php/shelter.php">SHELTER</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#help">HELP</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item active dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false" style="display: none;">
               ACCOUNT
