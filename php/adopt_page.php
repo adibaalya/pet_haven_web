@@ -21,7 +21,7 @@
   <div id="trailer">
   </div>
   <section class="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <a class="navbar-brand" href="#">
         <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
       </a>
