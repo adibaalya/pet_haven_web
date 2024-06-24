@@ -110,6 +110,7 @@
                 <th>Pet ID</th>
                 <th>Shelter ID</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
