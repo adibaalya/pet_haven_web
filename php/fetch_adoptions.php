@@ -23,7 +23,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch adoption data for the logged-in user
-$sql = "SELECT petId, shelterId, status, date FROM adoption WHERE email = ?";
+$sql = "SELECT petId, shelterId, status, date FROM adoption WHERE email = ? ";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $email);
 $stmt->execute();
