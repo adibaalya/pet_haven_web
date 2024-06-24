@@ -55,10 +55,6 @@ body {
     font-weight: 500 !important;
 }
 
-footer.bg-dark.text-white.py-4.mt-5 {
-    background-color: #000000 !important;
-    font-family: 'Poppins', sans-serif;
-}
 .navbar-collapse {
     flex-grow: 1;
     justify-content: flex-end;
@@ -82,4 +78,10 @@ footer.bg-dark.text-white.py-4.mt-5 {
 .navbar .navbar-nav {
     display: flex;
     align-items: center;
+}
+
+
+footer.bg-dark.text-white.py-4.mt-5 {
+    background-color: #000000 !important;
+    font-family: 'Poppins', sans-serif;
 }
