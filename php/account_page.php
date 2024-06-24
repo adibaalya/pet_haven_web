@@ -99,55 +99,55 @@
       <div class="tab-pane fade" id="adoptions">
         <div class="detail-container">
           <h2 class="title">Adoption</h2>
-          <table id="adoptionTable" class="table">
-                <thead>
-                    <tr>
-                    <th>Pet ID</th>
-                    <th>Shelter ID</th>
-                    <th></th>
-                  
-                    </tr>
-                </thead>
-                <tbody>
-              <?php
-              // Establish database connection
-              $servername = "localhost";
-              $username = "root";
-              $password = "";
-              $dbname = "pethavenuser";
+          <div class="container table-container">
+    <table id="adoptionTable" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Pet ID</th>
+                <th>Shelter ID</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Establish database connection
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "pethavenuser";
 
-              $conn = new mysqli($servername, $username, $password, $dbname);
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-              if ($conn->connect_error) {
-                  die("Connection failed: " . $conn->connect_error);
-              }
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
 
-              // Fetch adoption data from database
-              $sql = "SELECT petId, shelterId, status FROM adoption";
-              $result = $conn->query($sql);
+            // Fetch adoption data from database
+            $sql = "SELECT petId, shelterId, status, email FROM adoption";
+            $result = $conn->query($sql);
 
-              if ($result->num_rows > 0) {
-                  while ($row = $result->fetch_assoc()) {
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . $row['petId'] . "</td>";
                     echo "<td>" . $row['shelterId'] . "</td>";
-                    echo "<td class='status " . strtolower($row['status']) . "'>" . $row['status'];
+                    echo "<td class='status " . strtolower($row['status']) . "'>" . ucfirst($row['status']);
                     if ($row['status'] == 'approve') {
                         // Display date picker button if status is 'approve'
                         echo "<button class='btn btn-sm btn-outline-primary pick-date-btn' data-email='" . $row['email'] . "' data-petid='" . $row['petId'] . "' data-shelterid='" . $row['shelterId'] . "'>Pick Date</button>";
                     }
                     echo "</td>";
                     echo "</tr>";
-                    
-                  }
-              } else {
-                  echo "<tr><td colspan='3'>No adoption records found</td></tr>";
-              }
+                }
+            } else {
+                echo "<tr><td colspan='3'>No adoption records found</td></tr>";
+            }
 
-              $conn->close();
-              ?>
-            </tbody>
-          </table>
+            $conn->close();
+            ?>
+        </tbody>
+    </table>
+</div>
         </div>
       </div>
       <div class="tab-pane fade" id="donations">
