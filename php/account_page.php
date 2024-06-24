@@ -17,7 +17,7 @@
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-        <img src="../assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo">
+        <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,16 +29,8 @@
           <li class="nav-item">
             <a class="nav-link" href="../html/index.html">HOME</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="../php/adopt_page.php" id="adoptDropdown" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              ADOPT
-            </a>
-            <div class="dropdown-menu" aria-labelledby="adoptDropdown">
-              <a class="dropdown-item" href="../php/adopt_page.php">Dogs</a>
-              <a class="dropdown-item" href="../php/adopt_page.php">Cats</a>
-              <a class="dropdown-item" href="../php/adopt_page.php">Rabbit</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link" href="../php/adopt_page.html">ADOPT</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../html/donate.html">DONATION</a>
