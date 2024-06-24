@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/account.css">
-  <link rel="stylesheet" href="../css/trailer.css">
+  <link rel="stylesheet" href="../css/trailers.css">
   <link rel="stylesheet" href="../css/Badge.css">
   <title>Account</title>
+  
 </head>
 
 <body>
@@ -18,7 +19,7 @@
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-        <img src="../assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo">
+      <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

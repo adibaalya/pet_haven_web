@@ -1,0 +1,62 @@
+#trailer {
+    height: 20px;
+    width: 20px;
+    background-color: #ee9866;
+    /* Change background color to black */
+    border-radius: 20px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 1000;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 5000ms ease;
+}
+
+
+body:hover>#trailer {
+    opacity: 1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #E5DAD1 !important;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    height: 65px;
+    background-color: #E5DAD1 !important;
+}
+
+.navbar-nav .nav-link {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    color: black !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: black !important;
+}
+
+.navbar-nav .nav-link.active {
+    background-color: transparent !important;
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+    color: black !important;
+    font-weight: 500 !important;
+}
+
+
+footer.bg-dark.text-white.py-4.mt-5 {
+    background-color: #000000 !important;
+    font-family: 'Poppins', sans-serif;
+}
