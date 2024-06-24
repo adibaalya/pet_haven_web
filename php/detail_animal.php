@@ -25,8 +25,8 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   <div id="trailer">
   </div>
   <section class="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <a class="navbar-brand" href="#">
+    <nav class="navbar navbar-expand-md  ">
+      <a class="navbar-brand" href="../html/index.html">
         <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"

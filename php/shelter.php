@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/trailer.css">
+    <link rel="stylesheet" href="../css/trailers.css">
     <link rel="stylesheet" href="../css/nav-bar.css" />
 </head>
 
@@ -24,7 +24,7 @@
   <script src="../javascript/trailer.js"></script>
 
   <section class="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="#">
         <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
       </a>
