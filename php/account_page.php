@@ -167,8 +167,10 @@
 
 
             <!-- Badge container -->
+          <div class="container mb-4">
             <div class="badge-container">
               <!-- Badges will be dynamically loaded here -->
+            </div>
             </div>
           </div>
         </div>

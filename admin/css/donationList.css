@@ -51,7 +51,7 @@ main.table {
 
 .table__header .input-group {
     width: 30%;
-    height: 100%;
+    height:50%;
     background-color: rgba(255, 173, 85, 0.601);
     padding: 0 .8rem;
     border-radius: 2rem;
