@@ -12,9 +12,17 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-
   <title>Adopt</title>
   <style>
+    .navbar-toggler {
+    z-index: 2;
+    border-color: black;
+}
+
+/* Change the color of the navbar toggler icon */
+.navbar-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
 
   </style>
 </head>
@@ -23,11 +31,11 @@
   <div id="trailer">
   </div>
   <section class="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <a class="navbar-brand" href="#">
+    <nav class="navbar navbar-expand-lg navbar-dark  ">
+    <a class="navbar-brand " href="#">
         <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -48,7 +56,7 @@
             <a class="nav-link" href="../php/shelter.php">SHELTER</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#help">HELP</a>
+            <a class="nav-link" href="../html/index.html#help">HELP</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown"
