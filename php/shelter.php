@@ -15,18 +15,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/trailer.css">
-
-
-
+    <link rel="stylesheet" href="../css/trailers.css">
 </head>
-<style>
-    body {
-        background-color: #EDEBD2;
-        margin: 0;
-        padding: 0;
-    }
-</style>
 
 <body>
     <div id="trailer">
@@ -37,7 +27,7 @@
     <section class="nav-bar">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="#">
-                <img src="../assets/images/pets-haven-logo.png" width="50" height="50" alt="Pet Haven Logo" />
+            <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,40 +75,40 @@
             <p>anytime anywhere</p>
         </div>
         <div class="filterContainer">
-    <form action="shelter.php" method="GET">
-        <h5 style="padding: 15px;">Choose your Shelter</h5>
-        <div class="row align-items-center">
-            <div class="col-sm-4"  >
-                <select id="Location" name="location" class="form-select" style="border: 2px solid black;">
-                    <option value="Select Location">Select Location</option>
-                    <option value="Johor">Johor</option>
-                    <option value="Kedah">Kedah</option>
-                    <option value="Negeri Sembilan">Negeri Sembilan</option>
-                    <option value="Perlis">Perlis</option>
-                    <option value="Selangor">Selangor</option>
-                    <option value="Kuala Lumpur">Kuala Lumpur</option>
-                </select>
-            </div>
-            <div class="col-sm-4">
-                <input type="text" name="keyword" class="form-control" placeholder="Shelter Name"
-                    style="border: 2px solid black;">
-            </div>
-            <div class="col-sm-3">
-                <button type="submit" class="btn btn-primary w-100" >Search</button>
-            </div>
+            <form action="shelter.php" method="GET">
+                <h5 style="padding: 15px;">Choose your Shelter</h5>
+                <div class="row align-items-center">
+                    <div class="col-sm-4">
+                        <select id="Location" name="location" class="form-select" style="border: 2px solid black;">
+                            <option value="Select Location">Select Location</option>
+                            <option value="Johor">Johor</option>
+                            <option value="Kedah">Kedah</option>
+                            <option value="Negeri Sembilan">Negeri Sembilan</option>
+                            <option value="Perlis">Perlis</option>
+                            <option value="Selangor">Selangor</option>
+                            <option value="Kuala Lumpur">Kuala Lumpur</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" name="keyword" class="form-control" placeholder="Shelter Name"
+                            style="border: 2px solid black;">
+                    </div>
+                    <div class="col-sm-3">
+                        <button type="submit" class="btn btn-primary w-100">Search</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
 
 
-</div>
+    </div>
 
 
-        </div>
+    </div>
     </div>
     </div>
     <div class="container-fluid"
-        style=" background-color:rgb(251, 249, 230); margin-top: 100px; border-radius: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  width: 80%;">
+        style=" background-color:#DDCAB5; margin-top: 100px; border-radius: 50px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  width: 80%;">
 
 
         <div class="row">
@@ -139,28 +129,28 @@
             // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-           
+
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
 
-           
+
             $sql = "SELECT * FROM shelter";
             $whereClause = [];
 
-            
+
             if (isset($_GET['location']) && $_GET['location'] != 'Select Location') {
                 $location = $conn->real_escape_string($_GET['location']);
                 $whereClause[] = "location = '$location'";
             }
 
-            
+
             if (isset($_GET['keyword']) && !empty($_GET['keyword'])) {
                 $keyword = $conn->real_escape_string($_GET['keyword']);
                 $whereClause[] = "(name LIKE '%$keyword%' )";
             }
 
-            
+
             if (!empty($whereClause)) {
                 $sql .= " WHERE " . implode(" AND ", $whereClause);
             }
@@ -235,8 +225,8 @@
                                         <div class="col-7 right-panel" style="margin-left: 10px; ">
                                             <div class="tab-content">
                                                 <div class="tab-pane fade show active" id="description">
-                                                    <img
-                                                        src="data:image/jpeg;base64,<?= htmlspecialchars($shelter['imageDesc']); ?>"  style="width: 100%;">
+                                                    <img src="data:image/jpeg;base64,<?= htmlspecialchars($shelter['imageDesc']); ?>"
+                                                        style="width: 100%;">
                                                     <p><?= htmlspecialchars($shelter['description']); ?></p>
                                                 </div>
                                             </div>
