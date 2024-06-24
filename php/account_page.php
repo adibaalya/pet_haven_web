@@ -100,22 +100,23 @@
       <div class="tab-pane fade" id="adoptions">
         <div class="detail-container">
           <h2 class="title">Adoption</h2>
-          <table id="adoptionTable" class="table">
-                <thead>
-                    <tr>
-                    <th>Pet ID</th>
-                    <th>Shelter ID</th>
-                    <th></th>
-                  
-                    </tr>
-                </thead>
-                <tbody>
-              <?php
-              // Establish database connection
-              $servername = "localhost";
-              $username = "root";
-              $password = "";
-              $dbname = "pethavenuser";
+          <div class="container table-container">
+    <table id="adoptionTable" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Pet ID</th>
+                <th>Shelter ID</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            // Establish database connection
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "pethavenuser";
 
               $conn = new mysqli($servername, $username, $password, $dbname);
 

@@ -302,4 +302,32 @@ input[type="submit"]:hover {
 .show {
     display: block;
 }
-  
+.table {
+    border: 3px solid black;
+}
+.table thead th {
+    background-color: #f7cd64;
+    font-weight: bold;
+    border: 3px solid black;
+}
+.table tbody td {
+    border: 3px solid black;
+}
+.table tbody tr {
+    transition: background-color 0.3s;
+}
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+.status.approve {
+    color: green;
+}
+.status.pending {
+    color: orange;
+}
+.status.rejected {
+    color: red;
+}
+.pick-date-btn {
+    margin-left: 10px;
+}
