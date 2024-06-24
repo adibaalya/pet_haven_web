@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="../css/index.css" />
   <link rel="stylesheet" href="../css/trailers.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
   <title>Pet Haven</title>
 </head>
 
@@ -41,7 +44,7 @@
             <a class="nav-link" href="../php/shelter.php">SHELTER</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#help">HELP</a>
+            <a class="nav-link" href="../html/index.html#help">HELP</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown"
@@ -160,24 +163,16 @@
     </div>
   </div>
 
-  <div class="heading text-center">
-    <h1>PET HAVEN</h1>
-    <h2>Connecting all pet shelters in Malaysia</h2>
-  </div>
-
-  <div style="margin-top: 40px;" class="banner position-relative d-flex align-items-center justify-content-center">
-    <img id="bannerImg" src="../assets/images/pets-banner.png" alt="Banner" class="img-fluid" />
-    <div class="position-absolute text-center">
-      <a href="../php/adopt_page.php">
-        <button class="btn btn-dark btn-lg me-2">ADOPT NOW</button>
-      </a>
+  <div id="landing-page" class="landing-page">
+    <div class="content">
+      <h1>Pet Haven </h1>
+      <h2>Empowering Local Pet Shelters</h2>
+      <p>Welcome to Pet Haven, your gateway to pet adoption<br>and support for shelters across Malaysia.</p>
+      <div class="buttons">
+        <a href="../php/adopt_page.php" class="button">Adopt Now</a>
+        <a href="../html/donate.html" class="button">Donate Now</a>
+      </div>
     </div>
-    <div id="bannerControls" class="position-relative mt-1">
-      <span data-index="0" class="dot"></span>
-      <span data-index="1" class="dot"></span>
-      <span data-index="2" class="dot"></span>
-    </div>
-    
   </div>
 
   <div class="countdown-container container text-center py-5 mt-5" style="
@@ -515,6 +510,7 @@
   <script src="../javascript/index.js"></script>
   <script src="../javascript/nav-bar-account.js"></script>
   <script src="../javascript/authentication.js"></script>
+
 </body>
 
 </html>
