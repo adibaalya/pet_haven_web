@@ -30,7 +30,7 @@
             <a class="nav-link" href="../html/index.html">HOME</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../php/adopt_page.html">ADOPT</a>
+            <a class="nav-link" href="../php/adopt_page.php">ADOPT</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../html/donate.html">DONATION</a>
