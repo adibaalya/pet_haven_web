@@ -2,7 +2,6 @@
     height: 20px;
     width: 20px;
     background-color: #ee9866;
-    /* Change background color to black */
     border-radius: 20px;
     position: fixed;
     left: 0px;
@@ -13,8 +12,7 @@
     transition: opacity 5000ms ease;
 }
 
-
-body:hover>#trailer {
+body:hover > #trailer {
     opacity: 1;
 }
 
@@ -33,6 +31,8 @@ body {
 .navbar {
     height: 65px;
     background-color: #E5DAD1 !important;
+    position: relative; /* Ensure the navbar is positioned relative */
+    z-index: 1030; /* Ensure the navbar is above other content, including the carousel */
 }
 
 .navbar-nav .nav-link {
@@ -55,8 +55,31 @@ body {
     font-weight: 500 !important;
 }
 
-
 footer.bg-dark.text-white.py-4.mt-5 {
     background-color: #000000 !important;
     font-family: 'Poppins', sans-serif;
+}
+.navbar-collapse {
+    flex-grow: 1;
+    justify-content: flex-end;
+    background-color: #E5DAD1; /* Optional: Set your desired background color */
+    z-index: 1020; /* Ensure it appears above other content */
+}
+
+/* Ensure the toggler button is above the collapse menu */
+.navbar-toggler {
+    z-index: 2;
+    border-color: black;
+}
+
+/* Change the color of the navbar toggler icon */
+.navbar-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Align items in the navbar to be centered vertically */
+.navbar .navbar-brand,
+.navbar .navbar-nav {
+    display: flex;
+    align-items: center;
 }

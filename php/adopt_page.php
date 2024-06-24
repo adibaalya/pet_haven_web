@@ -12,11 +12,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-default.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/odometer.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-
   <title>Adopt</title>
-  <style>
-
-  </style>
 </head>
 
 <body>
@@ -24,10 +20,10 @@
   </div>
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark ">
-      <a class="navbar-brand" href="#">
+    <a class="navbar-brand " href="#">
         <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -48,7 +44,7 @@
             <a class="nav-link" href="../php/shelter.php">SHELTER</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#help">HELP</a>
+            <a class="nav-link" href="../html/index.html#help">HELP</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown"
