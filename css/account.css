@@ -329,5 +329,12 @@ input[type="submit"]:hover {
     color: red;
 }
 .pick-date-btn {
-    margin-left: 10px;
+    justify-content: center;
 }
+
+.button {
+    width: fit-content;
+    margin: 0 auto; /* center button horizontally */
+  }
+  
+
