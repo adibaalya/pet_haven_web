@@ -1,3 +1,19 @@
+// Function to change modal header style
+function changeModalHeaderStyle(modalId) {
+  const modalHeader = document.querySelector(`${modalId} .modal-header`);
+  const modalTitle = document.querySelector(`${modalId} .modal-title`);
+  if (modalHeader) {
+    modalHeader.style.backgroundColor = '#000';
+    modalTitle.style.color = 'white !important';
+  }
+}
+
+// Add event listeners for each pet image/button that triggers a modal
+document.querySelector('[data-target="#dogTipsModal"]').addEventListener('click', () => changeModalHeaderStyle('#dogTipsModal'));
+// Repeat for other pets, e.g., cat and rabbit, assuming they have similar modal IDs
+document.querySelector('[data-target="#catTipsModal"]').addEventListener('click', () => changeModalHeaderStyle('#catTipsModal'));
+document.querySelector('[data-target="#rabbitTipsModal"]').addEventListener('click', () => changeModalHeaderStyle('#rabbitTipsModal'));
+
 document.getElementById('submitBtn').addEventListener('click', function () {
   this.textContent = "Submitting...";
 });
