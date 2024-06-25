@@ -105,60 +105,60 @@
         <div class="detail-container">
           <h2 class="title">Adoption</h2>
           <div class="container table-container">
-    <table id="adoptionTable" class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th>Pet ID</th>
-                <th>Shelter ID</th>
-                <th>Status</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            // Establish database connection
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "pethavenuser";
+            <table id="adoptionTable" class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>Pet ID</th>
+                  <th>Shelter ID</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                // Establish database connection
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "pethavenuser";
 
-            $conn = new mysqli($servername, $username, $password, $dbname);
+                $conn = new mysqli($servername, $username, $password, $dbname);
 
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
+                if ($conn->connect_error) {
+                  die("Connection failed: " . $conn->connect_error);
+                }
 
-            // Fetch adoption data from database
-            $sql = "SELECT petId, shelterId, status, email FROM adoption";
-            $result = $conn->query($sql);
+                // Fetch adoption data from database
+                $sql = "SELECT petId, shelterId, status, email FROM adoption";
+                $result = $conn->query($sql);
 
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
+                if ($result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . $row['petId'] . "</td>";
                     echo "<td>" . $row['shelterId'] . "</td>";
                     echo "<td class='status " . strtolower($row['status']) . "'>" . ucfirst($row['status']);
                     if ($row['status'] == 'approve') {
-                        // Display date picker button if status is 'approve'
-                        echo "<button class='btn btn-sm btn-outline-primary pick-date-btn' data-email='" . $row['email'] . "' data-petid='" . $row['petId'] . "' data-shelterid='" . $row['shelterId'] . "'>Pick Date</button>";
+                      // Display date picker button if status is 'approve'
+                      echo "<button class='btn btn-sm btn-outline-primary pick-date-btn' data-email='" . $row['email'] . "' data-petid='" . $row['petId'] . "' data-shelterid='" . $row['shelterId'] . "'>Pick Date</button>";
                     }
                     echo "</td>";
                     echo "</tr>";
+                  }
+                } else {
+                  echo "<tr><td colspan='3'>No adoption records found</td></tr>";
                 }
-            } else {
-                echo "<tr><td colspan='3'>No adoption records found</td></tr>";
-            }
 
-            $conn->close();
-            ?>
-        </tbody>
-    </table>
-</div>
+                $conn->close();
+                ?>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <div class="tab-pane fade" id="donations">
         <div class="detail-container">
-          
+
           <div class="container mt-5 mb-5 donation">
             <h2 class="text-center mb-4">Thank You for Your Support!</h2>
             <p class="text-center mb-4">
@@ -167,15 +167,15 @@
 
             <!-- Display collected points -->
             <div class="container mb-4 points-container">
-    <p class="text-center points-label">Points Collected: <span id="points">Loading...</span></p>
-</div>
+              <p class="text-center points-label">Points Collected: <span id="points">Loading...</span></p>
+            </div>
 
 
             <!-- Badge container -->
-          <div class="container mb-4">
-            <div class="badge-container">
-              <!-- Badges will be dynamically loaded here -->
-            </div>
+            <div class="container mb-4">
+              <div class="badge-container">
+                <!-- Badges will be dynamically loaded here -->
+              </div>
             </div>
           </div>
         </div>
