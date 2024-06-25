@@ -28,12 +28,20 @@ body {
     padding: 0;
 }
 
+.nav-item {
+    margin-right: 10px;
+}
 .navbar {
-    height: 65px;
+    height: 70px;
     background-color: #E5DAD1 !important;
     position: relative; /* Ensure the navbar is positioned relative */
     z-index: 1030; /* Ensure the navbar is above other content, including the carousel */
 }
+
+.logo {
+    margin-left: 20px;
+    margin-top: 20px; /* Adjust the value as needed */
+  }
 
 .navbar-nav .nav-link {
     font-family: 'Poppins', sans-serif;
@@ -52,7 +60,7 @@ body {
 
 .navbar-nav .nav-item.active .nav-link {
     color: black !important;
-    font-weight: 500 !important;
+    font-weight: 700 !important;
 }
 
 .navbar-collapse {
@@ -79,6 +87,44 @@ body {
     display: flex;
     align-items: center;
 }
+
+.validation-icon {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 0.5em);
+    transition: all 0.3s ease;
+}
+
+.validation-icon::before {
+    font-family: "Bootstrap Icons";
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+}
+
+.form-control.is-valid,
+.form-control.is-invalid {
+    padding-right: 2.5rem;
+}
+
+.form-control.is-valid~.validation-icon::before {
+    content: '\2713';
+    color: #28a745;
+}
+
+.form-control.is-invalid~.validation-icon::before {
+    content: '\2717';
+    color: #dc3545;
+}
+
+.error-message {
+    color: red;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
 
 
 footer.bg-dark.text-white.py-4.mt-5 {

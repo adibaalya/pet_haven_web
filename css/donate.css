@@ -276,10 +276,6 @@ body {
     background-color: rgb(225, 53, 78); 
 }
 
-footer.bg-dark.text-white.py-4.mt-5 {
-    background-color: #000000 !important;
-    font-family: 'Poppins', sans-serif;
-}
 .overlay {
     position: fixed;
     top: 0;
