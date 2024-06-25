@@ -21,7 +21,7 @@ if ($conn->connect_error) {
     exit();
 }
 
-$sql = "SELECT p.name AS petName, s.name AS shelterName, a.status, a.email 
+$sql = "SELECT p.name AS petName, s.name AS shelterName, a.status, a.email, a.petId AS petId, a.shelterId AS shelterId, a.date AS adoptionDate
         FROM adoption a
         JOIN pet p ON a.petId = p.id
         JOIN shelter s ON a.shelterId = s.id
