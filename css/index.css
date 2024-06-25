@@ -119,15 +119,16 @@ body, html {
 
 .modal-content {
     border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .modal-header {
-    background-color: #333;
+    background-color: #fff;
     border-bottom: none;
 }
 
 .close {
-    color: #fff;
+    color: #333;
     opacity: 1;
     font-size: 1.5em;
 }
@@ -137,9 +138,9 @@ body, html {
 }
 
 .modal-title {
-    font-family: 'Playfair Display', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 20;
-    color: #fff;
+    color: #333;
 }
 
 .modal-body p {
@@ -348,7 +349,7 @@ body, html {
     padding: 10px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     margin-top: 12px !important;
-    height: 50% !important;
+    height: 30% !important;
 }
 
 .countdown-container h2 {
@@ -518,4 +519,32 @@ input::placeholder {
 button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+
+@media (max-width: 767.98px) {
+    .row {
+      flex-direction: column;
+    }
+  
+    .filter-column,
+    .animal-card-column {
+      flex: 100%;
+    }
+  }
+  
+  
+  @media (max-width: 1199.98px) {
+    .container {
+      justify-content: space-around;
+    }
+  }
+  
+  @media (max-width: 767.98px) {
+    .container {
+      justify-content: center;
+    }
+  }
+  
+  .modal-content {
+    border-radius: 10px; 
 }
