@@ -15,15 +15,14 @@
   <title>Adopt</title>
   <style>
     .navbar-toggler {
-    z-index: 2;
-    border-color: black;
-}
+      z-index: 2;
+      border-color: black;
+    }
 
-/* Change the color of the navbar toggler icon */
-.navbar-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
+    /* Change the color of the navbar toggler icon */
+    .navbar-toggler .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
   </style>
 </head>
 
@@ -32,10 +31,10 @@
   </div>
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark  ">
-    <a class="navbar-brand " href="#">
+      <a class="navbar-brand " href="#">
         <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
       </a>
-      <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -338,7 +337,7 @@
             <div class="filter-item">
               <button type="submit" class="btn btn-primary w-100">Search</button>
             </div>
-            
+
           </form>
         </div>
       </div>
@@ -442,112 +441,113 @@
             $pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($pets as $pet) {
+              $petJson = json_encode([
+                'id' => $pet['id'],
+                'name' => $pet['name'],
+                'shelter' => $pet['shelter'],
+                'status' => $pet['status'],
+                'image' => base64_encode($pet['image']) // Encoding the image in base64
+              ]);
+              $petJsonEscaped = htmlspecialchars($petJson, ENT_QUOTES, 'UTF-8');
+
               echo '<div class="card" data-id="' . htmlspecialchars($pet['id']) . '">';
               echo '<img src="data:image/jpeg;base64,' . htmlspecialchars(base64_encode($pet['image'])) . '" alt="Image of ' . htmlspecialchars($pet['name']) . '">';
               echo '<h2>' . htmlspecialchars($pet['name']) . '</h2>';
               echo '<p class="shelter">' . htmlspecialchars($pet['shelter']) . '</p>';
               echo '<form action="detail_animal.php" method="POST">';
               echo '<input type="hidden" name="ID" value="' . htmlspecialchars($pet['id']) . '">';
-              // Add more hidden fields if necessary
               echo '<button type="submit" class="detail-button">ADOPT</button>';
               echo '</form>';
-
-              echo '<button type="submit" class="heart-button" onclick="addToWishlist(' . htmlspecialchars(json_encode($pet['id'])) . ', this)" >';
+              echo '<button class="heart-button" onclick="addToWishlist(' . $petJsonEscaped . ', this)">';
               echo '<i class="fas fa-heart"></i>';
               echo '</button>';
               echo '</div>';
             }
             ?>
             <script>
+              // Array to store wishlist items
               let wishlist = [];
 
-              function addToWishlist(petId, button) {
+              function addToWishlist(pet, button) {
                 console.log('addToWishlist called');
                 console.log('Button:', button);
-                const petIndex = wishlist.findIndex(item => item === petId);
+
+                const petIndex = wishlist.findIndex(item => item.id === pet.id);
                 const isPetInWishlist = petIndex !== -1;
+
                 if (!isPetInWishlist) {
-                  wishlist.push(petId);
-                  // Send AJAX request to save to wishlist table
-                  const xhr = new XMLHttpRequest();
-                  xhr.open('POST', 'adoption_page/insert_wishlist.php', true); // Corrected the URL
-                  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                  xhr.onload = function () {
-                    if (xhr.status === 200) {
-                      console.log('Pet added to wishlist successfully!');
-                    } else {
-                      console.error('Error adding pet to wishlist:', xhr.statusText);
-                    }
-                  };
-                  xhr.send('petId=' + petId);
+                  wishlist.push(pet);
                 } else {
                   wishlist.splice(petIndex, 1);
                 }
+
                 updateWishlistPopup();
+                // Update the heart button state immediately
                 button.classList.toggle("liked", !isPetInWishlist);
+              }
+
+              function removeFromWishlist(petId) {
+                const petIndex = wishlist.findIndex(item => item.id === petId);
+                if (petIndex !== -1) {
+                  wishlist.splice(petIndex, 1);
+                  updateWishlistPopup();
+
+                  // Find the heart button associated with the removed pet
+                  const heartButton = document.querySelector('.card[data-id="' + petId + '"] .heart-button');
+                  if (heartButton) {
+                    // Remove the liked class from the heart button
+                    heartButton.classList.remove('liked');
+                  }
+                }
               }
 
               function updateWishlistPopup() {
                 const wishlistTable = document.querySelector('#wishlist table');
+
+                // Clear existing rows
                 wishlistTable.innerHTML = '';
 
-                // Fetch pet details from database using IDs
-                const xhr = new XMLHttpRequest();
-                xhr.open('GET', 'adoption_page/fetch_pet_detail.php?id=' + wishlist.join(','), true); // Corrected the URL
-                xhr.onload = function () {
-                  if (xhr.status === 200) {
-                    const petDetails = JSON.parse(xhr.responseText);
-                    petDetails.forEach((pet, index) => {
-                      wishlistTable.innerHTML += `
-          <tr>
-            <td><img src="${pet.image}" alt="Circle Image" /></td>
-            <td> <b>${pet.name}</b> <br /> Foster Home </td>
-            <td class="available">Available</td>
-            <td>
-              <button class="delete-button" data-id="${index}" class="button">
-                <i class="fas fa-trash-alt"></i>
-              </button>
-            </td>
-          </tr>
+                // Add rows for each pet in the wishlist
+                wishlist.forEach((pet, index) => {
+                  wishlistTable.innerHTML += `
+            <tr>
+                <td><img src="data:image/jpeg;base64,${pet.image}" alt="Circle Image" /></td>
+                <td>
+                    <b>${pet.name}</b> <br />
+                    ${pet.shelter}
+                </td>
+                <td class="available">${pet.status}</td>
+                <td>
+                    <button class="delete-button" data-id="${pet.id}" class="button">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
         `;
-                    });
+                });
 
-                    // Update heart buttons
-                    const heartButtons = document.querySelectorAll('.heart-button');
-                    heartButtons.forEach(button => {
-                      const card = button.closest('.card');
-                      if (card) {
-                        const petId = card.getAttribute('data-id');
-                        const isPetInWishlist = wishlist.includes(parseInt(petId));
-                        button.classList.toggle("liked", isPetInWishlist);
-                      }
-                    });
-
-                    // Add event listeners to delete buttons
-                    const deleteButtons = document.querySelectorAll(".delete-button");
-                    deleteButtons.forEach(button => {
-                      button.addEventListener("click", function () {
-                        const index = parseInt(button.dataset.id);
-                        removeFromWishlist(index);
-                      });
-                    });
+                // Update heart buttons
+                const heartButtons = document.querySelectorAll('.heart-button');
+                heartButtons.forEach(button => {
+                  const card = button.closest('.card');
+                  if (card) {
+                    const petId = card.getAttribute('data-id');
+                    const isPetInWishlist = wishlist.some(item => item.id == petId);
+                    button.classList.toggle("liked", isPetInWishlist);
                   }
-                };
-                xhr.send();
-              }
+                });
 
-              function removeFromWishlist(index) {
-                const removedPetId = wishlist[index];
-                wishlist.splice(index, 1);
-                updateWishlistPopup();
-
-                // Find the heart button associated with the removed pet
-                const heartButton = document.querySelector('.card[data-id="' + removedPetId + '"] .heart-button');
-                if (heartButton) {
-                  heartButton.classList.remove('liked');
-                }
+                // Add event listeners to delete buttons
+                const deleteButtons = document.querySelectorAll(".delete-button");
+                deleteButtons.forEach(button => {
+                  button.addEventListener("click", function () {
+                    const petId = parseInt(button.dataset.id);
+                    removeFromWishlist(petId);
+                  });
+                });
               }
             </script>
+
 
           </div>
         </div>
