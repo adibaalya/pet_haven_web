@@ -374,16 +374,7 @@
           </div>
 
           <script>
-            function toggleHeart(button) {
-              button.classList.toggle('toggled');
-            }
-
-            $('#wishlist').on('hidden.bs.modal', function (e) {
-              const heartButton = document.getElementById('heart-button');
-              if (heartButton.classList.contains('toggled')) {
-                heartButton.classList.remove('toggled');
-              }
-            });
+            
           </script>
 
         </div>
