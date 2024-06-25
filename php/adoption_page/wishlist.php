@@ -47,4 +47,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $wishlist = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($wishlist);
 }
-?>
