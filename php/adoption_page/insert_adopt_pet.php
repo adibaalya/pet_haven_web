@@ -39,4 +39,3 @@ echo json_encode(array('status' => 'success', 'message' => 'New record created s
 
 $stmt->close();
 $conn->close();
-?>

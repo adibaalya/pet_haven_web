@@ -317,7 +317,7 @@ input[type="submit"]:hover {
     transition: background-color 0.3s;
 }
 .table tbody tr:hover {
-    background-color: #f1f1f1;
+    background-color: #f1f1f180;
 }
 .status.approve {
     color: green;
@@ -329,5 +329,15 @@ input[type="submit"]:hover {
     color: red;
 }
 .pick-date-btn {
-    margin-left: 10px;
+    justify-content: center;
+}
+
+.button {
+    width: fit-content;
+    margin: 0 auto; /* center button horizontally */
+  }
+  
+
+  .footer .contact-info {
+    text-align: left;
 }

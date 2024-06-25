@@ -1,3 +1,19 @@
+// Function to change modal header style
+function changeModalHeaderStyle(modalId) {
+  const modalHeader = document.querySelector(`${modalId} .modal-header`);
+  const modalTitle = document.querySelector(`${modalId} .modal-title`);
+  if (modalHeader) {
+    modalHeader.style.backgroundColor = '#000';
+    modalTitle.style.color = 'white !important';
+  }
+}
+
+// Add event listeners for each pet image/button that triggers a modal
+document.querySelector('[data-target="#dogTipsModal"]').addEventListener('click', () => changeModalHeaderStyle('#dogTipsModal'));
+// Repeat for other pets, e.g., cat and rabbit, assuming they have similar modal IDs
+document.querySelector('[data-target="#catTipsModal"]').addEventListener('click', () => changeModalHeaderStyle('#catTipsModal'));
+document.querySelector('[data-target="#rabbitTipsModal"]').addEventListener('click', () => changeModalHeaderStyle('#rabbitTipsModal'));
+
 document.getElementById('submitBtn').addEventListener('click', function () {
   this.textContent = "Submitting...";
 });
@@ -142,3 +158,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
   updateActiveDot(); // Initialize the active dot on page load
 });
+
+function showLoginSuccessToast() {
+  $('#loginSuccessToast').toast('show');
+}
+
+// Function to show login failure toast
+function showLoginFailureToast() {
+  $('#errorToast').toast('show'); // Assuming the ID of your error toast is 'errorToast'
+}
+
+// Example login function
+function login(email, password) {
+  // Example AJAX request to your PHP login script
+  $.ajax({
+    url: '../php/user.php',
+    type: 'POST',
+    data: {
+      email: email,
+      password: password
+    },
+    success: function(response) {
+      // Assuming your PHP script returns a JSON object with a success property
+      if(response.success) {
+        showLoginSuccessToast();
+      } else {
+        showLoginFailureToast();
+      }
+    },
+    error: function() {
+      // Handle AJAX error
+      showLoginFailureToast();
+    }
+  });
+}

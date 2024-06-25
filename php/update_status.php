@@ -14,13 +14,15 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$email = $_SESSION['email'];
+$email = $_POST['email']; // Retrieve email from POST data
 $petId = $_POST['petId'];
 $shelterId = $_POST['shelterId'];
 $action = $_POST['action'];
-$adoptionDate = $_POST['date']; // Retrieve adoption date parameter
+$adoptionDate = $_POST['adoptionDate'];
 
-if ($action === 'delete') {
+$response = ['success' => false];
+
+if ($action === 'delete' || $action === 'cancel') {
     // Delete the adoption record from the database
     $sql = "DELETE FROM adoption WHERE email = ? AND petId = ? AND shelterId = ?";
     $stmt = $conn->prepare($sql);
@@ -31,15 +33,16 @@ if ($action === 'delete') {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssss", $action, $adoptionDate, $email, $petId, $shelterId);
 } else {
-    // Update for other actions like 'cancel'
+    // Update for other actions like 'pending'
     $sql = "UPDATE adoption SET status = ? WHERE email = ? AND petId = ? AND shelterId = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssss", $action, $email, $petId, $shelterId);
 }
 
-$response = ['success' => false];
 if ($stmt->execute()) {
     $response['success'] = true;
+} else {
+    error_log("Error executing statement: " . $stmt->error); // Debugging line
 }
 
 $stmt->close();
