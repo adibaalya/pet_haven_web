@@ -70,7 +70,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
               ACCOUNT
             </a>
             <div class="dropdown-menu" aria-labelledby="accountDropdown">
-              <a class="dropdown-item" href="../php/account_page.php">PROFILE</a>
+              <a class="dropdown-item" href="../html/account_page.html">PROFILE</a>
               <a class="dropdown-item" href="#" id="logoutButton">LOGOUT</a>
             </div>
           </li>
