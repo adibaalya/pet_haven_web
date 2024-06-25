@@ -142,3 +142,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
   updateActiveDot(); // Initialize the active dot on page load
 });
+
+function showLoginSuccessToast() {
+  $('#loginSuccessToast').toast('show');
+}
+
+// Function to show login failure toast
+function showLoginFailureToast() {
+  $('#errorToast').toast('show'); // Assuming the ID of your error toast is 'errorToast'
+}
+
+// Example login function
+function login(email, password) {
+  // Example AJAX request to your PHP login script
+  $.ajax({
+    url: '../php/user.php',
+    type: 'POST',
+    data: {
+      email: email,
+      password: password
+    },
+    success: function(response) {
+      // Assuming your PHP script returns a JSON object with a success property
+      if(response.success) {
+        showLoginSuccessToast();
+      } else {
+        showLoginFailureToast();
+      }
+    },
+    error: function() {
+      // Handle AJAX error
+      showLoginFailureToast();
+    }
+  });
+}

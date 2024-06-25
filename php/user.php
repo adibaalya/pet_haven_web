@@ -76,11 +76,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $redirect_url = $_SERVER['HTTP_REFERER'];
         echo "<script>
             localStorage.setItem('isLoggedIn', 'true');
+            alert('Login successful!');
             window.location.href = '../html/index.html';
         </script>";
         exit();
     } else {
         echo "<script>
+            alert('Invalid email or password');
             window.location.href = '../html/index.html';
         </script>";
     }
