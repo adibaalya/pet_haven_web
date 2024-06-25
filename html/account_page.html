@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +11,6 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <title>Account</title>
 </head>
-
 <body>
   <div id="trailer"></div>
   <script src="../javascript/trailer.js"></script>
@@ -29,17 +27,16 @@
 
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-
-          <li class="nav-item ">
+          <li class="nav-item">
             <a class="nav-link" href="../html/index.html">HOME</a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item">
             <a class="nav-link" href="../php/adopt_page.php">ADOPT</a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item">
             <a class="nav-link" href="../html/donate.html">DONATION</a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item">
             <a class="nav-link" href="../php/shelter.php">SHELTER</a>
           </li>
           <li class="nav-item">
@@ -88,19 +85,15 @@
             <form id="account-form" action="../php/get_account_details.php" method="POST">
               <label for="fullname">Full Name</label>
               <input type="text" id="name" name="fullname" placeholder="Name">
-
               <label for="email">Email</label>
               <input type="email" id="email" name="email" placeholder="Email address">
-
               <label for="password">Password</label>
               <input type="password" id="password" name="password" placeholder="">
-
               <input class="submitbtn" id="submit" type="submit" value="Update Details">
             </form>
           </div>
         </div>
       </div>
-
 
       <div class="tab-pane fade" id="adoptions">
         <div class="detail-container">
@@ -116,73 +109,71 @@
                 </tr>
               </thead>
               <tbody>
-
               </tbody>
             </table>
           </div>
         </div>
       </div>
+
+      
+
       <div class="tab-pane fade" id="donations">
         <div class="detail-container">
-
             <h3>Thank You for Your Support!</h3>
             <p style="font-size: 20px;">
-              We appreciate your incredible generosity. As a token of our gratitude, here are your donor badges:
+                We appreciate your incredible generosity. As a token of our gratitude, here are your donor badges:
             </p>
-
+    
             <!-- Display collected points -->
             <div class="container mb-4 points-container">
-              <p class="text-center points-label">Points Collected: <span id="points">Loading...</span></p>
+                <p class="text-center points-label">Points Collected: <span id="points">Loading...</span></p>
             </div>
+    
+            <!-- Badge container wrapper -->
+           
+                <div class="badge-container">
+                    <!-- Badges will be dynamically loaded here -->
+                </div>
+           
+        </div>
+    </div>
+    
+    </div>
+  </section>
 
-
-            <!-- Badge container -->
-            <div class="container mb-4">
-              <div class="badge-container">
-                <!-- Badges will be dynamically loaded here -->
-              </div>
-            </div>
-          </div>
+  <section class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="contact-info col-md-6">
+          <h5 class="mb-3">Pet Haven</h5>
+          <p>1234 Pet Street, Pet City, 56789</p>
+          <p>Email: info@petshelter.com | Phone: 123-456-7890</p>
+        </div>
+        <div class="col-md-6 text-md-right">
+          <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <hr class="footer-navigation bg-white" />
+      <div class="row">
+        <div class="col-md-6" style="text-align: left;">
+          <nav>
+            <a href="#home" class="text-white me-2">HOME</a> |
+            <a href="#about" class="text-white me-2">ADOPT</a> |
+            <a href="#contact" class="text-white me-2">DONATION</a> |
+            <a href="#contact" class="text-white me-2">SHELTER</a> |
+            <a href="#contact" class="text-white me-2">HELP</a> |
+            <a href="#contact" class="text-white">LOGIN</a>
+          </nav>
+        </div>
+        <div class="col-md-6 text-md-right">
+          <p>© 2024 Pet Haven. All rights reserved.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="footer">
-    
-      <div class="container">
-        <div class="row">
-          <div class="contact-info col-md-6">
-            <h5 class="mb-3">Pet Haven</h5>
-            <p>1234 Pet Street, Pet City, 56789</p>
-            <p>Email: info@petshelter.com | Phone: 123-456-7890</p>
-          </div>
-          <div class="col-md-6 text-md-right">
-            <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
-          </div>
-        </div>
-        <hr class="footer-navigation bg-white" />
-        <div class="row">
-          <div class="col-md-6" style="text-align: left;">
-            <nav>
-              <a href="#home" class="text-white me-2">HOME</a> |
-              <a href="#about" class="text-white me-2">ADOPT</a> |
-              <a href="#contact" class="text-white me-2">DONATION</a> |
-              <a href="#contact" class="text-white me-2">SHELTER</a> |
-              <a href="#contact" class="text-white me-2">HELP</a> |
-              <a href="#contact" class="text-white">LOGIN</a>
-            </nav>
-          </div>
-          <div class="col-md-6 text-md-right">
-            <p>© 2024 Pet Haven. All rights reserved.</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </section>
-  
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -191,6 +182,8 @@
   <script src="../javascript/adopt_js.js"></script>
   <script src="../javascript/nav-bar-account.js"></script>
   <script src="../javascript/Badge.js"></script>
+  <script>
+    
+  </script>
 </body>
-
 </html>
