@@ -28,6 +28,9 @@ body {
     padding: 0;
 }
 
+.nav-item {
+    margin-right: 10px;
+}
 .navbar {
     height: 65px;
     background-color: #E5DAD1 !important;
@@ -52,7 +55,7 @@ body {
 
 .navbar-nav .nav-item.active .nav-link {
     color: black !important;
-    font-weight: 500 !important;
+    font-weight: 700 !important;
 }
 
 .navbar-collapse {
