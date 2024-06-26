@@ -1,14 +1,15 @@
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
 }
 
 #body {
     flex: 1 0 auto;
 }
 
+.detail-container{
+    height: 30%;
+}
 .points-container {
     padding: 15px;
     text-align: center;
@@ -31,7 +32,7 @@ body {
 .badge-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 40px;
     justify-items: center;
     margin: 50px 0;
 }
@@ -86,6 +87,8 @@ body {
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 2px solid #ddd;
+    width: 250px;
+    height: 250px;
 }
 
 .badge-front {
@@ -105,7 +108,7 @@ body {
 }
 
 .badge-name {
-    margin-top: 10px;
+    margin-top: 250px;
     font-size: 16px;
     color: #333;
     font-weight: bold;

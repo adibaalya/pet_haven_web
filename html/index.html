@@ -8,9 +8,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="../css/index.css" />
   <link rel="stylesheet" href="../css/trailers.css">
+  <link rel="stylesheet" href="../css/nav-bar.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+ES+Deco:wght@100..400&family=Princess+Sofia&display=swap" rel="stylesheet">
   <title>Pet Haven</title>
 </head>
 
@@ -20,8 +22,8 @@
   <script src="../javascript/trailer.js"></script>
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
-        <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
+      <a class="navbar-brand logo" href="#">
+        <img src="../assets/images/logo3.png" width="100" height="80" alt="Pet Haven Logo" />
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -165,7 +167,7 @@
 
   <div id="landing-page" class="landing-page">
     <div class="content">
-      <h1>Pet Haven </h1>
+      <h1>Pet Haven : </h1>
       <h2>Empowering Local Pet Shelters</h2>
       <p>Welcome to Pet Haven, your gateway to pet adoption<br>and support for shelters across Malaysia.</p>
       <div class="buttons">
@@ -175,27 +177,35 @@
     </div>
   </div>
 
-  <div class="countdown-container container text-center py-3 mt-3" style="
-    background: #DDCAB5;">
-    
-    <h2 class="mb-4">INTERNATIONAL ANIMAL DAY</h2>
-    <div class="row">
-      <div class="col countdown-item">
-        <h3 id="days">00</h3>
-        <p class="text-uppercase">Days</p>
+  <div class="video-container">
+    <video autoplay muted loop class="bg-video">
+      <source src="../assets/video11.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="overlay"></div>
+    <div class="countdown-container container text-center py-5 mt-2">
+      <h2 class="mb-4">International Animal Day</h2>
+      <div class="row">
+        <div class="col countdown-item">
+          <h3 id="days">00</h3>
+          <p class="text-uppercase">Days</p>
+        </div>
+        <div class="col countdown-item">
+          <h3 id="hours">00</h3>
+          <p class="text-uppercase">Hours</p>
+        </div>
+        <div class="col countdown-item">
+          <h3 id="minutes">00</h3>
+          <p class="text-uppercase">Minutes</p>
+        </div>
+        <div class="col countdown-item">
+          <h3 id="seconds">00</h3>
+          <p class="text-uppercase">Seconds</p>
+        </div>
       </div>
-      <div class="col countdown-item">
-        <h3 id="hours">00</h3>
-        <p class="text-uppercase">Hours</p>
-      </div>
-      <div class="col countdown-item">
-        <h3 id="minutes">00</h3>
-        <p class="text-uppercase">Minutes</p>
-      </div>
-      <div class="col countdown-item">
-        <h3 id="seconds">00</h3>
-        <p class="text-uppercase">Seconds</p>
-      </div>
+      <a href="https://www.worldanimalday.org.uk/" class="hover-link" target="_blank">
+        <h3 class="mb-2">Let's find out more</h3>
+      </a>      
     </div>
   </div>
 
@@ -226,7 +236,7 @@
   </script>
 
   <div id="care-section" class="container-fluid mt-5">
-    <h1 class="care-title text-center">HOW TO TAKE CARE OF PETS</h1>
+    <h1 class="care-title text-center">How to Take Care Of Pets</h1>
     <div class="row no-gutters">
       <div class="image-container col-md-4 col-sm-12">
         <img src="../assets/images/dog.png" alt="Dog" class="img-fluid care-img" data-toggle="modal"
@@ -485,21 +495,18 @@
         <div class="row">
           <div class="col-md-6">
             <nav>
-              <a href="#home" class="text-white me-2">HOME</a> |
-              <a href="#about" class="text-white me-2">ADOPT</a> |
-              <a href="#contact" class="text-white me-2">DONATION</a> |
-              <a href="#contact" class="text-white me-2">SHELTER</a> |
-              <a href="#contact" class="text-white me-2">HELP</a> |
-              <div id="authButton">
-                <a href="login.html" id="loginButton">LOGIN</a>
-                <a href="account.html" id="accountButton" style="display: none;">ACCOUNT</a>
-              </div>
+              <a href="../html/index.html" class="text-white me-2">HOME</a> |
+              <a href="../php/adopt_page.php" class="text-white me-2">ADOPT</a> |
+              <a href="../html/donate.html" class="text-white me-2">DONATION</a> |
+              <a href="../php/shelter.php" class="text-white me-2">SHELTER</a> |
+              <a href="../html/index.html#help" class="text-white me-2">HELP</a>
             </nav>
           </div>
           <div class="col-md-6 text-md-right">
             <p>© 2024 Pet Haven. All rights reserved.</p>
           </div>
         </div>
+      </div>
       </div>
     </footer>
   </section>

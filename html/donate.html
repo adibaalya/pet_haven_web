@@ -9,8 +9,8 @@
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
   />
   <link rel="stylesheet" href="../css/donate.css" />
-  <link rel="stylesheet" href="../css/nav-bar.css" />
-  <link rel="stylesheet" href="../css/trailers.css">
+  <link rel="stylesheet" href="../css/nav-bar.css"/>
+  <link rel="stylesheet" href="../css/trailers.css"/>
 
 </head>
 <body>
@@ -61,103 +61,103 @@
   </section>
 
   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">LOGIN</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body px-4">
-          <form action="../php/user.php" method="get">
-            <div class="form-group" novalidate>
-              <label for="email">EMAIL ADDRESS</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
-                name="email" required>
-              <div class="invalid-feedback">
-                Please provide your email.
-              </div>
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">LOGIN</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body px-4">
+        <form action="../php/user.php" method="get">
+          <div class="form-group" novalidate>
+            <label for="email">EMAIL ADDRESS</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
+              name="email" required>
+            <div class="invalid-feedback">
+              Please provide your email.
             </div>
-            <div class="form-group">
-              <label for="password">PASSWORD</label>
-              <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
-              <div class="invalid-feedback">
-                Please provide your password.
-              </div>
+          </div>
+          <div class="form-group">
+            <label for="password">PASSWORD</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
+            <div class="invalid-feedback">
+              Please provide your password.
             </div>
-            <div class="forgot-password">
-              <a href="#">Forgot your password?</a>
-            </div>
-            <div class="button-group">
-              <button type="submit" class="btn btn-login">LOGIN</button>
-              <button type="button" class="btn btn-signup" data-dismiss="modal" data-toggle="modal"
-                data-target="#signUpModal">SIGN UP</button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div class="forgot-password">
+            <a href="#">Forgot your password?</a>
+          </div>
+          <div class="button-group">
+            <button type="submit" class="btn btn-login">LOGIN</button>
+            <button type="button" class="btn btn-signup" data-dismiss="modal" data-toggle="modal"
+              data-target="#signUpModal">SIGN UP</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="toast position-fixed bottom-right-toast" id="loginSuccessToast" role="alert" aria-live="assertive"
-    aria-atomic="true" data-delay="5000">
-    <div class="toast-header">
-      <i class="fas fa-check-circle text-success mr-2"></i>
-      <strong class="mr-auto text-success">Login Success</strong>
-      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="toast-body">
-      You have logged in successfully.
-    </div>
+<div class="toast position-fixed bottom-right-toast" id="loginSuccessToast" role="alert" aria-live="assertive"
+  aria-atomic="true" data-delay="5000">
+  <div class="toast-header">
+    <i class="fas fa-check-circle text-success mr-2"></i>
+    <strong class="mr-auto text-success">Login Success</strong>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
+  <div class="toast-body">
+    You have logged in successfully.
+  </div>
+</div>
 
-  <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="signUpModalLabel">SIGN UP</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="../php/user.php" method="post" novalidate>
-            <div class="form-group">
-              <label for="sign-up-name">NAME</label>
-              <input type="text" class="form-control" id="sign-up-name" placeholder="Enter name" name="name" required>
-              <div class="invalid-feedback">
-                Please provide your name.
-              </div>
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signUpModalLabel">SIGN UP</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="../php/user.php" method="post" novalidate>
+          <div class="form-group">
+            <label for="sign-up-name">NAME</label>
+            <input type="text" class="form-control" id="sign-up-name" placeholder="Enter name" name="name" required>
+            <div class="invalid-feedback">
+              Please provide your name.
             </div>
-            <div class="form-group">
-              <label for="sign-up-email">EMAIL ADDRESS</label>
-              <input type="email" class="form-control" id="sign-up-email" placeholder="Enter email" name="email"
-                required>
-              <div class="invalid-feedback">
-                Please provide your email.
-              </div>
+          </div>
+          <div class="form-group">
+            <label for="sign-up-email">EMAIL ADDRESS</label>
+            <input type="email" class="form-control" id="sign-up-email" placeholder="Enter email" name="email"
+              required>
+            <div class="invalid-feedback">
+              Please provide your email.
             </div>
-            <div class="form-group">
-              <label for="sign-up-password">PASSWORD</label>
-              <input type="password" class="form-control" id="sign-up-password" placeholder="Password" name="password"
-                required>
-              <div class="invalid-feedback">
-                Please provide your password.
-              </div>
+          </div>
+          <div class="form-group">
+            <label for="sign-up-password">PASSWORD</label>
+            <input type="password" class="form-control" id="sign-up-password" placeholder="Password" name="password"
+              required>
+            <div class="invalid-feedback">
+              Please provide your password.
             </div>
-            <div class="button-group">
-              <button type="submit" class="btn btn-login">SIGN UP</button>
-            </div>
-          </form>
-        </div>
+          </div>
+          <div class="button-group">
+            <button type="submit" class="btn btn-login">SIGN UP</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
         
         <div id="headerCarousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -327,39 +327,39 @@
       
 
         <section class="footer">
-            <footer class="bg-dark text-white py-4 mt-5">
-              <div class="container">
-                <div class="row">
-                  <div class="contact-info col-md-6">
-                    <h5 class="mb-3">Pet Haven</h5>
-                    <p>1234 Pet Street, Pet City, 56789</p>
-                    <p>Email: info@petshelter.com | Phone: 123-456-7890</p>
-                  </div>
-                  <div class="col-md-6 text-md-right">
-                    <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
-                  </div>
+          <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container">
+              <div class="row">
+                <div class="contact-info col-md-6">
+                  <h5 class="mb-3">Pet Haven</h5>
+                  <p>1234 Pet Street, Pet City, 56789</p>
+                  <p>Email: info@petshelter.com | Phone: 123-456-7890</p>
                 </div>
-                <hr class="footer-navigation bg-white" />
-                <div class="row">
-                  <div class="col-md-6">
-                    <nav>
-                      <a href="#home" class="text-white me-2">HOME</a> |
-                      <a href="#about" class="text-white me-2">ADOPT</a> |
-                      <a href="#contact" class="text-white me-2">DONATION</a> |
-                      <a href="#contact" class="text-white me-2">SHELTER</a> |
-                      <a href="#contact" class="text-white me-2">HELP</a> |
-                      <a href="#contact" class="text-white">LOGIN</a>
-                    </nav>
-                  </div>
-                  <div class="col-md-6 text-md-right">
-                    <p>© 2024 Pet Haven. All rights reserved.</p>
-                  </div>
+                <div class="col-md-6 text-md-right">
+                  <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                  <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
                 </div>
               </div>
-            </footer>
-          </section>
+              <hr class="footer-navigation bg-white" />
+              <div class="row">
+                <div class="col-md-6">
+                  <nav>
+                    <a href="../html/index.html" class="text-white me-2">HOME</a> |
+                    <a href="../php/adopt_page.php" class="text-white me-2">ADOPT</a> |
+                    <a href="../html/donate.html" class="text-white me-2">DONATION</a> |
+                    <a href="../php/shelter.php" class="text-white me-2">SHELTER</a> |
+                    <a href="../html/index.html#help" class="text-white me-2">HELP</a>
+                  </nav>
+                </div>
+                <div class="col-md-6 text-md-right">
+                  <p>© 2024 Pet Haven. All rights reserved.</p>
+                </div>
+              </div>
+            </div>
+            </div>
+          </footer>
+        </section>
     
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>

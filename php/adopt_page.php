@@ -565,12 +565,11 @@
         <div class="row">
           <div class="col-md-6">
             <nav>
-              <a href="#home" class="text-white me-2">HOME</a> |
-              <a href="#about" class="text-white me-2">ADOPT</a> |
-              <a href="#contact" class="text-white me-2">DONATION</a> |
-              <a href="#contact" class="text-white me-2">SHELTER</a> |
-              <a href="#contact" class="text-white me-2">HELP</a> |
-              <a href="#contact" class="text-white">LOGIN</a>
+              <a href="../html/index.html" class="text-white me-2">HOME</a> |
+              <a href="../php/adopt_page.php" class="text-white me-2">ADOPT</a> |
+              <a href="../html/donate.html" class="text-white me-2">DONATION</a> |
+              <a href="../php/shelter.php" class="text-white me-2">SHELTER</a> |
+              <a href="../html/index.html#help" class="text-white me-2">HELP</a> |
             </nav>
           </div>
           <div class="col-md-6 text-md-right">
@@ -580,6 +579,7 @@
       </div>
       </div>
     </footer>
+  </section>
 
 
     <script src="../javascript/adopt.js"></script>

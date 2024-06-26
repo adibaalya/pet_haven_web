@@ -72,50 +72,189 @@ body, html {
     text-decoration: none;
     color: #000000;
   }
+
+
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   
+  .bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
 
+  }
 
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Adjust the alpha value to control the darkness */
+    z-index: 0;
+  }
+  
+  .countdown-container {
+    position: relative;
+    z-index: 1;
+    color: rgb(255, 255, 255);
+    font-family: "Playwrite ES Deco";
+  }
+  
+  .countdown-item {
+    margin: 0 10px;
+    font-family: "Playwrite ES Deco";
+  }
 
-.heading {
-    margin-top: 25px;
-}
+  .countdown-item {
+    background-color: #b3b3b3a3;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    margin-bottom: 30px;
+    font-family: "Playwrite ES Deco";
+  }
 
-.heading h1 {
-    font-family: 'Playfair Display', serif;
-    font-weight: bold;
-    font-size: 45px;
-}
-
-.heading h2 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-size: 22px;
-    margin-bottom: 20px;
-}
-
-.dot {
-    height: 15px;
-    width: 15px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.dots-container {
+  .row {
     display: flex;
     justify-content: center;
-    /* Center-align dots horizontally */
-    gap: 5px;
-    /* Adjust gap between dots */
-    margin-top: 20px;
-    /* Space between the button and dots */
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .countdown-item {
+      padding: 10px;
+    }
+
+    .countdown-item h3 {
+      font-size: 2.5em;
+    }
+
+    .countdown-item p {
+      font-size: 0.8em;
+    }
+  }
+
+.countdown-container h2 {
+    font-family: "Princess Sofia", cursive;
+    font-size: 70px;
+  font-weight: 400;
+  font-style: normal;
+    letter-spacing: 2px;
 }
 
-.dot.active {
-    background-color: #717171;
-    /* Active dot color */
+.countdown-container h3 {
+    font-family: "Poppins";
+    font-size: 15px;
+  font-weight: 400;
+  font-style: normal;
+    letter-spacing: 2px;
 }
+
+.countdown-item h3 {
+    font-size: 48px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.countdown-item p {
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hover-link {
+    text-decoration: none;
+    color: inherit; /* Ensure the text color matches the surrounding text */
+    position: relative; /* Make the pseudo-element positioned relative to the link */
+    display: inline-block; /* Ensure the link behaves like a block element */
+  }
+  
+  .hover-link::after {
+    content: "";
+    position: absolute;
+    width: calc(100% - 10px); /* Adjust the width to leave space on the sides */
+    height: 2px; /* Adjust the thickness of the underline */
+    bottom: -2px; /* Adjust this value to align the line closer to the text */
+    left: 5px; /* Adjust this value to leave space on the left */
+    background-color: transparent; /* Initially, the line is transparent */
+    transition: background-color 0.3s, width 0.3s; /* Transition width change */
+  }
+  
+  .hover-link:hover::after {
+    background-color: white; /* Change the underline color on hover */
+    width: 100%; /* Expand the underline to full width on hover */
+  }
+  
+  .hover-link h3 {
+    display: inline-block; /* Ensure the link text is treated as a block */
+    margin-bottom: 0; /* Remove default margin bottom */
+  }
+  
+
+#care-section {
+    height: 100vh;/* Adjust negative margin to bring sections closer */
+    margin-bottom: 10px; 
+}
+
+.care-title {
+    font-family: 'Abril Fatface', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.image-container {
+    margin-top: -40px;
+    position: relative;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.care-img {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.care-img:hover {
+    transform: scale(1.1);
+}
+
+.image-label {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
 
 .modal-content {
     border-radius: 10px;
@@ -295,256 +434,4 @@ body, html {
     border: 1px solid #ccc;
     border-radius: 4px;
     overflow: auto;
-}
-
-#care-section {
-    height: 100vh;
-}
-
-.care-title {
-    font-family: 'Playfair Display', serif;
-    font-weight: bold;
-    font-size: 30px;
-    color: #000000
-}
-
-.image-container {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-    box-sizing: border-box;
-    display: flex;
-}
-
-.care-img {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    flex: 1;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    box-sizing: border-box;
-}
-
-.care-img:hover {
-    transform: scale(1.1);
-}
-
-.image-label {
-    position: absolute;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.countdown-container {
-    border-radius: 100px;
-    background: #DDCAB5;
-    color: #333;
-    padding: 10px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    margin-top: 12px !important;
-    height: 30% !important;
-}
-
-.countdown-container h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.countdown-item {
-    border-right: 1px solid #dee2e6;
-    padding: 20px;
-}
-
-.countdown-item:last-child {
-    border-right: none;
-}
-
-.countdown-item h3 {
-    font-size: 48px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    margin-bottom: 0;
-}
-
-.countdown-item p {
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.btn-login {
-    color: black;
-    background-color: white;
-    border: 2px solid black;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-
-}
-
-.btn-login:hover {
-    background-color: black;
-    color: white;
-}
-
-.btn-signup {
-    color: white;
-    background-color: #000000;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-signup:hover {
-    background-color: #ffffff;
-}
-
-input::placeholder {
-    font-size: 14px;
-    color: #6c757d;
-    opacity: 1;
-}
-
-.form-control {
-    border: 1px solid #ced4da;
-    /* Bootstrap's default border color */
-    border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 14px;
-    transition: border-color 0.3s ease;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-.modal-title {
-    flex-grow: 1;
-    text-align: center;
-}
-
-.modal-header .close {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-}
-
-.forgot-password {
-    display: block;
-    margin-top: 10px;
-    font-size: 14px;
-    text-align: right;
-}
-
-.forgot-password a {
-    color: #0c0c0c;
-    text-decoration: none;
-}
-
-.forgot-password a:hover {
-    text-decoration: underline;
-}
-
-.button-group {
-    text-align: center;
-}
-
-.button-group .btn {
-    margin: 5px;
-}
-
-.bottom-right-toast {
-    position: fixed;
-    right: 20px;
-    bottom: 0;
-    z-index: 9999;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 0;
-    transform: translateX(100%);
-}
-
-.bottom-right-toast.show {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-.validation-icon {
-    position: absolute;
-    right: 10px;
-    top: calc(50% - 0.5em);
-    transition: all 0.3s ease;
-}
-
-.validation-icon::before {
-    font-family: "Bootstrap Icons";
-    font-size: 1.2em;
-    transition: all 0.3s ease;
-}
-
-.form-control.is-valid,
-.form-control.is-invalid {
-    padding-right: 2.5rem;
-}
-
-.form-control.is-valid~.validation-icon::before {
-    content: '\2713';
-    color: #28a745;
-}
-
-.form-control.is-invalid~.validation-icon::before {
-    content: '\2717';
-    color: #dc3545;
-}
-
-.error-message {
-    color: red;
-}
-
-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-@media (max-width: 767.98px) {
-    .row {
-      flex-direction: column;
-    }
-  
-    .filter-column,
-    .animal-card-column {
-      flex: 100%;
-    }
-  }
-  
-  
-  @media (max-width: 1199.98px) {
-    .container {
-      justify-content: space-around;
-    }
-  }
-  
-  @media (max-width: 767.98px) {
-    .container {
-      justify-content: center;
-    }
-  }
-  
-  .modal-content {
-    border-radius: 10px; 
 }

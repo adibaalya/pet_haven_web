@@ -47,7 +47,6 @@
 
 .container {
     position: relative;
-    padding-top: 100px;
 }
 
 .textTitle {
@@ -222,46 +221,4 @@
 
 .right-panel nav .nav-tabs {
     border: 0.5px solid black;
-}
-
-
-.footer-buttons .btn-custom {
-    background-color: black;
-    color: white;
-    margin: 5px;
-    margin-top: 15px;
-    border-radius: 15px;
-    border: 1px solid black;
-}
-
-.footer-buttons .btn-custom:hover {
-    background-color: rgb(237, 167, 178);
-    color: black;
-}
-
-
-@media (max-width: 768px) {
-    .shelterText h1 {
-        font-size: 2rem;
-    }
-
-
-
-}
-
-@media (max-width: 620px) {
-    .shelterText h1 {
-        font-size: 1.5rem;
-    }
-
-    .filterContainer h5 {
-        font-size: 15px;
-    }
-
-    .filterContainer {
-        width: 50%;
-        padding: 5px;
-    }
-
-
 }
