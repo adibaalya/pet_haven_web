@@ -45,23 +45,51 @@ input::placeholder {
     transition: border-color 0.3s ease !important;
 }
 
+.modal-content {
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
 .modal-header {
-    display: flex !important;
-    justify-content: center !important;
-    position: relative !important;
+    background-color: #fff;
+    border-bottom: none;
+}
+
+.close {
+    color: #333;
+    opacity: 1;
+    font-size: 1.5em;
+}
+
+.modal-footer {
+    border-top: none;
 }
 
 .modal-title {
-    flex-grow: 1 !important;
-    text-align: center !important;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20;
+    color: #333;
 }
 
-.modal-header .close {
-    position: absolute !important;
-    right: 15px !important;
-    top: 15px !important;
+.modal-body p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    line-height: 1.5;
 }
 
+.modal-body ul {
+    list-style-type: disc;
+    padding-left: 40px;
+}
+
+.modal-body ul li {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2em;
+    color: #333;
+    line-height: 1.5;
+}
 .forgot-password {
     display: block !important;
     margin-top: 10px !important;
