@@ -216,7 +216,7 @@ body, html {
 
 .care-title {
     font-family: 'Abril Fatface', sans-serif;
-    font-size: 30px;
+    font-size: 38px;
     font-weight: bold;
     letter-spacing: 2px;
 }
@@ -278,7 +278,7 @@ body, html {
 
 .modal-title {
     font-family: 'Poppins', sans-serif;
-    font-size: 20;
+    font-size: 24px;
     color: #333;
 }
 
@@ -303,9 +303,10 @@ body, html {
 }
 
 .feedback-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 40px;
-    color: #000000;
+  font-family: 'Abril Fatface', sans-serif;
+  font-size: 38px;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 .feedback-section p {
@@ -323,11 +324,10 @@ body, html {
 
 .feedback-container .btn:hover {
     color: black;
-    background-color: rgb(237, 167, 178);
+    background-color: #eda7b2;
 }
 
 .feedback-container .btn:focus {
-    outline: none !important;
     box-shadow: 0 0 10px #e4d2d2 !important;
 }
 

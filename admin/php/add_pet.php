@@ -46,7 +46,7 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="" class="active sidebar-link">List Pets</a>
+                            <a href="admin_pets.php" class="active sidebar-link">List Pets</a>
                         </li>
                         <li class="sidebar-item">
                             <a style=" background-color: rgba(255, 255, 255, .075);

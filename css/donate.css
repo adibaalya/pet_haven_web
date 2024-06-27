@@ -78,7 +78,8 @@ body {
 .carousel-caption p {
     font-style: italic; 
     font-weight:600;
-    font-size: larger;
+    font-size: 22px;
+    font-family: "poppins";
 }
 .why-donate {
     text-align: center;
@@ -228,8 +229,6 @@ body {
 }
 
 
-
-
 .ready-to-donate {
     color: rgb(0, 0, 0);
     padding: 10px;
@@ -267,13 +266,13 @@ body {
 }
 
 .ready-to-donate a.btn:hover {
-    background-color:rgb(205, 43, 43);
+    background-color:#eda7b2;
     color: rgb(255, 255, 255);
     transition: background-color 0.3s ease; 
 }
 
 .btn-primary:hover {
-    background-color: rgb(225, 53, 78); 
+    background-color:#eda7b2;background-color:
 }
 
 .overlay {
