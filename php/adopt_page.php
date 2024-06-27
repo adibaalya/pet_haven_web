@@ -32,7 +32,7 @@
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark  ">
       <a class="navbar-brand " href="#">
-        <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
+        <img src="../assets/images/logo3.png" width="60" height="60" alt="Pet Haven Logo" />
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
