@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $shelterId = $_POST['shelterId'];
     $newStatus = $_POST['newStatus'];
 
-    // Prepare the SQL statement to update the status
+    // Prepare the SQL statement to update the status in adoption table
     $sql = "UPDATE adoption SET status=? WHERE email=? AND petId=? AND shelterId=?";
 
     // Prepare and bind parameters to prevent SQL injection
@@ -32,10 +32,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute the update statement
     if ($stmt->execute()) {
-        // If update is successful, send JSON response with success true
-        echo json_encode(['success' => true]);
+        // Check if the new status is 'approve' to update pet table
+        if ($newStatus == 'approve') {
+            // Update the status in the pet table to 'not available'
+            $updatePetStatusSql = "UPDATE pet SET status='not available' WHERE id=?";
+            $stmtUpdatePet = $conn->prepare($updatePetStatusSql);
+            $stmtUpdatePet->bind_param("i", $petId);
+            
+            if ($stmtUpdatePet->execute()) {
+                // If update is successful, send JSON response with success true
+                echo json_encode(['success' => true]);
+            } else {
+                // If pet table update fails, send JSON response with success false
+                echo json_encode(['success' => false, 'error' => $conn->error]);
+            }
+            
+            // Close statement for updating pet table
+            $stmtUpdatePet->close();
+        } else {
+            // If update is successful but new status is not 'approve'
+            echo json_encode(['success' => true]);
+        }
     } else {
-        // If update fails, send JSON response with success false
+        // If update fails in adoption table, send JSON response with success false
         echo json_encode(['success' => false]);
     }
 

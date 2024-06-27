@@ -331,7 +331,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                   var response = JSON.parse(xhr.responseText);
                   if (response.status === 'success') {
                     alert("Thank you for your interest in adopting!");
-                    window.location.href = '../html/account_page.html#adoption'; // Redirect upon successful adoption
+                    window.location.href = '../html/account_page.html'; // Redirect upon successful adoption
                   } else {
                     alert("Error: " + response.message);
                   }
@@ -377,7 +377,9 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
         }
 
         // Fetch all pets from the database
-        $stmt = $pdo->query("SELECT p.id, p.name, p.age, p.breed, p.gender, p.color, p.vaccinated, p.status, p.deworm, p.type, p.image1 as image, s.name as shelter FROM pet p LEFT JOIN shelter s ON p.shelterId = s.id");
+        $stmt = $pdo->query("SELECT p.id, p.name, p.age, p.breed, p.gender, p.color, p.vaccinated, p.status, p.deworm, p.type, p.image1 as image, s.name as shelter 
+        FROM pet p 
+        LEFT JOIN shelter s ON p.shelterId = s.id where p.status='available'");
         $all_pets = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Store the ID of the current pet being viewed or adopted

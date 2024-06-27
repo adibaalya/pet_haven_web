@@ -399,7 +399,7 @@
             // Query to fetch pets data including BLOBs
             $sql = "SELECT p.id, p.name, p.age, p.breed, p.gender, p.color, p.vaccinated, p.status, p.deworm, p.type, p.image1 as image, s.name as shelter 
         FROM pet p 
-        LEFT JOIN shelter s ON p.shelterId = s.id";
+        LEFT JOIN shelter s ON p.shelterId = s.id where p.status='available'";
 
             $whereClause = [];
 

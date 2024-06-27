@@ -41,6 +41,15 @@
     max-width: 800px;
 }
 
+#search-button{
+    background-color: #000000;
+}
+
+#search-button:hover{
+    background-color: rgb(237, 167, 178);
+    color: black;
+}
+
 .row {
     padding: 10px 0;
 }

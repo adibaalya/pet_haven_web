@@ -181,7 +181,7 @@
                 <h5 style="padding: 15px;">Choose your Shelter</h5>
                 <div class="row align-items-center">
                     <div class="col-sm-4">
-                        <select id="Location" name="location" class="form-select" style="border: 2px solid black;">
+                        <select id="Location" name="location" class="form-select" >
                             <option value="Select Location">Select Location</option>
                             <option value="Johor">Johor</option>
                             <option value="Kedah">Kedah</option>
@@ -192,11 +192,10 @@
                         </select>
                     </div>
                     <div class="col-sm-4">
-                        <input type="text" name="keyword" class="form-control" placeholder="Shelter Name"
-                            style="border: 2px solid black;">
+                        <input type="text" name="keyword" class="form-control" placeholder="Shelter Name">
                     </div>
                     <div class="col-sm-3">
-                        <button type="submit" class="btn btn-primary w-100">Search</button>
+                        <button type="submit" class="btn btn-primary w-100" id="search-button">Search</button>
                     </div>
                 </div>
             </form>
