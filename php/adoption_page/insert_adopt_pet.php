@@ -15,27 +15,42 @@ if ($conn->connect_error) {
     die(json_encode(array('status' => 'error', 'message' => 'Connection failed: ' . $conn->connect_error)));
 }
 
-// Prepare and bind
-$stmt = $conn->prepare("INSERT INTO adoption (email, petId, status, shelterId) 
-VALUES (?, ?, ?, ?)");
-if (!$stmt) {
-    die(json_encode(array('status' => 'error', 'message' => 'Prepare failed: ' . $conn->error)));
-}
-$stmt->bind_param("sisi",$email,$petId, $status ,$shelterId);
-
-// Set parameters and execute
+// Set parameters
 $email = $_POST['email'];
 $petId = $_POST['petId'];
 $status = 'pending';
 $shelterId = $_POST['shelterId'];
 
-if (!$stmt->execute()) {
-    die(json_encode(array('status' => 'error', 'message' => 'Execute failed: ' . $stmt->error)));
+// Check if the email has already adopted the pet with the same ID
+$checkSql = "SELECT * FROM adoption WHERE email = ? AND petId = ?";
+$checkStmt = $conn->prepare($checkSql);
+if (!$checkStmt) {
+    die(json_encode(array('status' => 'error', 'message' => 'Prepare failed: ' . $conn->error)));
+}
+$checkStmt->bind_param("si", $email, $petId);
+$checkStmt->execute();
+$result = $checkStmt->get_result();
+
+if ($result->num_rows > 0) {
+    // Email has already adopted the pet
+    echo json_encode(array('status' => 'error', 'message' => 'You have already adopted this pet.'));
+} else {
+    // Proceed with the adoption
+    $insertSql = "INSERT INTO adoption (email, petId, status, shelterId) VALUES (?, ?, ?, ?)";
+    $insertStmt = $conn->prepare($insertSql);
+    if (!$insertStmt) {
+        die(json_encode(array('status' => 'error', 'message' => 'Prepare failed: ' . $conn->error)));
+    }
+    $insertStmt->bind_param("sisi", $email, $petId, $status, $shelterId);
+
+    if (!$insertStmt->execute()) {
+        die(json_encode(array('status' => 'error', 'message' => 'Execute failed: ' . $insertStmt->error)));
+    }
+
+    echo json_encode(array('status' => 'success', 'message' => 'New record created successfully'));
+    $insertStmt->close();
 }
 
-echo json_encode(array('status' => 'success', 'message' => 'New record created successfully'));
-
-
-
-$stmt->close();
+$checkStmt->close();
 $conn->close();
+?>

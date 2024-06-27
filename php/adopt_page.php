@@ -174,7 +174,7 @@
   </div>
 
   <section id="header">
-    <h2>Find Your New Best Friends</h2>
+    <h2>Adoption is Love, and Love is Free</h2>
     <div class="box">
       <div class="odometer" id="odometer">0</div>
       <h4>Adoptions</h4>
@@ -336,7 +336,7 @@
               </select>
             </div>
             <div class="filter-item">
-              <button type="submit" class="btn btn-primary w-100">Search</button>
+              <button type="submit" class="btn btn-primary w-100" id="search-button">Search</button>
             </div>
 
           </form>
