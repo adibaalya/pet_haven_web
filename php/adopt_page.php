@@ -32,7 +32,7 @@
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark  ">
       <a class="navbar-brand " href="#">
-      <img src="../assets/images/logo3.png" width="100" height="80" alt="Pet Haven Logo" />      </a>
+        <img src="../assets/images/logo3.png" width="100" height="80" alt="Pet Haven Logo" /> </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -240,13 +240,14 @@
                   die("Connection failed: " . $conn->connect_error);
                 }
 
-                $sql = "SELECT * FROM pet";
+                // Use DISTINCT to avoid duplicates
+                $sql = "SELECT DISTINCT breed FROM pet";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
                   // Output data of each row
                   while ($row = $result->fetch_assoc()) {
-                    echo "<option value='" . $row["id"] . "'>" . $row["breed"] . "</option>";
+                    echo "<option value='" . $row["breed"] . "'>" . $row["breed"] . "</option>";
                   }
                 } else {
                   echo "<option value=''>No breed</option>";
@@ -255,6 +256,7 @@
                 $conn->close();
                 ?>
               </select>
+
             </div>
             <div class="filter-item">
               <h6>Location</h6>
@@ -373,7 +375,7 @@
           </div>
 
           <script>
-            
+
           </script>
 
         </div>
@@ -581,13 +583,13 @@
   </section>
 
 
-    <script src="../javascript/adopt.js"></script>
-    <script src="../javascript/trailer.js"></script>
-    <script src="../javascript/nav-bar-account.js"></script>
-    <script src="../javascript/authentication.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="../javascript/adopt.js"></script>
+  <script src="../javascript/trailer.js"></script>
+  <script src="../javascript/nav-bar-account.js"></script>
+  <script src="../javascript/authentication.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </section>
 </body>
 
