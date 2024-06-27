@@ -27,8 +27,7 @@
   <section class="nav-bar">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <a class="navbar-brand" href="#">
-        <img src="../assets/images/logo.png" width="60" height="60" alt="Pet Haven Logo" />
-      </a>
+      <img src="../assets/images/logo3.png" width="100" height="80" alt="Pet Haven Logo" />      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -303,7 +302,7 @@
                     role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content"
-                            style="background-color: #EDEBD2; border: 1px solid black; border-radius: 5%;">
+                            style="background-color: #E5DAD1; border: 1px solid black; border-radius: 5%;">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

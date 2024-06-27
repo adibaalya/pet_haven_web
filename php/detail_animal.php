@@ -331,7 +331,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
                   var response = JSON.parse(xhr.responseText);
                   if (response.status === 'success') {
                     alert("Thank you for your interest in adopting!");
-                    window.location.href = 'adopt_page.php'; // Redirect upon successful adoption
+                    window.location.href = '../html/account_page.html#adoption'; // Redirect upon successful adoption
                   } else {
                     alert("Error: " + response.message);
                   }

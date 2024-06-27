@@ -304,6 +304,7 @@ input[type="submit"]:hover {
 }
 .table {
     border: 3px solid black;
+    height: 100%;
 }
 .table thead th {
     background-color: #f7cd64;

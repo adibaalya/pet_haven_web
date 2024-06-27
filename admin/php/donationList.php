@@ -45,13 +45,13 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="" class="active sidebar-link">List Pets</a>
+                            <a href="admin_pets.php" class="active sidebar-link">List Pets</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="../php/add_pet.php" class="active sidebar-link">Add Pet</a>
+                            <a href="add_pet.php" class="active sidebar-link">Add Pet</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="../php/adoptionRequest.php" class="sidebar-link">Adoption Request</a>
+                            <a href="adoptionRequest.php" class="sidebar-link">Adoption Request</a>
                         </li>
                     </ul>
                 </li>
