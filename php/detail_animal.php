@@ -6,6 +6,7 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
   $isLoggedIn = false;
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
