@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check connection
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        die("Connection failed: ". $conn->connect_error);
     }
 
     // Get the POST parameters
@@ -23,51 +23,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $shelterId = $_POST['shelterId'];
     $newStatus = $_POST['newStatus'];
 
-    // Prepare the SQL statement to update the status in adoption table
-    $sql = "UPDATE adoption SET status=? WHERE email=? AND petId=? AND shelterId=?";
+    // Prepare the SQL statement to update the status and date
+    if ($newStatus == 'reject') {
+        $sql = "UPDATE adoption SET status=?, date=CURDATE() WHERE email=? AND petId=? AND shelterId=?";
+    } else if ($newStatus == 'pending') {
+        $sql = "UPDATE adoption SET status=?, date=null WHERE email=? AND petId=? AND shelterId=?";
+    } else {
+        $sql = "UPDATE adoption SET status=? WHERE email=? AND petId=? AND shelterId=?";
+    }
 
     // Prepare and bind parameters to prevent SQL injection
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssii", $newStatus, $email, $petId, $shelterId);
+    if ($newStatus == 'reject') {
+        $stmt->bind_param("ssii", $newStatus, $email, $petId, $shelterId);
+    } else {
+        $stmt->bind_param("ssii", $newStatus, $email, $petId, $shelterId);
+    }
 
     // Execute the update statement
     if ($stmt->execute()) {
-        // Check if the new status is 'approve' to update pet table
-        if ($newStatus == 'approve') {
-            // Update the status in the pet table to 'not available'
-            $updatePetStatusSql = "UPDATE pet SET status='not available' WHERE id=?";
-            $stmtUpdatePet = $conn->prepare($updatePetStatusSql);
-            $stmtUpdatePet->bind_param("i", $petId);
-            
-            if ($stmtUpdatePet->execute()) {
-                // If update is successful, send JSON response with success true
-                echo json_encode(['success' => true]);
-            } else {
-                // If pet table update fails, send JSON response with success false
-                echo json_encode(['success' => false, 'error' => $conn->error]);
-            }
-            
-            // Close statement for updating pet table
-            $stmtUpdatePet->close();
-        } else {
-           // Update the status in the pet table to 'not available'
-           $updatePetStatusSql = "UPDATE pet SET status='available' WHERE id=?";
-           $stmtUpdatePet = $conn->prepare($updatePetStatusSql);
-           $stmtUpdatePet->bind_param("i", $petId);
-           
-           if ($stmtUpdatePet->execute()) {
-               // If update is successful, send JSON response with success true
-               echo json_encode(['success' => true]);
-           } else {
-               // If pet table update fails, send JSON response with success false
-               echo json_encode(['success' => false, 'error' => $conn->error]);
-           }
-           
-           // Close statement for updating pet table
-           $stmtUpdatePet->close();
-        }
+        // If update is successful, send JSON response with success true
+        echo json_encode(['success' => true]);
     } else {
-        // If update fails in adoption table, send JSON response with success false
+        // If update fails, send JSON response with success false
         echo json_encode(['success' => false]);
     }
 
@@ -79,4 +57,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     http_response_code(405);
     echo json_encode(['error' => 'Method Not Allowed']);
 }
-?>

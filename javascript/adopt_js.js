@@ -16,12 +16,12 @@ $(document).ready(function () {
                         actions = '<button class="button cancel" style="width: fit-content">Cancel</button>';
                     } else if (row.status === 'approve') {
                         actions = '<button class="button date-picker" style="width: fit-content">Set Date</button>';
-                    } else if (row.status === 'rejected') {
+                    } else if (row.status === 'reject') {
                         actions = '<button class="button delete" style="width: fit-content">Delete</button>';
                     } else {
                         actions = '<button class="button delete" style="width: fit-content">Delete</button>';
                     }
-                    var adoptionDate = row.date ? `<br><span class="adoption-date">Adoption Date: ${row.date}</span>` : '';
+                    var adoptionDate = row.date? `<br><span class="adoption-date">${row.status === 'reject'? 'Rejected Date' : row.status === 'approve'? 'Pickup Date' : ''}: ${row.date}</span>` : '';
                     var rowHtml = `
                         <tr data-email="${row.email}" data-pet-id="${row.petId}" data-shelter-id="${row.shelterId}">
                             <td>${row.petName}</td>
