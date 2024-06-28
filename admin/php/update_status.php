@@ -50,8 +50,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Close statement for updating pet table
             $stmtUpdatePet->close();
         } else {
-            // If update is successful but new status is not 'approve'
-            echo json_encode(['success' => true]);
+           // Update the status in the pet table to 'not available'
+           $updatePetStatusSql = "UPDATE pet SET status='available' WHERE id=?";
+           $stmtUpdatePet = $conn->prepare($updatePetStatusSql);
+           $stmtUpdatePet->bind_param("i", $petId);
+           
+           if ($stmtUpdatePet->execute()) {
+               // If update is successful, send JSON response with success true
+               echo json_encode(['success' => true]);
+           } else {
+               // If pet table update fails, send JSON response with success false
+               echo json_encode(['success' => false, 'error' => $conn->error]);
+           }
+           
+           // Close statement for updating pet table
+           $stmtUpdatePet->close();
         }
     } else {
         // If update fails in adoption table, send JSON response with success false

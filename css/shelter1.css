@@ -192,6 +192,16 @@
 
 }
 
+#facebook{
+    background-color: #000;
+    color: #fff;
+}
+
+#facebook:hover{
+    background-color: rgb(237, 167, 178);
+    color: black;
+}
+
 .modal-dialog {
     max-width: 80%;
 }

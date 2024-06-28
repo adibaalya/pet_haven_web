@@ -335,7 +335,7 @@
                                     </div>
                                     <div class="footer-buttons text-center">
                                         <a href="<?= htmlspecialchars($shelter['link']); ?>"><button
-                                                class="btn btn-custom">Facebook</button></a>
+                                                class="btn btn-custom" id="facebook">Facebook</button></a>
 
                                     </div>
                                 </div>
