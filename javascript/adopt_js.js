@@ -134,20 +134,48 @@ $(document).ready(function () {
         var email = row.data('email');
         var petId = row.data('pet-id');
         var shelterId = row.data('shelter-id');
-
-        // Prompt the user to set a date
-        var adoptionDate = prompt('Please enter the adoption date (YYYY-MM-DD):');
-        if (adoptionDate) {
-            // Call the updateAdoptionStatus function with action 'approve' and adoptionDate
-            updateAdoptionStatus(email, petId, shelterId, 'approve', adoptionDate, function (success) {
-                if (success) {
-                    // Update the status column with 'approve' and display adoptionDate
-                    row.find('.status').html(`Approved<br><span class="adoption-date">Adoption Date: ${adoptionDate}</span>`)
-                        .removeClass('pending cancel rejected').addClass('approve');
-                } else {
-                    console.log('Failed to update adoption status.');
-                }
-            });
-        }
+    
+        // Create a date picker input field
+        var datePicker = $('<input type="date" id="adoptionDate" style="position: absolute; z-index: 1; padding: 5px; border: 1px solid #ccc;" />');
+    
+        // Append the date picker input field to the body
+        $('body').append(datePicker);
+    
+        // Position the date picker input field below the.date-picker element
+        var offset = $(this).offset();
+        var height = $(this).outerHeight();
+        datePicker.css({
+            top: offset.top + height + 'px',
+            left: offset.left + 'px'
+        });
+    
+        // Focus the date picker input field
+        datePicker.focus();
+    
+        // Add an event listener to the date picker input field
+        datePicker.on('change', function () {
+            var adoptionDate = datePicker.val();
+            if (adoptionDate) {
+                // Call the updateAdoptionStatus function with action 'approve' and adoptionDate
+                updateAdoptionStatus(email, petId, shelterId, 'approve', adoptionDate, function (success) {
+                    if (success) {
+                        // Update the status column with 'approve' and display adoptionDate
+                        row.find('.status').html(`Approved<br><span class="adoption-date">Adoption Date: ${adoptionDate}</span>`)
+                           .removeClass('pending cancel rejected').addClass('approve');
+                    } else {
+                        console.log('Failed to update adoption status.');
+                    }
+                });
+            }
+            // Remove the date picker input field
+            datePicker.remove();
+        });
+    
+        // Add an event listener to the document to close the date picker when clicked outside
+        $(document).on('click', function (e) {
+            if ($(e.target).closest('.date-picker').length === 0 && $(e.target).closest('#adoptionDate').length === 0) {
+                datePicker.remove();
+            }
+        });
     });
 });
